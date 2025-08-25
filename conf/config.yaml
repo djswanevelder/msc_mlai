@@ -1,0 +1,26 @@
+# conf/config.yaml
+data:
+  data_path: "./imagenet_subsets"
+  classes:
+    - "red_fox"
+    - "ox"
+    - "doberman"
+  batch_size: 32
+
+training:
+  optimizer: "Adam"  # or "SGD"
+  max_epochs: 10
+
+seed: 42
+
+# Design Decisions
+    # Model
+        # Initialization - kaiming_normal, fan_out, relu, 0 Bias
+        # Loss - Cross entropy
+        # Output - Softmax (num_classes)
+        # Default Learning Rate for both Adam + SGD
+    # Data Pre-processing
+        # Transforms
+            # 244x244
+            # Normalizated by Mean and Variance (Calculated)
+        
