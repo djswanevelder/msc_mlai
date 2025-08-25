@@ -13,14 +13,3 @@ training:
 
 seed: 42
 
-# Design Decisions
-    # Model
-        # Initialization - kaiming_normal, fan_out, relu, 0 Bias
-        # Loss - Cross entropy
-        # Output - Softmax (num_classes)
-        # Default Learning Rate for both Adam + SGD
-    # Data Pre-processing
-        # Transforms
-            # 244x244
-            # Normalizated by Mean and Variance (Calculated)
-        
