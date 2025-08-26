@@ -185,11 +185,12 @@ def prepare_data(data_path, classes_to_use, batch_size):
     return train_loader, val_loader, len(classes_to_use), calculated_mean, calculated_std
 
 @hydra.main(version_base=None, config_path="conf/", config_name="config")
-def main(cfg: DictConfig) -> None:
+def train_restNet18(cfg: DictConfig) -> None:
     """
     The main training loop, now driven by a Hydra config file.
     """
-    weight_name = f'{cfg.data.classes}_{cfg.training.optimizer}_{cfg.training.max_epochs}'
+    classes_str = "_".join(cfg.data.classes)
+    weight_name = f'{classes_str}_{cfg.training.optimizer}_{cfg.training.max_epochs}'
 
     pl.seed_everything(cfg.seed)
     wandb_logger = WandbLogger(
@@ -224,4 +225,4 @@ def main(cfg: DictConfig) -> None:
 
 
 if __name__ == '__main__':
-    main()
+    train_restNet18()
