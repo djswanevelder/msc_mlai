@@ -34,7 +34,7 @@ class StateDictSaver(pl.Callback):
         
         torch.save(checkpoint["state_dict"], state_dict_path)
         if self.log_to_wandb:
-            artifact = wandb.Artifact("best-model-state-dict", type="model-weights")
+            artifact = wandb.Artifact(self.file_name, type="model-weights")
             artifact.add_file(state_dict_path)
             trainer.logger.experiment.log_artifact(artifact)
 
