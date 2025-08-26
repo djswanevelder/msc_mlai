@@ -1,0 +1,14 @@
+# conf/data.yaml
+classes:
+  - "red_fox"
+  - "ox"
+  - "doberman"
+  - "dingo"
+  - "hyena"
+  - "tabby"
+  - "white_wolf"
+  - "whippet"
+  - "abacus"
+  - "trombone"
+  - "drum"
+  - "harp"

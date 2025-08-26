@@ -70,13 +70,13 @@ def download_and_extract(source_url: str, target_path: str) -> None:
     os.remove(tar_path)
     print("Process completed.")
 
-@hydra.main(version_base=None, config_name="config.yaml", config_path="conf/")
-def main(cfg: DictConfig, data_path: str = "imagenet_subsets") -> None:
+@hydra.main(version_base=None, config_name="dataset.yaml", config_path="conf/")
+def main(cfg: DictConfig, dataset_path: str = "imagenet_subsets") -> None:
     class_to_id = load_mapping('imagenet_map.txt')
-    os.makedirs(data_path, exist_ok=True)
+    os.makedirs(dataset_path, exist_ok=True)
 
     for c in cfg.classes:
-        target_path = os.path.join(data_path, c)
+        target_path = os.path.join(dataset_path, c)
         source_url = f'https://image-net.org/data/winter21_whole/{class_to_id[c]}.tar'
 
         if not os.path.exists(target_path):

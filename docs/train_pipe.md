@@ -1,7 +1,7 @@
 # Training Pipeline
 The resNet18 model will be trained, with the final layer changed to output the number of classes trained on for a training instance
 
-The `config.yaml` will specify all of the different hyperparameter chosen for a training instance, and the `resNet18.py` will take this as input. using Hydra 
+The `config.yaml` will specify all of the different hyperparameter chosen for a training instance, and the `resNet18.py` will take this as input, using Hydra 
 
 
 
