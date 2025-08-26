@@ -3,18 +3,19 @@ data:
   data_path: "./imagenet_subsets"
   classes:
     - "red_fox"
-    - "ox"
+    - "hyena"
     - "doberman"
   batch_size: 32
 
-training:
-  optimizer: "Adam"  # or "SGD"
-  max_epochs: 1
-
 seed: 42
+
+training:
+  optimizer: "SGD"  # or "SGD"
+  max_epoch: 2
+  early_epoch: 1
 
 wandb:
   project_name: "MSc_MLAI"
-  run_name: "Test Run"
-  store_weight: "False"
+  run_name: "No Weight Run"
+  store_weight: "True"
   

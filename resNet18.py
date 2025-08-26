@@ -18,25 +18,32 @@ class StateDictSaver(pl.Callback):
     """
     A custom callback to save only the model's state_dict at the end of training.
     """
-    def __init__(self, log_to_wandb: bool,file_name:str):
+    def __init__(self, log_to_wandb: bool, file_name:str,early_epoch:int):
         """
         Args:
             log_to_wandb (bool): If True, the state_dict will be logged as a W&B artifact.
         """
         self.log_to_wandb = log_to_wandb
         self.file_name = file_name
-
-    def on_train_end(self, trainer, pl_module):
-        best_model_path = trainer.checkpoint_callback.best_model_path
+        self.early_epoch = early_epoch
+    
+    def save_model_dict(self,trainer,pl_module,epoch):
+        weight_path = f'weights/{self.file_name}_{trainer.current_epoch}.pth'
+        state_dict_path = os.path.join(trainer.default_root_dir, weight_path)
+        torch.save(pl_module.state_dict(), state_dict_path)
         
-        checkpoint = torch.load(best_model_path)
-        state_dict_path = os.path.join(trainer.default_root_dir, f'weights/{self.file_name}.pth')
-        
-        torch.save(checkpoint["state_dict"], state_dict_path)
         if self.log_to_wandb:
-            artifact = wandb.Artifact(self.file_name, type="model-weights")
+            artifact = wandb.Artifact(f'{self.file_name}_{trainer.current_epoch}', type="model-weights")
             artifact.add_file(state_dict_path)
             trainer.logger.experiment.log_artifact(artifact)
+            print("State dictionary successfully uploaded to W&B as an artifact.")
+
+    def on_train_end(self, trainer, pl_module):
+        self.save_model_dict(trainer,pl_module,epoch= trainer.current_epoch - 1)
+
+    def on_train_epoch_end(self, trainer, pl_module):
+        if trainer.current_epoch + 1 == self.early_epoch:
+            self.save_model_dict(trainer,pl_module,trainer.current_epoch)
 
 class ResNetClassifier(pl.LightningModule):
     """
@@ -190,7 +197,7 @@ def train_restNet18(cfg: DictConfig) -> None:
     The main training loop, now driven by a Hydra config file.
     """
     classes_str = "_".join(cfg.data.classes)
-    weight_name = f'{classes_str}_{cfg.training.optimizer}_{cfg.training.max_epochs}'
+    weight_name = f'{classes_str}_{cfg.training.optimizer}'
 
     pl.seed_everything(cfg.seed)
     wandb_logger = WandbLogger(
@@ -199,7 +206,11 @@ def train_restNet18(cfg: DictConfig) -> None:
         log_model=False,
     )
 
-    state_dict_saver_callback = StateDictSaver(log_to_wandb=cfg.wandb.store_weight,file_name = weight_name)
+    state_dict_saver_callback = StateDictSaver(
+        log_to_wandb=cfg.wandb.store_weight,
+        file_name = weight_name,
+        early_epoch=cfg.training.early_epoch,
+        )
 
 
     train_loader, val_loader, num_classes, calculated_mean, calculated_std = prepare_data(
@@ -213,7 +224,7 @@ def train_restNet18(cfg: DictConfig) -> None:
     )
 
     trainer = pl.Trainer(
-        max_epochs=cfg.training.max_epochs,
+        max_epochs=cfg.training.max_epoch,
         accelerator="auto",
         devices=1,
         enable_progress_bar=True,
