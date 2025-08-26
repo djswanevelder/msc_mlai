@@ -1,3 +1,6 @@
 imagenet_subsets/
 lightning_logs/
 outputs/
+checkpoints/
+wandb/
+weights/

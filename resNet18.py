@@ -10,6 +10,33 @@ from torchvision import models, datasets, transforms
 from omegaconf import DictConfig
 import hydra
 from tqdm import tqdm
+from pytorch_lightning.loggers import WandbLogger
+import wandb
+from pytorch_lightning.callbacks import ModelCheckpoint
+
+class StateDictSaver(pl.Callback):
+    """
+    A custom callback to save only the model's state_dict at the end of training.
+    """
+    def __init__(self, log_to_wandb: bool,file_name:str):
+        """
+        Args:
+            log_to_wandb (bool): If True, the state_dict will be logged as a W&B artifact.
+        """
+        self.log_to_wandb = log_to_wandb
+        self.file_name = file_name
+
+    def on_train_end(self, trainer, pl_module):
+        best_model_path = trainer.checkpoint_callback.best_model_path
+        
+        checkpoint = torch.load(best_model_path)
+        state_dict_path = os.path.join(trainer.default_root_dir, f'weights/{self.file_name}.pth')
+        
+        torch.save(checkpoint["state_dict"], state_dict_path)
+        if self.log_to_wandb:
+            artifact = wandb.Artifact("best-model-state-dict", type="model-weights")
+            artifact.add_file(state_dict_path)
+            trainer.logger.experiment.log_artifact(artifact)
 
 class ResNetClassifier(pl.LightningModule):
     """
@@ -43,6 +70,11 @@ class ResNetClassifier(pl.LightningModule):
         loss = F.cross_entropy(logits, y)
         self.log('val_loss', loss, prog_bar=True)
         return loss
+    
+    # def on_validation_epoch_end(self):
+    #     # A simple example of how to log extra information at the end of a validation epoch.
+    #     # This will be logged to the W&B dashboard.
+    #     # self.log('some_extra_metric', 1.0)
 
     def configure_optimizers(self):
         """
@@ -157,8 +189,18 @@ def main(cfg: DictConfig) -> None:
     """
     The main training loop, now driven by a Hydra config file.
     """
+    weight_name = f'{cfg.data.classes}_{cfg.training.optimizer}_{cfg.training.max_epochs}'
+
     pl.seed_everything(cfg.seed)
-    
+    wandb_logger = WandbLogger(
+        project=cfg.wandb.project_name,
+        name=cfg.wandb.run_name,
+        log_model=False,
+    )
+
+    state_dict_saver_callback = StateDictSaver(log_to_wandb=cfg.wandb.store_weight,file_name = weight_name)
+
+
     train_loader, val_loader, num_classes, calculated_mean, calculated_std = prepare_data(
         data_path=cfg.data.data_path,
         classes_to_use=cfg.data.classes,
@@ -174,6 +216,8 @@ def main(cfg: DictConfig) -> None:
         accelerator="auto",
         devices=1,
         enable_progress_bar=True,
+        logger=wandb_logger,
+        callbacks=[state_dict_saver_callback],
     )
 
     trainer.fit(model, train_loader, val_loader)
