@@ -71,7 +71,7 @@ def download_and_extract(source_url: str, target_path: str) -> None:
     print("Process completed.")
 
 @hydra.main(version_base=None, config_name="dataset.yaml", config_path="conf/")
-def main(cfg: DictConfig, dataset_path: str = "imagenet_subsets") -> None:
+def download(cfg: DictConfig, dataset_path: str = "imagenet_subsets") -> None:
     class_to_id = load_mapping('imagenet_map.txt')
     os.makedirs(dataset_path, exist_ok=True)
 
@@ -110,4 +110,4 @@ def main(cfg: DictConfig, dataset_path: str = "imagenet_subsets") -> None:
             download_and_extract(source_url, target_path)
 
 if __name__ == "__main__":
-    main()
+    download()

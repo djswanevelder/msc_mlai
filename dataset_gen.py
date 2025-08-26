@@ -1,0 +1,173 @@
+from omegaconf import OmegaConf
+from download import download
+from itertools import combinations
+import os, csv, random
+import matplotlib.pyplot as plt
+
+from nltk.corpus import wordnet as wn
+# nltk.download('wordnet')
+
+my_config = OmegaConf.create({
+    "classes": ["dingo", "hyena"],
+})
+# download(my_config)
+
+def calculate_path_similarity(class1_name: str, class2_name: str):
+    """
+    Args:
+        class1_name: The name of the first class (e.g., 'dog').
+        class2_name: The name of the second class (e.g., 'house').
+        
+    Returns:
+        The path similarity score, a float between 0 and 1. 
+        Returns None if a synset cannot be found for either class.
+    """
+    try:
+        synset1 = wn.synsets(class1_name, pos=wn.NOUN)[0]
+        synset2 = wn.synsets(class2_name, pos=wn.NOUN)[0]
+
+        return synset1.path_similarity(synset2)
+
+    except IndexError:
+        print(f"Could not find a WordNet synset for one of the classes. Please check the spelling or specify a more detailed term.")
+        return None
+    except Exception as e:
+        print(f"An unexpected error occurred: {e}")
+        return None
+
+def calculate_average_similarity_of_three_classes(class_list: list):
+    """
+    Calculates the average path similarity for a set of three classes.
+    It computes the similarity for all three pairs and then averages them.
+
+    Args:
+        class_list: A list containing exactly three class names (strings).
+        
+    Returns:
+        The average similarity score, or None if any synset is not found.
+    """
+    if len(class_list) != 3:
+        print("Error: This function requires exactly three classes in the list.")
+        return None
+
+    class1, class2, class3 = class_list[0], class_list[1], class_list[2]
+
+    sim_ab = calculate_path_similarity(class1, class2)
+    sim_ac = calculate_path_similarity(class1, class3)
+    sim_bc = calculate_path_similarity(class2, class3)
+
+    if sim_ab is None or sim_ac is None or sim_bc is None:
+        print("Error: Could not calculate similarity for all pairs. Returning None.")
+        return None
+    average_sim = (sim_ab + sim_ac + sim_bc) / 3
+    
+    return average_sim
+
+def generate_and_score_permutations(input_file: str, output_file: str, num_permutations: int, seed: int):
+    """
+    Reads classes from a file, generates random permutations, calculates average
+    similarity, and saves the results to an output CSV file with a header.
+
+    Args:
+        input_file: Path to the file with classes (e.g., 'imagenet_map.txt').
+        output_file: Path to the output file to save results.
+        num_permutations: The number of random permutations to generate.
+        seed: The seed for the random number generator for reproducibility.
+    """
+    if not os.path.exists(input_file):
+        print(f"Error: The input file '{input_file}' was not found.")
+        return
+
+    random.seed(seed)
+
+    class_names = []
+    try:
+        with open(input_file, 'r') as f:
+            for line in f:
+                parts = line.strip().split(' ')
+                class_names.append(parts[2])
+    except Exception as e:
+        print(f"Error reading from file: {e}")
+        return
+
+    if len(class_names) < 3:
+        print("Error: Not enough classes in the file to create permutations of 3.")
+        return
+
+    print(f"Found {len(class_names)} classes. Generating {num_permutations} permutations...")
+
+    results = []
+    for i in range(num_permutations):
+        sampled_classes = random.sample(class_names, 3)
+        
+        avg_score = calculate_average_similarity_of_three_classes(sampled_classes)
+        
+        if avg_score is not None:
+            results.append(sampled_classes + [avg_score])
+            if (i + 1) % 100 == 0:print(f"Processed {i + 1}/{num_permutations} permutations.")
+    
+    try:
+        with open(output_file, 'w', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow(['class1', 'class2', 'class3', 'average_similarity_score'])
+            writer.writerows(results)
+        print(f"\nSuccessfully wrote {len(results)} permutations to '{output_file}'.")
+    except Exception as e:
+        print(f"Error writing to file: {e}")
+
+def plot_similarity_histogram(input_file: str, bin_size: float = 0.05):
+    """
+    Reads average similarity scores from a CSV file and plots a histogram.
+
+    Args:
+        input_file: Path to the CSV file with scores (e.g., 'permutations.csv').
+        bin_size: The size of the bins for the histogram.
+    """
+    if not os.path.exists(input_file):
+        print(f"Error: The input file '{input_file}' was not found. Please run the script to generate it first.")
+        return
+    
+    scores = []
+    try:
+        with open(input_file, 'r', newline='') as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+                try:
+                    scores.append(float(row['average_similarity_score']))
+                except (ValueError, KeyError):
+                    # Skip rows that don't have a valid score
+                    continue
+    except Exception as e:
+        print(f"Error reading scores from file: {e}")
+        return
+
+    if not scores:
+        print("No valid scores found to plot.")
+        return
+
+    # Calculate number of bins based on bin_size
+    min_score = min(scores)
+    max_score = max(scores)
+    num_bins = int((max_score - min_score) / bin_size)
+    if num_bins < 1:
+        num_bins = 1
+
+    plt.figure(figsize=(10, 6))
+    plt.hist(scores, bins=num_bins, edgecolor='black', alpha=0.7)
+    plt.title('Distribution of Average Path Similarity Scores')
+    plt.xlabel('Average Path Similarity Score')
+    plt.ylabel('Frequency')
+    plt.grid(axis='y', alpha=0.75)
+    plt.show()
+    print("Histogram plot displayed successfully.")
+
+
+
+if __name__ == "__main__":
+    input_filename = 'imagenet_map.txt'
+    output_filename = 'permutations.csv'
+    num_permutations = 200000
+    random_seed = 42
+    generate_and_score_permutations(input_filename, output_filename, num_permutations, random_seed)
+    bin_size_for_plot = 0.005
+    plot_similarity_histogram(output_filename, bin_size=bin_size_for_plot)
