@@ -16,6 +16,5 @@ training:
 
 wandb:
   project_name: "MSc_MLAI"
-  run_name: "No Weight Run" #Deterministic Unique Name?
   store_weight: "True"
   

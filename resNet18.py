@@ -191,27 +191,22 @@ def prepare_data(data_path, classes_to_use, batch_size):
     
     return train_loader, val_loader, len(classes_to_use), calculated_mean, calculated_std
 
-@hydra.main(version_base=None, config_path="conf/", config_name="config")
+@hydra.main(version_base=None, config_path="conf/", config_name="config.yaml")
 def train_restNet18(cfg: DictConfig) -> None:
     """
     The main training loop, now driven by a Hydra config file.
     """
-    classes_str = "_".join(cfg.data.classes)
-    weight_name = f'{classes_str}_{cfg.training.optimizer}'
-
     pl.seed_everything(cfg.seed)
     wandb_logger = WandbLogger(
         project=cfg.wandb.project_name,
-        name=cfg.wandb.run_name,
         log_model=False,
     )
 
     state_dict_saver_callback = StateDictSaver(
         log_to_wandb=cfg.wandb.store_weight,
-        file_name = weight_name,
+        file_name = wandb_logger.experiment.name,
         early_epoch=cfg.training.early_epoch,
         )
-
 
     train_loader, val_loader, num_classes, calculated_mean, calculated_std = prepare_data(
         data_path=cfg.data.data_path,

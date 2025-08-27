@@ -4,13 +4,9 @@ from itertools import combinations
 import os, csv, random
 import matplotlib.pyplot as plt
 import pandas as pd
+import numpy as np
 from nltk.corpus import wordnet as wn
 # nltk.download('wordnet')
-
-my_config = OmegaConf.create({
-    "classes": ["dingo", "hyena"],
-})
-# download(my_config)
 
 def calculate_path_similarity(class1_name: str, class2_name: str):
     """
@@ -132,11 +128,26 @@ def plot_similarity_histogram(input_file,bins):
     plt.grid(axis='y', alpha=0.75)
     plt.savefig('similarity_score_histogram.png')
 
+def generate_training_instance(input_filename,output_filename,seed):
+    np.random.seed(seed)
+    df = pd.read_csv(input_filename)
+    df['score'] = df['average_similarity_score'].round(4)
+    df = df.drop('average_similarity_score',axis=1)
+
+    df['seed'] = np.random.randint(0, 10000, size=len(df))
+    df['early_epoch'] = np.random.randint(15, 25, size=len(df))
+    df['max_epoch'] =  np.random.normal(loc=100, scale=15, size=len(df)).astype(int)
+    df['store_weight'] = np.random.random(len(df)) < 0.3
+    df['optimizer'] = np.where(np.random.random(len(df)) < 0.5, 'Adam', 'SGD')
+    df['status'] = '-'
+
+    df['max_epoch'] =  1
+    df['early_epoch'] =  1
+    df['store_weight'] =  True
+
+
+    df.to_csv(output_filename, index=False)
 
 if __name__ == "__main__":
-    input_filename = 'imagenet_map.txt'
-    output_filename = 'permutations.csv'
-    num_permutations = 200000
-    random_seed = 42
-    # generate_and_score_permutations(input_filename, output_filename, num_permutations, random_seed)
-    plot_similarity_histogram(output_filename, bins=100)
+    generate_and_score_permutations('imagenet_map.txt', 'permutations.csv', 1, seed=42)
+    generate_training_instance('permutations.csv','sweep_test.csv', seed=42)

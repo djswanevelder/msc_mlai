@@ -1,12 +1,15 @@
-import hydra
 from omegaconf import DictConfig, OmegaConf
 from resNet18 import train_restNet18
 import pandas as pd
 from download import download
+import time
 
-def sweep_over_all() -> None:
-    df = pd.read_csv('sweep.csv')
+def sweep_over_all(input_filename) -> None:
+    df = pd.read_csv(input_filename)
     for index, row in df.iterrows():
+        if df['status'][index] == 'Done':
+            print(f"Skipping stef{index}")
+            continue
         my_config = {
             "data": {
                 "data_path": "./imagenet_subsets",
@@ -26,15 +29,21 @@ def sweep_over_all() -> None:
             "seed": int(row['seed']),
             "wandb": {
                 "project_name": "MSc_MLAI",
-                "run_name": "No Weight Run",
                 "store_weight": bool(row['store_weight']),
             }
         }
         cfg = OmegaConf.create(my_config)
+        df.loc[index, "status"] = "Busy"
+        df.to_csv(input_filename, index=False)
+        
         train_restNet18(cfg)
 
-def download_all_classes():
-    df = pd.read_csv('sweep.csv')
+        time.sleep(5)
+        df.loc[index, "status"] = "Done"
+        df.to_csv(input_filename, index=False)
+
+def download_all_classes(input_filename):
+    df = pd.read_csv(input_filename)
     cl1 = df['class1'].str.lower().unique()
     cl2 = df['class2'].str.lower().unique()
     cl3 = df['class3'].str.lower().unique()
@@ -44,5 +53,5 @@ def download_all_classes():
     download(data_cfg)
 
 if __name__ == "__main__":
-    download_all_classes()
-    # sweep_over_all()
+    download_all_classes('sweep_test.csv')
+    sweep_over_all('sweep_test.csv')
