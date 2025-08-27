@@ -230,4 +230,5 @@ def train_restNet18(cfg: DictConfig) -> None:
 
 
 if __name__ == '__main__':
+    os.environ['WANDB_API_KEY'] = '383931e33038a7e29973dbc378da30378cfdc061'
     train_restNet18()
