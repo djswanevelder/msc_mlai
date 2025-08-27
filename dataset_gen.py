@@ -3,7 +3,7 @@ from download import download
 from itertools import combinations
 import os, csv, random
 import matplotlib.pyplot as plt
-
+import pandas as pd
 from nltk.corpus import wordnet as wn
 # nltk.download('wordnet')
 
@@ -115,52 +115,22 @@ def generate_and_score_permutations(input_file: str, output_file: str, num_permu
     except Exception as e:
         print(f"Error writing to file: {e}")
 
-def plot_similarity_histogram(input_file: str, bin_size: float = 0.05):
+def plot_similarity_histogram(input_file,bins):
     """
-    Reads average similarity scores from a CSV file and plots a histogram.
+    Plots a histogram of the specified column.
 
     Args:
-        input_file: Path to the CSV file with scores (e.g., 'permutations.csv').
-        bin_size: The size of the bins for the histogram.
+        dataframe (pd.DataFrame): The DataFrame containing the data.
+        column_name (str): The name of the column to plot.
     """
-    if not os.path.exists(input_file):
-        print(f"Error: The input file '{input_file}' was not found. Please run the script to generate it first.")
-        return
-    
-    scores = []
-    try:
-        with open(input_file, 'r', newline='') as f:
-            reader = csv.DictReader(f)
-            for row in reader:
-                try:
-                    scores.append(float(row['average_similarity_score']))
-                except (ValueError, KeyError):
-                    # Skip rows that don't have a valid score
-                    continue
-    except Exception as e:
-        print(f"Error reading scores from file: {e}")
-        return
-
-    if not scores:
-        print("No valid scores found to plot.")
-        return
-
-    # Calculate number of bins based on bin_size
-    min_score = min(scores)
-    max_score = max(scores)
-    num_bins = int((max_score - min_score) / bin_size)
-    if num_bins < 1:
-        num_bins = 1
-
+    dataframe = pd.read_csv(input_file)
     plt.figure(figsize=(10, 6))
-    plt.hist(scores, bins=num_bins, edgecolor='black', alpha=0.7)
-    plt.title('Distribution of Average Path Similarity Scores')
-    plt.xlabel('Average Path Similarity Score')
+    plt.hist(dataframe['average_similarity_score'], bins=bins, edgecolor='black')
+    plt.title('Distribution of Similarity Scores')
+    plt.xlabel('Average Similarity Score')
     plt.ylabel('Frequency')
     plt.grid(axis='y', alpha=0.75)
-    plt.show()
-    print("Histogram plot displayed successfully.")
-
+    plt.savefig('similarity_score_histogram.png')
 
 
 if __name__ == "__main__":
@@ -168,6 +138,5 @@ if __name__ == "__main__":
     output_filename = 'permutations.csv'
     num_permutations = 200000
     random_seed = 42
-    generate_and_score_permutations(input_filename, output_filename, num_permutations, random_seed)
-    bin_size_for_plot = 0.005
-    plot_similarity_histogram(output_filename, bin_size=bin_size_for_plot)
+    # generate_and_score_permutations(input_filename, output_filename, num_permutations, random_seed)
+    plot_similarity_histogram(output_filename, bins=100)
