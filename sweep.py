@@ -38,7 +38,6 @@ def sweep_over_all(input_filename) -> None:
         
         train_restNet18(cfg)
 
-        time.sleep(5)
         df.loc[index, "status"] = "Done"
         df.to_csv(input_filename, index=False)
 
