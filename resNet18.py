@@ -226,7 +226,6 @@ def train_restNet18(cfg: DictConfig) -> None:
     trainer = pl.Trainer(
         max_epochs=cfg.training.max_epoch,
         accelerator="auto",
-        devices=1,
         enable_progress_bar=True,
         logger=wandb_logger,
         callbacks=[state_dict_saver_callback],

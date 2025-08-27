@@ -2,6 +2,7 @@ import hydra
 from omegaconf import DictConfig, OmegaConf
 from resNet18 import train_restNet18
 import pandas as pd
+from download import download
 
 def sweep_over_all() -> None:
     df = pd.read_csv('sweep.csv')
@@ -32,21 +33,16 @@ def sweep_over_all() -> None:
         cfg = OmegaConf.create(my_config)
         train_restNet18(cfg)
 
-def find_all_classes():
+def download_all_classes():
     df = pd.read_csv('sweep.csv')
-    cl1 = df['class1'].unique()
-    cl2 = df['class2'].unique()
-    cl3 = df['class3'].unique()
-    return pd.concat([pd.Series(cl1), pd.Series(cl2), pd.Series(cl3)]).unique()
-
-
+    cl1 = df['class1'].str.lower().unique()
+    cl2 = df['class2'].str.lower().unique()
+    cl3 = df['class3'].str.lower().unique()
+    all_classes = pd.concat([pd.Series(cl1), pd.Series(cl2), pd.Series(cl3)]).unique()
+    data_config = {"classes":all_classes.tolist()}
+    data_cfg = OmegaConf.create(data_config)
+    download(data_cfg)
 
 if __name__ == "__main__":
-    all_classes = find_all_classes()
-    # print(f'{all_classes}')
+    download_all_classes()
     # sweep_over_all()
-
-    my_config = {
-        "classes":{all_classes}
-    }
-    print(f'{my_config}')

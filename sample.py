@@ -96,10 +96,12 @@ def plot_similarity_histogram(input_file,bins):
     plt.savefig('similarity_score_histogram.png')
 
 if __name__ == "__main__":
-    sample_data_uniform('permutations.csv', 2000, 'sweep.csv')
+    sample_data_uniform('permutations.csv', 10, 'sweep.csv')
     np.random.seed(42)
-    plot_similarity_histogram('sweep.csv', bins = 100)
+    # plot_similarity_histogram('sweep.csv', bins = 100)
     # plot_similarity_histogram('permutations.csv', bins = 100)
+
+
 
     df = pd.read_csv('sweep.csv')
     df['score'] = df['average_similarity_score'].round(4)
@@ -110,17 +112,10 @@ if __name__ == "__main__":
     df['seed'] = df['seed'].apply(lambda x: '%04d' % x)
 
 
-    df['early_epoch'] = np.random.randint(1, 5, size=len(df))
+    df['early_epoch'] = np.random.randint(15, 25, size=len(df))
     # df['max_epoch'] = np.random.randint(100, 350, size=len(df)) # maybe make a guassian?
-    df['max_epoch'] =  np.random.normal(loc=150, scale=15, size=len(df)).astype(int)
+    df['max_epoch'] =  np.random.normal(loc=100, scale=15, size=len(df)).astype(int)
     df['store_weight'] = np.random.random(len(df)) < 0.3
     df['optimizer'] = np.where(np.random.random(len(df)) < 0.5, 'Adam', 'SGD')
-
-    # df_adam = df.copy()
-    # df_sgd = df.copy()
-
-    # df_adam['optimizer'] = 'Adam'
-    # df_sgd['optimizer'] = 'SGD'
-    # new_df = pd.concat([df_adam, df_sgd], ignore_index=True)
 
     df.to_csv('sweep.csv', index=False)
