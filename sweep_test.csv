@@ -1,2 +1,0 @@
-class1,class2,class3,score,seed,early_epoch,max_epoch,store_weight,optimizer,status
-sea_slug,Appenzeller,soft-coated_wheaten_terrier,0.1143,7270,1,1,True,Adam,Done

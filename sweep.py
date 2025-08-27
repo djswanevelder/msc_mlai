@@ -36,7 +36,8 @@ def sweep_over_all(input_filename) -> None:
         df.loc[index, "status"] = "Busy"
         df.to_csv(input_filename, index=False)
         
-        train_restNet18(cfg)
+        # train_restNet18(cfg)
+        time.sleep(5)
 
         df.loc[index, "status"] = "Done"
         df.to_csv(input_filename, index=False)
@@ -52,5 +53,5 @@ def download_all_classes(input_filename):
     download(data_cfg)
 
 if __name__ == "__main__":
-    download_all_classes('sweep_test.csv')
-    sweep_over_all('sweep_test.csv')
+    # download_all_classes('sweep.csv')
+    sweep_over_all('sweep.csv')
