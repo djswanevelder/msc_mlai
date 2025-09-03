@@ -149,5 +149,5 @@ def generate_training_instance(input_filename,output_filename,seed):
     df.to_csv(output_filename, index=False)
 
 if __name__ == "__main__":
-    generate_and_score_permutations('imagenet_map.txt', 'permutations.csv', 100, seed=42)
-    generate_training_instance('permutations.csv','sweep.csv', seed=42)
+    generate_and_score_permutations('imagenet_map.txt', 'permutations_test.csv', 100, seed=42)
+    # generate_training_instance('permutations_test.csv','sweep.csv', seed=42)
