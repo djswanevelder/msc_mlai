@@ -53,5 +53,5 @@ def download_all_classes(input_filename):
     download(data_cfg)
 
 if __name__ == "__main__":
-    # download_all_classes('sweep.csv')
+    download_all_classes('sweep.csv')
     sweep_over_all('sweep.csv')

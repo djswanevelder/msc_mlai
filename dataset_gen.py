@@ -7,6 +7,7 @@ import pandas as pd
 import numpy as np
 from nltk.corpus import wordnet as wn
 # nltk.download('wordnet')
+from word2vec import measure_similarity, load_model
 
 def calculate_path_similarity(class1_name: str, class2_name: str):
     """
@@ -73,7 +74,7 @@ def generate_and_score_permutations(input_file: str, output_file: str, num_permu
     if not os.path.exists(input_file):
         print(f"Error: The input file '{input_file}' was not found.")
         return
-
+    model = load_model('small')
     random.seed(seed)
 
     class_names = []
@@ -97,15 +98,16 @@ def generate_and_score_permutations(input_file: str, output_file: str, num_permu
         sampled_classes = random.sample(class_names, 3)
         
         avg_score = calculate_average_similarity_of_three_classes(sampled_classes)
-        
-        if avg_score is not None:
-            results.append(sampled_classes + [avg_score])
+        score = measure_similarity(sampled_classes,model)
+
+        if avg_score is not None and score is not None:
+            results.append(sampled_classes + [avg_score]+[score])
             if (i + 1) % 100 == 0:print(f"Processed {i + 1}/{num_permutations} permutations.")
     
     try:
         with open(output_file, 'w', newline='') as f:
             writer = csv.writer(f)
-            writer.writerow(['class1', 'class2', 'class3', 'average_similarity_score'])
+            writer.writerow(['class1', 'class2', 'class3', 'distance_score','semantic_score'])
             writer.writerows(results)
         print(f"\nSuccessfully wrote {len(results)} permutations to '{output_file}'.")
     except Exception as e:
@@ -121,7 +123,7 @@ def plot_similarity_histogram(input_file,bins):
     """
     dataframe = pd.read_csv(input_file)
     plt.figure(figsize=(10, 6))
-    plt.hist(dataframe['average_similarity_score'], bins=bins, edgecolor='black')
+    plt.hist(dataframe['semantic_score'], bins=bins, edgecolor='black')
     plt.title('Distribution of Similarity Scores')
     plt.xlabel('Average Similarity Score')
     plt.ylabel('Frequency')
@@ -149,5 +151,6 @@ def generate_training_instance(input_filename,output_filename,seed):
     df.to_csv(output_filename, index=False)
 
 if __name__ == "__main__":
-    generate_and_score_permutations('imagenet_map.txt', 'permutations_test.csv', 100, seed=42)
+    generate_and_score_permutations('imagenet_map.txt', 'permutations_test.csv', 20000, seed=42)
+    plot_similarity_histogram('permutations_test.csv',100)
     # generate_training_instance('permutations_test.csv','sweep.csv', seed=42)
