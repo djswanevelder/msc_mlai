@@ -11,10 +11,11 @@ from omegaconf import DictConfig
 import hydra
 from tqdm import tqdm
 from pytorch_lightning.loggers import WandbLogger
-import wandb
 from pytorch_lightning.callbacks import ModelCheckpoint
+import wandb
 
 class StateDictSaver(pl.Callback):
+    import wandb
     """
     A custom callback to save only the model's state_dict at the end of training.
     """
@@ -29,13 +30,13 @@ class StateDictSaver(pl.Callback):
     
     def save_model_dict(self,trainer,pl_module,epoch):
         run_name = wandb.run.name 
-        weight_path = f'weights/{run_name}_{trainer.current_epoch}.pth'
+        weight_path = f'weights/{self.file_name}_{trainer.current_epoch}.pth'
         state_dict_path = os.path.join(trainer.default_root_dir, weight_path)
         torch.save(pl_module.state_dict(), state_dict_path)
         
         if self.log_to_wandb:
             
-            artifact = wandb.Artifact(f'{run_name}_{trainer.current_epoch}', type="model-weights")
+            artifact = wandb.Artifact(f'{self.file_name}_{trainer.current_epoch}', type="model-weights")
             artifact.add_file(state_dict_path)
             trainer.logger.experiment.log_artifact(artifact)
             print("State dictionary successfully uploaded to W&B as an artifact.")
@@ -203,7 +204,6 @@ def train_restNet18(cfg: DictConfig) -> None:
         project=cfg.wandb.project_name,
         log_model=False,
     )
-
     state_dict_saver_callback = StateDictSaver(
         log_to_wandb=cfg.wandb.store_weight,
         file_name = wandb_logger.experiment.name,
@@ -230,7 +230,6 @@ def train_restNet18(cfg: DictConfig) -> None:
     )
 
     trainer.fit(model, train_loader, val_loader)
-    wandb.finish()
 
 
 if __name__ == '__main__':
