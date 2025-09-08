@@ -28,12 +28,14 @@ class StateDictSaver(pl.Callback):
         self.early_epoch = early_epoch
     
     def save_model_dict(self,trainer,pl_module,epoch):
-        weight_path = f'weights/{self.file_name}_{trainer.current_epoch}.pth'
+        run_name = wandb.run.name 
+        weight_path = f'weights/{run_name}_{trainer.current_epoch}.pth'
         state_dict_path = os.path.join(trainer.default_root_dir, weight_path)
         torch.save(pl_module.state_dict(), state_dict_path)
         
         if self.log_to_wandb:
-            artifact = wandb.Artifact(f'{self.file_name}_{trainer.current_epoch}', type="model-weights")
+            
+            artifact = wandb.Artifact(f'{run_name}_{trainer.current_epoch}', type="model-weights")
             artifact.add_file(state_dict_path)
             trainer.logger.experiment.log_artifact(artifact)
             print("State dictionary successfully uploaded to W&B as an artifact.")
@@ -135,7 +137,7 @@ def calculate_mean_std(dataset):
     
     return mean.tolist(), std.tolist()
 
-def prepare_data(data_path, classes_to_use, batch_size):
+def prepare_data(data_path, classes_to_use, batch_size,num_workers):
     """
     Loads data from the file system, splits it into training and validation sets,
     and creates DataLoaders.
@@ -186,8 +188,8 @@ def prepare_data(data_path, classes_to_use, batch_size):
     train_data.dataset.transform = final_transform
     val_data.dataset.transform = final_transform
 
-    train_loader = DataLoader(train_data, batch_size=batch_size, shuffle=True)
-    val_loader = DataLoader(val_data, batch_size=batch_size, shuffle=False)
+    train_loader = DataLoader(train_data, batch_size=batch_size, shuffle=True,num_workers=num_workers)
+    val_loader = DataLoader(val_data, batch_size=batch_size, shuffle=False,num_workers=num_workers)
     
     return train_loader, val_loader, len(classes_to_use), calculated_mean, calculated_std
 
@@ -211,7 +213,8 @@ def train_restNet18(cfg: DictConfig) -> None:
     train_loader, val_loader, num_classes, calculated_mean, calculated_std = prepare_data(
         data_path=cfg.data.data_path,
         classes_to_use=cfg.data.classes,
-        batch_size=cfg.data.batch_size
+        batch_size=cfg.data.batch_size,
+        num_workers=cfg.training.num_workers
     )
     model = ResNetClassifier(
         num_classes=num_classes,
@@ -227,6 +230,7 @@ def train_restNet18(cfg: DictConfig) -> None:
     )
 
     trainer.fit(model, train_loader, val_loader)
+    wandb.finish()
 
 
 if __name__ == '__main__':

@@ -8,7 +8,7 @@ def sweep_over_all(input_filename) -> None:
     df = pd.read_csv(input_filename)
     for index, row in df.iterrows():
         if df['status'][index] == 'Done':
-            print(f"Skipping stef{index}")
+            print(f"Skipping step {index}")
             continue
         my_config = {
             "data": {
@@ -24,6 +24,7 @@ def sweep_over_all(input_filename) -> None:
                 "optimizer": row['optimizer'],
                 "max_epoch": int(row['max_epoch']),
                 "early_epoch": int(row['early_epoch']),
+                "num_workers": int(15)
 
             },
             "seed": int(row['seed']),
@@ -36,11 +37,12 @@ def sweep_over_all(input_filename) -> None:
         df.loc[index, "status"] = "Busy"
         df.to_csv(input_filename, index=False)
         
-        # train_restNet18(cfg)
-        time.sleep(5)
+        train_restNet18(cfg)
 
         df.loc[index, "status"] = "Done"
         df.to_csv(input_filename, index=False)
+        
+        
 
 def download_all_classes(input_filename):
     df = pd.read_csv(input_filename)

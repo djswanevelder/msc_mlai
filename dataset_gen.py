@@ -74,7 +74,7 @@ def generate_and_score_permutations(input_file: str, output_file: str, num_permu
     if not os.path.exists(input_file):
         print(f"Error: The input file '{input_file}' was not found.")
         return
-    model = load_model('small')
+    model = load_model('large')
     random.seed(seed)
 
     class_names = []
@@ -133,8 +133,8 @@ def plot_similarity_histogram(input_file,bins):
 def generate_training_instance(input_filename,output_filename,seed):
     np.random.seed(seed)
     df = pd.read_csv(input_filename)
-    df['score'] = df['average_similarity_score'].round(4)
-    df = df.drop('average_similarity_score',axis=1)
+    df['score'] = df['semantic_score'].round(4)
+    df = df.drop('semantic_score',axis=1)
 
     df['seed'] = np.random.randint(0, 10000, size=len(df))
     df['early_epoch'] = np.random.randint(15, 25, size=len(df))
@@ -143,14 +143,14 @@ def generate_training_instance(input_filename,output_filename,seed):
     df['optimizer'] = np.where(np.random.random(len(df)) < 0.5, 'Adam', 'SGD')
     df['status'] = '-'
 
-    df['max_epoch'] =  1
-    df['early_epoch'] =  1
+    # df['max_epoch'] =  1
+    # df['early_epoch'] =  1
     df['store_weight'] =  True
 
 
     df.to_csv(output_filename, index=False)
 
 if __name__ == "__main__":
-    generate_and_score_permutations('imagenet_map.txt', 'permutations_test.csv', 20000, seed=42)
-    plot_similarity_histogram('permutations_test.csv',100)
-    # generate_training_instance('permutations_test.csv','sweep.csv', seed=42)
+    generate_and_score_permutations('imagenet_map.txt', 'permutations.csv', 100, seed=42)
+    plot_similarity_histogram('permutations.csv',100)
+    generate_training_instance('permutations.csv','sweep.csv', seed=42)

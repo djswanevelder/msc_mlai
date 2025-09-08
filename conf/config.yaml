@@ -3,16 +3,18 @@ data:
   data_path: "./imagenet_subsets"
   classes:
     - "red_fox"
-    - "hyena"
-    - "doberman"
+    - "red_wolf"
+    - "strawberry"
   batch_size: 32
 
 seed: 42
 
 training:
-  optimizer: "SGD"  # or "SGD"
+  optimizer: "SGD"
   max_epoch: 2
   early_epoch: 1
+  num_workers: 11
+
 
 wandb:
   project_name: "MSc_MLAI"
