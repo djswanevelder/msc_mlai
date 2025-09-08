@@ -13,9 +13,9 @@ from tqdm import tqdm
 from pytorch_lightning.loggers import WandbLogger
 from pytorch_lightning.callbacks import ModelCheckpoint
 import wandb
+wandb.login(key='383931e33038a7e29973dbc378da30378cfdc061')
 
 class StateDictSaver(pl.Callback):
-    import wandb
     """
     A custom callback to save only the model's state_dict at the end of training.
     """
@@ -29,7 +29,6 @@ class StateDictSaver(pl.Callback):
         self.early_epoch = early_epoch
     
     def save_model_dict(self,trainer,pl_module,epoch):
-        run_name = wandb.run.name 
         weight_path = f'weights/{self.file_name}_{trainer.current_epoch}.pth'
         state_dict_path = os.path.join(trainer.default_root_dir, weight_path)
         torch.save(pl_module.state_dict(), state_dict_path)
@@ -233,5 +232,4 @@ def train_restNet18(cfg: DictConfig) -> None:
 
 
 if __name__ == '__main__':
-    os.environ['WANDB_API_KEY'] = '383931e33038a7e29973dbc378da30378cfdc061'
     train_restNet18()

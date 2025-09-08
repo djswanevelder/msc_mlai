@@ -3,6 +3,8 @@ from resNet18 import train_restNet18
 import pandas as pd
 from download import download
 import time
+import resNet18
+
 
 def sweep_over_all(input_filename) -> None:
     df = pd.read_csv(input_filename)

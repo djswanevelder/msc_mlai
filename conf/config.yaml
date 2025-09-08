@@ -11,9 +11,9 @@ seed: 42
 
 training:
   optimizer: "SGD"
-  max_epoch: 2
-  early_epoch: 1
-  num_workers: 11
+  max_epoch: 11
+  early_epoch: 3
+  num_workers: 15
 
 
 wandb:
