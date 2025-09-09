@@ -1,5 +1,5 @@
 class1,class2,class3,distance_score,score,seed,early_epoch,max_epoch,store_weight,optimizer,status
-sea_slug,Appenzeller,soft-coated_wheaten_terrier,0.1142857142857142,0.0785,7270,21,121,True,Adam,-
+sea_slug,Appenzeller,soft-coated_wheaten_terrier,0.1142857142857142,0.0785,7270,2,5,True,Adam,-
 running_shoe,tow_truck,missile,0.1027777777777777,0.1412,860,23,120,True,SGD,-
 strawberry,pug,necklace,0.0738095238095238,0.1902,5390,22,86,True,SGD,-
 borzoi,planetarium,pajama,0.0816798941798941,0.1033,5191,16,101,True,SGD,-

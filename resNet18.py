@@ -14,18 +14,18 @@ from pytorch_lightning.loggers import WandbLogger
 from pytorch_lightning.callbacks import ModelCheckpoint
 import wandb
 wandb.login(key='383931e33038a7e29973dbc378da30378cfdc061')
-
+import shortuuid
 class StateDictSaver(pl.Callback):
     """
     A custom callback to save only the model's state_dict at the end of training.
     """
-    def __init__(self, log_to_wandb: bool, file_name:str,early_epoch:int):
+    def __init__(self, log_to_wandb: bool,early_epoch:int):
         """
         Args:
             log_to_wandb (bool): If True, the state_dict will be logged as a W&B artifact.
         """
         self.log_to_wandb = log_to_wandb
-        self.file_name = file_name
+        self.file_name = shortuuid.uuid()
         self.early_epoch = early_epoch
     
     def save_model_dict(self,trainer,pl_module,epoch):
@@ -205,7 +205,6 @@ def train_restNet18(cfg: DictConfig) -> None:
     )
     state_dict_saver_callback = StateDictSaver(
         log_to_wandb=cfg.wandb.store_weight,
-        file_name = wandb_logger.experiment.name,
         early_epoch=cfg.training.early_epoch,
         )
 
