@@ -228,6 +228,7 @@ def train_restNet18(cfg: DictConfig) -> None:
     )
 
     trainer.fit(model, train_loader, val_loader)
+    wandb.finish()
 
 
 if __name__ == '__main__':
