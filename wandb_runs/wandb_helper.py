@@ -1,22 +1,22 @@
 import wandb
 import pandas as pd
+import os
 
-# Initialize the Weights & Biases API
 api = wandb.Api()
 
-# Replace with your specific entity and project name
-# Based on your example, these values are used directly.
 entity = '25205269-stellenbosch-university'
 project_name = 'MSc_MLAI'
 
-# Get all runs from the specified project
 print(f"Fetching all runs from project: {project_name}...")
 runs = api.runs(path=f"{entity}/{project_name}")
 
-# List to store data from each run
 all_run_data = []
 
-# Iterate through each run and extract relevant information
+# Define the directory where artifacts will be saved
+download_dir = "downloaded_artifacts"
+os.makedirs(download_dir, exist_ok=True)
+print(f"Artifacts will be downloaded to: {os.path.abspath(download_dir)}")
+
 for i, run in enumerate(runs):
     print(f"Processing run {i+1}/{len(runs)}: {run.name}")
 
@@ -28,27 +28,39 @@ for i, run in enumerate(runs):
         'state': run.state,
     }
 
-    # Extract the names of any artifacts linked to the run
-    # This returns a list of artifact objects
+    # Fetch and download artifacts
     artifacts = run.logged_artifacts()
-    artifact_names = [artifact.name for artifact in artifacts]
-    run_info['artifacts'] = ", ".join(artifact_names)
+    downloaded_artifacts = []
+    
+    if artifacts:
+        print(f"Found {len(artifacts)} artifact(s) to download.")
+        for artifact_version in artifacts:
+            try:
+                # The artifact.name is in the format "artifact_name:version"
+                artifact_full_name = f"{entity}/{project_name}/{artifact_version.name}"
+                artifact_obj = api.artifact(artifact_full_name)
+                
+                # Create a sub-directory for each artifact
+                artifact_download_path = os.path.join(download_dir, artifact_version.name.split(':')[0])
+                os.makedirs(artifact_download_path, exist_ok=True)
+                
+                artifact_obj.download(root=artifact_download_path)
+                print(f"-> Successfully downloaded artifact: {artifact_version.name}")
+                downloaded_artifacts.append(artifact_version.name)
+            except Exception as e:
+                print(f"-> Failed to download artifact {artifact_version.name}: {e}")
 
-    # Extract the summary metrics and flatten the dictionary
-    # The `_json_dict` method correctly converts the summary object to a dictionary.
+    run_info['downloaded_artifacts'] = ", ".join(downloaded_artifacts)
+    
     summary_data = run.summary._json_dict
-
-    # Combine all data into a single dictionary
     combined_data = {**run_info, **summary_data}
     all_run_data.append(combined_data)
 
-print("Data extraction complete. Creating DataFrame...")
+print("\nData extraction complete. Creating DataFrame...")
 
-# Create a pandas DataFrame from the collected data
 df = pd.DataFrame(all_run_data)
 
-# Export the DataFrame to a CSV file
 output_file = "wandb_runs_data.csv"
 df.to_csv(output_file, index=False)
 
-print(f"Successfully exported data to {output_file}")
+print(f"Successfully exported run metadata to {output_file}")

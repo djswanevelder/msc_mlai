@@ -4,3 +4,4 @@ outputs/
 checkpoints/
 wandb/
 weights/
+downloaded_artifacts/

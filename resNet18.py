@@ -12,6 +12,7 @@ import hydra
 from tqdm import tqdm
 from pytorch_lightning.loggers import WandbLogger
 from pytorch_lightning.callbacks import ModelCheckpoint
+from torchmetrics.classification import Accuracy
 import wandb
 wandb.login(key='383931e33038a7e29973dbc378da30378cfdc061')
 import shortuuid
@@ -29,6 +30,10 @@ class StateDictSaver(pl.Callback):
         self.early_epoch = early_epoch
     
     def save_model_dict(self,trainer,pl_module,epoch):
+        final_train_acc = pl_module.train_accuracy.compute()
+        trainer.logger.experiment.log({"final_train_accuracy": final_train_acc})
+        print(f"Final training accuracy: {final_train_acc:.4f}")
+
         weight_path = f'weights/{self.file_name}_{trainer.current_epoch}.pth'
         state_dict_path = os.path.join(trainer.default_root_dir, weight_path)
         torch.save(pl_module.state_dict(), state_dict_path)
@@ -56,12 +61,14 @@ class ResNetClassifier(pl.LightningModule):
         self.save_hyperparameters()
         
         self.model = models.resnet18(weights=None)
-        # Change the final fully-connected layer to match the number of classes
         self.model.fc = nn.Linear(self.model.fc.in_features, num_classes)
         
-        # Initialize the weights and biases of the new classification layer
         nn.init.kaiming_normal_(self.model.fc.weight, mode='fan_out', nonlinearity='relu')
         nn.init.constant_(self.model.fc.bias, 0)
+        
+        # Initialize torchmetrics for accuracy
+        self.val_accuracy = Accuracy(task="multiclass", num_classes=num_classes)
+        self.train_accuracy = Accuracy(task="multiclass", num_classes=num_classes)
 
     def forward(self, x):
         return self.model(x)
@@ -70,20 +77,27 @@ class ResNetClassifier(pl.LightningModule):
         x, y = batch
         logits = self.forward(x)
         loss = F.cross_entropy(logits, y)
-        self.log('train_loss', loss)
+        self.train_accuracy(logits, y)
+        self.log('train_loss', loss, on_step=False, on_epoch=True)
         return loss
+
+    def on_train_epoch_end(self):
+        self.log("train_accuracy", self.train_accuracy.compute(), on_step=False, on_epoch=True)
+        self.train_accuracy.reset()
 
     def validation_step(self, batch, batch_idx):
         x, y = batch
         logits = self.forward(x)
         loss = F.cross_entropy(logits, y)
+        self.val_accuracy.update(logits, y)
         self.log('val_loss', loss, prog_bar=True)
-        return loss
+        return {"loss": loss, "logits": logits, "labels": y}
     
-    # def on_validation_epoch_end(self):
-    #     # A simple example of how to log extra information at the end of a validation epoch.
-    #     # This will be logged to the W&B dashboard.
-    #     # self.log('some_extra_metric', 1.0)
+    def on_validation_epoch_end(self):
+        val_acc = self.val_accuracy.compute()
+        self.log('val_accuracy', val_acc, prog_bar=True)
+        print(f"Validation accuracy: {val_acc:.4f}")
+        self.val_accuracy.reset() # Reset metric for the next epoch
 
     def configure_optimizers(self):
         """
