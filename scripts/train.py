@@ -1,7 +1,7 @@
 from omegaconf import DictConfig, OmegaConf
 from resNet18 import train_restNet18
 import pandas as pd
-from download import download
+from download_imagenet import download
 import time
 import resNet18
 
@@ -58,4 +58,4 @@ def download_all_classes(input_filename):
 
 if __name__ == "__main__":
     download_all_classes('sweep.csv')
-    sweep_over_all('sweep.csv')
+    # sweep_over_all('sweep.csv')

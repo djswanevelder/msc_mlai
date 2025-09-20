@@ -74,16 +74,23 @@ def download_all_imagenet_without_hydra() -> None:
     """
     Downloads all Imagenet classes without using Hydra for configuration.
     """
-    class_to_id = load_mapping('imagenet_map.txt')
-    dataset_path = "imagenet_data"
+    datapath = os.path.join(os.getcwd(), '..', 'data/')
+    class_to_id = load_mapping(datapath + 'imagenet_map.txt')
+    dataset_path = datapath + "imagenet_subsets"
     os.makedirs(dataset_path, exist_ok=True)
+    
+    total_classes = len(class_to_id)
+    download_count = 0
     
     print("Starting download for all Imagenet classes (without Hydra).")
     
     for c in class_to_id.keys():
+        download_count += 1
         target_path = os.path.join(dataset_path, c)
         source_url = f'https://image-net.org/data/winter21_whole/{class_to_id[c]}.tar'
         
+        print(f"Processing class {download_count}/{total_classes}: {c}")
+
         if not os.path.exists(target_path):
             print(f"Folder for {c} not found. Creating and downloading.")
             download_and_extract(source_url, target_path)
@@ -113,12 +120,12 @@ def download_all_imagenet_without_hydra() -> None:
             print(f"No files found for {c}. Downloading and extracting.")
             download_and_extract(source_url, target_path)
 
-
-
 @hydra.main(version_base=None, config_name="dataset.yaml", config_path="conf/")
 def download(cfg: DictConfig, dataset_path: str = "imagenet_subsets") -> None:
-    class_to_id = load_mapping('imagenet_map.txt')
-    os.makedirs(dataset_path, exist_ok=True)
+    datapath = os.path.join(os.getcwd(), '..', 'data/')
+    
+    class_to_id = load_mapping(datapath+'imagenet_map.txt')
+    os.makedirs(datapath + dataset_path, exist_ok=True)
 
     for c in cfg.classes:
         target_path = os.path.join(dataset_path, c)
@@ -157,5 +164,4 @@ def download(cfg: DictConfig, dataset_path: str = "imagenet_subsets") -> None:
 
 
 if __name__ == "__main__":
-    # download()
-    download_all_imagenet_without_hydra()
+    download()

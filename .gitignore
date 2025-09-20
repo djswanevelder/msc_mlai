@@ -5,3 +5,4 @@ checkpoints/
 wandb/
 weights/
 downloaded_artifacts/
+__pycache__/

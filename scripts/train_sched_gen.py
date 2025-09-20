@@ -1,12 +1,13 @@
 from omegaconf import OmegaConf
-from download import download
+from download_imagenet import download
 from itertools import combinations
 import os, csv, random
 import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
 from nltk.corpus import wordnet as wn
-# nltk.download('wordnet')
+import nltk
+nltk.download('wordnet')
 from word2vec import measure_similarity, load_model
 
 def calculate_path_similarity(class1_name: str, class2_name: str):
@@ -151,6 +152,7 @@ def generate_training_instance(input_filename,output_filename,seed):
     df.to_csv(output_filename, index=False)
 
 if __name__ == "__main__":
-    generate_and_score_permutations('imagenet_map.txt', 'permutations.csv', 100, seed=42)
-    plot_similarity_histogram('permutations.csv',100)
-    generate_training_instance('permutations.csv','sweep.csv', seed=42)
+    datapath = os.path.join(os.getcwd(), '..', 'data/')
+    generate_and_score_permutations(datapath + 'imagenet_map.txt', 'class_permutations.csv', 100, seed=42)
+    # plot_similarity_histogram('permutations.csv',100)
+    generate_training_instance('class_permutations.csv','sweep.csv', seed=42)
