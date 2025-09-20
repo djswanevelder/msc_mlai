@@ -69,6 +69,52 @@ def download_and_extract(source_url: str, target_path: str) -> None:
     os.remove(tar_path)
     print("Process completed.")
 
+
+def download_all_imagenet_without_hydra() -> None:
+    """
+    Downloads all Imagenet classes without using Hydra for configuration.
+    """
+    class_to_id = load_mapping('imagenet_map.txt')
+    dataset_path = "imagenet_data"
+    os.makedirs(dataset_path, exist_ok=True)
+    
+    print("Starting download for all Imagenet classes (without Hydra).")
+    
+    for c in class_to_id.keys():
+        target_path = os.path.join(dataset_path, c)
+        source_url = f'https://image-net.org/data/winter21_whole/{class_to_id[c]}.tar'
+        
+        if not os.path.exists(target_path):
+            print(f"Folder for {c} not found. Creating and downloading.")
+            download_and_extract(source_url, target_path)
+            continue
+            
+        tar_path = has_tar(target_path)
+        images_exist = has_images(target_path)
+        
+        if images_exist:
+            if tar_path:
+                print(f"Images and incomplete tar found for {c}. Deleting tar.")
+                os.remove(tar_path)
+            print(f"Download for {c} already complete.")
+            continue
+        
+        if tar_path:
+            if is_tar_complete(tar_path, source_url):
+                print(f"Complete tar file for {c} found. Extracting and deleting tar.")
+                with tarfile.open(tar_path, "r") as tar:
+                    tar.extractall(path=target_path)
+                os.remove(tar_path)
+            else:
+                print(f"Incomplete tar file for {c} found. Deleting and re-downloading.")
+                os.remove(tar_path)
+                download_and_extract(source_url, target_path)
+        else: # No tar file, no images
+            print(f"No files found for {c}. Downloading and extracting.")
+            download_and_extract(source_url, target_path)
+
+
+
 @hydra.main(version_base=None, config_name="dataset.yaml", config_path="conf/")
 def download(cfg: DictConfig, dataset_path: str = "imagenet_subsets") -> None:
     class_to_id = load_mapping('imagenet_map.txt')
@@ -108,5 +154,8 @@ def download(cfg: DictConfig, dataset_path: str = "imagenet_subsets") -> None:
             print(f"No files found for {c}. Downloading and extracting.")
             download_and_extract(source_url, target_path)
 
+
+
 if __name__ == "__main__":
-    download()
+    # download()
+    download_all_imagenet_without_hydra()
