@@ -1,6 +1,6 @@
 # conf/config.yaml
 data:
-  data_path: "./imagenet_subsets"
+  data_path: "../data/imagenet_subsets"
   classes:
     - "red_fox"
     - "red_wolf"

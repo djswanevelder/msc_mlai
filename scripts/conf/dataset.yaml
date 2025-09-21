@@ -1,7 +1,5 @@
 # conf/data.yaml
 classes:
-  - "red_fox"
-  - "ox"
   - "doberman"
   - "dingo"
   - "hyena"
@@ -15,3 +13,4 @@ classes:
   - "flute"
   - "strawberry"
   - "red_fox"
+  - "american_black_bear"

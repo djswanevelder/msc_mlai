@@ -122,13 +122,13 @@ def download_all_imagenet_without_hydra() -> None:
 
 @hydra.main(version_base=None, config_name="dataset.yaml", config_path="conf/")
 def download(cfg: DictConfig, dataset_path: str = "imagenet_subsets") -> None:
-    datapath = os.path.join(os.getcwd(), '..', 'data/')
+    datapath = os.path.join(os.getcwd(), '../data/')
     
     class_to_id = load_mapping(datapath+'imagenet_map.txt')
-    os.makedirs(datapath + dataset_path, exist_ok=True)
+    os.makedirs('../data/' + dataset_path, exist_ok=True)
 
     for c in cfg.classes:
-        target_path = os.path.join(dataset_path, c)
+        target_path = os.path.join('../data/' + dataset_path, c)
         source_url = f'https://image-net.org/data/winter21_whole/{class_to_id[c]}.tar'
 
         if not os.path.exists(target_path):

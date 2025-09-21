@@ -14,7 +14,7 @@ def sweep_over_all(input_filename) -> None:
             continue
         my_config = {
             "data": {
-                "data_path": "./imagenet_subsets",
+                "data_path": "../data/imagenet_subsets",
                 "classes": [
                     row['class1'],
                     row['class2'],
@@ -58,4 +58,4 @@ def download_all_classes(input_filename):
 
 if __name__ == "__main__":
     download_all_classes('sweep.csv')
-    # sweep_over_all('sweep.csv')
+    sweep_over_all('sweep.csv')

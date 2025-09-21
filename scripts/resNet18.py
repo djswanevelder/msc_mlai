@@ -34,7 +34,9 @@ class StateDictSaver(pl.Callback):
         trainer.logger.experiment.log({"final_train_accuracy": final_train_acc})
         print(f"Final training accuracy: {final_train_acc:.4f}")
 
-        weight_path = f'weights/{self.file_name}_{trainer.current_epoch}.pth'
+        weight_path = f'../data/weights/{self.file_name}_{trainer.current_epoch}.pth'
+        os.makedirs(weight_path, exist_ok=True)
+        
         state_dict_path = os.path.join(trainer.default_root_dir, weight_path)
         torch.save(pl_module.state_dict(), state_dict_path)
         
