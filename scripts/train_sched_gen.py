@@ -7,7 +7,7 @@ import pandas as pd
 import numpy as np
 from nltk.corpus import wordnet as wn
 import nltk
-nltk.download('wordnet')
+# nltk.download('wordnet')
 from word2vec import measure_similarity, load_model
 
 def calculate_path_similarity(class1_name: str, class2_name: str):
@@ -153,6 +153,6 @@ def generate_training_instance(input_filename,output_filename,seed):
 
 if __name__ == "__main__":
     datapath = os.path.join(os.getcwd(), '..', 'data/')
-    generate_and_score_permutations(datapath + 'imagenet_map.txt', 'class_permutations.csv', 100, seed=42)
+    generate_and_score_permutations(datapath + 'imagenet_map.txt', 'class_permutations.csv', 200, seed=42)
     # plot_similarity_histogram('permutations.csv',100)
     generate_training_instance('class_permutations.csv','sweep.csv', seed=42)
