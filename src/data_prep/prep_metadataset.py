@@ -250,10 +250,10 @@ def run_meta_dataset_pipeline(class_vectors_csv: str, metadata_csv: str, weights
 if __name__ == "__main__":
     
     # --- Configuration Variables (Replacing Terminal Inputs) ---
-    CLASS_VECTORS_CSV = "dataset_latents.csv"  # Output from the previous script (512D vectors)
-    ARTIFACT_METADATA_CSV = "meta-dataset_info.csv"    # Output from the run processing script (contains artifact_name, class1-3, loss)
-    ENCODED_WEIGHTS_FILE = "encoded_latents.pth" # Input file containing the latent vectors of the models
-    OUTPUT_PYTORCH_FILE = "final_meta_dataset.pt" # The final aggregated dataset file
+    CLASS_VECTORS_CSV = "data/dataset_latents.csv"  # Output from the previous script (512D vectors)
+    ARTIFACT_METADATA_CSV = "data/meta_dataset_info.csv"    # Output from the run processing script (contains artifact_name, class1-3, loss)
+    ENCODED_WEIGHTS_FILE = "data/model_latents.pt" # Input file containing the latent vectors of the models
+    OUTPUT_PYTORCH_FILE = "data/final_meta_dataset.pt" # The final aggregated dataset file
 
     # 1. Run the entire aggregation pipeline
     run_meta_dataset_pipeline(

@@ -67,7 +67,6 @@ class ResNet18WeightUtils:
         model = ResNet18WeightUtils.create_resnet18_3class()
         return sum(p.numel() for p in model.parameters())
 
-
 class WeightSpaceAE(nn.Module):
     """
     Standalone autoencoder model for weight-space compression. We train the autoencoder
@@ -133,7 +132,6 @@ class WeightSpaceAE(nn.Module):
         h = self.encode(z)
         z_rec = self.decode(h)
         return z_rec, h
-
 
 class PerParamPCAMapper:
     """
@@ -266,7 +264,6 @@ class PerParamPCAMapper:
             pos_out += d_i
 
         return out
-
 
 def load_autoencoder(
     checkpoint_path: str, dataset_dir: str, hidden_dims: Optional[list] = None

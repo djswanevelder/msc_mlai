@@ -12,7 +12,7 @@ from torchvision import transforms, datasets
 from torchvision.datasets.folder import default_loader
 
 
-from encode_models import decode_latent_to_resnet_model
+from src.encode.encode_models import decode_latent_to_resnet_model
 from shared_emb_space import predict_latent_vector
 
 
