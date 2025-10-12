@@ -5,6 +5,8 @@ from torch.utils.data import TensorDataset, DataLoader
 import numpy as np
 import sys
 from typing import Tuple, Dict, Any, Union
+import optuna
+
 
 # Dimensions (Default values, dynamically set during data loading)
 WEIGHT_SIZE = 512       
@@ -300,10 +302,8 @@ def run_training_pipeline(config: Dict[str, Union[str, int, float]]):
     # Evaluation on Excluded Test Data
     with torch.no_grad():
         for batch_data, batch_loss_indices, batch_weights in test_loader:
-            
             # Forward Pass (Prediction)
             predicted_weights = predictor(batch_data, batch_loss_indices)
-
             # NT-Xent Loss
             all_embeddings = torch.cat([predicted_weights, batch_weights], dim=0)
             test_loss_ntxent = calculate_nt_xent_loss(all_embeddings, temp)
@@ -314,48 +314,111 @@ def run_training_pipeline(config: Dict[str, Union[str, int, float]]):
             print(f"Test Batch Loss (NT-Xent): {test_loss_ntxent.item():.4f}")
             print(f"Test Batch Loss (MSE Distance): {test_loss_mse.item():.6f}")
 
-            sample_data = batch_data[0]
-            sample_gt_weight = batch_weights[0]
-            
-            demo_loss = (min_loss + max_loss) / 2
-            
-            predicted_latent_vec = predict_latent_vector(
-                model_path=model_path,
-                dataset_embedding=sample_data,
-                validation_loss=demo_loss
-            )
-            
-            if predicted_latent_vec is None: continue # Skip if file loading failed
-
-            demo_mse = F.mse_loss(predicted_latent_vec, sample_gt_weight.unsqueeze(0))
-
-            print("\n--- Single Sample Inference Demo (Standalone Function) ---")
-            print(f"Input Dataset Embedding shape: {sample_data.shape}")
-            print(f"Targeted Validation Loss (used for binning): {demo_loss:.4f}")
-            print(f"Predicted Latent Vector shape: {predicted_latent_vec.shape}")
-            print(f"MSE between predicted and GT latent (using fixed test sample): {demo_mse.item():.6f}")
-            print("----------------------------------------------------------\n")
-            
-            break # Exit after the first test batch for demonstration clarity
-
-
     print("\nProcess complete.")
+    return test_loss_mse
+
+# -------------------------------------------------------------
+#                  OPTUNA OBJECTIVE FUNCTION
+# -------------------------------------------------------------
+
+def objective(trial: optuna.Trial) -> float:
+    """
+    Defines the search space for Optuna and calls the training pipeline.
+    """
+    
+    # --- 1. Define Search Space ---
+    
+    # Learning Rate: Log-uniform sampling is best for LR
+    lr = trial.suggest_float('LEARNING_RATE', 1e-5, 1e-3, log=True)
+    
+    # Batch Size: Integer sampling, ensuring it's an even number (for NT-Xent)
+    # 10 is the absolute minimum, 100 or 128 is a good maximum for a 200 sample set.
+    batch_size = trial.suggest_int('BATCH_SIZE', 10, 60, step=2) 
+    
+    # Loss Embedding Dimension (k)
+    loss_embedding_k = trial.suggest_int('LOSS_EMBEDDING_K', 64, 256, step=32)
+    
+    # Number of Bins (must be >= 2)
+    num_loss_bins = trial.suggest_int('NUM_LOSS_BINS', 10, 80, step=10)
+    
+    # Temperature for NT-Xent (can also be tuned)
+    temp = trial.suggest_float('TEMPERATURE', 0.05, 0.5, log=True)
+    
+    # Other fixed parameters
+    config = {
+        'DATASET_FILE_PATH': 'data/final_meta_dataset.pt',
+        # NOTE: Not saving model weights during tuning to speed up
+        'OUTPUT_MODEL_PATH': f'data/trials/temp_trial_{trial.number}.pth', 
+        'N_TEST': 10,
+        'NUM_EPOCHS': 50, # Reduce epochs for tuning speed
+        
+        # Sampled parameters
+        'LEARNING_RATE': lr,
+        'BATCH_SIZE': batch_size,
+        'LOSS_EMBEDDING_K': loss_embedding_k,
+        'NUM_LOSS_BINS': num_loss_bins,
+        'TEMPERATURE': temp,
+    }
+    
+    # --- 2. Run Training and Return Metric ---
+    
+    # The run_training_pipeline function is modified to return the test_loss_mse
+    mse_loss = run_training_pipeline(config)
+    
+    return mse_loss
+
+
+# if __name__ == "__main__":
+    
+#     # --- OPTUNA STUDY SETUP ---
+    
+#     # 1. Create a study object
+#     # direction='minimize' tells Optuna to find the parameters that result in the smallest return value.
+#     study = optuna.create_study(
+#         direction='minimize', 
+#         sampler=optuna.samplers.TPESampler(seed=42) # TPE is the Bayesian approach
+#     )
+    
+#     # 2. Run the optimization
+#     N_TRIALS = 100 # Set a reasonable number of trials
+#     print(f"Starting Optuna search for {N_TRIALS} trials...")
+    
+#     # The objective function is called N_TRIALS times, with Optuna intelligently
+#     # suggesting new hyperparameters in each call.
+#     study.optimize(objective, n_trials=N_TRIALS)
+
+#     # 3. Report Results
+#     print("\n" + "=" * 60)
+#     print("✨ Optimization Finished ✨")
+#     print("-" * 60)
+#     print(f"Number of finished trials: {len(study.trials)}")
+#     print(f"Best Trial Number: {study.best_trial.number}")
+#     print(f"Best Test MSE Loss: {study.best_value:.6f}")
+#     print("\nBest hyperparameters found:")
+#     for key, value in study.best_params.items():
+#         print(f"  {key}: {value}")
+#     print("=" * 60)
+
+# BATCH_SIZE: 52
+# LOSS_EMBEDDING_K: 64
+# NUM_LOSS_BINS: 70
+# TEMPERATURE: 0.19010694880943896
 
 
 if __name__ == "__main__":
-    
-    # --- Configuration Variables (Replacing Terminal Inputs) ---
+
     CONFIG = {
-        'DATASET_FILE_PATH': 'final_meta_dataset.pt', 
-        'OUTPUT_MODEL_PATH': 'trained_encoder_weights.pth', 
-        # Dimensions and Binning
-        'LOSS_EMBEDDING_K': 128,
-        'NUM_LOSS_BINS': 50,
-        # Training Hyperparameters
-        'TEMPERATURE': 0.1,
-        'BATCH_SIZE': 32,
-        'NUM_EPOCHS': 100,
-        'N_TEST': 10
+    'DATASET_FILE_PATH': 'data/final_meta_dataset.pt',
+    'OUTPUT_MODEL_PATH': 'data/trained_encoder_weights.pth',
+    # Dimensions and Binning
+    'LOSS_EMBEDDING_K': 64,
+    'NUM_LOSS_BINS': 50,
+    # Training Hyperparameters
+    'TEMPERATURE': 0.19,
+    'BATCH_SIZE': 52,
+    'NUM_EPOCHS': 200,
+    'N_TEST': 10
     }
-    
-    run_training_pipeline(CONFIG)
+
+
+    test_loss_mse = run_training_pipeline(CONFIG)

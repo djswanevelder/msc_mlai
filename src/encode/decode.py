@@ -13,7 +13,7 @@ from torchvision.datasets.folder import default_loader
 
 
 from src.encode.encode_models import decode_latent_to_resnet_model
-from shared_emb_space import predict_latent_vector
+from src.shared_emb_space import predict_latent_vector
 
 
 
@@ -197,104 +197,84 @@ def evaluate_model_on_actual_data(
     BATCH_SIZE = 32
     
     # 1. Data Setup: Load and re-index real data
-    try:
-        # Final transform, using the custom calculated mean and std
-        final_transform = transforms.Compose([
-            transforms.Resize((224, 224)),
-            transforms.ToTensor(),
-            transforms.Normalize(mean=calculated_mean, std=calculated_std)
-        ])
 
-        # Load ALL data with a simple ToTensor() transform first to find paths/original labels
-        initial_transform = transforms.Compose([
-            transforms.Resize((224, 224)),
-            transforms.ToTensor(),
-        ])
-        full_dataset = datasets.ImageFolder(data_root_dir, transform=initial_transform)
+    # Final transform, using the custom calculated mean and std
+    final_transform = transforms.Compose([
+        transforms.Resize((224, 224)),
+        transforms.ToTensor(),
+        transforms.Normalize(mean=calculated_mean, std=calculated_std)
+    ])
 
-        # Filter samples and remap original labels to new labels (0, 1, 2)
-        filtered_samples = []
-        class_to_new_label = {cls: i for i, cls in enumerate(class_list)}
-        
-        for path, label in full_dataset.samples:
-            class_name = full_dataset.classes[label]
-            if class_name in class_list:
-                new_label = class_to_new_label[class_name]
-                filtered_samples.append((path, new_label))
-        
-        if not filtered_samples:
-             raise FileNotFoundError(f"No images found for target classes in {data_root_dir}. Check class names/path.")
+    # Load ALL data with a simple ToTensor() transform first to find paths/original labels
+    initial_transform = transforms.Compose([
+        transforms.Resize((224, 224)),
+        transforms.ToTensor(),
+    ])
+    full_dataset = datasets.ImageFolder(data_root_dir, transform=initial_transform)
 
-        # Create the final dataset object using the correct transform and re-indexed samples
-        final_dataset = datasets.ImageFolder(
-            root=data_root_dir,
-            loader=default_loader,
-            transform=final_transform, # Apply the final normalization transform
-        )
-        final_dataset.samples = filtered_samples
-        final_dataset.imgs = filtered_samples
-        
-        test_loader = torch.utils.data.DataLoader(
-            final_dataset, 
-            batch_size=BATCH_SIZE, 
-            shuffle=False,
-            num_workers=4
-        )
-        print(f"SUCCESS: Loaded {len(final_dataset.samples)} images from '{data_root_dir}'. Labels re-indexed to 0-{NUM_CLASSES-1}.")
-
-    except Exception as e:
-        print(f"ERROR loading real data from '{data_root_dir}' ({e}). Using mock data for test.")
-        
-        # Fallback Mock Data Setup
-        mock_data = torch.randn(BATCH_SIZE * NUM_CLASSES, 3, 224, 224)
-        mock_labels = torch.cat([torch.full((BATCH_SIZE,), i) for i in range(NUM_CLASSES)]).long()
-        test_loader = torch.utils.data.DataLoader(
-            torch.utils.data.TensorDataset(mock_data, mock_labels), 
-            batch_size=BATCH_SIZE, 
-            shuffle=False
-        )
+    # Filter samples and remap original labels to new labels (0, 1, 2)
+    filtered_samples = []
+    class_to_new_label = {cls: i for i, cls in enumerate(class_list)}
     
+    for path, label in full_dataset.samples:
+        class_name = full_dataset.classes[label]
+        if class_name in class_list:
+            new_label = class_to_new_label[class_name]
+            filtered_samples.append((path, new_label))
+    
+    if not filtered_samples:
+            raise FileNotFoundError(f"No images found for target classes in {data_root_dir}. Check class names/path.")
+
+    # Create the final dataset object using the correct transform and re-indexed samples
+    final_dataset = datasets.ImageFolder(
+        root=data_root_dir,
+        loader=default_loader,
+        transform=final_transform, # Apply the final normalization transform
+    )
+    final_dataset.samples = filtered_samples
+    final_dataset.imgs = filtered_samples
+    
+    test_loader = torch.utils.data.DataLoader(
+        final_dataset, 
+        batch_size=BATCH_SIZE, 
+        shuffle=False,
+        num_workers=4
+    )
+    print(f"SUCCESS: Loaded {len(final_dataset.samples)} images from '{data_root_dir}'. Labels re-indexed to 0-{NUM_CLASSES-1}.")
     # 2. Prepare Model for Test
-    try:
-        model.to(device)
-        model.eval()
-        
-        # CRITICAL: Ensure the final classification layer is correctly sized for N=3 classes
-        if model.fc.out_features != NUM_CLASSES:
-            # Note: This adjustment is temporary for the test loss calculation.
-            model.fc = nn.Linear(model.fc.in_features, NUM_CLASSES).to(device)
-        
-        # 3. Evaluation Loop
-        total_loss = 0.0
-        total_correct = 0
-        total_samples = 0
-        num_batches = 0
-        
-        with torch.no_grad():
-            for inputs, labels in test_loader:
-                inputs, labels = inputs.to(device), labels.to(device)
-                
-                # Forward pass
-                outputs = model(inputs)
-                
-                # Calculate Cross-Entropy loss
-                loss = F.cross_entropy(outputs, labels) 
-                total_loss += loss.item()
-                num_batches += 1
 
-                # Calculate Accuracy
-                _, predicted = torch.max(outputs.data, 1)
-                total_samples += labels.size(0)
-                total_correct += (predicted == labels).sum().item()
-
-        avg_loss = total_loss / num_batches
-        accuracy = total_correct / total_samples if total_samples > 0 else 0.0
+    model.to(device)
+    model.eval()
+    
         
-        return avg_loss, accuracy
+    total_loss = 0.0
+    total_correct = 0
+    total_samples = 0
+    num_batches = 0
+    
+    with torch.no_grad():
+        for inputs, labels in test_loader:
+            inputs, labels = inputs.to(device), labels.to(device)
+            
+            # Forward pass
+            outputs = model(inputs)
+            
+            # Calculate Cross-Entropy loss
+            loss = F.cross_entropy(outputs, labels) 
+            total_loss += loss.item()
+            num_batches += 1
 
-    except Exception as e:
-        print(f"Error during model cross-entropy evaluation: {e}")
-        return None
+            # Calculate Accuracy
+            _, predicted = torch.max(outputs.data, 1)
+            total_samples += labels.size(0)
+            total_correct += (predicted == labels).sum().item()
+
+    avg_loss = total_loss / num_batches
+    accuracy = total_correct / total_samples if total_samples > 0 else 0.0
+    
+    return avg_loss, accuracy
+
+
 
 def run_full_prediction_pipeline(target_val_loss: float, example_classes: List[str]) -> Union[tuple[float, float], tuple[None, None]]:
     """
@@ -304,71 +284,53 @@ def run_full_prediction_pipeline(target_val_loss: float, example_classes: List[s
         Union[tuple[float, float], tuple[None, None]]: (Cross-Entropy Loss, Accuracy) or (None, None).
     """
     # --- 1. Define required paths and constants (kept internal for simplicity) ---
-    CHECKPOINT_PATH = "../../data/dataset/weight_ae_final.pth"
-    DATASET_DIR = "../../data/dataset/"
-    CLASS_VECTOR_CSV_PATH = "./dataset_latents.csv"
-    ENCODER_MODEL_PATH = 'trained_encoder_weights.pth' 
-    IMAGE_DATA_ROOT = '../../data/imagenet_subsets/'
+    CHECKPOINT_PATH = "data/dataset/pca_AE.pth"
+    DATASET_DIR = "data/dataset/"
+    CLASS_VECTOR_CSV_PATH = "data/dataset_latents.csv"
+    ENCODER_MODEL_PATH = 'data/trained_encoder_weights.pth' 
+    IMAGE_DATA_ROOT = 'data/imagenet_data/'
     
-    # --- IMPORTANT: Calculate Mean and Std ---
-    try:
-        calculated_mean, calculated_std = calculate_dataset_mean_std(
-            data_path=IMAGE_DATA_ROOT, 
-            classes_to_use=example_classes
-        )
-    except Exception as e:
-        print(f"\nFATAL ERROR: Failed to calculate Mean/Std ({e}). Aborting.")
-        return None, None # Return tuple for consistency
 
-    # --- STEP 1: Generate the 1536D dataset vector (Input for the Encoder) ---
+    calculated_mean, calculated_std = calculate_dataset_mean_std(
+        data_path=IMAGE_DATA_ROOT, 
+        classes_to_use=example_classes
+    )
+
+
     print("=" * 60)
     print("STEP 1: Generating 1536D Dataset Vector from Class Embeddings")
     print(f"Classes: {example_classes}")
     print("=" * 60)
     
-    try:
-        dataset_vector = generate_concatenated_dataset_vector(
-            class_names=example_classes,
-            class_vectors_csv_path=CLASS_VECTOR_CSV_PATH
-        )
-        print(f"SUCCESS: Dataset Vector Shape: {dataset_vector.shape} (Expected: [{FINAL_VECTOR_DIM}])")
+
+    dataset_vector = generate_concatenated_dataset_vector(
+        class_names=example_classes,
+        class_vectors_csv_path=CLASS_VECTOR_CSV_PATH
+    )
+    print(f"SUCCESS: Dataset Vector Shape: {dataset_vector.shape} (Expected: [{FINAL_VECTOR_DIM}])")
         
-    except Exception as e:
-        print(f"\nFATAL ERROR in STEP 1: Could not generate dataset vector. Aborting.")
-        print(f"Details: {e}")
-        return None, None # Return tuple for consistency
+
         
-    # --- STEP 2: Predict the 512D Latent Vector ---
     print("\n" + "=" * 60)
     print(f"STEP 2: Predicting {LATENT_DIM}D Latent Vector")
     print(f"Input: {dataset_vector.shape[0]}D Dataset Vector, Target Loss: {target_val_loss}")
     print(f"Model: {ENCODER_MODEL_PATH}")
     print("=" * 60)
 
-    try:
-        # Predict the Latent Vector (Output of the Weight Latent Encoder)
-        predicted_latent_vec = predict_latent_vector(
-            model_path=ENCODER_MODEL_PATH,
-            dataset_embedding=dataset_vector,
-            validation_loss=target_val_loss
-        )
+    # Predict the Latent Vector (Output of the Weight Latent Encoder)
+    predicted_latent_vec = predict_latent_vector(
+        model_path=ENCODER_MODEL_PATH,
+        dataset_embedding=dataset_vector,
+        validation_loss=target_val_loss
+    )
+    
+    # --- DIAGNOSTIC: Check Latent Vector ---
+    latent_mean = predicted_latent_vec.mean().item()
+    latent_std = predicted_latent_vec.std().item()
+    print(f"DIAGNOSTIC: Predicted Latent Vector Mean: {latent_mean:.6f}, Std: {latent_std:.6f}")
+    
+    print(f'SUCCESS: Predicted Latent Vector generated with shape {predicted_latent_vec.shape}.')
         
-        if predicted_latent_vec is None:
-            return None, None # Return tuple for consistency
-        
-        # --- DIAGNOSTIC: Check Latent Vector ---
-        latent_mean = predicted_latent_vec.mean().item()
-        latent_std = predicted_latent_vec.std().item()
-        print(f"DIAGNOSTIC: Predicted Latent Vector Mean: {latent_mean:.6f}, Std: {latent_std:.6f}")
-        
-        print(f'SUCCESS: Predicted Latent Vector generated with shape {predicted_latent_vec.shape}.')
-        
-    except NameError:
-        print("\nFATAL ERROR in STEP 2: The function 'predict_latent_vector' is not defined or imported.")
-        return None, None # Return tuple for consistency
-    except Exception as e:
-        print(f"\nAn unexpected error occurred during prediction: {e}")
-        return None, None # Return tuple for consistency
 
     # --- STEP 3: Decode Predicted Latent Vector into ResNet Model ---
     print("\n" + "=" * 60)
@@ -427,7 +389,7 @@ def run_full_prediction_pipeline(target_val_loss: float, example_classes: List[s
 
 if __name__ == "__main__":
     EXAMPLE_CLASSES = ['sea_slug','appenzeller','soft-coated_wheaten_terrier']
-    TARGET_VAL_LOSS = 0.2
+    TARGET_VAL_LOSS = 1.0
     
     final_loss, final_accuracy = run_full_prediction_pipeline(
         target_val_loss=TARGET_VAL_LOSS,

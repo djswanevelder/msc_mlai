@@ -13,6 +13,7 @@ dependencies = [
     "matplotlib>=3.10.6",
     "nltk>=3.9.1",
     "open-clip-torch>=3.2.0",
+    "optuna>=4.5.0",
     "pandas>=2.3.2",
     "pytorch-lightning>=2.5.4",
     "requests>=2.32.5",
