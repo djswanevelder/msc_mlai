@@ -7,15 +7,18 @@ from torchvision.datasets import ImageFolder
 from torchvision.datasets.folder import default_loader
 import pytorch_lightning as pl
 from torchvision import models, datasets, transforms
-from omegaconf import DictConfig
+from omegaconf import DictConfig, OmegaConf
+
 import hydra
 from tqdm import tqdm
 from pytorch_lightning.loggers import WandbLogger
 from pytorch_lightning.callbacks import ModelCheckpoint
 from torchmetrics.classification import Accuracy
+
 import wandb
 wandb.login(key='383931e33038a7e29973dbc378da30378cfdc061')
 import shortuuid
+
 class StateDictSaver(pl.Callback):
     """
     A custom callback to save only the model's state_dict at the end of training.
@@ -34,10 +37,10 @@ class StateDictSaver(pl.Callback):
         trainer.logger.experiment.log({"final_train_accuracy": final_train_acc})
         print(f"Final training accuracy: {final_train_acc:.4f}")
 
-        weight_path = f'../data/weights/{self.file_name}_{trainer.current_epoch}.pth'
+        weight_path = os.path.join(os.getcwd(),'data','weights')
         os.makedirs(weight_path, exist_ok=True)
         
-        state_dict_path = os.path.join(trainer.default_root_dir, weight_path)
+        state_dict_path = os.path.join(weight_path, f'{self.file_name}_{trainer.current_epoch}.pth')
         torch.save(pl_module.state_dict(), state_dict_path)
         
         if self.log_to_wandb:
@@ -209,7 +212,6 @@ def prepare_data(data_path, classes_to_use, batch_size,num_workers):
     
     return train_loader, val_loader, len(classes_to_use), calculated_mean, calculated_std
 
-@hydra.main(version_base=None, config_path="conf/", config_name="config.yaml")
 def train_restNet18(cfg: DictConfig) -> None:
     """
     The main training loop, now driven by a Hydra config file.
@@ -219,6 +221,10 @@ def train_restNet18(cfg: DictConfig) -> None:
         project=cfg.wandb.project_name,
         log_model=False,
     )
+
+    config_dict = OmegaConf.to_container(cfg, resolve=True)
+    wandb_logger.experiment.config.update(config_dict)
+    
     state_dict_saver_callback = StateDictSaver(
         log_to_wandb=cfg.wandb.store_weight,
         early_epoch=cfg.training.early_epoch,
@@ -248,4 +254,28 @@ def train_restNet18(cfg: DictConfig) -> None:
 
 
 if __name__ == '__main__':
-    train_restNet18()
+    my_config = {
+            "data": {
+                "data_path": "./data/imagenet_data",
+                "classes": [
+                    'red_fox',
+                    'dingo',
+                    'doberman'
+                ],
+                "batch_size": 32
+            },
+            "training": {
+                "optimizer": 'SGD',
+                "max_epoch": 2,
+                "early_epoch": 1,
+                "num_workers": 15
+
+            },
+            "seed": int(42),
+            "wandb": {
+                "project_name": "MSc_MLAI",
+                "store_weight": False,
+            }
+        }
+    cfg = OmegaConf.create(my_config)
+    train_restNet18(cfg)

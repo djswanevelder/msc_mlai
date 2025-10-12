@@ -1,4 +1,4 @@
-imagenet_subsets/
+imagenet_data/
 lightning_logs/
 outputs/
 checkpoints/

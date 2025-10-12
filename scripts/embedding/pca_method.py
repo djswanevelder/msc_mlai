@@ -1086,7 +1086,7 @@ def main():
     NUM_EPOCHS = 100
     LR = 1e-3
     WD = 1e-5
-    DATASET_DIR = "../data/dataset/"
+    DATASET_DIR = "../../data/dataset/"
     PROJECT_NAME = "weight-space-ae-pca"
     PCA_K_PER_PARAM = 8
     PCA_MIN_DIM_ID = 4
@@ -1094,7 +1094,7 @@ def main():
     PCA_MAX_MODELS_FOR_PCA = 256
     PCA_LOAD_BATCH = 64
     NUM_WORKERS = 4
-    MODELS_DIR = "../data/weights/downloaded_artifacts/"
+    MODELS_DIR = "../../data/weights/extracted_weights/"
     MAX_MODELS = None
     HIDDEN_DIMS = [512]
 

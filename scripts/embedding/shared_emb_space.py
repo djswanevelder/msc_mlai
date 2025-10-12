@@ -72,36 +72,28 @@ def calculate_nt_xent_loss(embeddings: torch.Tensor, temperature: float) -> torc
         torch.Tensor: The scalar NT-Xent loss.
     """
     
-    # 1. Normalize embeddings for cosine similarity
     norm_embeddings = F.normalize(embeddings, dim=1)
     
-    # 2. Compute similarity matrix (cosine similarity)
     similarity_matrix = torch.matmul(norm_embeddings, norm_embeddings.T)
     
-    # 3. Mask out self-comparison (fill with -inf)
     mask = torch.eye(similarity_matrix.size(0), dtype=torch.bool, device=embeddings.device)
     similarity_matrix = similarity_matrix.masked_fill(mask, float('-inf'))
     
-    # 4. Apply temperature scaling
     similarity_matrix = similarity_matrix / temperature
     
-    # 5. Define positive pairs (Anchor i vs Positive i)
     half_batch_size = embeddings.size(0) // 2 
     indices_1 = torch.arange(half_batch_size, device=embeddings.device)
     indices_2 = torch.arange(half_batch_size, device=embeddings.device) + half_batch_size
     
-    # 6. Compute Log Softmax
     log_prob = F.log_softmax(similarity_matrix, dim=1)
     
-    # 7. Extract log probabilities for positive pairs (Anchor -> Positive and vice versa)
     log_prob_1 = log_prob[indices_1, indices_2]
     log_prob_2 = log_prob[indices_2, indices_1]
     
-    # 8. Compute final loss (average of both directions)
     loss = -(log_prob_1.mean() + log_prob_2.mean()) / 2
     return loss
 
-def prepare_data_and_loaders(file_path: str, n_test: int, batch_size: int, num_loss_bins: int) -> Tuple[DataLoader, DataLoader, int, int]:
+def prepare_data_and_loaders(file_path: str, n_test: int, batch_size: int, num_loss_bins: int) -> Tuple[DataLoader, DataLoader, int, int, float, float]:
     """
     Loads the meta-dataset, performs loss binning, splits data into train/test sets,
     and creates PyTorch DataLoaders.
@@ -113,8 +105,8 @@ def prepare_data_and_loaders(file_path: str, n_test: int, batch_size: int, num_l
         num_loss_bins (int): Number of bins for loss quantization.
 
     Returns:
-        Tuple[DataLoader, DataLoader, int, int]: 
-            (train_dataloader, test_dataloader, weight_size, data_dim).
+        Tuple[DataLoader, DataLoader, int, int, float, float]: 
+            (train_dataloader, test_dataloader, weight_size, data_dim, min_loss, max_loss).
     """
     print(f"Loading data from {file_path}...")
     try:
@@ -155,7 +147,68 @@ def prepare_data_and_loaders(file_path: str, n_test: int, batch_size: int, num_l
     test_dataset = TensorDataset(test_data, test_loss_indices, test_weights)
     test_dataloader = DataLoader(test_dataset, batch_size=n_test, shuffle=False)
     
-    return train_dataloader, test_dataloader, weight_size, data_dim
+    return train_dataloader, test_dataloader, weight_size, data_dim, min_loss.item(), max_loss.item()
+
+def predict_latent_vector(
+    model_path: str, 
+    dataset_embedding: torch.Tensor, 
+    validation_loss: float
+) -> torch.Tensor:
+    """
+    Predicts the weight latent vector for a given dataset embedding and validation loss,
+    loading the trained model and its configuration from a file path.
+
+    Args:
+        model_path (str): File path to the trained encoder model containing weights and config.
+        dataset_embedding (torch.Tensor): The 1536D dataset vector (shape [1536] or [1, 1536]).
+        validation_loss (float): The continuous validation loss achieved by the run.
+
+    Returns:
+        torch.Tensor: The predicted weight latent vector (shape [1, WEIGHT_SIZE]).
+    """
+    
+    # 1. Load model state and configuration
+    try:
+        loaded_data = torch.load(model_path)
+    except FileNotFoundError:
+        print(f"Error: Model file not found at {model_path}")
+        return None
+
+    # Extract dimensions and binning configuration
+    min_loss = loaded_data['min_loss']
+    max_loss = loaded_data['max_loss']
+    num_loss_bins = loaded_data['num_loss_bins']
+    weight_size = loaded_data['weight_size']
+    data_dim = loaded_data['data_dim']
+    loss_embedding_k = loaded_data['loss_embedding_k']
+
+    # 2. Initialize the model
+    model = WeightLatentEncoder(data_dim, num_loss_bins, loss_embedding_k, weight_size)
+    model.load_state_dict(loaded_data['state_dict'])
+    model.eval()
+
+    # 3. Convert single loss float to binned index (replicating training logic)
+    with torch.no_grad():
+        # Ensure the input loss is a tensor
+        loss_tensor = torch.tensor([validation_loss], dtype=torch.float)
+
+        # Create the same bins used during training
+        min_loss_t = torch.tensor(min_loss)
+        max_loss_t = torch.tensor(max_loss)
+        bins = torch.linspace(min_loss_t, max_loss_t, num_loss_bins + 1)[1:-1]
+        
+        # Quantize the continuous loss value into a discrete bin index
+        # Clamp ensures the index stays within [0, NUM_LOSS_BINS - 1]
+        loss_index = torch.clamp(torch.bucketize(loss_tensor, bins), 0, num_loss_bins - 1).long()
+        
+        # 4. Ensure dataset embedding is correctly shaped (e.g., [1, 1536])
+        if dataset_embedding.dim() == 1:
+            dataset_embedding = dataset_embedding.unsqueeze(0)
+            
+        # 5. Perform the prediction
+        predicted_latent = model(dataset_embedding, loss_index)
+        
+    return predicted_latent
 
 def run_training_pipeline(config: Dict[str, Union[str, int, float]]):
     """
@@ -177,7 +230,7 @@ def run_training_pipeline(config: Dict[str, Union[str, int, float]]):
     num_loss_bins = config['NUM_LOSS_BINS']
     
     # --- 1. Load and Prepare Data ---
-    train_loader, test_loader, weight_size, data_dim = prepare_data_and_loaders(
+    train_loader, test_loader, weight_size, data_dim, min_loss, max_loss = prepare_data_and_loaders(
         file_path, n_test, batch_size, num_loss_bins
     )
     
@@ -189,6 +242,7 @@ def run_training_pipeline(config: Dict[str, Union[str, int, float]]):
 
     print("-" * 50)
     print(f"Starting Training | N_Train: {N_TRAIN} | N_Test: {n_test} | Weight Dim: {weight_size}")
+    print(f"Loss Range for Binning: [{min_loss:.4f}, {max_loss:.4f}]")
     print("-" * 50)
 
     for epoch in range(1, num_epochs + 1):
@@ -219,17 +273,26 @@ def run_training_pipeline(config: Dict[str, Union[str, int, float]]):
         if epoch % 10 == 0:
             print("-" * 50)
 
-    # --- 3. Save Trained Model Weights ---
-    torch.save(encoder.state_dict(), model_path)
-    print(f"\nTraining complete. Encoder weights saved to: {model_path}")
+    # --- 3. Save Trained Model Weights and Configuration ---
+    save_data = {
+        'state_dict': encoder.state_dict(),
+        'min_loss': min_loss,
+        'max_loss': max_loss,
+        'num_loss_bins': num_loss_bins,
+        'weight_size': weight_size,
+        'data_dim': data_dim,
+        'loss_embedding_k': loss_embedding_k
+    }
+    torch.save(save_data, model_path)
+    print(f"\nTraining complete. Encoder weights and config saved to: {model_path}")
 
     # --- 4. Load and Evaluate (Demonstrate Inference) ---
     print("\n" + "=" * 50)
     print(f"Loading saved weights and running prediction on test set.")
     
-    # Re-initialize and load the model (confirming save/load functionality)
+    # Re-initialize and load the model (using the saved file path)
     predictor = WeightLatentEncoder(data_dim, num_loss_bins, loss_embedding_k, weight_size)
-    predictor.load_state_dict(torch.load(model_path))
+    predictor.load_state_dict(save_data['state_dict']) # Use the in-memory save_data for quick load
     predictor.eval() # Set to evaluation mode
 
     print("=" * 50)
@@ -250,6 +313,31 @@ def run_training_pipeline(config: Dict[str, Union[str, int, float]]):
 
             print(f"Test Batch Loss (NT-Xent): {test_loss_ntxent.item():.4f}")
             print(f"Test Batch Loss (MSE Distance): {test_loss_mse.item():.6f}")
+
+            sample_data = batch_data[0]
+            sample_gt_weight = batch_weights[0]
+            
+            demo_loss = (min_loss + max_loss) / 2
+            
+            predicted_latent_vec = predict_latent_vector(
+                model_path=model_path,
+                dataset_embedding=sample_data,
+                validation_loss=demo_loss
+            )
+            
+            if predicted_latent_vec is None: continue # Skip if file loading failed
+
+            demo_mse = F.mse_loss(predicted_latent_vec, sample_gt_weight.unsqueeze(0))
+
+            print("\n--- Single Sample Inference Demo (Standalone Function) ---")
+            print(f"Input Dataset Embedding shape: {sample_data.shape}")
+            print(f"Targeted Validation Loss (used for binning): {demo_loss:.4f}")
+            print(f"Predicted Latent Vector shape: {predicted_latent_vec.shape}")
+            print(f"MSE between predicted and GT latent (using fixed test sample): {demo_mse.item():.6f}")
+            print("----------------------------------------------------------\n")
+            
+            break # Exit after the first test batch for demonstration clarity
+
 
     print("\nProcess complete.")
 

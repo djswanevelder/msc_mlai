@@ -46,8 +46,18 @@ class ResNet18WeightUtils:
         """Write a flat vector back into model parameters (no grad path needed)."""
         idx = 0
         with torch.no_grad():
-            for p in model.parameters():
+            for name, p in model.named_parameters(): # Use named_parameters() to get the name
                 n = p.numel()
+                
+                # --- NEW DIAGNOSTIC CHECK ---
+                if 'fc' in name:
+                    fc_slice = weight_vector[idx : idx + n].view_as(p)
+                    # Use .mean() and .std() on the reconstructed slice
+                    fc_mean = fc_slice.mean().item()
+                    fc_std = fc_slice.std().item()
+                    print(f"DIAGNOSTIC (FC RECONSTRUCT): {name} Mean: {fc_mean:.6f}, Std: {fc_std:.6f}")
+                # --- END NEW DIAGNOSTIC CHECK ---
+
                 p.copy_(weight_vector[idx : idx + n].view_as(p))
                 idx += n
 
@@ -287,6 +297,48 @@ def load_autoencoder(
     print(f"Loaded autoencoder from {checkpoint_path}")
     return weight_ae, mapper
 
+def decode_latent_to_resnet_model(
+    checkpoint_path: str,
+    dataset_dir: str,
+    latent_vector: torch.Tensor,
+    device: str = "cpu",
+) -> torch.nn.Module:
+    """
+    Decodes a single latent weight vector back into a fully loaded ResNet18 model instance.
+
+    This function performs the inverse of the encoding process:
+    1. Latent Vector -> (AE Decode) -> Normalized PCA Coefficients
+    2. Normalized PCA Coefficients -> (Un-normalize) -> PCA Coefficients
+    3. PCA Coefficients -> (PCA Inverse Transform) -> Flat Weight Vector
+    4. Flat Weight Vector -> (Load into Model) -> ResNet18 Model
+
+    Args:
+        checkpoint_path (str): Path to trained autoencoder checkpoint.
+        dataset_dir (str): Dataset directory containing PCA mapper data.
+        latent_vector (torch.Tensor): The 512D latent vector to decode.
+        device (str): Device to use for computation.
+
+    Returns:
+        torch.nn.Module: A ResNet18 model instance with parameters set by the 
+                         decoded weight vector.
+    """
+    weight_ae, mapper = load_autoencoder(checkpoint_path, dataset_dir)
+    weight_ae = weight_ae.to(device)
+    weight_ae.eval()
+
+    latent_vector = latent_vector.to(device).unsqueeze(0)
+
+    with torch.no_grad():
+        pca_coeffs_norm = weight_ae.decode(latent_vector).squeeze(0) 
+
+    pca_coeffs = (pca_coeffs_norm * weight_ae.z_std) + weight_ae.z_mean
+    flat_weights = mapper.inverse_transform(pca_coeffs.cpu())
+    decoded_model = ResNet18WeightUtils.create_resnet18_3class()
+
+    ResNet18WeightUtils.set_weights_from_vector(decoded_model, flat_weights)
+    
+    print("Successfully decoded latent vector back to a ResNet18 model.")
+    return decoded_model
 
 def encode_resnet_model(
     model: torch.nn.Module, weight_ae: WeightSpaceAE, mapper: PerParamPCAMapper
