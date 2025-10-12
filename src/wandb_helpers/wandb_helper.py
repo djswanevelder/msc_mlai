@@ -3,7 +3,6 @@ import pandas as pd
 import os
 from typing import List, Dict, Any, Tuple, Optional
 
-# Global API initialization for the new function
 API_CLIENT: Optional[wandb.Api] = None
 
 def initialize_and_setup(entity: str, project_name: str, download_dir: str) -> Tuple[wandb.Api, wandb.apis.public.Runs]:
@@ -313,7 +312,7 @@ if __name__ =='__main__':
     DOWNLOAD_DIR = "downloaded_artifacts"
     OUTPUT_FILE = "wandb_runs_data.csv"
     NORMALIZED_OUTPUT_FILE = "meta-dataset_info.csv"
-    SWEEP_CSV_FILE = "sweep.csv"
+    SWEEP_CSV_FILE = "data/sweep.csv"
 
     COLUMNS_TO_EXTRACT = [
         'run_id', 

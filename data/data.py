@@ -2,6 +2,8 @@ import wandb
 import pandas as pd
 import os
 from typing import Optional
+import shutil
+
 
 def fetch_and_export_wandb_data(
     entity: str,
@@ -91,15 +93,76 @@ def fetch_and_export_wandb_data(
     
     return df
 
+def extract_checkpoint_weights(source_dir: Optional[str] = None):
+    """
+    Iterates through subfolders in the source_dir, looks for a .pth file 
+    with the same name as the subfolder, and copies it to a central 
+    'extracted_weights' directory.
+
+    Args:
+        source_dir (Optional[str]): The directory containing the model subfolders. 
+                                    Defaults to the current working directory if None.
+    """
+    # Use the provided directory or default to the current working directory
+    if source_dir is None:
+        source_dir = os.getcwd()
+    
+    # Define the destination directory for the extracted .pth files.
+    target_dir = os.path.join(os.path.dirname(source_dir), 'extracted_weights')
+
+    
+    # Create the target directory if it doesn't exist
+    os.makedirs(target_dir, exist_ok=True)
+    
+    print(f"--- Starting weight extraction ---")
+    print(f"Source Directory: {source_dir}")
+    print(f"Target Directory: {target_dir}")
+    print("-" * 35)
+
+    # Iterate over every item in the source directory
+    for item in os.listdir(source_dir):
+        item_path = os.path.join(source_dir, item)
+        
+        # 1. Check if the item is a directory (a model folder)
+        # Also check that the directory is not the target directory we just created
+        if os.path.isdir(item_path) and item_path != target_dir:
+            # The expected .pth file name is the same as the folder name, plus the .pth extension
+            pth_filename = f"{item}.pth"
+            
+            # Construct the full path to the expected checkpoint file inside the folder
+            source_pth_path = os.path.join(item_path, pth_filename)
+            
+            # 2. Check if the .pth file actually exists
+            if os.path.exists(source_pth_path):
+                # Construct the path for the copied file in the target directory
+                target_pth_path = os.path.join(target_dir, pth_filename)
+                
+                # 3. Copy the file to the central directory (shutil.copy2 preserves metadata)
+                shutil.copy2(source_pth_path, target_pth_path)
+                print(f"  [SUCCESS] Copied: {pth_filename}")
+            else:
+                # This handles folders that might not contain the expected file (e.g., run-*-history folders)
+                print(f"  [SKIP] No .pth file found named '{pth_filename}' in '{item}'.")
+
+    print("-" * 35)
+    print(f"Extraction complete! All checkpoint files are now collected in the '{target_dir}' folder.")
+
+
 if __name__ == "__main__":
-    # Example usage with the original values
-    entity = '25205269-stellenbosch-university'
-    project_name = 'MSc_MLAI'
+    # # Example usage with the original values
+    # entity = '25205269-stellenbosch-university'
+    # project_name = 'MSc_MLAI'
     
-    # You can call the function with your specific project details
-    df = fetch_and_export_wandb_data(entity, project_name)
+    # # You can call the function with your specific project details
+    # df = fetch_and_export_wandb_data(entity, project_name)
     
-    # You can now work with the DataFrame directly
-    if not df.empty:
-        print("\nHead of the generated DataFrame:")
-        print(df.head())
+    # # You can now work with the DataFrame directly
+    # if not df.empty:
+    #     print("\nHead of the generated DataFrame:")
+    #     print(df.head())
+
+    # Example of calling the function with the path you mentioned in the previous turn:
+    # extract_checkpoint_weights(source_dir='/home/dj/Desktop/msc_mlai/data/weights/downloaded_artifacts') 
+    
+    # Running without arguments will still default to the current directory:
+    extract_checkpoint_weights(source_dir='./weights/downloaded_artifacts')

@@ -1,10 +1,8 @@
 from omegaconf import DictConfig, OmegaConf
-from resNet18 import train_restNet18
 import pandas as pd
-from download_imagenet import download
-import time
-import resNet18
 
+from src.data_prep.resNet18 import train_restNet18
+from src.data_prep.download_imagenet import download
 
 def sweep_over_all(input_filename) -> None:
     df = pd.read_csv(input_filename)
@@ -14,7 +12,7 @@ def sweep_over_all(input_filename) -> None:
             continue
         my_config = {
             "data": {
-                "data_path": "../data/imagenet_subsets",
+                "data_path": "data/imagenet_data",
                 "classes": [
                     row['class1'],
                     row['class2'],
@@ -44,8 +42,6 @@ def sweep_over_all(input_filename) -> None:
         df.loc[index, "status"] = "Done"
         df.to_csv(input_filename, index=False)
         
-        
-
 def download_all_classes(input_filename):
     df = pd.read_csv(input_filename)
     cl1 = df['class1'].str.lower().unique()
@@ -57,5 +53,5 @@ def download_all_classes(input_filename):
     download(data_cfg)
 
 if __name__ == "__main__":
-    download_all_classes('sweep.csv')
-    sweep_over_all('sweep.csv')
+    download_all_classes('data/sweep.csv')
+    sweep_over_all('data/sweep.csv')
