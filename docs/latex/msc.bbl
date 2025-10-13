@@ -21,9 +21,38 @@
 \providecommand{\BIBdecl}{\relax}
 \BIBdecl
 
-\bibitem{dahl+etal_taslp12}
-G.~E. Dahl, D.~Yu, L.~Deng, and A.~Acero, ``Context-dependent pre-trained deep
-  neural networks for large-vocabulary speech recognition,'' \emph{IEEE Trans.
-  Audio, Speech, Language Process.}, vol.~20, no.~1, pp. 30--42, 2012.
+\bibitem{Dean2017BlackBox}
+J.~Dean, ``Keynote speech on the future of ai,''
+  \url{https://www.google.com/search?q=https://events.google.com/io/}, 2017,
+  statement widely attributed to the keynote speech, highlighting the challenge
+  of interpretability in deep learning systems.
+
+\bibitem{schurholt2024scalableversatileweightspace}
+\BIBentryALTinterwordspacing
+K.~Schürholt, M.~W. Mahoney, and D.~Borth, ``Towards scalable and versatile
+  weight space learning,'' 2024. [Online]. Available:
+  \url{https://arxiv.org/abs/2406.09997}
+\BIBentrySTDinterwordspacing
+
+\bibitem{salama2024datasetsizerecoverylora}
+\BIBentryALTinterwordspacing
+M.~Salama, J.~Kahana, E.~Horwitz, and Y.~Hoshen, ``Dataset size recovery from
+  lora weights,'' 2024. [Online]. Available:
+  \url{https://arxiv.org/abs/2406.19395}
+\BIBentrySTDinterwordspacing
+
+\bibitem{bedionita2025instructionguidedautoregressiveneuralnetwork}
+\BIBentryALTinterwordspacing
+S.~Bedionita, B.~Andreis, S.~Chong, and S.~J. Hwang, ``Instruction-guided
+  autoregressive neural network parameter generation,'' 2025. [Online].
+  Available: \url{https://arxiv.org/abs/2504.02012}
+\BIBentrySTDinterwordspacing
+
+\bibitem{meynent2025structureenoughleveragingbehavior}
+\BIBentryALTinterwordspacing
+L.~Meynent, I.~Melev, K.~Schürholt, G.~Kauermann, and D.~Borth, ``Structure is
+  not enough: Leveraging behavior for neural network weight reconstruction,''
+  2025. [Online]. Available: \url{https://arxiv.org/abs/2503.17138}
+\BIBentrySTDinterwordspacing
 
 \end{thebibliography}

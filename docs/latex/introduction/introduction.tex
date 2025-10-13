@@ -2,20 +2,43 @@
 
 \chapter{Introduction}
 \label{chap:introduction}
+
+\begin{quote}
+    "We don't tell [computers] what to do, we give them examples... The problem is, sometimes we don't understand how it figured it out."\\ % <--- FORCED NEW LINE HERE
+    \vspace{0.5em} % Adds a slightly larger vertical space after the quote text
+    \hfill -- Jeff Dean, Head of Google AI \cite{Dean2017BlackBox}
+\end{quote}
+
+
+The prevalence of neural networks (NNs) has positioned them as a foundational technology in modern artificial intelligence. However, as their use has grown, so too has the focus on their inherent mechanistic limitations. Two of the most significant drawbacks of NNs are their lack of explainability---the "black-box" effect---and the immense computational cost required for training. A novel field, weight space learning, emerges as an field showing promise to further our understanding of these very challenges.
+
+Weight space learning primarily focuses on developing methods to represent the high-dimensional, weights of NN models in a lower-dimensional latent space, in order to facilitate further exploration of the weight space. The field generally considers two types of tasks: discriminative and generative.
+
+In the discriminative application, models use the weights of already-trained models, with a specific collection of models reffered to as a model zoo, as input to accurately predict meta-information about the original model. The quality of weight space representation is often quantitatively measured by a simple Multi-layer perceptron (MLP)'s ability to predict this meta-information, conditioned only on the model's weight space representation. 
+
+Common meta-information metrics investigated include predicting the model's final performance and the generalization gap (the difference between training and validation loss). For instance, the Sequential Autoencoder for Neural Embeddings (SANE) \cite{schurholt2024scalableversatileweightspace} demonstrated strong performance in meta-prediction tasks. Furthermore, research has shown that weight embeddings can encode fundamental training characteristics, such as accurately recovering the size of the dataset on which the model was originally trained \cite{salama2024datasetsizerecoverylora}. These discriminative tasks serve the dual purpose of both validating the quality of the derived weight representations and possessing significant practical value.
+
+In the generative application, researchers leverage the structure of the latent weight space to create new, functional models. For example, \cite{schurholt2024scalableversatileweightspace} (SANE) makes use of an autoencoder for sequentially encoding and decoding models, with a bottleneck layer generating the latent vector, and then a decoder to generate a full model. Another paper uses a Vector Quantized Variational Autoencoder (VQ-VAE), which takes in information about the dataset as part of the process of find latent weight representations, with the ultimate going of instruction-guided paramter generation \cite{bedionita2025instructionguidedautoregressiveneuralnetwork}.\cite{meynent2025structureenoughleveragingbehavior} makes use of information on the model's performance and behavior in generating the model embeddings. With $P(W \mid \dots)$ being the distribution sampled from to generate new model weights, currently no existing paper conditions on both dataset information $(\mathcal{D})$ and model performance $(R)$ simultaneously, modeling the conditional distribution:
+
+$$ 
+ P(W \mid \mathcal{D} , R)
+$$
+
+Problem Statement: To what extent can we develop contrastive methods to project model input and model predictive performance to a latent weight space, thereby accurately modeling the complex relationship between a model's weights, its inputs, and its resulting behavior?
 % TODO {introduction}
-The prevalence of neural networks (NNs) has positioned them as a foundational technology in modern artificial intelligence. However, as their use has grown, so too has the focus on their inherent mechanistic limitations. Two of the most significant drawbacks of NNs are their lack of explainability---the "black-box" effect---and the immense computational cost required for training. A novel field, weight space learning, emerges as an exploration of these very challenges.
 
+The focus of this report is to develop a extend latent weight representations into a shared, multimodal representation space. Figure \ref{fig:pipeline} outlines this proposed pipeline.
 
-Weight space learning primarily focuses on developing methods to represent the numerical weights of NN models in a latent space, which can then be used for various downstream tasks. The field mainly considers two types of tasks: generative and discriminative.
+\begin{figure}[!t]
+    \centering
+    \includegraphics[width=0.75\linewidth]{pipeline.png}
+    \caption[A figure illustrating the process of embedding a dataset,model weigths and results into a shared embedding space ]{A representation of the process of embedding a dataset, model weights and results in a shared embedding space. A dataset embedded using a pretrained CLIP encoder, averaging over all images. Model weights embedded using a PCA enhanced autoregressive encoder. Model results embeddings and the shared embedding space created through contrastive learning   }
+    \label{fig:pipeline}
+\end{figure}
 
-In the discriminative application, models use the weights of already-trained models as input to accurately predict meta-information about the original model. For example, previous work has used [x method] to predict [y].
+The results found from the report, and how it's limited 
 
-In the generataive application, x method was used by y, z did this etc. etc. 
-
-
-The focus of this report is to extend the idea of laten weight representations, to a shared represeentation space. Where a model's weights, results and the dataset it was trained on are all represented in a shared space. Figure \ref{fig:pipeline} outlines the 
-
-What the planned design is, and how it contriubutes to the problem outlines in par 1
+The remainder of this report is structured as follows.:
 
     % TODO {outline_paragraph}
     In Section 1 we will discuss x, next y, concluded by z in attempt to showcase that this report is the best
@@ -23,13 +46,6 @@ What the planned design is, and how it contriubutes to the problem outlines in p
 
 % TODO {introduction}
 
-
-\begin{figure}[!t]
-    \centering
-    \includegraphics[width=0.75\linewidth]{pipeline.png}
-    \caption[A figure illustrating the process of embedding a dataset,model weigths and results into a shared embedding space ]{A representation of the process of embedding a dataset, model weights and results in a shared embedding space. A dataset embedded using a pretained CLIP encoder, averaging over all images. Model weights embedded using a autoregressive encoder. Model results embeddings and the shared embedding space created through contrastive learning \cite{dahl+etal_taslp12}  }
-    \label{fig:pipeline}
-\end{figure}
 
 
 
