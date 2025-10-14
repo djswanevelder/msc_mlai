@@ -1419,14 +1419,16 @@ INPUT msc.aux
 INPUT ./msc.out
 INPUT ./msc.out
 INPUT /usr/share/texlive/texmf-dist/fonts/enc/dvips/caladea/cld_prieif.enc
-INPUT /usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc
 INPUT /usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc
 INPUT /usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc
+INPUT /usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc
 INPUT /usr/share/texlive/texmf-dist/fonts/enc/dvips/carlito/crlt_cegsyz.enc
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/huerta/caladea/Caladea-Bold.pfb
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/huerta/caladea/Caladea-Italic.pfb
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/huerta/caladea/Caladea-Regular.pfb
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/typoland/carlito/Carlito-Bold.pfb
 INPUT /usr/share/texmf/fonts/type1/public/lm/lmmi12.pfb
+INPUT /usr/share/texmf/fonts/type1/public/lm/lmmi8.pfb
 INPUT /usr/share/texmf/fonts/type1/public/lm/lmr12.pfb
 INPUT /usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb
+INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb
