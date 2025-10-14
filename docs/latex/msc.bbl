@@ -89,8 +89,12 @@ L.~Meynent, I.~Melev, K.~Sch{\"u}rholt, G.~Kauermann, and D.~Borth, ``Structure
 \BIBentryALTinterwordspacing
 A.~Radford, J.~W. Kim, C.~Hallacy, A.~Ramesh, G.~Goh, S.~Agarwal, G.~Sastry,
   A.~Askell, P.~Mishkin, J.~Clark, G.~Krueger, and I.~Sutskever, ``Learning
-  transferable visual models from natural language supervision,'' 2021.
-  [Online]. Available: \url{https://arxiv.org/abs/2103.00020}
+  transferable visual models from natural language supervision,'' in
+  \emph{Proceedings of the 38th International Conference on Machine Learning},
+  ser. Proceedings of Machine Learning Research, M.~Meila and T.~Zhang, Eds.,
+  vol. 139.\hskip 1em plus 0.5em minus 0.4em\relax PMLR, 18--24 Jul 2021, pp.
+  8748--8763. [Online]. Available:
+  \url{https://proceedings.mlr.press/v139/radford21a.html}
 \BIBentrySTDinterwordspacing
 
 \bibitem{agren2022ntxentlossupperbound}

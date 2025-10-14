@@ -9,26 +9,23 @@
     \hfill -- Jeff Dean, Head of Google AI \cite{Dean2017BlackBox}
 \end{quote}
 
+The prevalence of neural networks (NNs) has established them as a foundational technology in modern artificial intelligence. However, as their use has expanded, so too has attention to their inherent mechanistic limitations. Two major drawbacks of NNs are their lack of explainability—the “black-box” effect—and the substantial computational cost of training. With platforms like Hugging Face and GitHub hosting over one million pre-trained models \cite{huggingface2024review}, interest in addressing these limitations has intensified. Motivated by this vast availability of models, a novel research direction—weight space learning—has emerged as a promising approach to better understand these limitations.
 
-The prevalence of neural networks (NNs) has positioned them as a foundational technology in modern artificial intelligence. However, as their use has grown, so too has the focus on their inherent mechanistic limitations. Two of the most significant drawbacks of NNs are their lack of explainability---the "black-box" effect---and the immense computational cost required for training. With platforms like Hugging Face and GitHub providing access to over one million pre-trained models \cite{huggingface2024review} interest in these limitations has grown. Fueled by this enormous availability of models, a novel field, weight space learning, emerges as a promising area to further our understanding of these mechanistic limitations.
+Formally, the weight space of a neural network refers to the set of all possible configurations of its parameters \( W \in \mathbb{R}^n \), where \( n \) is the total number of trainable weights. Each point in this space represents a unique model with a distinct mapping from inputs to outputs. Weight space learning thus concerns learning representations or distributions over this space, capturing how variations in \( W \) relate to model behaviour and how variations in model training influence \( W \). The field generally considers two types of tasks: discriminative and generative.
 
+In discriminative applications, models use the weights of pre-trained networks—often collected into a model zoo \cite{schurholt2022modelzoosdatasetdiverse}—as input to predict meta-information about the original models \cite{unterthiner2021predictingneuralnetworkaccuracy}. The quality of a weight space representation is typically evaluated by the performance of a simple multi-layer perceptron (MLP) in predicting such meta-information, conditioned only on the model's weight embedding.
 
+Common meta-information metrics include the model's final performance and its generalisation gap (the difference between training and validation loss). \cite{salama2024datasetsizerecoverylora} demonstrated that weight embeddings can encode key training characteristics, such as recovering the size of the dataset used for training. These discriminative tasks serve both to validate the quality of the derived weight representations and to provide practical predictive value.
 
-Weight space learning primarily focuses on developing methods to represent the high-dimensional weights of NN models in a lower-dimensional latent space, in order to facilitate further exploration of the weight space. The field generally considers two types of tasks: discriminative and generative.
+In generative applications, researchers aim to model the underlying distribution of neural network weights \( W \), conditioned on additional information or reference models, \( P(W \mid \dots) \). Sampling from this distribution enables the generation of entirely new model weights.
 
-In the discriminative application, models use the weights of already-trained models, with a specific collection of models referred to as a model zoo \cite{schurholt2022modelzoosdatasetdiverse}, as input to accurately predict meta-information about the original model \cite{unterthiner2021predictingneuralnetworkaccuracy}. The quality of weight space representation is often quantitatively measured by a simple Multi-layer perceptron (MLP)'s ability to predict this meta-information, conditioned only on the model's weight space representation. 
+\cite{schurholt2022hyperrepresentationsgenerativemodelssampling} used an autoencoder with a bottleneck layer to generate hyper-representations of multiple model zoos. Building on this idea, \cite{pmlr-v235-schurholt24a} introduced the Sequential Autoencoder for Neural Embeddings (SANE), which improved scalability and enabled work on much larger models.
 
-Common meta-information metrics investigated include predicting the model's final performance and the generalization gap (the difference between training and validation loss).\cite{salama2024datasetsizerecoverylora} has shown that weight embeddings can encode fundamental training characteristics, such as accurately recovering the size of the dataset on which the model was originally trained . These discriminative tasks serve the dual purpose of both validating the quality of the derived weight representations and possessing significant practical value.
+To model \( P(W \mid \mathcal{D}) \), \cite{bedionita2025instructionguidedautoregressiveneuralnetwork} employed a Vector Quantised Variational Autoencoder (VQ-VAE), which incorporates dataset information when learning latent weight representations. Similarly, \cite{meynent2025structureenoughleveragingbehavior} modelled \( P(W \mid R) \) by incorporating behavioural differences between reconstructed and original models into the embedding learning process.
 
-In the generative application, researchers make use of varous methods to model the underlying distribution of NN weights $W$ conditioned on additional information or reference models $P(W\mid \dots)$. The process of sampling from this distruibution is what enables eintrely new weight generation
+While existing weight space learning methods have made significant progress, they typically address isolated aspects of the learning process. Current approaches model either \( P(W \mid \mathcal{D}) \) or \( P(W \mid R) \), but rarely both simultaneously. This is a key limitation: in practice, a model's weights are influenced by both the data it was trained on and the results it achieved. Understanding the joint relationship \( P(W \mid \mathcal{D}, R) \) is essential for explaining model behaviour and for generating models with desired characteristics.
 
-\cite{schurholt2022hyperrepresentationsgenerativemodelssampling} made use of an autoencoder with a bottleneck layer to generate a hyper-representations of various model zoo's. Expanding on this concept \cite{pmlr-v235-schurholt24a} makes use of a Sequential Autoencoder for Neural Embeddings (SANE) to improve the scaliablity of the method, allowing work on much larger models.
-
-In order to model the distribution $P(W\mid \mathcal{D})$, \cite{bedionita2025instructionguidedautoregressiveneuralnetwork} use a Vector Quantized Variational Autoencoder (VQ-VAE), which takes in information about the dataset as part of the process of find latent weight representations.\cite{meynent2025structureenoughleveragingbehavior} models $P(W\mid R)$ through including the difference in behaviour between the reconstructed and original models in the process of learning model embeddings. 
-
-While existing weight space learning methods have made significant progress, they typically focus on isolated aspects of the model learning process. Current approaches model either $P(W\mid \mathcal{D})$ or $P(W\mid R)$, but not both simultaneously. This represents a significant limitation: in practice, a model's weights are shaped by both the data it was trained and the results it achieved when training on a certain objective. Understanding the more complex joint relationship ---$P(W \mid D,R)$ --- is essential for both explaining model behavior and for generating new models with desired characteristics.
-
-Contrastive learning has emerged as a powerful paradigm for learning unified representations across different modalities, as demonstrated by the success of models like CLIP \cite{radford2021learningtransferablevisualmodels} in bridging vision and language. A learned embedding space is learned through the use of a loss objective function which pulls related samples together in representation space, and pushes unrelated samples away from each other. This allows for the formation of a meaningful represnetation space, of heretogenous data types. It is this feaute of contrasitve learning which makes it particularly usefull to model the complex distribution $P(W \mid D,R)$ --- visual datasets, high-dimensional weight tensors, and performance metrics --- without requiring them to share the same native representation.
+Contrastive learning has emerged as a powerful paradigm for learning unified representations across modalities, as demonstrated by models such as CLIP \cite{radford2021learningtransferablevisualmodels}, which bridge vision and language. A contrastive objective pulls related samples closer in representation space while pushing unrelated samples apart, forming a meaningful joint embedding space for heterogeneous data types. This property makes contrastive learning particularly suitable for modelling the complex distribution \( P(W \mid \mathcal{D}, R) \) --- encompassing visual datasets, high-dimensional weight tensors, and performance metrics --- without requiring a shared native representation.
 
 \begin{figure}[!t]
     \centering
@@ -37,28 +34,22 @@ Contrastive learning has emerged as a powerful paradigm for learning unified rep
     \label{fig:pipeline}
 \end{figure}
 
-In this we report we develop a contrastive learning framework to create a unified embedding space that jointly represents neural network weights $(W)$, the datasets they were trained on $(\mathcal{D})$, and their resulting performance characteristics $(R)$.  Specifically, we construct two separate encoders—one for dataset embeddings using pre-trained CLIP features and one for weight embeddings using an autoencoder [cite] architecture, while creating a binned result embedding table, and train these encoders using a contrastive objective, NXTEnt \cite{agren2022ntxentlossupperbound}, that encourages related triplets $(\mathcal{D}, W, R)$ to be proximal in the shared latent space. Figure \ref{fig:pipeline} depicts a high-level view of the full embedding pipeline.
+In this report, we develop a contrastive learning framework to create a unified embedding space that jointly represents neural network weights \( W \), the datasets they were trained on \( \mathcal{D} \), and their resulting performance characteristics \( R \). Specifically, we construct two separate encoders—one for dataset embeddings using pre-trained CLIP features, and another for weight embeddings using an autoencoder architecture—alongside a binned result embedding table. These encoders are trained using the contrastive objective NT-Xent \cite{agren2022ntxentlossupperbound}, which encourages related triplets \( (\mathcal{D}, W, R) \) to be close in the shared latent space. Figure \ref{fig:pipeline} depicts a high-level view of the full embedding pipeline.
+
 
 % TODO {introduction}
 
 Our central hypothesis is that this unified representation space will enable two key capabilities:
 
-Interpretability and Analysis: By examining the geometric relationships in the shared embedding space, we can better understand how dataset characteristics influence the learned weights and resulting model behaviors. This includes investigating questions such as: Do models trained on similar datasets cluster together in weight space? Can we identify which data characteristics most strongly determine weight patterns? 
+\textbf{Interpretability and Analysis:} Examining geometric relationships within the shared embedding space can reveal how dataset characteristics shape learned weights and model behaviour. By establishing a meaningful relationship between the triplet \( (\mathcal{D}, W, R) \), one can systematically perturb any of the three components while keeping the others fixed, and observe how such changes affect the reconstructed---and thus the real---weight space. This capability enables a structured and extensive exploration of how dataset properties and training outcomes influence learned representations.
 
-Conditional Model Sampling: The learned distribution can enable sampling of model weights conditioned on both desired dataset properties and target performance metrics—that is, approximating P(W|D,R)—which could allow for more efficient model generation than training from scratch.
-
-
-
-
-
+\textbf{Conditional Model Sampling:} The learned distribution enables sampling of model weights conditioned on both dataset properties and target performance metrics--approximating \( P(W \mid \mathcal{D}, R) \). Such a capability supports zero-shot model generation, where high-performing networks can be synthesised directly from their latent representations, bypassing the need for gradient-based optimisation. By leveraging the structure of the learned weight manifold, this approach has the potential to significantly reduce training costs while enabling the targeted creation of models optimised for specific datasets or performance objectives.
 
 
 The results found from the report, and how it's limited 
 
 The remainder of this report is structured as follows.:
-    % TODO {outline_paragraph}
     In Section 1 we will discuss x, next y, concluded by z in attempt to showcase that this report is the best
-    % TODO {outline_paragraph}
 % TODO {introduction}
 
 
