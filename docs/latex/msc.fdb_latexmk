@@ -1,12 +1,12 @@
 # Fdb version 3
-["bibtex msc"] 1760398505 "msc.aux" "msc.bbl" "msc" 1760398507
+["bibtex msc"] 1760455375 "msc.aux" "msc.bbl" "msc" 1760455529
   "/usr/share/texlive/texmf-dist/bibtex/bst/ieeetran/IEEEtran.bst" 1440712899 57748 7c8250ecf02814ce6ddc0cdbb63df1dd ""
-  "msc.aux" 1760398507 2240 3eecfd59ccdb90eb2bb05697c539b770 "pdflatex"
-  "mybib.bib" 1760396208 1852 cbee8be50c393b8a0fc1cf9200c74326 ""
+  "msc.aux" 1760455529 2773 eed59c31e6943e227bf6224f7f6b5bf1 "pdflatex"
+  "mybib.bib" 1760455268 4181 4c85abd1a821942bc421e3d549675e36 ""
   (generated)
   "msc.bbl"
   "msc.blg"
-["pdflatex"] 1760398505 "/home/dj/Desktop/msc_mlai/docs/latex/msc.tex" "msc.pdf" "msc" 1760398507
+["pdflatex"] 1760455528 "/home/dj/Desktop/msc_mlai/docs/latex/msc.tex" "msc.pdf" "msc" 1760455529
   "/etc/texmf/web2c/texmf.cnf" 1751808316 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/home/dj/Desktop/msc_mlai/docs/latex/msc.tex" 1760398503 4276 8d1ae4aadb6870335b75303d7b3eb44d ""
   "/home/dj/texmf/tex/figs/stb-thesis-frntp.pdf" 1741182730 10779 eb59620f3b7a90e77ae505e52128d31f ""
@@ -23,6 +23,7 @@
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmr12.tfm" 1136768653 1288 655e228510b4c2a1abe905c368440826 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/typoland/carlito/Carlito-Bold-lf-ot1.tfm" 1408666177 11620 2b2f1fabcea02b4e9233e8416b4ecf7f ""
   "/usr/share/texlive/texmf-dist/fonts/type1/huerta/caladea/Caladea-Bold.pfb" 1408564761 57593 09a3540b6980efdb8ae331d7272885fc ""
+  "/usr/share/texlive/texmf-dist/fonts/type1/huerta/caladea/Caladea-Italic.pfb" 1408564761 61819 c3f356fc6a9d36a3120d3442158d0307 ""
   "/usr/share/texlive/texmf-dist/fonts/type1/huerta/caladea/Caladea-Regular.pfb" 1408564761 61253 85df3b22ad1da136dfd6e79c61bff69a ""
   "/usr/share/texlive/texmf-dist/fonts/type1/typoland/carlito/Carlito-Bold.pfb" 1408666177 459072 aa840cc9426a31075630255d6d7527b4 ""
   "/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii" 1461363279 71627 94eb9990bed73c364d7f53f960cc8c5b ""
@@ -229,12 +230,12 @@
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1752255350 2801511 07e2688fdda12c99bacc8551ec818544 ""
   "frontmatter/title_page.tex" 1759075756 814 b7353233e52b4aaabc192faf9b0784d2 ""
   "introduction/fig//pipeline.png" 1758121670 1436053 837ff28efc363ccc16e13988c8a3cc36 ""
-  "introduction/introduction.tex" 1760398434 8026 282d29837fa1a5317b1ae8e6ce347a65 ""
-  "msc.aux" 1760398507 2240 3eecfd59ccdb90eb2bb05697c539b770 "pdflatex"
-  "msc.bbl" 1760398505 2375 861d40996cd155205890835edc789507 "bibtex msc"
-  "msc.out" 1760398507 207 a5d421ed72fe9f1515f09836b97000e3 "pdflatex"
+  "introduction/introduction.tex" 1760455527 10517 0da4634c36533aec901c16b563fcdac9 ""
+  "msc.aux" 1760455529 2773 eed59c31e6943e227bf6224f7f6b5bf1 "pdflatex"
+  "msc.bbl" 1760455375 4456 157f230aff0b64eb37feb93170b6d2a7 "bibtex msc"
+  "msc.out" 1760455529 207 a5d421ed72fe9f1515f09836b97000e3 "pdflatex"
   "msc.tex" 1760398503 4276 8d1ae4aadb6870335b75303d7b3eb44d ""
-  "msc.toc" 1760398507 152 5e452ef0cfa26349f9353a50a927f241 "pdflatex"
+  "msc.toc" 1760455529 152 5e452ef0cfa26349f9353a50a927f241 "pdflatex"
   (generated)
   "msc.aux"
   "msc.log"
