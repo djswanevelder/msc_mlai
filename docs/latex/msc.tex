@@ -121,12 +121,12 @@
 \begin{document}
 
 % Front matter
-\input{frontmatter/title_page}
-\pagenumbering{roman}
+% \input{frontmatter/title_page} % include
+\pagenumbering{roman} 
 % \input{frontmatter/declaration}
-% \input{frontmatter/abstract}
-% \input{frontmatter/acknowledgements}
-\tableofcontents
+% \input{frontmatter/abstract} % include
+% \input{frontmatter/acknowledgements} % include
+% \tableofcontents % include
 %\listoffigures
 %\listoftables
 % \input{frontmatter/nomenclature}
@@ -134,7 +134,13 @@
 \pagenumbering{arabic}
 
 % Contents
-\input{introduction/introduction}
+% \input{introduction/introduction}
+\input{body/background}
+% \input{body/method.tex}
+% \input{body/results.tex}
+% \input{conclusion/conclusion.tex}
+
+
 % \input{conclusion/conclusion}
 
 % Bibliography
