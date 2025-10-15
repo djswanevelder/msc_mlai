@@ -37,7 +37,6 @@ Contrastive learning has emerged as a powerful paradigm for learning unified rep
 In this report, we develop a contrastive learning framework to create a unified embedding space that jointly represents neural network weights \( W \), the datasets they were trained on \( \mathcal{D} \), and their resulting performance characteristics \( R \). Specifically, we construct two separate encoders—one for dataset embeddings using pre-trained CLIP features, and another for weight embeddings using an autoencoder architecture—alongside a binned result embedding table. These encoders are trained using the contrastive objective NT-Xent \cite{agren2022ntxentlossupperbound}, which encourages related triplets \( (\mathcal{D}, W, R) \) to be close in the shared latent space. Figure \ref{fig:pipeline} depicts a high-level view of the full embedding pipeline.
 
 
-% TODO {introduction}
 
 Our central hypothesis is that this unified representation space will enable two key capabilities:
 
@@ -45,6 +44,7 @@ Our central hypothesis is that this unified representation space will enable two
 
 \textbf{Conditional Model Sampling:} The learned distribution enables sampling of model weights conditioned on both dataset properties and target performance metrics--approximating \( P(W \mid \mathcal{D}, R) \). Such a capability supports zero-shot model generation, where high-performing networks can be synthesised directly from their latent representations, bypassing the need for gradient-based optimisation. By leveraging the structure of the learned weight manifold, this approach has the potential to significantly reduce training costs while enabling the targeted creation of models optimised for specific datasets or performance objectives.
 
+% TODO {introduction}
 
 The results found from the report, and how it's limited 
 
