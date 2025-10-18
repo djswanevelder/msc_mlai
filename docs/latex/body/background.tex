@@ -14,11 +14,67 @@ Reversibility is of particular importance in weight space learning. While encodi
 
 This chapter proceeds as follows. Section~\ref{sec:pca} introduces Principal Component Analysis (PCA), a linear and probabilistic approach that provides a simple yet effective reversible dimensionality reduction method. Section~\ref{sec:autoencoders} discusses reversible, non-linear approaches, focusing on autoregressive encoder architectures and presenting the Sequential Autoencoder for Neural Embeddings (SANE)~\cite{}. Finally, Section~\ref{sec:contrastive} explores a non-reversible, modality-heterogeneous technique, contrastive learning, including a description of the NT-Xent loss and its implementation in CLIP~\cite{}.
 
-\section{Principal Component Analysis}
+\section{Principal Component Analysis (PCA)}
 \label{sec:pca}
-% (To be completed later)
 
-\section{Autoregressive Encoders}
+Principal Component Analysis (PCA) is a linear dimensionality reduction technique used to represent high-dimensional data in a lower-dimensional form while retaining as much variance as possible. It provides a compact latent representation that captures the most informative directions of variation in the data. This section outlines the motivation behind PCA, its mathematical formulation, and its relevance and limitations as a latent representation method.
+
+\vspace{0.5em}
+\noindent
+\textbf{Problem Setup and Intuition.}
+Consider a dataset \( X \in \mathbb{R}^{n \times d} \) with \( n \) samples and \( d \) features, centred such that each feature has zero mean. The goal of PCA is to find a new coordinate system whose axes are linear transformations of the original dimensions, ordered by the amount of variance they capture. Orthogonality between these axes ensures that each captures unique, non-redundant information about the data.
+
+Intuitively, PCA identifies the directions that best describe the “shape” or spread of the data cloud in feature space. Projecting the data onto the top \( k \) directions provides a compressed representation that preserves most of the information while discarding redundancy.
+
+\vspace{0.5em}
+\noindent
+\textbf{Mathematical Formulation.}
+PCA seeks a linear projection matrix \( W \in \mathbb{R}^{d \times k} \) that maps the data to a lower-dimensional space:
+\[
+Z = XW,
+\]
+where \( Z \in \mathbb{R}^{n \times k} \) represents the latent representation.  
+The sample covariance matrix of \( X \) is
+\[
+\Sigma = \frac{1}{n} X^\top X,
+\]
+and the total variance captured by the projection is
+\[
+\text{Var}(Z) = \text{Tr}(W^\top \Sigma W),
+\]
+where the trace operator \( \text{Tr}(\cdot) \) sums the variances along all projected directions.  
+
+PCA thus maximises the variance of the projected data:
+\[
+\max_{W} \text{Tr}(W^\top \Sigma W)
+\quad \text{subject to} \quad W^\top W = I_k.
+\]
+The constraint enforces orthonormality among the new axes so that each captures distinct variance. Solving this optimisation leads to the eigenvalue problem:
+\[
+\Sigma W = W \Lambda,
+\]
+where the columns of \( W \) are the eigenvectors of \( \Sigma \), and the diagonal entries of \( \Lambda \) are the corresponding eigenvalues that quantify the variance explained by each principal component. The top \( k \) eigenvectors define the optimal projection directions.
+
+\vspace{0.5em}
+\noindent
+\textbf{Latent Representation and Limitations.}
+The resulting embedding,
+\[
+Z = X W_k,
+\]
+is the \textit{latent representation} of the data, capturing the dominant linear structure of the dataset.  
+PCA provides a reversible mapping that probabilistically preserves the greatest possible amount of variance under a linear projection. 
+
+However, its linear nature limits its ability to capture nonlinear relationships when the data lie on curved manifolds. Furthermore, PCA does not adapt to unseen data that deviate from the original subspace—it yields a fixed, non-learnable transformation.
+
+\vspace{0.5em}
+\noindent
+\textbf{Incremental PCA.}
+In practice, the covariance matrix \( \Sigma \) can be prohibitively large for high-dimensional data, such as neural network weights. Incremental PCA (IPCA) addresses this by processing data in smaller batches and updating the principal components iteratively. Rather than recomputing the full covariance, it approximates it using partial updates and truncated singular value decompositions (SVD).  
+This approach makes IPCA suitable for large-scale or streaming datasets while maintaining results comparable to standard PCA. However, it remains an approximation and inherits PCA’s linear and non-generalisable nature.
+
+
+\section{Autoencoder}
 \label{sec:autoencoders}
 
 \subsection{Sequential Autoencoder for Neural Embeddings}
