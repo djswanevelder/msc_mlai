@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2025.7.11)  15 OCT 2025 18:44
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2025.7.11)  18 OCT 2025 11:21
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -960,9 +960,16 @@ File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+LaTeX Font Info:    Font shape `OT1/Caladea-TLF/b/n' will be
+(Font)              scaled to size 11.52008pt on input line 24.
+LaTeX Font Info:    Font shape `OT1/Caladea-TLF/m/n' will be
+(Font)              scaled to size 7.68005pt on input line 43.
+LaTeX Font Info:    Font shape `OT1/Caladea-TLF/m/n' will be
+(Font)              scaled to size 5.76004pt on input line 43.
+ [2]
 LaTeX Font Info:    Font shape `OT1/Carlito-LF/b/n' will be
-(Font)              scaled to size 13.82408pt on input line 24.
-) (./msc.bbl [2]
+(Font)              scaled to size 13.82408pt on input line 80.
+) (./msc.bbl [3] [4]
 
 LaTeX Warning: Empty `thebibliography' environment on input line 24.
 
@@ -971,25 +978,25 @@ LaTeX Warning: Empty `thebibliography' environment on input line 24.
 Package caption Warning: Unused \captionsetup[algorithm] on input line 100.
 See the caption package documentation for explanation.
 
-[3
+[5
 
 ] (./msc.aux)
 Package rerunfilecheck Info: File `msc.out' has not changed.
-(rerunfilecheck)             Checksum: A6420AC679B07D24760C0D21C1B1C636;1389.
+(rerunfilecheck)             Checksum: 5852C8E125E7AB9EB03AEE2BFB1280AD;1365.
  ) 
 Here is how much of TeX's memory you used:
- 33223 strings out of 478287
- 665693 string characters out of 5849289
- 934113 words of memory out of 5000000
- 50781 multiletter control sequences out of 15000+600000
- 507333 words of font info for 83 fonts, out of 8000000 for 9000
+ 33259 strings out of 478287
+ 666558 string characters out of 5849289
+ 934107 words of memory out of 5000000
+ 50787 multiletter control sequences out of 15000+600000
+ 513166 words of font info for 100 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  99i,12n,117p,1229b,808s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/caladea/cld_prieif.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/carlito/crlt_cegsyz.enc}</usr/share/texlive/texmf-dist/fonts/type1/huerta/caladea/Caladea-Italic.pfb></usr/share/texlive/texmf-dist/fonts/type1/huerta/caladea/Caladea-Regular.pfb></usr/share/texlive/texmf-dist/fonts/type1/typoland/carlito/Carlito-Bold.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb>
-Output written on msc.pdf (3 pages, 60133 bytes).
+{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/caladea/cld_prieif.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/carlito/crlt_cegsyz.enc}</usr/share/texlive/texmf-dist/fonts/type1/huerta/caladea/Caladea-Bold.pfb></usr/share/texlive/texmf-dist/fonts/type1/huerta/caladea/Caladea-Italic.pfb></usr/share/texlive/texmf-dist/fonts/type1/huerta/caladea/Caladea-Regular.pfb></usr/share/texlive/texmf-dist/fonts/type1/typoland/carlito/Carlito-Bold.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi12.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on msc.pdf (5 pages, 117927 bytes).
 PDF statistics:
- 90 PDF objects out of 1000 (max. 8388607)
- 76 compressed objects within 1 object stream
- 13 named destinations out of 1000 (max. 500000)
- 20053 words of extra memory for PDF output out of 20736 (max. 10000000)
+ 131 PDF objects out of 1000 (max. 8388607)
+ 102 compressed objects within 2 object streams
+ 15 named destinations out of 1000 (max. 500000)
+ 26197 words of extra memory for PDF output out of 29859 (max. 10000000)
 
