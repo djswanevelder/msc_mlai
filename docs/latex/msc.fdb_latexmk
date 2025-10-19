@@ -1,12 +1,12 @@
 # Fdb version 3
-["bibtex msc"] 1760779190 "msc.aux" "msc.bbl" "msc" 1760779293
+["bibtex msc"] 1760902276 "msc.aux" "msc.bbl" "msc" 1760902277
   "/usr/share/texlive/texmf-dist/bibtex/bst/ieeetran/IEEEtran.bst" 1440712899 57748 7c8250ecf02814ce6ddc0cdbb63df1dd ""
-  "msc.aux" 1760779293 2251 07692c1560533cc26b43f9350415d43a "pdflatex"
-  "mybib.bib" 1760476098 4499 a5122ac2497b02ef0e130a1264cc9423 ""
+  "msc.aux" 1760902277 2520 6404b9e8864f4beb98b6013dcfc71abd "pdflatex"
+  "mybib.bib" 1760900089 5112 e9cb24b74e895cf1f17557bdb32ee26c ""
   (generated)
   "msc.bbl"
   "msc.blg"
-["pdflatex"] 1760779292 "/home/dj/Desktop/msc_mlai/docs/latex/msc.tex" "msc.pdf" "msc" 1760779293
+["pdflatex"] 1760902276 "/home/dj/Desktop/msc_mlai/docs/latex/msc.tex" "msc.pdf" "msc" 1760902277
   "/etc/texmf/web2c/texmf.cnf" 1751808316 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/home/dj/Desktop/msc_mlai/docs/latex/msc.tex" 1760704569 4438 631353133fa6c632fc9a01df4a2a53c1 ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/caladea/cld_prieif.enc" 1408564761 2909 0d9a00ce3f1df725b182b15dd24bf4a5 ""
@@ -205,6 +205,7 @@
   "/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty" 1635798903 56029 3f7889dab51d620aa43177c391b7b190 ""
   "/usr/share/texlive/texmf-dist/tex/latex/xkeyval/xkeyval.sty" 1605910342 4902 efb3d66683a2da2a232f71e3a571a899 ""
   "/usr/share/texlive/texmf-dist/web2c/texmf.cnf" 1644012257 39432 7155514e09a3d69036fac785183a21c2 ""
+  "/usr/share/texmf/fonts/enc/dvips/lm/lm-mathex.enc" 1254938640 3486 c7eadf5dcc57b3b2d11736679f6636ba ""
   "/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc" 1254938640 2405 5dcf2c1b967ee25cc46c58cd52244aed ""
   "/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc" 1254938640 2840 216e6e45ad352e2456e1149f28885bee ""
   "/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc" 1254938640 2327 9d6df24f9c4f7368395224341a95523a ""
@@ -218,9 +219,11 @@
   "/usr/share/texmf/fonts/tfm/public/lm/rm-lmr12.tfm" 1254938640 11888 6841b91e46b65cf41a49b160e6e74130 ""
   "/usr/share/texmf/fonts/tfm/public/lm/rm-lmr6.tfm" 1254938640 11836 e3b6ce3e601aec94f64a536e7f4224d5 ""
   "/usr/share/texmf/fonts/tfm/public/lm/rm-lmr8.tfm" 1254938640 11864 309fd7f43e4a0ba39f6f7644d76e8edf ""
+  "/usr/share/texmf/fonts/type1/public/lm/lmex10.pfb" 1254938640 23055 2e5b42921de910eaa97b85df04ca4891 ""
   "/usr/share/texmf/fonts/type1/public/lm/lmmi12.pfb" 1254938640 30696 2654571912f9cd384da9f7cb8a60c568 ""
   "/usr/share/texmf/fonts/type1/public/lm/lmmi8.pfb" 1254938640 30635 833ec815d446ec453a4913fc26d24cbc ""
   "/usr/share/texmf/fonts/type1/public/lm/lmr12.pfb" 1254938640 113634 f99c44d58bae0863375faf0e1d74d612 ""
+  "/usr/share/texmf/fonts/type1/public/lm/lmr8.pfb" 1254938640 122174 a7a08406857c9530a0320a2517f60370 ""
   "/usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb" 1254938640 27863 09ce3735688ffde955e72da27c95b61a ""
   "/usr/share/texmf/fonts/type1/public/lm/lmsy8.pfb" 1254938640 27802 5c876bb2c4040caaf035d60bd74a86bd ""
   "/usr/share/texmf/tex/latex/lm/lmodern.sty" 1256929440 1606 c17281c7cff2bbd7ff0173e1433487ec ""
@@ -231,10 +234,10 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1644012257 39432 7155514e09a3d69036fac785183a21c2 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1752255207 4379155 98693266ff65f58d9f98aff394de12d2 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1752255350 2801511 07e2688fdda12c99bacc8551ec818544 ""
-  "body/background.tex" 1760779292 7042 33bf858968c9705c1e4ff6601670df97 ""
-  "msc.aux" 1760779293 2251 07692c1560533cc26b43f9350415d43a "pdflatex"
-  "msc.bbl" 1760779190 877 628a2a8c68e066122d1514411e0b8455 "bibtex msc"
-  "msc.out" 1760779293 1365 5852c8e125e7ab9eb03aee2bfb1280ad "pdflatex"
+  "body/background.tex" 1760902275 17427 ac9e721948e0eab399b069bd6e9ff2c8 ""
+  "msc.aux" 1760902277 2520 6404b9e8864f4beb98b6013dcfc71abd "pdflatex"
+  "msc.bbl" 1760902276 1791 adec2c66407e39f84c7d9ec8f81c0a91 "bibtex msc"
+  "msc.out" 1760902277 1312 92f909be21c29dcdb7c762f9fa05d7c9 "pdflatex"
   "msc.tex" 1760704569 4438 631353133fa6c632fc9a01df4a2a53c1 ""
   (generated)
   "msc.aux"

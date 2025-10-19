@@ -70,21 +70,106 @@ However, its linear nature limits its ability to capture nonlinear relationships
 \vspace{0.5em}
 \noindent
 \textbf{Incremental PCA.}
-In practice, the covariance matrix \( \Sigma \) can be prohibitively large for high-dimensional data, such as neural network weights. Incremental PCA (IPCA) addresses this by processing data in smaller batches and updating the principal components iteratively. Rather than recomputing the full covariance, it approximates it using partial updates and truncated singular value decompositions (SVD).  
+In practice [cite], the covariance matrix \( \Sigma \) can be prohibitively large for high-dimensional data, such as neural network weights. Incremental PCA (IPCA) addresses this by processing data in smaller batches and updating the principal components iteratively. Rather than recomputing the full covariance, it approximates it using partial updates and truncated singular value decompositions (SVD).  
 This approach makes IPCA suitable for large-scale or streaming datasets while maintaining results comparable to standard PCA. However, it remains an approximation and inherits PCA’s linear and non-generalisable nature.
 
-
-\section{Autoencoder}
+\section{Autoencoders}
 \label{sec:autoencoders}
 
-\subsection{Sequential Autoencoder for Neural Embeddings}
-% (To be completed later)
+Autoencoders are neural network architectures designed for unsupervised representation learning. Their goal is to learn a compressed, informative latent representation of input data by training the network to reconstruct the original input after passing it through a lower-dimensional bottleneck. An Autoencoder's architecture is charactersized by a layer, with less than nodes than the dimension of the input data, then expanding the the size of the original data. 
+
+\vspace{0.5em}
+\noindent
+\textbf{Architecture and Operation.}
+An autoencoder consists of two primary components: an \textit{encoder} and a \textit{decoder}. The encoder, parameterised by weights \( \theta_e \), maps an input \( x \in \mathbb{R}^d \) to a latent representation \( z \in \mathbb{R}^k \) through a sequence of nonlinear transformations:
+\[
+z = f_\text{enc}(x; \theta_e).
+\]
+The decoder, parameterised by \( \theta_d \), reconstructs the input from this latent representation:
+\[
+\hat{x} = f_\text{dec}(z; \theta_d).
+\]
+Together, the encoder and decoder form a composite function:
+\[
+\hat{x} = f_\text{dec}(f_\text{enc}(x)).
+\]
+The bottleneck layer (latent space) enforces a compression constraint, ensuring the model retains only the most salient features necessary for accurate reconstruction.
+
+\vspace{0.5em}
+\noindent
+\textbf{Training Objective.}
+The network is trained to minimise the reconstruction error between the input \( x \) and its reconstruction \( \hat{x} \). The most common loss function is the Mean Squared Error (MSE):
+\[
+\mathcal{L} = \frac{1}{n} \sum_{i=1}^{n} \| x_i - \hat{x}_i \|^2.
+\]
+This loss is automatically differentiated and optimised through backpropagation using gradient descent. By minimising this objective, the autoencoder learns weight configurations that best compress and reconstruct the data distribution.
+
+The objective can be extended to include additional terms depending on the desired properties of the latent space. For example, a \textit{contrastive loss} component can be incorporated to encourage semantic separation between latent representations, improving feature discriminability. Likewise, \textit{regularisation} terms—such as \( L_1 \) or \( L_2 \) penalties, or sparsity constraints—can be added to improve generalisation and prevent overfitting by controlling the magnitude or distribution of learned weights.
+
+
+\vspace{0.5em}
+\noindent
+\textbf{Latent Representation and Flexibility.}
+The latent space \( z \) provides a nonlinear embedding that captures underlying structure within the data. Once trained, the encoder can be used independently for dimensionality reduction or feature extraction, while the decoder can serve as a generative mapping from the latent space back to the input domain.
+
+Autoencoders are highly flexible in architecture — they can be shallow for simple data or deep to capture hierarchical structure. Nonlinear activation functions such as ReLU, tanh, or sigmoid increase expressivity, allowing the model to represent complex, nonlinear manifolds within the data distribution.
+
+\subsection{Autoencoder for Neural Embeddings}
+Applying the concept of an autoencoder to neural network weights has recently gained attention as a means to learn structured, low-dimensional representations of model parameters. Instead of encoding raw input data, the autoencoder learns to encode and reconstruct the weights of pre-trained neural networks, effectively embedding each model into a latent space that captures structural and functional similarities between models. This approach was explored in \cite{NEURIPS2022_b2c4b7d3}, where the goal was to build a continuous and interpretable representation space of neural weights.
+
+\vspace{0.5em}
+\noindent
+\textbf{Training Objective.}
+Unlike conventional autoencoders that optimise a single reconstruction loss, the neural weight autoencoder is trained with a multi-objective loss function that combines reconstruction and contrastive terms:
+\[
+\mathcal{L} = \beta \mathcal{L}_{\text{MSE}} + (1 - \beta) \mathcal{L}_{\text{c}},
+\]
+where \( \mathcal{L}_{\text{MSE}} \) represents the weight reconstruction loss and \( \mathcal{L}_{\text{c}} \) is a contrastive loss.  
+The reconstruction term encourages the decoder to accurately reproduce the original model weights, expressed layer-wise as:
+\[
+\mathcal{L}_{\text{MSE}} = \frac{1}{MN} \sum_{i=1}^{M} \sum_{l=1}^{L} \| \hat{w}_i^{(l)} - w_i^{(l)} \|_2^2,
+\]
+where \( w_i^{(l)} \) and \( \hat{w}_i^{(l)} \) are the original and reconstructed weights for the \( l \)-th layer of the \( i \)-th model in the collection (often called a \textit{model zoo}).  
+
+The contrastive component \( \mathcal{L}_{\text{c}} \) introduces additional structure in the latent space by applying data augmentations during training—such as weight permutation (which leverages inherent symmetries in neural networks) and random erasing—to ensure that semantically similar models are mapped closer together while dissimilar ones are pushed apart. In this work, the contrastive term follows the \textit{NXTne} loss formulation (see Section~\ref{sec:nxtne_loss}), which provides a more stable and expressive contrastive objective for modelling relationships in weight space.
+
+
+This combination of reconstruction and contrastive learning encourages the encoder to capture not only numerical similarity in the weights but also functional and architectural relationships between models. The result is a structured latent space in which proximity correlates with similarity in performance or behaviour.
+
+\vspace{0.5em}
+\noindent
+\textbf{Interpretation and Utility.}
+The learned latent space enables both discriminative and generative applications. The encoder can be used to extract informative embeddings that summarise a model’s functional behaviour, useful for clustering, transfer learning, or model retrieval. Meanwhile, the decoder can generate entirely new sets of weights from latent vectors—supporting generative applications such as zero-shot model synthesis or interpolation between models. This dual capability makes the autoencoder framework particularly appealing for weight space learning, as it provides both interpretability and controllability.
+
+\vspace{1em}
+\noindent
+\textbf{Sequential Autoencoder for Neural Embeddings.}
+A major challenge in encoding neural network weights lies in the enormous number of parameters, which quickly becomes infeasible to process directly. \cite{pmlr-v235-schurholt24a} introduced the Sequential Autoencoder for Neural Embeddings (SANE), which addresses this scalability problem by tokenising model weights rather than treating the entire parameter set as a single input.  
+
+Instead of encoding full weight tensors, SANE partitions them into smaller, semantically meaningful \textit{tokens}—for example, by layer or even within layers—and encodes these sequentially. Each token is represented as a point in latent space, and the entire model is represented as a \textit{cloud of latent tokens} rather than a single vector. This design assumes that sufficient information about the model’s global behaviour is preserved through these local token representations, an assumption supported by empirical results in \cite{pmlr-v235-schurholt24a}.
+
+SANE achieves state-of-the-art performance in both discriminative and generative weight-space applications, demonstrating that this token-based decomposition maintains the essential structure of models while dramatically improving scalability. Furthermore, because the approach is sequential, it naturally accommodates heterogeneous architectures—normalising across different layer types and sizes—and allows the generation of new architectures by decoding variable-length token sequences.  
+
+This flexibility marks an important step toward scalable and architecture-agnostic representation learning in weight space.
 
 \section{Contrastive Learning}
 \label{sec:contrastive}
+The overall goal of contrastive learning is to learn meaningful representations by comparing data points against one another, rather than relying on explicit labels \cite{}. The foundational assumption is that if a model is provided with sufficient examples of similar and dissimilar pairs, it can learn to represent data such that semantically similar samples lie close together in the embedding space, while dissimilar samples are placed farther apart. This framework enables unsupervised or self-supervised learning of latent representations that capture semantic structure purely through relative similarity.
 
 \subsection{NT-Xent Loss}
-% (To be completed later)
+\label{sec:nxtne_loss}
+A widely used objective for contrastive learning is the Normalised Temperature-Scaled Cross Entropy (NT-Xent) loss introduced in \cite{}. This loss formulates the contrastive task as a classification problem over positive and negative pairs within a batch.  
+Given a batch of $N$ samples, each with an augmented pair $(x_i, x_i')$, the loss for a positive pair $(i, j)$ is defined as:
+\[
+\mathcal{L}_{i,j} = -\log \frac{\exp(\text{sim}(z_i, z_j) / \tau)}{\sum_{k=1}^{2N} \mathbb{1}_{[k \neq i]} \exp(\text{sim}(z_i, z_k) / \tau)},
+\]
+where $\text{sim}(z_i, z_j)$ denotes the cosine similarity between the latent representations $z_i$ and $z_j$, and $\tau$ is a temperature parameter that controls the sharpness of the distribution. The total batch loss is obtained by averaging over all positive pairs.  
+This formulation encourages positive pairs (augmentations of the same sample) to have high similarity, while simultaneously pushing apart embeddings from different samples, resulting in well-structured and discriminative latent representations.
 
 \subsection{CLIP}
-% (To be completed later)
+An important application of contrastive learning using the NT-Xent objective is CLIP (Contrastive Language–Image Pretraining) \cite{}. CLIP jointly trains an image encoder and a text encoder to align visual and textual representations in a shared embedding space.  
+During training, each image is paired with a corresponding caption, forming a positive pair, while all other image–text combinations in the batch act as negatives. The model optimises a symmetric contrastive objective, where each image predicts its matching caption and vice versa:
+\[
+\mathcal{L}_{\text{CLIP}} = \frac{1}{2}(\mathcal{L}_{\text{image-to-text}} + \mathcal{L}_{\text{text-to-image}}).
+\]
+Through this process, CLIP learns general-purpose visual and linguistic representations that are semantically aligned. Once trained, the model can perform zero-shot classification and other cross-modal tasks by measuring similarity between image and text embeddings without task-specific fine-tuning.
