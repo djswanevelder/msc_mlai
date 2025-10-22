@@ -1,14 +1,18 @@
 \chapter{Background}
+\label{chap:background}
 
+% TODO {Weights Space Litarature summary}
+    
+% TODO {Weights Space Litarature summary}
 \section{Weight Space Learning}
 
 Weight space learning is a field within machine learning that focuses on understanding and leveraging the structure of the neural network weight space. The central aim is to model how network parameters are shaped by data, architecture, and training dynamics, and to capture these relationships within a learnable representation. 
 
-At its core, weight space learning seeks to construct \textit{meta-models}—models that learn from other models. Unlike standard machine learning models that capture patterns in data, meta-models capture patterns in the \textit{weights} of networks trained on that data. In this way, the goal shifts from learning a direct input–output mapping to learning the structure that governs how such mappings are formed.
+At its core, weight space learning seeks to construct \textit{meta-models}—models that learn from other models. Unlike standard machine learning models that capture patterns in data, meta-models capture patterns in the \textit{weights} of networks trained on that data. In this way, the goal shifts from learning a direct input--output mapping to learning the structure that governs how such mappings are formed.
 
 Due to the enormous scale and dimensionality of modern neural networks~\cite{}, it is typically infeasible to operate directly on raw model weights. Furthermore, redundancy is well known to exist in neural networks; smaller architectures can often achieve comparable performance to larger ones~\cite{}. These challenges motivate one of the central subproblems of weight space learning: the discovery of low-dimensional representations of weight space.
 
-A \textit{latent representation} of weight space provides a compact and structured encoding of a model’s parameters. The transformations—linear or non-linear—that map weights into this latent space are learned to preserve the essential information required to reconstruct or analyse the original weights. Among the many dimensionality reduction techniques available, a useful distinction can be made between \textit{reversible} and \textit{non-reversible} methods.
+A \textit{latent representation} of weight space provides a compact and structured encoding of a model's parameters. The transformations—linear or non-linear—that map weights into this latent space are learned to preserve the essential information required to reconstruct or analyse the original weights. Among the many dimensionality reduction techniques available, a useful distinction can be made between \textit{reversible} and \textit{non-reversible} methods.
 
 Reversibility is of particular importance in weight space learning. While encoding weights into a latent representation (real $\rightarrow$ latent) is informative, the ability to reconstruct the original weights (real $\rightarrow$ latent $\rightarrow$ real) is far more valuable. This reversibility enables the synthesis of entirely new weight configurations, supporting generative applications such as zero-shot model creation and performance-guided model generation. Consequently, reversible latent representation methods are the most prevalent within weight space learning, especially for encoding and decoding neural network weights.
 
