@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2025.7.11)  22 OCT 2025 17:53
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2025.7.11)  23 OCT 2025 11:14
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -897,64 +897,94 @@ LaTeX Info: Redefining \nameref on input line 121.
 \@outlinefile=\write4
 \openout4 = `msc.out'.
 
- (./introduction/introduction.tex
-Chapter 1.
-LaTeX Font Info:    Font shape `OT1/Caladea-TLF/m/n' will be
-(Font)              scaled to size 23.88496pt on input line 3.
+ (./frontmatter/title_page.tex
+<stb-thesis-frntp.pdf, id=83, 597.50786pt x 845.04686pt>
+File: stb-thesis-frntp.pdf Graphic file (type pdf)
+<use stb-thesis-frntp.pdf>
+Package pdftex.def Info: stb-thesis-frntp.pdf  used on input line 7.
+(pdftex.def)             Requested size: 597.50787pt x 845.0448pt.
 LaTeX Font Info:    Font shape `OT1/Caladea-TLF/b/n' will be
-(Font)              scaled to size 23.88496pt on input line 3.
-LaTeX Font Info:    Trying to load font information for OT1+Carlito-LF on input line 3.
-(/usr/share/texlive/texmf-dist/tex/latex/carlito/OT1Carlito-LF.fd
+(Font)              scaled to size 11.52008pt on input line 14.
+LaTeX Font Info:    Font shape `OT1/Caladea-TLF/b/n' will be
+(Font)              scaled to size 23.88496pt on input line 14.
+LaTeX Font Info:    Font shape `OT1/Caladea-TLF/m/n' will be
+(Font)              scaled to size 13.82408pt on input line 16.
+LaTeX Font Info:    Font shape `OT1/Caladea-TLF/m/n' will be
+(Font)              scaled to size 16.58891pt on input line 17.
+ [1
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} </home/dj/texmf/tex/figs/stb-thesis-frntp.pdf>]) (./frontmatter/abstract.tex
+LaTeX Font Info:    Font shape `OT1/Caladea-TLF/m/n' will be
+(Font)              scaled to size 23.88496pt on input line 1.
+LaTeX Font Info:    Trying to load font information for OT1+Carlito-LF on input line 1.
+ (/usr/share/texlive/texmf-dist/tex/latex/carlito/OT1Carlito-LF.fd
 File: OT1Carlito-LF.fd 2014/08/20 (autoinst) Font definitions for OT1/Carlito-LF.
 )
 LaTeX Font Info:    Font shape `OT1/Carlito-LF/b/n' will be
-(Font)              scaled to size 23.88496pt on input line 3.
+(Font)              scaled to size 23.88496pt on input line 1.
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `Carlito-LF' (encoding: OT1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-LaTeX Font Info:    Font shape `OT1/Caladea-TLF/b/n' will be
-(Font)              scaled to size 11.52008pt on input line 12.
-LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 14.
+LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 5.
  (/usr/share/texmf/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 ) (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-cmr.cfg
 File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman (RS)
 )
-LaTeX Font Info:    Trying to load font information for OML+lmm on input line 14.
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 5.
  (/usr/share/texmf/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 14.
+LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 5.
  (/usr/share/texmf/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 14.
+LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 5.
  (/usr/share/texmf/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 14.
+(Font)              <12> on input line 5.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 14.
+(Font)              <8> on input line 5.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 14.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 14.
+(Font)              <6> on input line 5.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 5.
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 ) (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 14.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 5.
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msb.cfg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
+)
+LaTeX Font Info:    Font shape `OT1/Caladea-TLF/m/n' will be
+(Font)              scaled to size 7.68005pt on input line 6.
+LaTeX Font Info:    Font shape `OT1/Caladea-TLF/m/n' will be
+(Font)              scaled to size 5.76004pt on input line 6.
 ) [1
 
+]
+Package marginnote Info: Using workaround for absolute page number on input line 129.
+ (./msc.toc
+LaTeX Font Info:    Font shape `OT1/Carlito-LF/b/n' will be
+(Font)              scaled to size 11.52008pt on input line 2.
+)
+\tf@toc=\write5
+\openout5 = `msc.toc'.
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-<fig//pipeline.png, id=106, 4970.57pt x 2971.1pt>
+ [2
+
+] (./introduction/introduction.tex
+Chapter 1.
+[1
+
+]
+<fig//pipeline.png, id=172, 4970.57pt x 2971.1pt>
 File: fig//pipeline.png Graphic file (type png)
 <use fig//pipeline.png>
 Package pdftex.def Info: fig//pipeline.png  used on input line 32.
@@ -983,19 +1013,12 @@ Chapter 2.
 LaTeX Font Info:    Font shape `OT1/Carlito-LF/m/n' will be
 (Font)              scaled to size 11.52008pt on input line 7.
 LaTeX Font Info:    Font shape `OT1/Carlito-LF/b/n' will be
-(Font)              scaled to size 11.52008pt on input line 7.
-LaTeX Font Info:    Font shape `OT1/Carlito-LF/b/n' will be
 (Font)              scaled to size 16.58891pt on input line 7.
 [4
 
-]
-LaTeX Font Info:    Font shape `OT1/Caladea-TLF/m/n' will be
-(Font)              scaled to size 7.68005pt on input line 47.
-LaTeX Font Info:    Font shape `OT1/Caladea-TLF/m/n' will be
-(Font)              scaled to size 5.76004pt on input line 47.
- [5] [6] [7]
+] [5] [6] [7]
 LaTeX Font Info:    Font shape `OT1/Carlito-LF/b/n' will be
-(Font)              scaled to size 13.82408pt on input line 121.
+(Font)              scaled to size 13.82408pt on input line 128.
  [8] [9]) (./introduction/method.tex [10]
 Chapter 3.
 File: fig//pipeline.png Graphic file (type png)
@@ -1021,21 +1044,21 @@ See the caption package documentation for explanation.
 
 [17] (./msc.aux)
 Package rerunfilecheck Info: File `msc.out' has not changed.
-(rerunfilecheck)             Checksum: 981D10C7691FAE01D11A3308D7B73052;2485.
+(rerunfilecheck)             Checksum: 40B046228B4C3C1E7823F62DFFE1A9DC;2570.
  ) 
 Here is how much of TeX's memory you used:
- 33496 strings out of 478287
- 672031 string characters out of 5849289
- 937528 words of memory out of 5000000
- 50880 multiletter control sequences out of 15000+600000
- 526127 words of font info for 148 fonts, out of 8000000 for 9000
+ 33611 strings out of 478287
+ 674660 string characters out of 5849289
+ 937976 words of memory out of 5000000
+ 50964 multiletter control sequences out of 15000+600000
+ 529039 words of font info for 154 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  99i,12n,117p,1229b,956s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathex.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/caladea/cld_prieif.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/caladea/cld_cb3g7n.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/carlito/crlt_cegsyz.enc}</usr/share/texlive/texmf-dist/fonts/type1/huerta/caladea/Caladea-Bold.pfb></usr/share/texlive/texmf-dist/fonts/type1/huerta/caladea/Caladea-Italic.pfb></usr/share/texlive/texmf-dist/fonts/type1/huerta/caladea/Caladea-Regular.pfb></usr/share/texlive/texmf-dist/fonts/type1/typoland/carlito/Carlito-Bold.pfb></usr/share/texmf/fonts/type1/public/lm/lmex10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi12.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on msc.pdf (17 pages, 1429630 bytes).
+Output written on msc.pdf (20 pages, 1445205 bytes).
 PDF statistics:
- 302 PDF objects out of 1000 (max. 8388607)
- 253 compressed objects within 3 object streams
- 50 named destinations out of 1000 (max. 500000)
- 36514 words of extra memory for PDF output out of 42996 (max. 10000000)
+ 378 PDF objects out of 1000 (max. 8388607)
+ 322 compressed objects within 4 object streams
+ 63 named destinations out of 1000 (max. 500000)
+ 40623 words of extra memory for PDF output out of 42996 (max. 10000000)
 
