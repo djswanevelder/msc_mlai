@@ -1,14 +1,15 @@
 # Fdb version 3
-["bibtex msc"] 1761148358 "msc.aux" "msc.bbl" "msc" 1761148414
+["bibtex msc"] 1761210793 "msc.aux" "msc.bbl" "msc" 1761210877
   "/usr/share/texlive/texmf-dist/bibtex/bst/ieeetran/IEEEtran.bst" 1440712899 57748 7c8250ecf02814ce6ddc0cdbb63df1dd ""
-  "msc.aux" 1761148414 6475 ef265326da1dc00b5fe49bf24492c2fb "pdflatex"
+  "msc.aux" 1761210876 7206 dc531428f8ff07533dc7a19d99e859fa "pdflatex"
   "mybib.bib" 1760900089 5112 e9cb24b74e895cf1f17557bdb32ee26c ""
   (generated)
   "msc.bbl"
   "msc.blg"
-["pdflatex"] 1761148412 "/home/dj/Desktop/msc_mlai/docs/latex/msc.tex" "msc.pdf" "msc" 1761148414
+["pdflatex"] 1761210875 "/home/dj/Desktop/msc_mlai/docs/latex/msc.tex" "msc.pdf" "msc" 1761210877
   "/etc/texmf/web2c/texmf.cnf" 1751808316 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/dj/Desktop/msc_mlai/docs/latex/msc.tex" 1761148251 7495 188c3f1ac25617ab196c80f585b8a43b ""
+  "/home/dj/Desktop/msc_mlai/docs/latex/msc.tex" 1761209999 7509 702169a4cdb9f098c79d9b671f686b25 ""
+  "/home/dj/texmf/tex/figs/stb-thesis-frntp.pdf" 1741182730 10779 eb59620f3b7a90e77ae505e52128d31f ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/caladea/cld_cb3g7n.enc" 1408564761 3303 fd48c49ada53e2716120e30f37b0a143 ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/caladea/cld_prieif.enc" 1408564761 2909 0d9a00ce3f1df725b182b15dd24bf4a5 ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/carlito/crlt_cegsyz.enc" 1408666177 2964 e6b6a317d9b868dd17918e84bee7319d ""
@@ -239,18 +240,22 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1644012257 39432 7155514e09a3d69036fac785183a21c2 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1752255207 4379155 98693266ff65f58d9f98aff394de12d2 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1752255350 2801511 07e2688fdda12c99bacc8551ec818544 ""
-  "body/background.tex" 1761148189 17537 153d60ebcf0c29b842b4f04cb5e70791 ""
+  "body/background.tex" 1761210874 17857 2a6ab11bb4d98f0837a75289dc5e97d7 ""
   "body/results.tex" 1761148216 52 a6bdf158893c5f2de61437474ef4f806 ""
   "conclusion/conclusion.tex" 1730801844 90 1f90d0290fb904663cd4359b8e166c46 ""
   "fig//pipeline.png" 1758121670 1436053 837ff28efc363ccc16e13988c8a3cc36 ""
+  "frontmatter/abstract.tex" 1759075858 1209 13e2e4f07e45ac6dfee01ba63cf3ced0 ""
+  "frontmatter/title_page.tex" 1759075756 814 b7353233e52b4aaabc192faf9b0784d2 ""
   "introduction/introduction.tex" 1761148412 8250 c3e7a4e26d1c066da75e0c244ec18141 ""
   "introduction/method.tex" 1761148202 4550 4d8173369c9326f4d9fb71a360c67bf6 ""
-  "msc.aux" 1761148414 6475 ef265326da1dc00b5fe49bf24492c2fb "pdflatex"
-  "msc.bbl" 1761148358 5350 794619ebcfe84298b215005609ff7443 "bibtex msc"
-  "msc.out" 1761148414 2485 981d10c7691fae01d11a3308d7b73052 "pdflatex"
-  "msc.tex" 1761148251 7495 188c3f1ac25617ab196c80f585b8a43b ""
+  "msc.aux" 1761210876 7206 dc531428f8ff07533dc7a19d99e859fa "pdflatex"
+  "msc.bbl" 1761210793 5350 794619ebcfe84298b215005609ff7443 "bibtex msc"
+  "msc.out" 1761210876 2570 40b046228b4c3c1e7823f62dffe1a9dc "pdflatex"
+  "msc.tex" 1761209999 7509 702169a4cdb9f098c79d9b671f686b25 ""
+  "msc.toc" 1761210876 1460 13e7d23211e68cab643139d121319d38 "pdflatex"
   (generated)
   "msc.aux"
   "msc.log"
   "msc.out"
   "msc.pdf"
+  "msc.toc"
