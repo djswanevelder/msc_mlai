@@ -1,8 +1,0 @@
-{
-  "num_models": 800,
-  "input_dim": 11178051,
-  "model_type": "resnet18_3class",
-  "source": "trained_models",
-  "failed_count": 0,
-  "failed_examples": []
-}
