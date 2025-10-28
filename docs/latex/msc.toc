@@ -10,11 +10,14 @@
 \contentsline {subsection}{\numberline {2.4.1}NT-Xent Loss}{10}{subsection.2.4.1}%
 \contentsline {subsection}{\numberline {2.4.2}CLIP}{10}{subsection.2.4.2}%
 \contentsline {chapter}{\numberline {3}Methodology}{11}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Data Generation}{12}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Weight Encoder}{12}{section.3.2}%
-\contentsline {section}{\numberline {3.3}Dataset Encoder}{13}{section.3.3}%
-\contentsline {section}{\numberline {3.4}Results Encoder}{13}{section.3.4}%
-\contentsline {section}{\numberline {3.5}Shared Encoding}{13}{section.3.5}%
-\contentsline {chapter}{\numberline {4}Results and Analysis}{14}{chapter.4}%
-\contentsline {chapter}{\numberline {5}Summary and Conclusion}{15}{chapter.5}%
-\contentsline {chapter}{Bibliography}{16}{chapter*.5}%
+\contentsline {section}{\numberline {3.1}Model Zoo Generation}{12}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Weight Encoder}{14}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Dataset Encoder}{16}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Results Encoder}{17}{section.3.4}%
+\contentsline {section}{\numberline {3.5}Shared Encoding}{18}{section.3.5}%
+\contentsline {chapter}{\numberline {4}Results}{19}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Weight Encoder}{19}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Shared Encoder}{19}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Conditional Model Sampling}{19}{section.4.3}%
+\contentsline {chapter}{\numberline {5}Summary}{20}{chapter.5}%
+\contentsline {chapter}{Bibliography}{21}{chapter*.7}%
