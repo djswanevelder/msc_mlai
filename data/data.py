@@ -8,7 +8,7 @@ import shutil
 def fetch_and_export_wandb_data(
     entity: str,
     project_name: str,
-    download_dir: str = "ownloaded_artifacts",
+    download_dir: str = "downloaded_artifacts",
     output_csv_file: str = "wandb_runs_data.csv"
 ) -> pd.DataFrame:
     """
@@ -150,19 +150,18 @@ def extract_checkpoint_weights(source_dir: Optional[str] = None):
 
 if __name__ == "__main__":
     # # Example usage with the original values
-    # entity = '25205269-stellenbosch-university'
-    # project_name = 'MSc_MLAI'
+    entity = '25205269-stellenbosch-university'
+    project_name = 'MSc_MLAI'
     
-    # # You can call the function with your specific project details
-    # df = fetch_and_export_wandb_data(entity, project_name)
+    # You can call the function with your specific project details
+    df = fetch_and_export_wandb_data(entity, project_name)
     
-    # # You can now work with the DataFrame directly
-    # if not df.empty:
-    #     print("\nHead of the generated DataFrame:")
-    #     print(df.head())
+    # You can now work with the DataFrame directly
+    if not df.empty:
+        print("\nHead of the generated DataFrame:")
+        print(df.head())
 
-    # Example of calling the function with the path you mentioned in the previous turn:
-    # extract_checkpoint_weights(source_dir='/home/dj/Desktop/msc_mlai/data/weights/downloaded_artifacts') 
+    extract_checkpoint_weights(source_dir='/home/dj/Desktop/msc_mlai/data/weights/downloaded_artifacts') 
     
     # Running without arguments will still default to the current directory:
-    extract_checkpoint_weights(source_dir='./weights/downloaded_artifacts')
+    # extract_checkpoint_weights(source_dir='./weights/downloaded_artifacts')

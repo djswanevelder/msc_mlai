@@ -62,8 +62,8 @@ def generate_full_sweep_csv(
 
     # Random Hyperparameters
     df['seed'] = np.random.randint(0, 10000, size=num_rows)
-    df['early_epoch'] = np.random.randint(15, 25, size=num_rows)
-    df['max_epoch'] = np.clip(np.random.normal(loc=100, scale=15, size=num_rows), 50, 150).astype(int)
+    df['early_epoch'] = np.random.randint(10, 20, size=num_rows)
+    df['max_epoch'] = np.clip(np.random.normal(loc=50, scale=15, size=num_rows), 20, 80).astype(int)
     df['optimizer'] = np.where(np.random.random(num_rows) < 0.5, 'Adam', 'SGD')
     df['learning_rate'] = np.random.lognormal(mean=-3.0, sigma=0.8, size=num_rows).round(6) # Centered around 1e-3
     
@@ -89,6 +89,6 @@ if __name__ == "__main__":
     generate_full_sweep_csv(
         map_file_path=MAP_FILE_PATH,
         output_csv_file=OUTPUT_FILE,
-        num_permutations=100, 
+        num_permutations=400, 
         seed=42
     )
