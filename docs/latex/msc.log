@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2025.7.11)  23 OCT 2025 11:14
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2025.7.11)  28 OCT 2025 15:45
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -898,7 +898,7 @@ LaTeX Info: Redefining \nameref on input line 121.
 \openout4 = `msc.out'.
 
  (./frontmatter/title_page.tex
-<stb-thesis-frntp.pdf, id=83, 597.50786pt x 845.04686pt>
+<stb-thesis-frntp.pdf, id=95, 597.50786pt x 845.04686pt>
 File: stb-thesis-frntp.pdf Graphic file (type pdf)
 <use stb-thesis-frntp.pdf>
 Package pdftex.def Info: stb-thesis-frntp.pdf  used on input line 7.
@@ -984,26 +984,26 @@ Chapter 1.
 [1
 
 ]
-<fig//pipeline.png, id=172, 4970.57pt x 2971.1pt>
+<fig//pipeline.png, id=190, 4970.57pt x 2971.1pt>
 File: fig//pipeline.png Graphic file (type png)
 <use fig//pipeline.png>
-Package pdftex.def Info: fig//pipeline.png  used on input line 32.
+Package pdftex.def Info: fig//pipeline.png  used on input line 31.
 (pdftex.def)             Requested size: 341.43307pt x 204.05408pt.
 LaTeX Font Info:    Font shape `OT1/Caladea-TLF/m/n' will be
-(Font)              scaled to size 10.51207pt on input line 33.
+(Font)              scaled to size 10.51207pt on input line 32.
 LaTeX Font Info:    Font shape `OT1/Caladea-TLF/b/n' will be
-(Font)              scaled to size 10.51207pt on input line 33.
+(Font)              scaled to size 10.51207pt on input line 32.
 LaTeX Font Info:    Font shape `OT1/Carlito-LF/b/n' will be
-(Font)              scaled to size 10.51207pt on input line 33.
+(Font)              scaled to size 10.51207pt on input line 32.
 LaTeX Font Info:    Font shape `OT1/Caladea-TLF/m/it' will be
-(Font)              scaled to size 11.52008pt on input line 38.
+(Font)              scaled to size 11.52008pt on input line 37.
  [2]
-LaTeX Font Info:    Trying to load font information for TS1+Caladea-TLF on input line 43.
+LaTeX Font Info:    Trying to load font information for TS1+Caladea-TLF on input line 42.
  (/usr/share/texlive/texmf-dist/tex/latex/caladea/TS1Caladea-TLF.fd
 File: TS1Caladea-TLF.fd 2014/08/17 (autoinst) Font definitions for TS1/Caladea-TLF.
 )
 LaTeX Font Info:    Font shape `TS1/Caladea-TLF/m/n' will be
-(Font)              scaled to size 11.52008pt on input line 43.
+(Font)              scaled to size 11.52008pt on input line 42.
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `Caladea-TLF' (encoding: TS1).
 (microtype)             For optimal results, create family-specific settings.
@@ -1023,42 +1023,61 @@ LaTeX Font Info:    Font shape `OT1/Carlito-LF/b/n' will be
 Chapter 3.
 File: fig//pipeline.png Graphic file (type png)
 <use fig//pipeline.png>
-Package pdftex.def Info: fig//pipeline.png  used on input line 16.
+Package pdftex.def Info: fig//pipeline.png  used on input line 21.
 (pdftex.def)             Requested size: 341.43307pt x 204.05408pt.
 [11
 
-] [12]) (./body/results.tex [13]
+] [12] [13]
+
+LaTeX Warning: Citation `some_reference' on page 14 undefined on input line 104.
+
+LaTeX Font Info:    Trying to load font information for OT1+lmtt on input line 108.
+(/usr/share/texmf/tex/latex/lm/ot1lmtt.fd
+File: ot1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+Package microtype Info: Loading generic protrusion settings for font family
+(microtype)             `lmtt' (encoding: OT1).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on input line 111.
+LaTeX Font Info:    Font shape `OT1/Caladea-TLF/m/n' will be
+(Font)              scaled to size 9.60007pt on input line 114.
+ [14]
+<fig//pca_ae.png, id=301, 2738.23pt x 1304.875pt>
+File: fig//pca_ae.png Graphic file (type png)
+<use fig//pca_ae.png>
+Package pdftex.def Info: fig//pca_ae.png  used on input line 140.
+(pdftex.def)             Requested size: 341.43307pt x 162.69084pt.
+ [15 <./fig//pca_ae.png>] [16] [17]) (./body/results.tex [18]
 Chapter 4.
-) (./conclusion/conclusion.tex [14
+) (./conclusion/conclusion.tex [19
 
 ]
 Chapter 5.
-) (./msc.bbl [15
+) (./msc.bbl [20
 
-] [16
+] [21
 
-])
+]) [22] (./msc.aux)
 
-Package caption Warning: Unused \captionsetup[algorithm] on input line 100.
-See the caption package documentation for explanation.
+LaTeX Warning: There were undefined references.
 
-[17] (./msc.aux)
 Package rerunfilecheck Info: File `msc.out' has not changed.
-(rerunfilecheck)             Checksum: 40B046228B4C3C1E7823F62DFFE1A9DC;2570.
+(rerunfilecheck)             Checksum: C0541D2B70E461560D815DD8E8484A2C;2893.
  ) 
 Here is how much of TeX's memory you used:
- 33611 strings out of 478287
- 674660 string characters out of 5849289
- 937976 words of memory out of 5000000
- 50964 multiletter control sequences out of 15000+600000
- 529039 words of font info for 154 fonts, out of 8000000 for 9000
+ 33762 strings out of 478287
+ 677107 string characters out of 5849289
+ 938457 words of memory out of 5000000
+ 51074 multiletter control sequences out of 15000+600000
+ 542290 words of font info for 171 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  99i,12n,117p,1229b,956s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathex.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/caladea/cld_prieif.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/caladea/cld_cb3g7n.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/carlito/crlt_cegsyz.enc}</usr/share/texlive/texmf-dist/fonts/type1/huerta/caladea/Caladea-Bold.pfb></usr/share/texlive/texmf-dist/fonts/type1/huerta/caladea/Caladea-Italic.pfb></usr/share/texlive/texmf-dist/fonts/type1/huerta/caladea/Caladea-Regular.pfb></usr/share/texlive/texmf-dist/fonts/type1/typoland/carlito/Carlito-Bold.pfb></usr/share/texmf/fonts/type1/public/lm/lmex10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi12.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on msc.pdf (20 pages, 1445205 bytes).
+{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rmtt.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathex.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/caladea/cld_prieif.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/caladea/cld_cb3g7n.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/carlito/crlt_cegsyz.enc}</usr/share/texlive/texmf-dist/fonts/type1/huerta/caladea/Caladea-Bold.pfb></usr/share/texlive/texmf-dist/fonts/type1/huerta/caladea/Caladea-Italic.pfb></usr/share/texlive/texmf-dist/fonts/type1/huerta/caladea/Caladea-Regular.pfb></usr/share/texlive/texmf-dist/fonts/type1/typoland/carlito/Carlito-Bold.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmex10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi12.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi6.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi8.pfb></usr/share/texmf/fonts/type1/public/lm/lmmib10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr6.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on msc.pdf (25 pages, 1681672 bytes).
 PDF statistics:
- 378 PDF objects out of 1000 (max. 8388607)
- 322 compressed objects within 4 object streams
- 63 named destinations out of 1000 (max. 500000)
- 40623 words of extra memory for PDF output out of 42996 (max. 10000000)
+ 466 PDF objects out of 1000 (max. 8388607)
+ 393 compressed objects within 4 object streams
+ 79 named destinations out of 1000 (max. 500000)
+ 44748 words of extra memory for PDF output out of 51595 (max. 10000000)
 
