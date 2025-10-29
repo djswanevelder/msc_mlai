@@ -279,9 +279,9 @@ def load_autoencoder(
 
     # Create autoencoder
     weight_ae = WeightSpaceAE(
-        input_dim=171,
+        input_dim=675,
         latent_dim=512,
-        hidden_dims=[2048],
+        hidden_dims=[],
     )
     weight_ae.load_state_dict(ckpt["model_state_dict"])
     weight_ae.set_z_stats(ckpt["z_mean"], ckpt["z_std"])

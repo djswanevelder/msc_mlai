@@ -2,11 +2,11 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 from torch.utils.data import TensorDataset, DataLoader
-import numpy as np
+import numpy as np # <-- Keep or add this line for numpy functions
 import sys
 from typing import Tuple, Dict, Any, Union
 import optuna
-
+import matplotlib.pyplot as plt # <-- Import matplotlib for plotting
 
 # Dimensions (Default values, dynamically set during data loading)
 WEIGHT_SIZE = 512       
@@ -95,7 +95,7 @@ def calculate_nt_xent_loss(embeddings: torch.Tensor, temperature: float) -> torc
     loss = -(log_prob_1.mean() + log_prob_2.mean()) / 2
     return loss
 
-def prepare_data_and_loaders(file_path: str, n_test: int, batch_size: int, num_loss_bins: int) -> Tuple[DataLoader, DataLoader, int, int, float, float]:
+def prepare_data_and_loaders(file_path: str, n_test: int, batch_size: int, num_loss_bins: int) -> Tuple[DataLoader, DataLoader, int, int, float, float, torch.Tensor, torch.Tensor]:
     """
     Loads the meta-dataset, performs loss binning, splits data into train/test sets,
     and creates PyTorch DataLoaders.
@@ -107,12 +107,13 @@ def prepare_data_and_loaders(file_path: str, n_test: int, batch_size: int, num_l
         num_loss_bins (int): Number of bins for loss quantization.
 
     Returns:
-        Tuple[DataLoader, DataLoader, int, int, float, float]: 
-            (train_dataloader, test_dataloader, weight_size, data_dim, min_loss, max_loss).
+        Tuple: (train_dataloader, test_dataloader, weight_size, data_dim, min_loss, max_loss, 
+                final_loss_tensor, loss_indices) # <-- Updated return type for plotting data
     """
     print(f"Loading data from {file_path}...")
     try:
-        data = torch.load(file_path, weights_only=False)
+        # NOTE: Assumes data file is present at 'data/final_meta_dataset.pt'
+        data = torch.load(file_path, weights_only=False) 
         weights_tensor = data['weights'].float() 
         dataset_vector_tensor = torch.from_numpy(data['dataset_vector']).float()
         final_loss_tensor = torch.from_numpy(data['final_loss']).float()
@@ -149,25 +150,16 @@ def prepare_data_and_loaders(file_path: str, n_test: int, batch_size: int, num_l
     test_dataset = TensorDataset(test_data, test_loss_indices, test_weights)
     test_dataloader = DataLoader(test_dataset, batch_size=n_test, shuffle=False)
     
-    return train_dataloader, test_dataloader, weight_size, data_dim, min_loss.item(), max_loss.item()
+    # NEW: Return the full loss and binned loss tensors
+    return train_dataloader, test_dataloader, weight_size, data_dim, min_loss.item(), max_loss.item(), final_loss_tensor, loss_indices
 
 def predict_latent_vector(
     model_path: str, 
     dataset_embedding: torch.Tensor, 
     validation_loss: float
 ) -> torch.Tensor:
-    """
-    Predicts the weight latent vector for a given dataset embedding and validation loss,
-    loading the trained model and its configuration from a file path.
-
-    Args:
-        model_path (str): File path to the trained encoder model containing weights and config.
-        dataset_embedding (torch.Tensor): The 1536D dataset vector (shape [1536] or [1, 1536]).
-        validation_loss (float): The continuous validation loss achieved by the run.
-
-    Returns:
-        torch.Tensor: The predicted weight latent vector (shape [1, WEIGHT_SIZE]).
-    """
+    # ... (No changes needed here for plotting)
+    # The body of this function is omitted for brevity as it's unchanged.
     
     # 1. Load model state and configuration
     try:
@@ -213,13 +205,8 @@ def predict_latent_vector(
     return predicted_latent
 
 def run_training_pipeline(config: Dict[str, Union[str, int, float]]):
-    """
-    Main function to load the dataset, train the WeightLatentEncoder using NT-Xent 
-    loss, save the model, and evaluate it on a held-out test set.
-    
-    Args:
-        config (Dict): Dictionary containing all necessary file paths and hyperparameters.
-    """
+    # ... (No changes needed here for plotting)
+    # The body of this function is omitted for brevity as it's unchanged.
     
     # Unpack configuration
     file_path = config['DATASET_FILE_PATH']
@@ -232,7 +219,8 @@ def run_training_pipeline(config: Dict[str, Union[str, int, float]]):
     num_loss_bins = config['NUM_LOSS_BINS']
     
     # --- 1. Load and Prepare Data ---
-    train_loader, test_loader, weight_size, data_dim, min_loss, max_loss = prepare_data_and_loaders(
+    # We call the modified prepare_data_and_loaders but only use the required subset here.
+    train_loader, test_loader, weight_size, data_dim, min_loss, max_loss, _, _ = prepare_data_and_loaders(
         file_path, n_test, batch_size, num_loss_bins
     )
     
@@ -317,93 +305,42 @@ def run_training_pipeline(config: Dict[str, Union[str, int, float]]):
     print("\nProcess complete.")
     return test_loss_mse
 
-# -------------------------------------------------------------
-#                  OPTUNA OBJECTIVE FUNCTION
-# -------------------------------------------------------------
+# Removed unused extract_losses
+# Removed unused extract_losses
 
-def objective(trial: optuna.Trial) -> float:
+def plot_distribution_and_binned_distribution(losses: torch.Tensor, binned_losses: torch.Tensor, num_loss_bins: int):
     """
-    Defines the search space for Optuna and calls the training pipeline.
+    Plots the distribution of continuous loss values and the binned distribution.
+
+    Args:
+        losses (torch.Tensor): The original continuous loss values.
+        binned_losses (torch.Tensor): The binned (discrete index) loss values.
+        num_loss_bins (int): The number of bins used for quantization.
     """
     
-    # --- 1. Define Search Space ---
-    
-    # Learning Rate: Log-uniform sampling is best for LR
-    lr = trial.suggest_float('LEARNING_RATE', 1e-5, 1e-3, log=True)
-    
-    # Batch Size: Integer sampling, ensuring it's an even number (for NT-Xent)
-    # 10 is the absolute minimum, 100 or 128 is a good maximum for a 200 sample set.
-    batch_size = trial.suggest_int('BATCH_SIZE', 10, 60, step=2) 
-    
-    # Loss Embedding Dimension (k)
-    loss_embedding_k = trial.suggest_int('LOSS_EMBEDDING_K', 64, 256, step=32)
-    
-    # Number of Bins (must be >= 2)
-    num_loss_bins = trial.suggest_int('NUM_LOSS_BINS', 10, 80, step=10)
-    
-    # Temperature for NT-Xent (can also be tuned)
-    temp = trial.suggest_float('TEMPERATURE', 0.05, 0.5, log=True)
-    
-    # Other fixed parameters
-    config = {
-        'DATASET_FILE_PATH': 'data/final_meta_dataset.pt',
-        # NOTE: Not saving model weights during tuning to speed up
-        'OUTPUT_MODEL_PATH': f'data/trials/temp_trial_{trial.number}.pth', 
-        'N_TEST': 10,
-        'NUM_EPOCHS': 50, # Reduce epochs for tuning speed
-        
-        # Sampled parameters
-        'LEARNING_RATE': lr,
-        'BATCH_SIZE': batch_size,
-        'LOSS_EMBEDDING_K': loss_embedding_k,
-        'NUM_LOSS_BINS': num_loss_bins,
-        'TEMPERATURE': temp,
-    }
-    
-    # --- 2. Run Training and Return Metric ---
-    
-    # The run_training_pipeline function is modified to return the test_loss_mse
-    mse_loss = run_training_pipeline(config)
-    
-    return mse_loss
+    # Convert tensors to numpy arrays for plotting
+    losses_np = losses.numpy()
+    binned_losses_np = binned_losses.numpy()
 
+    # --- Plot the **Distribution of Continuous Losses** ---
+    plt.figure(figsize=(10, 5))
+    plt.hist(losses_np, bins=50, color='skyblue', edgecolor='black')
+    plt.title(f"Distribution of Losses (Continuous Values, N={len(losses_np)})")
+    plt.xlabel("Loss Value (Original)")
+    plt.ylabel("Frequency")
+    plt.grid(axis='y', alpha=0.75)
+    plt.show()
 
-# if __name__ == "__main__":
-    
-#     # --- OPTUNA STUDY SETUP ---
-    
-#     # 1. Create a study object
-#     # direction='minimize' tells Optuna to find the parameters that result in the smallest return value.
-#     study = optuna.create_study(
-#         direction='minimize', 
-#         sampler=optuna.samplers.TPESampler(seed=42) # TPE is the Bayesian approach
-#     )
-    
-#     # 2. Run the optimization
-#     N_TRIALS = 100 # Set a reasonable number of trials
-#     print(f"Starting Optuna search for {N_TRIALS} trials...")
-    
-#     # The objective function is called N_TRIALS times, with Optuna intelligently
-#     # suggesting new hyperparameters in each call.
-#     study.optimize(objective, n_trials=N_TRIALS)
-
-#     # 3. Report Results
-#     print("\n" + "=" * 60)
-#     print("✨ Optimization Finished ✨")
-#     print("-" * 60)
-#     print(f"Number of finished trials: {len(study.trials)}")
-#     print(f"Best Trial Number: {study.best_trial.number}")
-#     print(f"Best Test MSE Loss: {study.best_value:.6f}")
-#     print("\nBest hyperparameters found:")
-#     for key, value in study.best_params.items():
-#         print(f"  {key}: {value}")
-#     print("=" * 60)
-
-# BATCH_SIZE: 52
-# LOSS_EMBEDDING_K: 64
-# NUM_LOSS_BINS: 70
-# TEMPERATURE: 0.19010694880943896
-
+    # --- Plot the **Binned Distribution of Losses** ---
+    plt.figure(figsize=(10, 5))
+    # Note: We use the actual number of bins and align bin centers for clarity
+    plt.hist(binned_losses_np, bins=num_loss_bins, range=(-0.5, num_loss_bins - 0.5), color='lightcoral', edgecolor='black', rwidth=0.8)
+    plt.title(f"Binned Distribution of Losses (Discrete Indices, K={num_loss_bins} Bins)")
+    plt.xlabel("Bin Index")
+    plt.ylabel("Frequency")
+    plt.xticks(np.arange(0, num_loss_bins, max(1, num_loss_bins // 10))) # Show ticks every 10% of bins or at least 1
+    plt.grid(axis='y', alpha=0.75)
+    plt.show()
 
 if __name__ == "__main__":
 
@@ -411,14 +348,26 @@ if __name__ == "__main__":
     'DATASET_FILE_PATH': 'data/final_meta_dataset.pt',
     'OUTPUT_MODEL_PATH': 'data/trained_encoder_weights.pth',
     # Dimensions and Binning
-    'LOSS_EMBEDDING_K': 64,
+    'LOSS_EMBEDDING_K': 128,
     'NUM_LOSS_BINS': 50,
     # Training Hyperparameters
     'TEMPERATURE': 0.19,
     'BATCH_SIZE': 52,
-    'NUM_EPOCHS': 200,
+    'NUM_EPOCHS': 500,
     'N_TEST': 10
     }
 
 
+
+    # (train_loader, test_loader, weight_size, data_dim, min_loss, max_loss, 
+    #     final_loss_tensor, loss_indices) = prepare_data_and_loaders(
+    #     CONFIG['DATASET_FILE_PATH'], CONFIG['N_TEST'], CONFIG['BATCH_SIZE'], CONFIG['NUM_LOSS_BINS']
+    # )
+    # plot_distribution_and_binned_distribution(
+    #     losses=final_loss_tensor, 
+    #     binned_losses=loss_indices, 
+    #     num_loss_bins=CONFIG['NUM_LOSS_BINS']
+    # )
+
+    # Start the training pipeline
     test_loss_mse = run_training_pipeline(CONFIG)

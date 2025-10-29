@@ -747,6 +747,9 @@ class WeightSpaceDataModule(L.LightningDataModule):
             batch_size=self.batch_size,
             shuffle=True,
             num_workers=self.num_workers,
+            pin_memory=True,            # Recommended: Puts data on CUDA-aware host memory
+            prefetch_factor=2,          # Recommended: Workers prepare 2 batches ahead
+            persistent_workers=True,    # Recommended: Keep worker processes alive
         )
 
     def val_dataloader(self) -> DataLoader:
@@ -755,6 +758,9 @@ class WeightSpaceDataModule(L.LightningDataModule):
             batch_size=self.batch_size,
             shuffle=False,
             num_workers=self.num_workers,
+            pin_memory=True,            # Recommended: Puts data on CUDA-aware host memory
+            prefetch_factor=2,          # Recommended: Workers prepare 2 batches ahead
+            persistent_workers=True,    # Recommended: Keep worker processes alive
         )
 
     def test_dataloader(self) -> DataLoader:
@@ -763,6 +769,9 @@ class WeightSpaceDataModule(L.LightningDataModule):
             batch_size=self.batch_size,
             shuffle=False,
             num_workers=self.num_workers,
+            pin_memory=True,            # Recommended: Puts data on CUDA-aware host memory
+            prefetch_factor=2,          # Recommended: Workers prepare 2 batches ahead
+            persistent_workers=True,    # Recommended: Keep worker processes alive
         )
 
     def get_test_indices(self) -> List[int]:
@@ -1088,21 +1097,20 @@ def main():
     WD = 1e-5
     DATASET_DIR = "data/dataset/"
     PROJECT_NAME = "weight-space-ae-pca"
-    PCA_K_PER_PARAM = 8
+    PCA_K_PER_PARAM = 32
     PCA_MIN_DIM_ID = 4
-    PCA_CONST_VAR_EPS = 1e-8
-    PCA_MAX_MODELS_FOR_PCA = 256
-    PCA_LOAD_BATCH = 64
-    NUM_WORKERS = 4
-    MODELS_DIR = "data/weights/extracted_weights/"
+    PCA_CONST_VAR_EPS = 1e-9
+    PCA_MAX_MODELS_FOR_PCA = 400
+    PCA_LOAD_BATCH = 128
+    NUM_WORKERS = 6
+    MODELS_DIR = "data/weights/selected/"
     MAX_MODELS = None
-    HIDDEN_DIMS = [512]
+    HIDDEN_DIMS = []
 
     # Logger
     wandb_logger = WandbLogger(
         project=PROJECT_NAME, name=f"k{PCA_K_PER_PARAM}-lat{LATENT_DIM}-lr{LR}"
     )
-
     # Data
     dm = WeightSpaceDataModule(
         dataset_dir=DATASET_DIR,
@@ -1115,11 +1123,11 @@ def main():
         pca_const_var_eps=PCA_CONST_VAR_EPS,
         pca_max_models_for_pca=PCA_MAX_MODELS_FOR_PCA,
         pca_load_batch=PCA_LOAD_BATCH,
-        random_seed=42,  # Fixed seed for reproducible splits
+        random_seed=42, 
     )
     dm.prepare_data()
     dm.setup()
-
+    
     # Create standalone autoencoder
     weight_ae = WeightSpaceAE(
         input_dim=dm.input_dim,
@@ -1147,10 +1155,11 @@ def main():
         logger=wandb_logger,
         callbacks=callbacks,
         accelerator="gpu" if use_cuda else "cpu",
-        devices=[3] if use_cuda else "auto",
-        precision="16-mixed" if use_cuda else "32",
+        devices=[0] if use_cuda else "auto",
+        precision="bf16",
         gradient_clip_val=1.0,
     )
+    # Add this code immediately after the L.Trainer block:
 
     # Log basics
     wandb_logger.log_hyperparams(
@@ -1236,4 +1245,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-    

@@ -223,7 +223,7 @@ def run_data_embedding_pipeline(metadata_csv_path: str, image_root_dir: str, out
 
 
 if __name__ == "__main__":
-    METADATA_CSV = "data/meta_dataset_info.csv" # The CSV containing 'class1', 'class2', etc.
+    METADATA_CSV = "data/meta_data.csv" # The CSV containing 'class1', 'class2', etc.
     IMAGE_ROOT = "data/imagenet_data" # The root folder where class image directories reside
     OUTPUT_VECTORS_CSV = "data/dataset_latents.csv" # The file to save the final embeddings to
 

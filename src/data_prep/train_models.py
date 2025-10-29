@@ -50,8 +50,10 @@ def download_all_classes(input_filename):
     all_classes = pd.concat([pd.Series(cl1), pd.Series(cl2), pd.Series(cl3)]).unique()
     data_config = {"classes":all_classes.tolist()}
     data_cfg = OmegaConf.create(data_config)
+    total_classes = len(all_classes)
+    print(f"\nTotal unique classes to download: {total_classes}")
     download(data_cfg)
 
 if __name__ == "__main__":
     download_all_classes('data/sweep.csv')
-    # sweep_over_all('data/sweep.csv')
+    sweep_over_all('data/sweep.csv')

@@ -9,16 +9,19 @@ def generate_full_sweep_csv(
     map_file_path: str, 
     output_csv_file: str, 
     num_permutations: int, 
+    subset_size: int,
+    rows_to_mark_done: int,
     seed: int
 ) -> None:
     """
-    Reads class names, generates random class permutations, assigns random 
-    hyperparameters, and saves the complete configuration to a single CSV file.
+    Reads class names, selects a subset, generates random class permutations 
+    from the subset, assigns random hyperparameters, and saves the configuration to a CSV.
 
     Args:
         map_file_path: Path to the file with class names (e.g., 'imagenet_map.txt').
         output_csv_file: Path to the final output CSV file ('sweep.csv').
         num_permutations: The number of random class combinations to generate (i.e., rows).
+        subset_size: The number of classes to randomly select for the subset.
         seed: The seed for reproducibility.
     """
     if not os.path.exists(map_file_path):
@@ -40,16 +43,37 @@ def generate_full_sweep_csv(
         print(f"Error reading from file: {e}")
         return
 
-    if len(class_names) < 3:
-        print("Error: Not enough classes in the file to create permutations of 3.")
+    # --- MODIFICATION START ---
+    
+    # 1. Check if the requested subset size is valid
+    if subset_size < 3:
+        print("Error: Subset size must be at least 3 to create permutations of 3.")
+        return
+    if len(class_names) < subset_size:
+        print(f"Error: Requested subset size ({subset_size}) is larger than the total number of classes found ({len(class_names)}).")
+        return
+        
+    # 2. Select the random subset of classes
+    # Use the same seed for reproducibility in subset selection
+    class_subset = random.sample(class_names, subset_size)
+    print(f"Found {len(class_names)} total classes. Selecting a random subset of {subset_size} classes for the sweep.")
+    
+    # The permutations will be drawn from this subset
+    source_classes = class_subset
+    
+    # --- MODIFICATION END ---
+
+    if len(source_classes) < 3: # Redundant check but good practice
+        print("Error: Not enough classes in the source list to create permutations of 3.")
         return
 
-    print(f"Found {len(class_names)} classes. Generating {num_permutations} full configurations...")
+    print(f"Generating {num_permutations} configurations from the {len(source_classes)} selected classes...")
 
     sweep_data: List[dict] = []
     
     for i in range(num_permutations):
-        sampled_classes = random.sample(class_names, 3)
+        # The random.sample is now drawing from the smaller 'source_classes' list
+        sampled_classes = random.sample(source_classes, 3) 
         sweep_data.append({
             'class1': sampled_classes[0],
             'class2': sampled_classes[1],
@@ -59,8 +83,7 @@ def generate_full_sweep_csv(
     df = pd.DataFrame(sweep_data)
     num_rows = len(df)
     
-
-    # Random Hyperparameters
+    # Random Hyperparameters (remaining unchanged)
     df['seed'] = np.random.randint(0, 10000, size=num_rows)
     df['early_epoch'] = np.random.randint(10, 20, size=num_rows)
     df['max_epoch'] = np.clip(np.random.normal(loc=50, scale=15, size=num_rows), 20, 80).astype(int)
@@ -69,8 +92,10 @@ def generate_full_sweep_csv(
     
     # Fixed/Default Parameters
     df['store_weight'] = True
-    df['status'] = '-'
     
+    mark_done_count = min(rows_to_mark_done, num_rows)
+    df['status'] = ['Done'] * mark_done_count + ['-'] * (num_rows - mark_done_count)
+
     try:
         df.to_csv(output_csv_file, index=False)
         print(f"\nSuccessfully generated {num_rows} configurations and saved to '{output_csv_file}'.")
@@ -84,11 +109,17 @@ if __name__ == "__main__":
 
     OUTPUT_FILE = os.path.join(os.getcwd(), 'data', 'sweep.csv')
 
-
+    # Define the input parameters for the script
+    NUMBER_OF_PERMUTATIONS = 500
+    SUBSET_SIZE = 50
+    ROWS_TO_MARK_DONE = 119
+    RANDOM_SEED = 42
 
     generate_full_sweep_csv(
         map_file_path=MAP_FILE_PATH,
         output_csv_file=OUTPUT_FILE,
-        num_permutations=400, 
-        seed=42
+        num_permutations=NUMBER_OF_PERMUTATIONS, 
+        subset_size=SUBSET_SIZE,
+        seed=RANDOM_SEED,
+        rows_to_mark_done=ROWS_TO_MARK_DONE
     )
