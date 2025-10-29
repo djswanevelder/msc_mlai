@@ -5,19 +5,20 @@
 \contentsline {section}{\numberline {2.1}Weight Space Learning}{4}{section.2.1}%
 \contentsline {section}{\numberline {2.2}Principal Component Analysis (PCA)}{5}{section.2.2}%
 \contentsline {section}{\numberline {2.3}Autoencoders}{6}{section.2.3}%
-\contentsline {subsection}{\numberline {2.3.1}Autoencoder for Neural Embeddings}{8}{subsection.2.3.1}%
-\contentsline {section}{\numberline {2.4}Contrastive Learning}{9}{section.2.4}%
-\contentsline {subsection}{\numberline {2.4.1}NT-Xent Loss}{10}{subsection.2.4.1}%
-\contentsline {subsection}{\numberline {2.4.2}CLIP}{10}{subsection.2.4.2}%
-\contentsline {chapter}{\numberline {3}Methodology}{11}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Model Zoo Generation}{12}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Weight Encoder}{14}{section.3.2}%
-\contentsline {section}{\numberline {3.3}Dataset Encoder}{16}{section.3.3}%
-\contentsline {section}{\numberline {3.4}Results Encoder}{17}{section.3.4}%
-\contentsline {section}{\numberline {3.5}Shared Encoding}{18}{section.3.5}%
-\contentsline {chapter}{\numberline {4}Results}{19}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Weight Encoder}{19}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Shared Encoder}{19}{section.4.2}%
-\contentsline {section}{\numberline {4.3}Conditional Model Sampling}{19}{section.4.3}%
-\contentsline {chapter}{\numberline {5}Summary}{20}{chapter.5}%
-\contentsline {chapter}{Bibliography}{21}{chapter*.7}%
+\contentsline {section}{\numberline {2.4}Contrastive Learning}{7}{section.2.4}%
+\contentsline {subsection}{\numberline {2.4.1}NT-Xent Loss}{8}{subsection.2.4.1}%
+\contentsline {subsection}{\numberline {2.4.2}Multimodal Embedding}{8}{subsection.2.4.2}%
+\contentsline {section}{\numberline {2.5}Autoencoder for Neural Embeddings}{9}{section.2.5}%
+\contentsline {chapter}{\numberline {3}Methodology}{12}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Model Zoo Generation}{13}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Model}{14}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Weight Encoder}{14}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}Dataset Encoder}{17}{subsection.3.2.2}%
+\contentsline {subsection}{\numberline {3.2.3}Results Encoder}{18}{subsection.3.2.3}%
+\contentsline {section}{\numberline {3.3}Shared Encoding}{18}{section.3.3}%
+\contentsline {chapter}{\numberline {4}Results}{20}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Weight Encoder}{20}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Shared Encoder}{20}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Conditional Model Sampling}{20}{section.4.3}%
+\contentsline {chapter}{\numberline {5}Summary}{21}{chapter.5}%
+\contentsline {chapter}{Bibliography}{22}{chapter*.10}%
