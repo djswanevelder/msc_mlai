@@ -205,9 +205,7 @@ def predict_latent_vector(
     return predicted_latent
 
 def run_training_pipeline(config: Dict[str, Union[str, int, float]]):
-    # ... (No changes needed here for plotting)
-    # The body of this function is omitted for brevity as it's unchanged.
-    
+  
     # Unpack configuration
     file_path = config['DATASET_FILE_PATH']
     model_path = config['OUTPUT_MODEL_PATH']
@@ -242,13 +240,10 @@ def run_training_pipeline(config: Dict[str, Union[str, int, float]]):
         for batch_data, batch_loss_indices, batch_weights in train_loader:
             optimizer.zero_grad()
             
-            # Predict the weight latent vector
             predicted_weights = encoder(batch_data, batch_loss_indices)
             
-            # Concatenate predictions (Anchor) and ground truths (Positive)
             all_embeddings = torch.cat([predicted_weights, batch_weights], dim=0)
             
-            # Calculate contrastive loss
             loss = calculate_nt_xent_loss(all_embeddings, temp)
             
             loss.backward()
@@ -304,9 +299,6 @@ def run_training_pipeline(config: Dict[str, Union[str, int, float]]):
 
     print("\nProcess complete.")
     return test_loss_mse
-
-# Removed unused extract_losses
-# Removed unused extract_losses
 
 def plot_distribution_and_binned_distribution(losses: torch.Tensor, binned_losses: torch.Tensor, num_loss_bins: int):
     """

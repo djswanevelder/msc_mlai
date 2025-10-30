@@ -5,3 +5,4 @@ wandb/
 weights/
 downloaded_artifacts/
 __pycache__/
+imagenet_data/

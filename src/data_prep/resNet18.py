@@ -14,9 +14,10 @@ from tqdm import tqdm
 from pytorch_lightning.loggers import WandbLogger
 from pytorch_lightning.callbacks import ModelCheckpoint
 from torchmetrics.classification import Accuracy
+from typing import Optional, Dict
 
 import wandb
-wandb.login(key='383931e33038a7e29973dbc378da30378cfdc061')
+# wandb.login(key='383931e33038a7e29973dbc378da30378cfdc061')
 import shortuuid
 
 class StateDictSaver(pl.Callback):
@@ -61,7 +62,7 @@ class ResNetClassifier(pl.LightningModule):
     """
     A ResNet-18 classifier using PyTorch Lightning.
     """
-    def __init__(self, num_classes: int, optimizer_name: str):
+    def __init__(self, num_classes: int, optimizer_name: str, model_path: Optional[str] = None, state_dict: Optional[Dict[str, torch.Tensor]] = None):
         super().__init__()
         self.save_hyperparameters()
         
@@ -74,6 +75,13 @@ class ResNetClassifier(pl.LightningModule):
         # Initialize torchmetrics for accuracy
         self.val_accuracy = Accuracy(task="multiclass", num_classes=num_classes)
         self.train_accuracy = Accuracy(task="multiclass", num_classes=num_classes)
+
+        if model_path:
+            # Load the model from the file
+            self.load_state_dict(torch.load(model_path, map_location="cpu"))
+        elif state_dict:
+            # Load the state_dict
+            self.load_state_dict(state_dict)
 
     def forward(self, x):
         return self.model(x)
@@ -156,7 +164,7 @@ def calculate_mean_std(dataset):
     
     return mean.tolist(), std.tolist()
 
-def prepare_data(data_path, classes_to_use, batch_size,num_workers):
+def prepare_data(data_path, classes_to_use, batch_size, num_workers, mean=None, std=None):
     """
     Loads data from the file system, splits it into training and validation sets,
     and creates DataLoaders.
@@ -171,11 +179,24 @@ def prepare_data(data_path, classes_to_use, batch_size,num_workers):
     filtered_samples = []
     class_to_new_label = {cls: i for i, cls in enumerate(classes_to_use)}
     
+    print(f"Found {len(all_data.samples)} samples in total dataset.")
     for path, label in all_data.samples:
         class_name = all_data.classes[label]
         if class_name in classes_to_use:
             new_label = class_to_new_label[class_name]
             filtered_samples.append((path, new_label))
+
+
+    new_label_to_class = {i: cls for i, cls in enumerate(classes_to_use)}
+
+    class_to_count = {cls: 0 for cls in classes_to_use}
+    for path, new_label in filtered_samples: 
+        class_name = new_label_to_class[new_label]
+        class_to_count[class_name] += 1
+        
+    print(f"Found the following number of samples in classes:")
+    for cls, count in class_to_count.items():
+        print(f"Class {cls}: {count}")
 
     filtered_data = ImageFolder(
         root=data_path,
@@ -192,11 +213,16 @@ def prepare_data(data_path, classes_to_use, batch_size,num_workers):
     train_size = int(0.8 * total_size)
     val_size = total_size - train_size
     
+    print(f"Splitting dataset into training set of size {train_size} and validation set of size {val_size}.")
     train_data, val_data = random_split(filtered_data, [train_size, val_size])
 
-    calculated_mean, calculated_std = calculate_mean_std(train_data)
-    print(f"Calculated Mean: {calculated_mean}")
-    print(f"Calculated Std: {calculated_std}")
+    if mean is None or std is None:
+        calculated_mean, calculated_std = calculate_mean_std(train_data)
+        print(f"Calculated Mean: {calculated_mean}")
+        print(f"Calculated Std: {calculated_std}")
+    else:
+        calculated_mean = mean
+        calculated_std = std
     
     final_transform = transforms.Compose([
         transforms.Resize((224, 224)),
@@ -207,8 +233,8 @@ def prepare_data(data_path, classes_to_use, batch_size,num_workers):
     train_data.dataset.transform = final_transform
     val_data.dataset.transform = final_transform
 
-    train_loader = DataLoader(train_data, batch_size=batch_size, shuffle=True,num_workers=num_workers)
-    val_loader = DataLoader(val_data, batch_size=batch_size, shuffle=False,num_workers=num_workers)
+    train_loader = DataLoader(train_data, batch_size=batch_size, shuffle=True, num_workers=num_workers)
+    val_loader = DataLoader(val_data, batch_size=batch_size, shuffle=False, num_workers=num_workers)
     
     return train_loader, val_loader, len(classes_to_use), calculated_mean, calculated_std
 
@@ -228,7 +254,7 @@ def train_restNet18(cfg: DictConfig) -> None:
     state_dict_saver_callback = StateDictSaver(
         log_to_wandb=cfg.wandb.store_weight,
         early_epoch=cfg.training.early_epoch,
-        )
+    )
 
     train_loader, val_loader, num_classes, calculated_mean, calculated_std = prepare_data(
         data_path=cfg.data.data_path,
@@ -240,6 +266,9 @@ def train_restNet18(cfg: DictConfig) -> None:
         num_classes=num_classes,
         optimizer_name=cfg.training.optimizer
     )
+
+    wandb_logger.experiment.summary["calculated_mean"] = str(calculated_mean)
+    wandb_logger.experiment.summary["calculated_std"] = str(calculated_std)
 
     trainer = pl.Trainer(
         max_epochs=cfg.training.max_epoch,
@@ -258,20 +287,18 @@ if __name__ == '__main__':
             "data": {
                 "data_path": "./data/imagenet_data",
                 "classes": [
-                    'red_fox',
-                    'dingo',
-                    'doberman'
+                    'planetarium','pajama','ibizan_hound'
                 ],
                 "batch_size": 32
             },
             "training": {
-                "optimizer": 'SGD',
-                "max_epoch": 2,
-                "early_epoch": 1,
+                "optimizer": 'Adam',
+                "max_epoch": 4,
+                "early_epoch": 2,
                 "num_workers": 15
 
             },
-            "seed": int(42),
+            "seed": 9555,
             "wandb": {
                 "project_name": "MSc_MLAI",
                 "store_weight": False,
@@ -279,3 +306,30 @@ if __name__ == '__main__':
         }
     cfg = OmegaConf.create(my_config)
     train_restNet18(cfg)
+
+    # pl.seed_everything(cfg.seed)
+
+    # model = ResNetClassifier(
+    #     num_classes=3,
+    #     optimizer_name='Adam',
+    #     model_path= f'data/weights/{'BLuwvuyGkN9BocfNNrhc3m_4.pth'}'
+    # )
+    # train_loader, val_loader, num_classes, calculated_mean, calculated_std = prepare_data(
+    #     data_path=cfg.data.data_path,
+    #     classes_to_use=cfg.data.classes,
+    #     batch_size=cfg.data.batch_size,
+    #     num_workers=cfg.training.num_workers,
+    #     mean=[0.4881827235221863, 0.4585472047328949, 0.4308537542819977],
+    #     std=[0.27237772941589355, 0.2654491662979126, 0.28583213686943054]
+    # )
+    # for batch_idx, batch in enumerate(train_loader):
+    #     x, y = batch
+
+    #     original_outputs = model(x)
+
+    #     _, original_predicted = torch.max(original_outputs.data, 1)
+
+
+    #     print('Ground Truth: ', y, 'Original Prediction: ', original_predicted)
+    #     if batch_idx == 0:
+    #         break

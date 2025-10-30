@@ -23,7 +23,7 @@ python -m src.data_prep.prep_metadataset
 9. Train Shared Encoder
 
 ```
-python -m src.data_prep.prep_metadataset
+python -m src.shared_emb_space
 ```
 
 Generate Plots:
