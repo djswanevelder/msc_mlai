@@ -132,11 +132,14 @@ def transform_runs_to_concise_artifacts(csv_path: str, output_path: str):
         'Artifact_Filename',
         'artifact_epoch', 
         'val_loss',
-        'val_accuracy'
+        'val_accuracy',
+        'calculated_mean',
+        'calculated_std',
     ]].copy()
 
     final_df.columns = [
-        'run_id', 'run_name', 'class1', 'class2', 'class3', 'artifact_name', 'artifact_epoch', 'val_loss', 'val_accuracy'
+        'run_id', 'run_name', 'class1', 'class2', 'class3', 'artifact_name', 'artifact_epoch', 'val_loss', 'val_accuracy','calculated_mean',
+        'calculated_std',
     ]
     
     # 5. SAVE THE RESULT TO CSV WITH HEADERS

@@ -38,7 +38,7 @@ def generate_full_sweep_csv(
                 parts = line.strip().split(' ')
                 # Assuming the third part is the class name
                 if len(parts) >= 3:
-                    class_names.append(parts[2])
+                    class_names.append(parts[2].lower())
     except Exception as e:
         print(f"Error reading from file: {e}")
         return
@@ -112,7 +112,7 @@ if __name__ == "__main__":
     # Define the input parameters for the script
     NUMBER_OF_PERMUTATIONS = 500
     SUBSET_SIZE = 50
-    ROWS_TO_MARK_DONE = 119
+    ROWS_TO_MARK_DONE = 0
     RANDOM_SEED = 42
 
     generate_full_sweep_csv(

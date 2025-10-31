@@ -10,10 +10,59 @@
 
 \section{Weight Encoder}
 \label{sec:weights}
-% Overall Loss
-%     Val
-%     Train 
-% model agreement, simliarity and mea 
+
+
+\begin{figure*}[!t] % Use figure* for full-width across columns, or just figure if it fits
+    \centering
+    
+    % --- First Subfigure ---
+    \subfloat[Training and Validation Loss]{
+        \includegraphics[width=0.48\textwidth]{weight_encoder/combined_loss_plot.png}
+        \label{fig:weight_encoder_loss}
+    }
+    \hfill % Adds horizontal space (pushes figures apart)
+    
+    % --- Second Subfigure ---
+    \subfloat[Test Output Comparisons]{
+        \includegraphics[width=0.48\textwidth]{weight_encoder/output_comparison.png} % Replace with your second plot's filename
+        \label{fig:metrics_comparison_b}
+    }
+    
+    % --- Overall Caption and Label ---
+    \caption{Performance curves: }
+    \label{fig:combined_plots}
+\end{figure*}
+
+First PCA fitting is done on the training set, the autoencoder is then trained. 
+In order to evaluate the quality of the weight encoder, we plot the loss function during training. Figure \ref{fig:weight_encoder_loss} shows the loss function for the weight encoder, after the PCA projection. The training loss decreases over time, reaching a plateau. The validational loss behaves the same, decreasing over epochs. This indicates that the model is not overfitting to the training data, and is generalizing to unseen data. This indicates that the Weight Encoder is has learnt how to enocode and decode more than jusit the training data, but how to generarte and reconstruct latent representations for the task. 
+
+
+The MSE Loss as seen in Figure \ref{fig:weight_encoder_loss} indicates that the Weigth Encoder is learning to solve the task, but as the scale of error is relative to the scale of the input, it is not directly interpretable. Thus further comparsion is required. Figure \ref{fig:metrics_comparison_b} encodes and reconstructs unseen models, and then use the reconstructed mdoel to classify a set of data. The output of the original model is compared to the output of the reconstructed model. At all points in the training, the model agreement was $100\%$ on synthetic images, model agreement being the percent which the classifed label is common between the original and reconstructed. The correlation and cosine simliarity is calculates prior to the softmax. It is clear that Weight Autencoder is capable of learning model representasion with sufficient capablity to reconstruct models which have highly correlated outputs compared to the original model's outputs.$0.95+\%$
+
+The proceduce for comparing model output is followed, but where the input into the models are the same data which the original model was trained on. Table ~\ref{tab:weight_real_data} shows
+
+
+
+% \begin{table}[!h]
+%     \mytable
+%     \caption{}
+%     \begin{tabularx}{\linewidth}{@{}lCCCCC@{}}
+%         \toprule
+%         Metric     & 1 & 2 & 3 & 4 & 5 \\
+%         \midrule
+%         WER (\%)                        & $35.4$ & $23.5$ & $21.5$ & $21.2$ & $22.9$ \\
+%         Average cluster purity (\%)       & $86.5$ & $89.7$ & $89.2$ & $88.5$ & $86.6$ \\
+%         Word boundary $F$-score (\%)         & $70.6$ & $72.2$ & $71.8$ & $70.9$ & $69.4$ \\
+%         Clusters covering 90\% of data   & 20             & 13 & 13 & 13 & 13 \\
+%         \bottomrule
+%     \end{tabularx}
+%     \label{tbl:exemplars}
+% \end{table}
+
+
+It is clear that the Weight Encoder is unable to reconstruct models with enough quality to preserve the descision boundary of the original model. The difference output correlation between sythetic and real data indicates that a representasion of the ResNet18 model is being learning, but not with sufficently fine-grained enough.
+
+
 
 \section{Shared Encoder}
 \label{sec:shared}

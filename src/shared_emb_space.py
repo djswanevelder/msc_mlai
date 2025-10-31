@@ -344,9 +344,9 @@ if __name__ == "__main__":
     'NUM_LOSS_BINS': 50,
     # Training Hyperparameters
     'TEMPERATURE': 0.19,
-    'BATCH_SIZE': 52,
-    'NUM_EPOCHS': 500,
-    'N_TEST': 10
+    'BATCH_SIZE': 2,
+    'NUM_EPOCHS': 100,
+    'N_TEST': 1
     }
 
 

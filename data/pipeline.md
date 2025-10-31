@@ -10,7 +10,7 @@ python -m src.encode.pca_method
 ```
 6. Encoder the Models Latents
 ```
-python -m src.encode.encode_models --model-dir data/weights/selected/ --checkpoint-path data/dataset/pca_encoder.pth --dataset-dir data/dataset --output-dir data/model_latents.pth
+python -m src.encode.encode_models --model-dir data/weights/selected/ --checkpoint-path data/dataset/pca_encoder.pth --dataset-dir data/dataset --output-path data/model_latents.pth
 ```
 7. Generate Dataset (Class) Latents
 ```
@@ -25,6 +25,7 @@ python -m src.data_prep.prep_metadataset
 ```
 python -m src.shared_emb_space
 ```
+python -m src.encode.evaluate_weight_encoder
 
 Generate Plots:
 

@@ -167,7 +167,7 @@ class WeightVectorDataset(Dataset):
             obj["weight_vector"].float().clamp_(-10.0, 10.0)
         )  # clamping massive weights to help with smoothness during training
         return flat
-
+    
 
 class PerParamPCAMapper:
     """
@@ -480,8 +480,7 @@ class PCACoeffDataset(Dataset):
         for i in range(sample):
             flat = (
                 torch.load(self.raw.files[i], map_location="cpu")["weight_vector"]
-                .float()
-                .clamp_(-10.0, 10.0)
+                .float().clamp_(-10.0, 10.0)
             )
             zs.append(self.mapper.transform(flat))
         Z = torch.stack(zs, dim=0) if zs else torch.zeros(1, self.z_dim)
@@ -494,8 +493,7 @@ class PCACoeffDataset(Dataset):
     def __getitem__(self, idx) -> torch.Tensor:
         flat = (
             torch.load(self.raw.files[idx], map_location="cpu")["weight_vector"]
-            .float()
-            .clamp_(-10.0, 10.0)
+            .float().clamp_(-10.0, 10.0)
         )
         z = self.mapper.transform(
             flat
@@ -619,9 +617,9 @@ class WeightSpaceDataModule(L.LightningDataModule):
         models_dir: Optional[str] = None,
         batch_size: int = 64,
         num_workers: int = 0,
-        train_split: float = 0.7,
-        val_split: float = 0.15,
-        test_split: float = 0.15,
+        train_split: float = 0.8,
+        val_split: float = 0.1,
+        test_split: float = 0.1,
         random_seed: int = 42,
         max_models: Optional[int] = None,
         pca_components_per_param: int = 8,
@@ -1026,7 +1024,6 @@ class FunctionalMetricsCallback(Callback):
                 flat = (
                     torch.load(raw.files[idx], map_location="cpu")["weight_vector"]
                     .float()
-                    .clamp_(-10.0, 10.0)
                 )
                 z = self.mapper.transform(flat)
                 self.test_vectors.append(z)
@@ -1087,23 +1084,54 @@ class FunctionalMetricsCallback(Callback):
 
             logger.warning(f"Traceback: {traceback.format_exc()}")
 
+def final_func_eval(pl_model,dm,DATASET_DIR):
+    split_file = Path(DATASET_DIR) / "data_splits.json"
+    if split_file.exists():
+        with open(split_file) as f:
+            split_data = json.load(f)
+            test_indices = split_data["test_indices"]
+    else:
+        test_indices = [0]  # fallback
+
+    raw = WeightVectorDataset(DATASET_DIR)
+    dm.mapper.load()
+
+    test_metrics = []
+    eval_indices = test_indices[
+        : min(10, len(test_indices))
+    ] 
+
+    for i, idx in enumerate(eval_indices):
+        if idx < len(raw.files):
+            flat = (
+                torch.load(raw.files[idx], map_location="cpu")["weight_vector"]
+                .float()
+                .clamp_(-10.0, 10.0)
+            )
+            z_eval = dm.mapper.transform(flat)
+            metrics = test_reconstruction_quality(
+                pl_model.weight_ae, dm.mapper, z_eval, split="final_test"
+            )
+            test_metrics.append(metrics)
+
+    return test_metrics
 
 def main():
     # Config
-    BATCH_SIZE = 128
+    BATCH_SIZE = 64
     LATENT_DIM = 512
     NUM_EPOCHS = 100
     LR = 1e-3
     WD = 1e-5
-    DATASET_DIR = "data/dataset/"
+    DATASET_DIR = "data/dataset"
     PROJECT_NAME = "weight-space-ae-pca"
     PCA_K_PER_PARAM = 32
     PCA_MIN_DIM_ID = 4
-    PCA_CONST_VAR_EPS = 1e-9
-    PCA_MAX_MODELS_FOR_PCA = 400
-    PCA_LOAD_BATCH = 128
-    NUM_WORKERS = 6
-    MODELS_DIR = "data/weights/selected/"
+    PCA_CONST_VAR_EPS = 1e-8
+    PCA_MAX_MODELS_FOR_PCA = 1000
+    PCA_LOAD_BATCH = 64
+    NUM_WORKERS = 4
+    MODELS_DIR = "data/weights/selected"
     MAX_MODELS = None
     HIDDEN_DIMS = []
 
@@ -1111,6 +1139,7 @@ def main():
     wandb_logger = WandbLogger(
         project=PROJECT_NAME, name=f"k{PCA_K_PER_PARAM}-lat{LATENT_DIM}-lr{LR}"
     )
+
     # Data
     dm = WeightSpaceDataModule(
         dataset_dir=DATASET_DIR,
@@ -1123,11 +1152,11 @@ def main():
         pca_const_var_eps=PCA_CONST_VAR_EPS,
         pca_max_models_for_pca=PCA_MAX_MODELS_FOR_PCA,
         pca_load_batch=PCA_LOAD_BATCH,
-        random_seed=42, 
+        random_seed=42,  # Fixed seed for reproducible splits
     )
     dm.prepare_data()
     dm.setup()
-    
+
     # Create standalone autoencoder
     weight_ae = WeightSpaceAE(
         input_dim=dm.input_dim,
@@ -1156,10 +1185,9 @@ def main():
         callbacks=callbacks,
         accelerator="gpu" if use_cuda else "cpu",
         devices=[0] if use_cuda else "auto",
-        precision="bf16",
+        precision="16-mixed" if use_cuda else "32",
         gradient_clip_val=1.0,
     )
-    # Add this code immediately after the L.Trainer block:
 
     # Log basics
     wandb_logger.log_hyperparams(

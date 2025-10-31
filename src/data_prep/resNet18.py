@@ -306,30 +306,3 @@ if __name__ == '__main__':
         }
     cfg = OmegaConf.create(my_config)
     train_restNet18(cfg)
-
-    # pl.seed_everything(cfg.seed)
-
-    # model = ResNetClassifier(
-    #     num_classes=3,
-    #     optimizer_name='Adam',
-    #     model_path= f'data/weights/{'BLuwvuyGkN9BocfNNrhc3m_4.pth'}'
-    # )
-    # train_loader, val_loader, num_classes, calculated_mean, calculated_std = prepare_data(
-    #     data_path=cfg.data.data_path,
-    #     classes_to_use=cfg.data.classes,
-    #     batch_size=cfg.data.batch_size,
-    #     num_workers=cfg.training.num_workers,
-    #     mean=[0.4881827235221863, 0.4585472047328949, 0.4308537542819977],
-    #     std=[0.27237772941589355, 0.2654491662979126, 0.28583213686943054]
-    # )
-    # for batch_idx, batch in enumerate(train_loader):
-    #     x, y = batch
-
-    #     original_outputs = model(x)
-
-    #     _, original_predicted = torch.max(original_outputs.data, 1)
-
-
-    #     print('Ground Truth: ', y, 'Original Prediction: ', original_predicted)
-    #     if batch_idx == 0:
-    #         break

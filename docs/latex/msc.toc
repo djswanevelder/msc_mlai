@@ -18,7 +18,7 @@
 \contentsline {section}{\numberline {3.3}Shared Encoding}{18}{section.3.3}%
 \contentsline {chapter}{\numberline {4}Results}{20}{chapter.4}%
 \contentsline {section}{\numberline {4.1}Weight Encoder}{20}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Shared Encoder}{20}{section.4.2}%
-\contentsline {section}{\numberline {4.3}Conditional Model Sampling}{20}{section.4.3}%
-\contentsline {chapter}{\numberline {5}Summary}{21}{chapter.5}%
-\contentsline {chapter}{Bibliography}{22}{chapter*.10}%
+\contentsline {section}{\numberline {4.2}Shared Encoder}{21}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Conditional Model Sampling}{21}{section.4.3}%
+\contentsline {chapter}{\numberline {5}Summary}{22}{chapter.5}%
+\contentsline {chapter}{Bibliography}{23}{chapter*.11}%

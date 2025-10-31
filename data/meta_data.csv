@@ -1,493 +1,413 @@
-run_id,run_name,class1,class2,class3,artifact_name,artifact_epoch,val_loss,val_accuracy
-szho1whr,lunar-fog-886,ruddy_turnstone,missile,limpkin,X2ckWDhQvhqhE9s9sHQHWz_16.pth,16,0.6364981532096863,0.8436657786369324
-szho1whr,lunar-fog-886,ruddy_turnstone,missile,limpkin,X2ckWDhQvhqhE9s9sHQHWz_71.pth,71,0.670303463935852,0.8463611602783203
-r6ngg2rg,sleek-violet-882,canoe,Siamese_cat,red_wolf,CdFsrdFr4i7BWFyWxkbcxW_15.pth,15,0.31231555342674255,0.93028324842453
-r6ngg2rg,sleek-violet-882,canoe,Siamese_cat,red_wolf,CdFsrdFr4i7BWFyWxkbcxW_40.pth,40,0.2745658159255981,0.9455337524414062
-2w7d4cly,generous-totem-881,sewing_machine,breakwater,ant,hdCpNsybWUrJn9g6y7Ejnx_15.pth,15,0.43838822841644287,0.86481112241745
-2w7d4cly,generous-totem-881,sewing_machine,breakwater,ant,hdCpNsybWUrJn9g6y7Ejnx_41.pth,41,0.4314104318618774,0.8836978077888489
-sludh4ez,eager-eon-880,ruddy_turnstone,red_wolf,ant,K2vuCsQz8PzHyfYqcACSta_17.pth,17,0.63630211353302,0.8009708523750305
-sludh4ez,eager-eon-880,ruddy_turnstone,red_wolf,ant,K2vuCsQz8PzHyfYqcACSta_40.pth,40,0.5788344740867615,0.8288834691047668
-0bvki5bi,solar-brook-879,breakwater,pajama,running_shoe,JaCAqHYF4yrhzHd8U8S7ZW_11.pth,11,1.2056394815444946,0.6959208846092224
-0bvki5bi,solar-brook-879,breakwater,pajama,running_shoe,JaCAqHYF4yrhzHd8U8S7ZW_42.pth,42,0.6095767617225647,0.8294190168380737
-vjc6ws4w,twilight-durian-878,dock,mashed_potato,necklace,gfXGQD5Qeen3PBnnkLuNVW_10.pth,10,0.5338705778121948,0.8258345723152161
-vjc6ws4w,twilight-durian-878,dock,mashed_potato,necklace,gfXGQD5Qeen3PBnnkLuNVW_40.pth,40,0.3209771811962127,0.9114658832550048
-zzycpsuv,confused-donkey-877,trombone,Appenzeller,missile,J8SgJRcP3hQcuoQ7nXk4CE_13.pth,13,0.5686168670654297,0.8566493988037109
-zzycpsuv,confused-donkey-877,trombone,Appenzeller,missile,J8SgJRcP3hQcuoQ7nXk4CE_80.pth,80,0.5845645666122437,0.8808290362358093
-5510bq3l,wise-bird-876,pick,lesser_panda,carpenter's_kit,DEJjxDxrjbMNVTE2vEpfXW_14.pth,14,0.5129858255386353,0.8511450290679932
-5510bq3l,wise-bird-876,pick,lesser_panda,carpenter's_kit,DEJjxDxrjbMNVTE2vEpfXW_54.pth,54,0.887004017829895,0.8282442688941956
-8ouacjc7,peachy-voice-875,paddle,police_van,Appenzeller,SG2EE8UAt9Erfum2zCrCyN_10.pth,10,0.3348067104816437,0.888198733329773
-8ouacjc7,peachy-voice-875,paddle,police_van,Appenzeller,SG2EE8UAt9Erfum2zCrCyN_57.pth,57,0.3000353276729584,0.9254658222198486
-im841uhr,scarlet-sponge-874,planetarium,breakwater,necklace,nhZQRUeoW6euahtgW439BD_13.pth,13,0.7270390391349792,0.7994310259819031
-im841uhr,scarlet-sponge-874,planetarium,breakwater,necklace,nhZQRUeoW6euahtgW439BD_52.pth,52,0.5426737666130066,0.896159291267395
-1yworheb,polar-snowball-873,wire-haired_fox_terrier,pick,maillot,XSEbx4vh9b28kacGLnaFts_16.pth,16,0.7866901755332947,0.800000011920929
-1yworheb,polar-snowball-873,wire-haired_fox_terrier,pick,maillot,XSEbx4vh9b28kacGLnaFts_55.pth,55,0.9352347254753112,0.8083333373069763
-8aylj5fs,vivid-fog-872,red_wolf,canoe,trombone,JgCHsYBeFkvR4UwLAC5QGi_12.pth,12,0.827535092830658,0.7821158766746521
-8aylj5fs,vivid-fog-872,red_wolf,canoe,trombone,JgCHsYBeFkvR4UwLAC5QGi_33.pth,33,0.5424679517745972,0.8501259684562683
-j6vix95e,sparkling-armadillo-871,mashed_potato,chambered_nautilus,Appenzeller,9TR8na9oGn72bzwhUpwtL9_9.pth,9,1.2100237607955933,0.7018348574638367
-j6vix95e,sparkling-armadillo-871,mashed_potato,chambered_nautilus,Appenzeller,9TR8na9oGn72bzwhUpwtL9_60.pth,60,0.3940142393112182,0.8807339668273926
-pb9wnma7,spring-snow-870,vizsla,chambered_nautilus,Airedale,JXsy7jgKXtKGDUTneqdczk_18.pth,18,0.32020533084869385,0.9051987528800964
-pb9wnma7,spring-snow-870,vizsla,chambered_nautilus,Airedale,JXsy7jgKXtKGDUTneqdczk_49.pth,49,0.3477442264556885,0.9143730998039246
-zoyfnedu,absurd-wood-869,police_van,acoustic_guitar,crash_helmet,FtgmPkdKRL5gQFbFF8TEgZ_9.pth,9,0.7542365193367004,0.7746948003768921
-zoyfnedu,absurd-wood-869,police_van,acoustic_guitar,crash_helmet,FtgmPkdKRL5gQFbFF8TEgZ_46.pth,46,1.9080308675765991,0.7081021070480347
-oxqb6u6p,whole-frost-868,Siamese_cat,red_wolf,Ibizan_hound,DovCaM9nKhNxjEirQSetcz_16.pth,16,7.347799737544847e-07,1.0
-oxqb6u6p,whole-frost-868,Siamese_cat,red_wolf,Ibizan_hound,DovCaM9nKhNxjEirQSetcz_64.pth,64,8.992077482616878e-08,1.0
-ch5piehh,easy-thunder-867,sea_slug,barometer,chimpanzee,XLUNH7L9TavD72KhxCgP8o_18.pth,18,0.5039267539978027,0.8701161742210388
-ch5piehh,easy-thunder-867,sea_slug,barometer,chimpanzee,XLUNH7L9TavD72KhxCgP8o_35.pth,35,0.4776639938354492,0.8775079250335693
-kkv2g1lw,blooming-surf-866,carpenter's_kit,red_wolf,limpkin,9smmzeFZbNFhwie2YJKR72_12.pth,12,0.4833647310733795,0.8387096524238586
-kkv2g1lw,blooming-surf-866,carpenter's_kit,red_wolf,limpkin,9smmzeFZbNFhwie2YJKR72_73.pth,73,0.4446613490581513,0.9061583280563354
-inyq2wry,logical-cherry-865,schooner,Appenzeller,Siamese_cat,jTHyVRmwsRcEyCCu3UoKZ9_13.pth,13,0.00014303693023975939,1.0
-inyq2wry,logical-cherry-865,schooner,Appenzeller,Siamese_cat,jTHyVRmwsRcEyCCu3UoKZ9_53.pth,53,9.08500733203e-05,1.0
-i4hhm4gy,feasible-frost-864,red_wolf,indigo_bunting,lesser_panda,WoXeB8oxcvem6QY6VKczNt_9.pth,9,0.598396360874176,0.8743961453437805
-i4hhm4gy,feasible-frost-864,red_wolf,indigo_bunting,lesser_panda,WoXeB8oxcvem6QY6VKczNt_49.pth,49,0.2529102265834808,0.9420289993286132
-o2fgog5l,splendid-music-863,running_shoe,sewing_machine,Ibizan_hound,jiPVeg3WjPMqBmtHkScSqV_11.pth,11,0.605871856212616,0.7903448343276978
-o2fgog5l,splendid-music-863,running_shoe,sewing_machine,Ibizan_hound,jiPVeg3WjPMqBmtHkScSqV_38.pth,38,0.650713324546814,0.8041379451751709
-jfkgstdw,efficient-firebrand-862,police_van,breakwater,Ibizan_hound,kreUBxbyCK6eedqGD7bcXu_18.pth,18,0.32533499598503113,0.9298596978187561
-jfkgstdw,efficient-firebrand-862,police_van,breakwater,Ibizan_hound,kreUBxbyCK6eedqGD7bcXu_34.pth,34,0.3550423383712768,0.9278557300567628
-hc441h1f,major-vortex-861,tow_truck,Ibizan_hound,canoe,CMyzU2mcqjLmZVitRzH2sN_15.pth,15,0.48633378744125366,0.8721649646759033
-hc441h1f,major-vortex-861,tow_truck,Ibizan_hound,canoe,CMyzU2mcqjLmZVitRzH2sN_36.pth,36,0.8594160079956055,0.8474226593971252
-qduy571e,dry-blaze-860,borzoi,bolete,sewing_machine,5nfUgTZvKhQjG8DTwVJbP7_16.pth,16,0.520118772983551,0.8366914391517639
-qduy571e,dry-blaze-860,borzoi,bolete,sewing_machine,5nfUgTZvKhQjG8DTwVJbP7_29.pth,29,0.5454190373420715,0.8345705270767212
-tbs9alqk,valiant-bush-859,vizsla,red_wolf,schooner,GZ7JDArJZqKQXfCGSwhPg6_9.pth,9,3.0453176498413086,0.5195767283439636
-tbs9alqk,valiant-bush-859,vizsla,red_wolf,schooner,GZ7JDArJZqKQXfCGSwhPg6_45.pth,45,0.6469333171844482,0.8105819821357727
-q9lpffbt,giddy-voice-858,missile,necklace,borzoi,9sxSiEgeEj3KnydkRRsNGk_14.pth,14,0.5316740274429321,0.8460490703582764
-q9lpffbt,giddy-voice-858,missile,necklace,borzoi,9sxSiEgeEj3KnydkRRsNGk_43.pth,43,0.7437437176704407,0.8310626745223999
-go4zt86d,treasured-dust-857,canoe,ant,police_van,TxvtnG7EoG6PAG4vh5zVcH_17.pth,17,0.40560683608055115,0.8948686122894287
-go4zt86d,treasured-dust-857,canoe,ant,police_van,TxvtnG7EoG6PAG4vh5zVcH_42.pth,42,0.942091941833496,0.8260325193405151
-5i8s1nh9,stilted-wind-856,otterhound,barn_spider,Airedale,gTktQtuvN93q7ug3FmXv9p_12.pth,12,0.383392870426178,0.8859649300575256
-5i8s1nh9,stilted-wind-856,otterhound,barn_spider,Airedale,gTktQtuvN93q7ug3FmXv9p_73.pth,73,0.6026950478553772,0.859649121761322
-eb8l4di0,playful-universe-855,vacuum,tow_truck,bolete,E5WVwgyxckYqx9JdjuM69d_10.pth,10,0.4637351334095001,0.8576233386993408
-eb8l4di0,playful-universe-855,vacuum,tow_truck,bolete,E5WVwgyxckYqx9JdjuM69d_71.pth,71,0.5556073784828186,0.9125560522079468
-0wf7jej3,devoted-river-854,Angora,barn_spider,Airedale,74wGffZLBqdUcuWjM2v35k_11.pth,11,6.294534250628203e-05,1.0
-0wf7jej3,devoted-river-854,Angora,barn_spider,Airedale,74wGffZLBqdUcuWjM2v35k_43.pth,43,3.45254484273e-05,1.0
-vypzcnfc,leafy-elevator-853,indigo_bunting,black_and_gold_garden_spider,chambered_nautilus,oEaDvAUgHxv6BaasCFys9h_10.pth,10,0.36597326397895813,0.9110429286956787
-vypzcnfc,leafy-elevator-853,indigo_bunting,black_and_gold_garden_spider,chambered_nautilus,oEaDvAUgHxv6BaasCFys9h_44.pth,44,0.2166458517313003,0.9355828166007996
-itw2s29a,solar-deluge-852,barn_spider,Angora,Airedale,SeXoK3rB9QnyGveVQyARZg_10.pth,10,0.0,1.0
-itw2s29a,solar-deluge-852,barn_spider,Angora,Airedale,SeXoK3rB9QnyGveVQyARZg_80.pth,80,0.0,1.0
-csfxkk6b,ethereal-wildflower-851,vacuum,ruddy_turnstone,Siamese_cat,bG3Kpod2HWjSm8Qor9QFP4_10.pth,10,0.41360577940940857,0.8883248567581177
-csfxkk6b,ethereal-wildflower-851,vacuum,ruddy_turnstone,Siamese_cat,bG3Kpod2HWjSm8Qor9QFP4_71.pth,71,0.3838942348957062,0.9492385983467102
-k34yrlp7,woven-silence-850,planetarium,acoustic_guitar,limpkin,an7RCDgfRCBXiqJgTRyzum_14.pth,14,0.5774011611938477,0.8653610944747925
-k34yrlp7,woven-silence-850,planetarium,acoustic_guitar,limpkin,an7RCDgfRCBXiqJgTRyzum_42.pth,42,0.5144405961036682,0.895960807800293
-69td3tkd,ancient-flower-849,mashed_potato,mixing_bowl,vacuum,aNQTewCi4mLqkUSqWoyCLR_10.pth,10,0.7797907590866089,0.7271648645401001
-69td3tkd,ancient-flower-849,mashed_potato,mixing_bowl,vacuum,aNQTewCi4mLqkUSqWoyCLR_65.pth,65,0.8703159093856812,0.8149465918540955
-6l08n2vu,fluent-brook-848,paddle,maillot,mud_turtle,LsZfM4xpjeSwBKE97YsPYh_14.pth,14,1.165554165840149,0.7070175409317017
-6l08n2vu,fluent-brook-848,paddle,maillot,mud_turtle,LsZfM4xpjeSwBKE97YsPYh_51.pth,51,1.6365121603012085,0.7719298005104065
-ieaefkgv,chocolate-oath-847,ant,Siamese_cat,vacuum,R6e2P27BVSPjSqApeetqms_15.pth,15,0.4248766005039215,0.8575757741928101
-ieaefkgv,chocolate-oath-847,ant,Siamese_cat,vacuum,R6e2P27BVSPjSqApeetqms_63.pth,63,0.4758710563182831,0.8590909242630005
-ifaxlqdp,fresh-planet-846,black_and_gold_garden_spider,mixing_bowl,crash_helmet,Xi4JMXoyYRzZEfrzZeVwoi_11.pth,11,0.5768163204193115,0.8365384340286255
-ifaxlqdp,fresh-planet-846,black_and_gold_garden_spider,mixing_bowl,crash_helmet,Xi4JMXoyYRzZEfrzZeVwoi_54.pth,54,0.6174662113189697,0.8502747416496277
-eymlhazw,lilac-elevator-845,necklace,breakwater,trombone,REsuQksyLS4f8pPA9VVZf3_10.pth,10,0.7623321413993835,0.8132250308990479
-eymlhazw,lilac-elevator-845,necklace,breakwater,trombone,REsuQksyLS4f8pPA9VVZf3_27.pth,27,0.4805646538734436,0.8515081405639648
-18cn2s7r,whole-shadow-844,barn_spider,pug,breakwater,49v9QR96XYmZTZGGSYMH3R_13.pth,13,0.6493143439292908,0.8484848737716675
-18cn2s7r,whole-shadow-844,barn_spider,pug,breakwater,49v9QR96XYmZTZGGSYMH3R_65.pth,65,0.8576680421829224,0.8848484754562378
-1h73fmoq,smooth-disco-843,breakwater,running_shoe,mixing_bowl,Zv75Csiwwb54zBHRDrN3oP_13.pth,13,0.6404815912246704,0.8271308541297913
-1h73fmoq,smooth-disco-843,breakwater,running_shoe,mixing_bowl,Zv75Csiwwb54zBHRDrN3oP_52.pth,52,0.646938681602478,0.831932783126831
-sdpb37qb,bumbling-dust-842,pajama,schooner,black_and_gold_garden_spider,CXtXJiN2cFEZHdCirVsdMa_15.pth,15,0.5638965368270874,0.9179856181144714
-sdpb37qb,bumbling-dust-842,pajama,schooner,black_and_gold_garden_spider,CXtXJiN2cFEZHdCirVsdMa_71.pth,71,0.6612446308135986,0.9035971164703368
-bpy4hbal,dazzling-sky-841,indigo_bunting,mashed_potato,vizsla,bbQQwLdi7KpKoSFby2Cr7a_9.pth,9,0.38909560441970825,0.8841025829315186
-bpy4hbal,dazzling-sky-841,indigo_bunting,mashed_potato,vizsla,bbQQwLdi7KpKoSFby2Cr7a_43.pth,43,0.3487861156463623,0.9138461351394652
-x1nkz12k,eager-wood-840,Siamese_cat,indigo_bunting,strawberry,CjXttTqqGsEtppEXwYXWYU_17.pth,17,0.07311642915010452,0.9783783555030823
-x1nkz12k,eager-wood-840,Siamese_cat,indigo_bunting,strawberry,CjXttTqqGsEtppEXwYXWYU_47.pth,47,0.0884569063782692,0.9783783555030824
-ca31ekcs,bright-durian-839,dock,schooner,sea_slug,YUFBKvj3hCGAQPRuwMP9Ho_13.pth,13,0.3944222331047058,0.8873403072357178
-ca31ekcs,bright-durian-839,dock,schooner,sea_slug,YUFBKvj3hCGAQPRuwMP9Ho_36.pth,36,0.4084717929363251,0.8943089246749878
-y0w8bzkc,lively-blaze-838,pick,barn_spider,borzoi,nThzn4bvvZBmTJH7kkNyCs_14.pth,14,0.7303134799003601,0.7702479362487793
-y0w8bzkc,lively-blaze-838,pick,barn_spider,borzoi,nThzn4bvvZBmTJH7kkNyCs_68.pth,68,0.7000555396080017,0.7983471155166626
-9snhdl7e,classic-plasma-837,schooner,red_wolf,chambered_nautilus,Mu6KamhPiXzWWHpZzE64vL_9.pth,9,9.160295486450195,0.3954887092113495
-9snhdl7e,classic-plasma-837,schooner,red_wolf,chambered_nautilus,Mu6KamhPiXzWWHpZzE64vL_42.pth,42,1.0099338293075562,0.800000011920929
-9xooxmgs,wild-planet-836,carpenter's_kit,cellular_telephone,bolete,DXHL6r2rgkrbjSqzVJRiXb_10.pth,10,0.6859170794487,0.8037267327308655
-9xooxmgs,wild-planet-836,carpenter's_kit,cellular_telephone,bolete,DXHL6r2rgkrbjSqzVJRiXb_53.pth,53,0.712770402431488,0.8223602771759033
-xgf8ngln,different-capybara-835,breakwater,Ibizan_hound,Angora,VDeEcKoGqARAdn74vHFn55_11.pth,11,0.0,1.0
-xgf8ngln,different-capybara-835,breakwater,Ibizan_hound,Angora,VDeEcKoGqARAdn74vHFn55_45.pth,45,0.0,1.0
-h8j6nzbf,revived-energy-834,paddle,indigo_bunting,tow_truck,fctoF5rRP9LymXSPdNaHXX_14.pth,14,0.3015560507774353,0.903820812702179
-h8j6nzbf,revived-energy-834,paddle,indigo_bunting,tow_truck,fctoF5rRP9LymXSPdNaHXX_43.pth,43,2.0039334297180176,0.7180500626564026
-svpg3zz0,electric-fire-833,soft-coated_wheaten_terrier,barn_spider,limpkin,HCMWZDBGY4mpUeg5VAoYu2_14.pth,14,0.685960590839386,0.7792022824287415
-svpg3zz0,electric-fire-833,soft-coated_wheaten_terrier,barn_spider,limpkin,HCMWZDBGY4mpUeg5VAoYu2_43.pth,43,1.8194116353988647,0.7635327577590942
-i8f11p9k,fanciful-frost-832,cellular_telephone,borzoi,Appenzeller,PpbtkMi5v6GttVPH2r7hbJ_10.pth,10,0.6229183673858643,0.8102766871452332
-i8f11p9k,fanciful-frost-832,cellular_telephone,borzoi,Appenzeller,PpbtkMi5v6GttVPH2r7hbJ_51.pth,51,0.7315788269042969,0.8339921236038208
-htwu95p5,curious-water-831,wire-haired_fox_terrier,chimpanzee,vizsla,3cwgpVQUXtHQJ5tyV3QQzZ_18.pth,18,1.263730525970459,0.7531428337097168
-htwu95p5,curious-water-831,wire-haired_fox_terrier,chimpanzee,vizsla,3cwgpVQUXtHQJ5tyV3QQzZ_42.pth,42,1.6165757179260254,0.7531428337097168
-c8aka8l2,glorious-hill-830,missile,Siamese_cat,barn_spider,KMuAmFvaUZfHKW4vGU38rc_18.pth,18,1.4274470806121826,0.8091602921485901
-c8aka8l2,glorious-hill-830,missile,Siamese_cat,barn_spider,KMuAmFvaUZfHKW4vGU38rc_64.pth,64,0.4688379764556885,0.8600509166717529
-9qbozgqw,legendary-oath-829,Angora,paddle,canoe,RFUf6QdFSLgyA4LswvLjpm_15.pth,15,1.2500464916229248,0.6326963901519775
-9qbozgqw,legendary-oath-829,Angora,paddle,canoe,RFUf6QdFSLgyA4LswvLjpm_50.pth,50,2.311353921890259,0.6157112717628479
-q1yt7efr,youthful-serenity-828,otterhound,mud_turtle,trombone,o54mX95rMPB6UjHYvaH8WE_16.pth,16,0.4781555235385895,0.837479293346405
-q1yt7efr,youthful-serenity-828,otterhound,mud_turtle,trombone,o54mX95rMPB6UjHYvaH8WE_50.pth,50,0.6068412065505981,0.837479293346405
-k6i2eejd,crimson-lake-827,planetarium,trombone,missile,LabMnCH8W6suQMhKEdu5w9_10.pth,10,0.7676416635513306,0.7248677015304565
-k6i2eejd,crimson-lake-827,planetarium,trombone,missile,LabMnCH8W6suQMhKEdu5w9_60.pth,60,1.229749321937561,0.7751322984695435
-wpe3nnrf,rare-lion-826,mud_turtle,limpkin,acoustic_guitar,KTWGFqH89DESusufmyme2e_16.pth,16,0.6484611630439758,0.8115941882133484
-wpe3nnrf,rare-lion-826,mud_turtle,limpkin,acoustic_guitar,KTWGFqH89DESusufmyme2e_49.pth,49,0.7117953300476074,0.8550724387168884
-agylqnpa,prime-bird-825,vacuum,wire-haired_fox_terrier,sewing_machine,8tBmCUcY7mkARxhWqLpVVn_9.pth,9,0.9745987057685852,0.6807511448860168
-agylqnpa,prime-bird-825,vacuum,wire-haired_fox_terrier,sewing_machine,8tBmCUcY7mkARxhWqLpVVn_65.pth,65,1.0196421146392822,0.7230046987533569
-gpquay8a,light-totem-824,ant,breakwater,vacuum,9J5sx87k9M3wjEfLkvPKAj_9.pth,9,0.4754859209060669,0.847660481929779
-gpquay8a,light-totem-824,ant,breakwater,vacuum,9J5sx87k9M3wjEfLkvPKAj_33.pth,33,0.4791775345802307,0.8944504857063293
-72p2biab,lunar-yogurt-823,lesser_panda,crash_helmet,dock,PB4sXrDNSe7KPrpvW6XSsG_12.pth,12,0.5995339751243591,0.855091392993927
-72p2biab,lunar-yogurt-823,lesser_panda,crash_helmet,dock,PB4sXrDNSe7KPrpvW6XSsG_30.pth,30,0.3894470036029816,0.8785901069641113
-yudf3d43,fanciful-dawn-822,otterhound,sewing_machine,mashed_potato,X2WQQPPRRGXop3KLCToamn_11.pth,11,0.3320719599723816,0.9327957034111023
-yudf3d43,fanciful-dawn-822,otterhound,sewing_machine,mashed_potato,X2WQQPPRRGXop3KLCToamn_54.pth,54,0.437870055437088,0.9287634491920472
-0nsqw09f,chocolate-valley-821,mixing_bowl,sea_slug,chimpanzee,ST6wrngArCUwscgr8V8tcr_9.pth,9,0.6413212418556213,0.8055555820465088
-0nsqw09f,chocolate-valley-821,mixing_bowl,sea_slug,chimpanzee,ST6wrngArCUwscgr8V8tcr_53.pth,53,0.4799390137195587,0.8710317611694336
-cojco16x,playful-frost-820,carpenter's_kit,chimpanzee,pick,QXdG7p9nf2izTPHguyNGp6_17.pth,17,0.6651697754859924,0.8106666803359985
-cojco16x,playful-frost-820,carpenter's_kit,chimpanzee,pick,QXdG7p9nf2izTPHguyNGp6_56.pth,56,0.649038553237915,0.8306666612625122
-0vv2r1ur,eager-oath-819,acoustic_guitar,pajama,paddle,7f9XZaGrAtWt7MnEeD69Dv_13.pth,13,0.9781732559204102,0.7195945978164673
-0vv2r1ur,eager-oath-819,acoustic_guitar,pajama,paddle,7f9XZaGrAtWt7MnEeD69Dv_25.pth,25,0.9324465990066528,0.7454954981803894
-gcs33txr,floral-star-818,trombone,red_wolf,wire-haired_fox_terrier,kXJE295EMK2p4e2FCwt4kM_9.pth,9,0.5153331756591797,0.7937685251235962
-gcs33txr,floral-star-818,trombone,red_wolf,wire-haired_fox_terrier,kXJE295EMK2p4e2FCwt4kM_48.pth,48,0.5636923313140869,0.8649851679801941
-tus18ead,playful-wood-817,necklace,cellular_telephone,Ibizan_hound,JUe5GCiHLcDGmAdUYk62Bt_11.pth,11,0.8299335241317749,0.7341772317886353
-tus18ead,playful-wood-817,necklace,cellular_telephone,Ibizan_hound,JUe5GCiHLcDGmAdUYk62Bt_56.pth,56,0.4945510327816009,0.8336347341537476
-b8e81mix,glowing-bee-816,schooner,otterhound,mixing_bowl,oQhStJ7uC7yweJBod522xG_18.pth,18,0.5850732922554016,0.8781725764274597
-b8e81mix,glowing-bee-816,schooner,otterhound,mixing_bowl,oQhStJ7uC7yweJBod522xG_62.pth,62,0.5725435614585876,0.8866328001022339
-jgsp31qk,leafy-shape-815,Ibizan_hound,ant,pick,aYnckfVaiKdPETf3WdTrma_18.pth,18,0.6184372305870056,0.8268551230430603
-jgsp31qk,leafy-shape-815,Ibizan_hound,ant,pick,aYnckfVaiKdPETf3WdTrma_66.pth,66,1.004867672920227,0.7950530052185059
-r4d7k7j7,azure-spaceship-814,mud_turtle,chimpanzee,trombone,DoRBppSmaXQfLf4GppGwub_13.pth,13,0.7036905288696289,0.7961165308952332
-r4d7k7j7,azure-spaceship-814,mud_turtle,chimpanzee,trombone,DoRBppSmaXQfLf4GppGwub_58.pth,58,0.7938839197158813,0.8009708523750305
-1t9k72aq,rich-waterfall-813,pug,maillot,chimpanzee,gjF7VAQFpvjim3aKehzGKx_13.pth,13,1.1005254983901978,0.6975398063659668
-1t9k72aq,rich-waterfall-813,pug,maillot,chimpanzee,gjF7VAQFpvjim3aKehzGKx_59.pth,59,0.8962169289588928,0.7612156271934509
-s6xiphj0,clear-serenity-812,paddle,ant,trombone,QPKFV97sA8BaT24j8iXRdW_13.pth,13,0.8959951400756836,0.7450549602508545
-s6xiphj0,clear-serenity-812,paddle,ant,trombone,QPKFV97sA8BaT24j8iXRdW_55.pth,55,1.645081639289856,0.7747252583503723
-wuhlfcj5,fast-energy-811,tow_truck,trombone,canoe,DRutAaH9Eh8mBtAoCDceix_15.pth,15,1.2034249305725098,0.8012195229530334
-wuhlfcj5,fast-energy-811,tow_truck,trombone,canoe,DRutAaH9Eh8mBtAoCDceix_29.pth,29,0.8960502743721008,0.8329268097877502
-yls5uvxp,spring-mountain-810,cellular_telephone,American_lobster,mashed_potato,NK7kaT7YCJ8s6MmVazTxkH_13.pth,13,0.325007826089859,0.9250936508178711
-yls5uvxp,spring-mountain-810,cellular_telephone,American_lobster,mashed_potato,NK7kaT7YCJ8s6MmVazTxkH_52.pth,52,0.304076224565506,0.9307116270065308
-liuetntr,warm-grass-809,maillot,acoustic_guitar,trombone,GWMJSEZhGNvTMkVcvNwG5v_11.pth,11,1.185520887374878,0.6932725310325623
-liuetntr,warm-grass-809,maillot,acoustic_guitar,trombone,GWMJSEZhGNvTMkVcvNwG5v_59.pth,59,0.9364002346992492,0.7571265697479248
-vg23cvws,firm-silence-808,black_and_gold_garden_spider,police_van,wire-haired_fox_terrier,BwvExibEFuS4RgJDRzpW93_14.pth,14,0.26972851157188416,0.9330922365188599
-vg23cvws,firm-silence-808,black_and_gold_garden_spider,police_van,wire-haired_fox_terrier,BwvExibEFuS4RgJDRzpW93_48.pth,48,4.789185047149658,0.4990958273410797
-msnp8ktm,leafy-darkness-807,bolete,mashed_potato,sea_slug,KG98rSt2zyy8BcAYezcqV3_13.pth,13,0.6439836025238037,0.7955911755561829
-msnp8ktm,leafy-darkness-807,bolete,mashed_potato,sea_slug,KG98rSt2zyy8BcAYezcqV3_46.pth,46,0.6780842542648315,0.820641279220581
-d2czs756,helpful-forest-806,cellular_telephone,ruddy_turnstone,soft-coated_wheaten_terrier,UViHB9GsShszA8qJRhTv74_13.pth,13,0.9584492444992065,0.7273781895637512
-d2czs756,helpful-forest-806,cellular_telephone,ruddy_turnstone,soft-coated_wheaten_terrier,UViHB9GsShszA8qJRhTv74_39.pth,39,0.3938842415809631,0.907192587852478
-agtam1a6,quiet-thunder-805,pug,red_wolf,carpenter's_kit,3RBa4FW9rJxkHZgRYatiKF_9.pth,9,0.9487572908401489,0.7521489858627319
-agtam1a6,quiet-thunder-805,pug,red_wolf,carpenter's_kit,3RBa4FW9rJxkHZgRYatiKF_26.pth,26,0.8227063417434692,0.7893982529640198
-4bt8jkml,balmy-sea-804,mashed_potato,crash_helmet,mud_turtle,nXt9E3VYKjEH5Hf4WzWDYq_14.pth,14,0.89332115650177,0.8474820256233215
-4bt8jkml,balmy-sea-804,mashed_potato,crash_helmet,mud_turtle,nXt9E3VYKjEH5Hf4WzWDYq_59.pth,59,0.7344807982444763,0.8776978254318237
-0ymjjjbh,vibrant-donkey-803,barometer,maillot,ant,DPb3UhyPvRcdwpTc25Cv6m_15.pth,15,9.971147537231445,0.3397625982761383
-0ymjjjbh,vibrant-donkey-803,barometer,maillot,ant,DPb3UhyPvRcdwpTc25Cv6m_64.pth,64,10.311925888061523,0.4035608172416687
-di7jwszv,light-microwave-802,strawberry,crash_helmet,mashed_potato,HVf9LroAysMkt8RrMepoZm_13.pth,13,0.30766579508781433,0.9002493619918823
-di7jwszv,light-microwave-802,strawberry,crash_helmet,mashed_potato,HVf9LroAysMkt8RrMepoZm_59.pth,59,0.4427977800369262,0.8940149545669556
-tbxasi4t,icy-paper-801,lesser_panda,ruddy_turnstone,soft-coated_wheaten_terrier,4c8hscuYMm6pzMDWN7XreF_9.pth,9,0.39440375566482544,0.8874316811561584
-tbxasi4t,icy-paper-801,lesser_panda,ruddy_turnstone,soft-coated_wheaten_terrier,4c8hscuYMm6pzMDWN7XreF_41.pth,41,0.3821825981140136,0.9289617538452148
-pa1k2dev,bumbling-sun-800,pug,ruddy_turnstone,pajama,ij6DqJPAQ5dea5RkjwGdXD_11.pth,11,0.47275811433792114,0.8715232014656067
-pa1k2dev,bumbling-sun-800,pug,ruddy_turnstone,pajama,ij6DqJPAQ5dea5RkjwGdXD_60.pth,60,1.371631383895874,0.868874192237854
-fc72064y,charmed-pyramid-799,police_van,canoe,Appenzeller,VZh4UajZyVpuP4PK2AqUTM_17.pth,17,0.7077110409736633,0.8354700803756714
-fc72064y,charmed-pyramid-799,police_van,canoe,Appenzeller,VZh4UajZyVpuP4PK2AqUTM_77.pth,77,0.3047305345535278,0.95085471868515
-qred8np3,lively-bee-798,mud_turtle,pick,wire-haired_fox_terrier,hPNVzHvGdWZEqxBs8ciZEN_10.pth,10,0.766986072063446,0.7622641324996948
-qred8np3,lively-bee-798,mud_turtle,pick,wire-haired_fox_terrier,hPNVzHvGdWZEqxBs8ciZEN_40.pth,40,0.4646675586700439,0.8698112964630127
-mkj9hcuq,ancient-planet-797,Airedale,barometer,dock,bjKodJzJtGJZ8i8HgeRu5z_9.pth,9,0.199831023812294,0.938829779624939
-mkj9hcuq,ancient-planet-797,Airedale,barometer,dock,bjKodJzJtGJZ8i8HgeRu5z_76.pth,76,0.17904993891716,0.957446813583374
-u2wt55g8,denim-night-796,Airedale,tow_truck,indigo_bunting,5hWf6SGb6Qw8FYTtkYEjvr_9.pth,9,0.25786006450653076,0.9418604373931885
-u2wt55g8,denim-night-796,Airedale,tow_truck,indigo_bunting,5hWf6SGb6Qw8FYTtkYEjvr_49.pth,49,0.1279705166816711,0.96705424785614
-len3tv45,hardy-haze-795,cellular_telephone,pick,canoe,Dp83sWK77kzS9gvt3MziP6_14.pth,14,1.2942380905151367,0.7269076108932495
-len3tv45,hardy-haze-795,cellular_telephone,pick,canoe,Dp83sWK77kzS9gvt3MziP6_39.pth,39,1.2348812818527222,0.7550200819969177
-l7iwnz17,copper-surf-794,vizsla,Appenzeller,trombone,kBEUBLze6z2FYgAZxs8XMy_17.pth,17,0.2632405757904053,0.9413965344429016
-l7iwnz17,copper-surf-794,vizsla,Appenzeller,trombone,kBEUBLze6z2FYgAZxs8XMy_67.pth,67,0.3797428905963897,0.9164588451385498
-385y9my4,glorious-darkness-793,barometer,chimpanzee,vizsla,Xafqw4sxp2JgfSAp3KpXFd_18.pth,18,0.6244141459465027,0.8516992926597595
-385y9my4,glorious-darkness-793,barometer,chimpanzee,vizsla,Xafqw4sxp2JgfSAp3KpXFd_48.pth,48,0.554701030254364,0.8599382042884827
-rjd87xqq,resilient-cosmos-792,vizsla,cellular_telephone,breakwater,HVds7sXLqHUv2vZUi9GGUA_13.pth,13,0.5108445882797241,0.8465346693992615
-rjd87xqq,resilient-cosmos-792,vizsla,cellular_telephone,breakwater,HVds7sXLqHUv2vZUi9GGUA_80.pth,80,0.5235357880592346,0.8534653186798096
-qg2kpxuc,hearty-pond-791,red_wolf,soft-coated_wheaten_terrier,limpkin,8adQPRC3tvzsaqAyyDcBGC_9.pth,9,0.7882276773452759,0.7525510191917419
-qg2kpxuc,hearty-pond-791,red_wolf,soft-coated_wheaten_terrier,limpkin,8adQPRC3tvzsaqAyyDcBGC_51.pth,51,1.9277756214141848,0.7984693646430969
-62mk7rfg,summer-thunder-790,planetarium,schooner,strawberry,GZC2GBkrQ9SAfihhhW2G8o_10.pth,10,0.5052305459976196,0.8205841183662415
-62mk7rfg,summer-thunder-790,planetarium,schooner,strawberry,GZC2GBkrQ9SAfihhhW2G8o_41.pth,41,0.1422721892595291,0.9652295112609864
-ayifadsq,noble-firebrand-789,acoustic_guitar,barn_spider,Airedale,WsQ6vEQbQaJdK7ZEDvZnGw_9.pth,9,0.40321671962738037,0.9148550629615784
-ayifadsq,noble-firebrand-789,acoustic_guitar,barn_spider,Airedale,WsQ6vEQbQaJdK7ZEDvZnGw_60.pth,60,0.3306383490562439,0.9311594367027284
-sfk2edlc,glad-night-788,canoe,Ibizan_hound,trombone,KBPVYcYAoRAwiS5frE9Nbt_14.pth,14,0.6780444383621216,0.8117229342460632
-sfk2edlc,glad-night-788,canoe,Ibizan_hound,trombone,KBPVYcYAoRAwiS5frE9Nbt_37.pth,37,0.3360028266906738,0.8685612678527832
-l1ataybl,vibrant-morning-787,Appenzeller,pajama,acoustic_guitar,eqxTpZRgSZ722o6sDomyN6_9.pth,9,0.4455387592315674,0.8837209343910217
-l1ataybl,vibrant-morning-787,Appenzeller,pajama,acoustic_guitar,eqxTpZRgSZ722o6sDomyN6_52.pth,52,0.3397263586521148,0.9162790775299072
-wpzhjs1j,logical-waterfall-786,planetarium,pajama,Ibizan_hound,2FM3SRRFyeuu6K2uUHA5Q6_16.pth,16,0.3105795681476593,0.9354066848754883
-wpzhjs1j,logical-waterfall-786,planetarium,pajama,Ibizan_hound,2FM3SRRFyeuu6K2uUHA5Q6_57.pth,57,0.2691046297550201,0.9569377899169922
-crk48p7c,peach-bird-785,acoustic_guitar,borzoi,barn_spider,Qf8p4cPZvmDsQVupoY2zQX_15.pth,15,0.5307087898254395,0.8850129246711731
-crk48p7c,peach-bird-785,acoustic_guitar,borzoi,barn_spider,Qf8p4cPZvmDsQVupoY2zQX_80.pth,80,1.0600531101226809,0.8591731190681458
-gbch3h4o,glad-darkness-784,mixing_bowl,Ibizan_hound,paddle,nBnLqJm2Zuv4C5eYQJq9pQ_13.pth,13,0.41522619128227234,0.8661417365074158
-gbch3h4o,glad-darkness-784,mixing_bowl,Ibizan_hound,paddle,nBnLqJm2Zuv4C5eYQJq9pQ_35.pth,35,0.6592302322387695,0.8641732335090637
-g6hyxkub,blooming-cosmos-783,strawberry,barometer,indigo_bunting,RPqwwLrsLZSDAC4p5ciArr_10.pth,10,0.16121353209018707,0.9446640610694885
-g6hyxkub,blooming-cosmos-783,strawberry,barometer,indigo_bunting,RPqwwLrsLZSDAC4p5ciArr_65.pth,65,0.0579569265246391,0.9802371263504028
-b3jcil29,volcanic-firefly-782,wire-haired_fox_terrier,barn_spider,trombone,JnUBJybhq2d8XuWsdu2Kk8_16.pth,16,0.6462495923042297,0.8291032314300537
-b3jcil29,volcanic-firefly-782,wire-haired_fox_terrier,barn_spider,trombone,JnUBJybhq2d8XuWsdu2Kk8_35.pth,35,0.6774840950965881,0.8274111747741699
-jcekoyzp,fragrant-fog-781,soft-coated_wheaten_terrier,barometer,sewing_machine,VRgDpgouDjNxW5ZNdFndR4_18.pth,18,0.6251589059829712,0.8311966061592102
-jcekoyzp,fragrant-fog-781,soft-coated_wheaten_terrier,barometer,sewing_machine,VRgDpgouDjNxW5ZNdFndR4_29.pth,29,0.6671911478042603,0.8493589758872986
-kjk7ftb9,royal-silence-780,soft-coated_wheaten_terrier,chimpanzee,American_lobster,ZwW8x8teSRVTKBFezQ7fWJ_10.pth,10,0.4930401146411896,0.8622366189956665
-kjk7ftb9,royal-silence-780,soft-coated_wheaten_terrier,chimpanzee,American_lobster,ZwW8x8teSRVTKBFezQ7fWJ_36.pth,36,0.4798937737941742,0.8881685733795166
-tt15ne29,genial-lake-779,borzoi,mashed_potato,necklace,E4zcNjchuwFwdiLTEshKaq_17.pth,17,2.4140095710754395,0.6197564005851746
-tt15ne29,genial-lake-779,borzoi,mashed_potato,necklace,E4zcNjchuwFwdiLTEshKaq_28.pth,28,0.7323787808418274,0.8552097678184509
-ofyp8rsq,mild-lion-778,American_lobster,lesser_panda,mixing_bowl,CTfMXTbW7oQ8643ZUgdzyU_13.pth,13,0.3159061074256897,0.9418604373931885
-ofyp8rsq,mild-lion-778,American_lobster,lesser_panda,mixing_bowl,CTfMXTbW7oQ8643ZUgdzyU_40.pth,40,0.4213532209396362,0.9285714030265808
-xio2ffh6,vibrant-thunder-777,borzoi,police_van,soft-coated_wheaten_terrier,cMmsv5uA6NW5rp23bcoxEb_11.pth,11,1.3032153844833374,0.6992287635803223
-xio2ffh6,vibrant-thunder-777,borzoi,police_van,soft-coated_wheaten_terrier,cMmsv5uA6NW5rp23bcoxEb_38.pth,38,0.7852157950401306,0.7866324186325073
-4p5xpumm,woven-microwave-776,pug,tow_truck,schooner,gVntScoZRxwhxNWLwheGNB_10.pth,10,0.9455636739730835,0.7711640000343323
-4p5xpumm,woven-microwave-776,pug,tow_truck,schooner,gVntScoZRxwhxNWLwheGNB_52.pth,52,0.5819592475891113,0.8664020895957947
-8u0qun5u,comfy-thunder-775,mashed_potato,mixing_bowl,sea_slug,LFGeG27j4oDkiEsNFbCVrt_14.pth,14,0.7359878420829773,0.7887029051780701
-8u0qun5u,comfy-thunder-775,mashed_potato,mixing_bowl,sea_slug,LFGeG27j4oDkiEsNFbCVrt_39.pth,39,0.6021299362182617,0.8263598084449768
-v9slwv6y,rose-breeze-774,vacuum,mixing_bowl,bolete,TS8Cn9UJjqWzZBhmve8GHV_11.pth,11,0.9260081052780151,0.7488889098167419
-v9slwv6y,rose-breeze-774,vacuum,mixing_bowl,bolete,TS8Cn9UJjqWzZBhmve8GHV_57.pth,57,1.26707124710083,0.8233333230018616
-r6ekfe4o,lyric-paper-773,ruddy_turnstone,planetarium,acoustic_guitar,VALVEYv6saYjKsyXRAZJAf_12.pth,12,0.2522276043891907,0.9143876433372498
-r6ekfe4o,lyric-paper-773,ruddy_turnstone,planetarium,acoustic_guitar,VALVEYv6saYjKsyXRAZJAf_50.pth,50,0.3494486808776855,0.8965517282485962
-egg8i1kn,drawn-oath-772,indigo_bunting,necklace,Angora,imSapfxravbCD8TQAFoK3K_13.pth,13,0.15121522545814514,0.9526515007019043
-egg8i1kn,drawn-oath-772,indigo_bunting,necklace,Angora,imSapfxravbCD8TQAFoK3K_40.pth,40,0.0825739800930023,0.9772727489471436
-929smerb,cool-cosmos-771,soft-coated_wheaten_terrier,sea_slug,canoe,a2y42oALpmuFdu6Qbpp9KY_9.pth,9,0.5458936095237732,0.8164300322532654
-929smerb,cool-cosmos-771,soft-coated_wheaten_terrier,sea_slug,canoe,a2y42oALpmuFdu6Qbpp9KY_30.pth,30,0.9700891971588136,0.7920892238616943
-x1cjsxbo,lyric-water-770,Angora,mashed_potato,Airedale,A253LKjvEvXDacuLtShbTz_17.pth,17,0.00023070529277902097,1.0
-x1cjsxbo,lyric-water-770,Angora,mashed_potato,Airedale,A253LKjvEvXDacuLtShbTz_22.pth,22,0.0002466770529281,1.0
-8wz8ybrs,glamorous-glitter-769,ruddy_turnstone,running_shoe,missile,euH5vUnC2hoQPDEtB6SeX2_9.pth,9,0.7454401254653931,0.7582821846008301
-8wz8ybrs,glamorous-glitter-769,ruddy_turnstone,running_shoe,missile,euH5vUnC2hoQPDEtB6SeX2_65.pth,65,1.0788440704345703,0.8699386715888977
-kdq1u76k,twilight-sunset-768,ruddy_turnstone,mud_turtle,chambered_nautilus,eHyrgo9wSPxjEwiPuH4BE8_14.pth,14,0.522441029548645,0.847484290599823
-kdq1u76k,twilight-sunset-768,ruddy_turnstone,mud_turtle,chambered_nautilus,eHyrgo9wSPxjEwiPuH4BE8_74.pth,74,0.493787407875061,0.8632075190544128
-mib60bz5,driven-deluge-767,sewing_machine,wire-haired_fox_terrier,Angora,e9XBCpFv3nqCPm29gieVuX_12.pth,12,0.23283040523529053,0.9541109204292297
-mib60bz5,driven-deluge-767,sewing_machine,wire-haired_fox_terrier,Angora,e9XBCpFv3nqCPm29gieVuX_64.pth,64,0.2634886801242828,0.9502868056297302
-gcux6ysr,spring-waterfall-766,sewing_machine,bolete,canoe,YitCFbZheEi4YGv5YUACT2_17.pth,17,0.565772533416748,0.8378947377204895
-gcux6ysr,spring-waterfall-766,sewing_machine,bolete,canoe,YitCFbZheEi4YGv5YUACT2_53.pth,53,0.5725470781326294,0.8505263328552246
-e901y15o,polished-sky-765,Airedale,otterhound,crash_helmet,6kp2LYVdFnKYvzaPFuZVS8_13.pth,13,0.3282164931297302,0.9317507147789001
-e901y15o,polished-sky-765,Airedale,otterhound,crash_helmet,6kp2LYVdFnKYvzaPFuZVS8_57.pth,57,0.2685116827487945,0.8991097807884216
-2k6oqr7d,hopeful-glitter-764,acoustic_guitar,mixing_bowl,borzoi,GAYBgJzRr5woVe8GTjW2Zv_10.pth,10,0.702707052230835,0.7966291904449463
-2k6oqr7d,hopeful-glitter-764,acoustic_guitar,mixing_bowl,borzoi,GAYBgJzRr5woVe8GTjW2Zv_65.pth,65,0.7880662083625793,0.8044943809509277
-zerrkcvn,decent-sun-763,ruddy_turnstone,pug,strawberry,DwcREF7KdyjjZVCWxkczua_18.pth,18,0.37041792273521423,0.8580247163772583
-zerrkcvn,decent-sun-763,ruddy_turnstone,pug,strawberry,DwcREF7KdyjjZVCWxkczua_24.pth,24,0.2761584818363189,0.9111111164093018
-mte8doim,fluent-violet-762,trombone,strawberry,necklace,XSf8wTdL8NBkaeFvVgC2We_16.pth,16,0.4415438771247864,0.8565072417259216
-mte8doim,fluent-violet-762,trombone,strawberry,necklace,XSf8wTdL8NBkaeFvVgC2We_56.pth,56,0.4404482245445251,0.8776417970657349
-an2st39s,magic-bush-761,trombone,mixing_bowl,chimpanzee,JRhLtbb9T7niJjWkUFnCiS_18.pth,18,0.5894540548324585,0.8077777624130249
-an2st39s,magic-bush-761,trombone,mixing_bowl,chimpanzee,JRhLtbb9T7niJjWkUFnCiS_35.pth,35,0.4976736307144165,0.8833333253860474
-v2bzosqh,major-lion-760,dock,black_and_gold_garden_spider,sea_slug,A95was3eizRrMRBw4Tivx3_12.pth,12,0.3671409487724304,0.9231707453727722
-v2bzosqh,major-lion-760,dock,black_and_gold_garden_spider,sea_slug,A95was3eizRrMRBw4Tivx3_52.pth,52,0.4018117487430573,0.9182927012443542
-vt9xl7by,unique-galaxy-759,bolete,chimpanzee,paddle,npTZspHmVpXNdHZm6BFK2Y_18.pth,18,6.293065071105957,0.529411792755127
-vt9xl7by,unique-galaxy-759,bolete,chimpanzee,paddle,npTZspHmVpXNdHZm6BFK2Y_38.pth,38,0.7408867478370667,0.8670588135719299
-hdm0shjp,solar-wave-758,planetarium,vacuum,police_van,hjyV73yzWddBoHtNsuChZA_16.pth,16,0.4899025857448578,0.8791946172714233
-hdm0shjp,solar-wave-758,planetarium,vacuum,police_van,hjyV73yzWddBoHtNsuChZA_41.pth,41,0.4112340211868286,0.9100671410560608
-5yvd9dsy,stellar-salad-757,barn_spider,American_lobster,otterhound,iJ2hJq36Dv46d6MizyS22A_13.pth,13,0.4259658753871918,0.8552631735801697
-5yvd9dsy,stellar-salad-757,barn_spider,American_lobster,otterhound,iJ2hJq36Dv46d6MizyS22A_55.pth,55,0.2151821851730346,0.9254385828971864
-33sylmr7,fresh-plant-755,necklace,barometer,tow_truck,EqCW8siyg9HobZLxP25YnN_14.pth,14,0.4728204011917114,0.873799741268158
-33sylmr7,fresh-plant-755,necklace,barometer,tow_truck,EqCW8siyg9HobZLxP25YnN_71.pth,71,0.493991881608963,0.916323721408844
-v3zo1dip,laced-feather-754,sewing_machine,mud_turtle,ruddy_turnstone,fJYhTAbv2b6ajHiBoGiHyR_17.pth,17,0.8460503816604614,0.8219653367996216
-v3zo1dip,laced-feather-754,sewing_machine,mud_turtle,ruddy_turnstone,fJYhTAbv2b6ajHiBoGiHyR_80.pth,80,0.6309211254119873,0.8959537744522095
-xnr50hey,divine-bush-753,strawberry,tow_truck,police_van,j4rnx6MkH98LHV8VfFBDga_12.pth,12,0.7003258466720581,0.8032786846160889
-xnr50hey,divine-bush-753,strawberry,tow_truck,police_van,j4rnx6MkH98LHV8VfFBDga_34.pth,34,0.6411828398704529,0.8310214281082153
-6uvxnjms,lunar-frost-752,breakwater,paddle,carpenter's_kit,HxcCiQFVD325c7bzBs7CWz_9.pth,9,0.7187507748603821,0.7863128781318665
-6uvxnjms,lunar-frost-752,breakwater,paddle,carpenter's_kit,HxcCiQFVD325c7bzBs7CWz_80.pth,80,2.069413185119629,0.7765362858772278
-o18y7y0j,feasible-spaceship-751,Siamese_cat,tow_truck,sea_slug,4JzZrpdrENcENAPuhxYrnk_9.pth,9,0.33446356654167175,0.9127324819564819
-o18y7y0j,feasible-spaceship-751,Siamese_cat,tow_truck,sea_slug,4JzZrpdrENcENAPuhxYrnk_50.pth,50,0.3519363403320312,0.9256080389022828
-ybkbbldk,fresh-blaze-750,chimpanzee,breakwater,ant,YjjWaeim7ZjYCv8mr76kRD_17.pth,17,0.5446257591247559,0.8258426785469055
-ybkbbldk,fresh-blaze-750,chimpanzee,breakwater,ant,YjjWaeim7ZjYCv8mr76kRD_20.pth,20,0.3604495227336883,0.9056179523468018
-zcn77gji,swift-snow-749,necklace,trombone,dock,dRxZ2ZGkAL9gE27PYmHETs_11.pth,11,0.7643231749534607,0.7793548107147217
-zcn77gji,swift-snow-749,necklace,trombone,dock,dRxZ2ZGkAL9gE27PYmHETs_38.pth,38,0.6027327179908752,0.8180645108222961
-pnwjpp03,upbeat-galaxy-748,barn_spider,ruddy_turnstone,pick,CLsjWdhsCpDqAnYB3RjDhk_17.pth,17,0.666877031326294,0.8248062133789062
-pnwjpp03,upbeat-galaxy-748,barn_spider,ruddy_turnstone,pick,CLsjWdhsCpDqAnYB3RjDhk_35.pth,35,0.5757742524147034,0.8682170510292053
-qdj8kxar,gallant-feather-747,trombone,bolete,ant,bwWu6JBCYM267c2Mwoyo8D_15.pth,15,1.0588620901107788,0.7954779267311096
-qdj8kxar,gallant-feather-747,trombone,bolete,ant,bwWu6JBCYM267c2Mwoyo8D_51.pth,51,0.8964115977287292,0.826310396194458
-0ga665e4,morning-feather-746,ant,ruddy_turnstone,sewing_machine,g9MTXQAzGDjWsugxq8k88B_15.pth,15,0.61604243516922,0.810703694820404
-0ga665e4,morning-feather-746,ant,ruddy_turnstone,sewing_machine,g9MTXQAzGDjWsugxq8k88B_49.pth,49,0.6343037486076355,0.8364717364311218
-yw5fvzfy,hearty-elevator-745,lesser_panda,carpenter's_kit,black_and_gold_garden_spider,4zMZAvs5Q945whp6MstRFw_9.pth,9,0.39059382677078247,0.8905013203620911
-yw5fvzfy,hearty-elevator-745,lesser_panda,carpenter's_kit,black_and_gold_garden_spider,4zMZAvs5Q945whp6MstRFw_74.pth,74,0.4345691800117492,0.9445910453796388
-7o7l0zz1,polar-sponge-744,missile,Ibizan_hound,trombone,edNvkeihhoEsoUaSbjnrZS_13.pth,13,1.4828704595565796,0.6390328407287598
-7o7l0zz1,polar-sponge-744,missile,Ibizan_hound,trombone,edNvkeihhoEsoUaSbjnrZS_36.pth,36,0.8438016772270203,0.8290155529975891
-5rs1ak7d,major-elevator-743,crash_helmet,soft-coated_wheaten_terrier,paddle,CmVjDzuDD9ZfjLPXkSztU3_15.pth,15,0.7597367763519287,0.788249671459198
-5rs1ak7d,major-elevator-743,crash_helmet,soft-coated_wheaten_terrier,paddle,CmVjDzuDD9ZfjLPXkSztU3_59.pth,59,0.8584504127502441,0.7931456565856934
-y45qaeto,easy-sea-742,carpenter's_kit,barn_spider,lesser_panda,jc5LWKtWMU2qm4hZGiRZtw_16.pth,16,0.3454524576663971,0.8928571343421936
-y45qaeto,easy-sea-742,carpenter's_kit,barn_spider,lesser_panda,jc5LWKtWMU2qm4hZGiRZtw_55.pth,55,0.894512951374054,0.8857142925262451
-j22b7elx,fancy-frost-741,barn_spider,pick,pug,eZfeto4K5K8nbyFYWfrPsW_15.pth,15,0.6271568536758423,0.805031418800354
-j22b7elx,fancy-frost-741,barn_spider,pick,pug,eZfeto4K5K8nbyFYWfrPsW_42.pth,42,1.1677849292755127,0.7861635088920593
-y5eafhs5,leafy-puddle-740,crash_helmet,tow_truck,wire-haired_fox_terrier,JSKFGZkGv3yzVHEgezQqxA_9.pth,9,0.6801040768623352,0.8135048151016235
-y5eafhs5,leafy-puddle-740,crash_helmet,tow_truck,wire-haired_fox_terrier,JSKFGZkGv3yzVHEgezQqxA_65.pth,65,1.1422381401062012,0.8649517893791199
-od84w0ux,tough-pond-739,missile,pajama,tow_truck,kPWjYYL8BaUUX2q7V7mfAZ_10.pth,10,0.6204614639282227,0.8250336647033691
-od84w0ux,tough-pond-739,missile,pajama,tow_truck,kPWjYYL8BaUUX2q7V7mfAZ_62.pth,62,0.653400719165802,0.83580082654953
-wy7jzube,misty-capybara-738,planetarium,running_shoe,mud_turtle,Lc9iggSjtNrbd4mFZEki6u_12.pth,12,1.1535978317260742,0.6899110078811646
-wy7jzube,misty-capybara-738,planetarium,running_shoe,mud_turtle,Lc9iggSjtNrbd4mFZEki6u_49.pth,49,0.5328755378723145,0.8456973433494568
-0u0c6tvd,glad-forest-737,limpkin,mud_turtle,black_and_gold_garden_spider,HiduCTwu6eGmMAN3iKsVyt_11.pth,11,0.3575986325740814,0.8858954310417175
-0u0c6tvd,glad-forest-737,limpkin,mud_turtle,black_and_gold_garden_spider,HiduCTwu6eGmMAN3iKsVyt_75.pth,75,0.7254826426506042,0.8700475692749023
-d7dikg6l,elated-gorge-736,ant,running_shoe,lesser_panda,UiBusqWQTboaaAtAKTyrdu_9.pth,9,0.6949864625930786,0.7862985730171204
-d7dikg6l,elated-gorge-736,ant,running_shoe,lesser_panda,UiBusqWQTboaaAtAKTyrdu_66.pth,66,0.955111563205719,0.7709611654281616
-rnj1kftn,crisp-sunset-735,police_van,running_shoe,acoustic_guitar,cFADcfJbrGCd2bjzrVEcka_11.pth,11,0.5856208801269531,0.7754459381103516
-rnj1kftn,crisp-sunset-735,police_van,running_shoe,acoustic_guitar,cFADcfJbrGCd2bjzrVEcka_63.pth,63,0.8275884985923767,0.8121721148490906
-lwmu2m4v,restful-star-734,running_shoe,lesser_panda,acoustic_guitar,UoehA4EZZnBqCKPwMLxWfU_16.pth,16,0.640511155128479,0.8257142901420593
-lwmu2m4v,restful-star-734,running_shoe,lesser_panda,acoustic_guitar,UoehA4EZZnBqCKPwMLxWfU_38.pth,38,0.5856032967567444,0.8333333134651184
-83zwsyna,azure-sound-733,cellular_telephone,otterhound,sewing_machine,ZUo7YPXM5qmAvYRgoYxpQK_17.pth,17,0.9968624114990234,0.7794871926307678
-83zwsyna,azure-sound-733,cellular_telephone,otterhound,sewing_machine,ZUo7YPXM5qmAvYRgoYxpQK_21.pth,21,0.8318832516670227,0.8089743852615356
-y353xxpt,vocal-elevator-732,bolete,chambered_nautilus,borzoi,WzdZWEEDqCLE5Quk6mpxaJ_13.pth,13,2.0997424125671387,0.6610644459724426
-y353xxpt,vocal-elevator-732,bolete,chambered_nautilus,borzoi,WzdZWEEDqCLE5Quk6mpxaJ_27.pth,27,0.468339592218399,0.8991596698760986
-dxafw09d,still-dragon-731,maillot,mixing_bowl,trombone,EeMSFo2KSfVkXFa9s4dtPw_18.pth,18,0.9811723232269287,0.7913278937339783
-dxafw09d,still-dragon-731,maillot,mixing_bowl,trombone,EeMSFo2KSfVkXFa9s4dtPw_53.pth,53,1.1017190217971802,0.781842827796936
-2tmss23p,resilient-disco-730,otterhound,mashed_potato,schooner,Zqg3cQepJKwGkY3geJ3V6v_12.pth,12,0.423032283782959,0.8836805820465088
-2tmss23p,resilient-disco-730,otterhound,mashed_potato,schooner,Zqg3cQepJKwGkY3geJ3V6v_50.pth,50,0.8791060447692871,0.8611111044883728
-fcy1v3kd,worldly-surf-729,red_wolf,ruddy_turnstone,breakwater,Pq5hhesoqNub6V5uQaLfLN_17.pth,17,1.5687559843063354,0.757656455039978
-fcy1v3kd,worldly-surf-729,red_wolf,ruddy_turnstone,breakwater,Pq5hhesoqNub6V5uQaLfLN_38.pth,38,0.4407581984996796,0.9121171832084656
-bz09l8eu,confused-fire-728,planetarium,red_wolf,sea_slug,Hxrz3aKuLZFXxLn37brKqq_13.pth,13,0.45093682408332825,0.8647058606147766
-bz09l8eu,confused-fire-728,planetarium,red_wolf,sea_slug,Hxrz3aKuLZFXxLn37brKqq_25.pth,25,1.5939757823944092,0.6611764430999756
-s0ejeeu5,golden-disco-727,sewing_machine,pick,running_shoe,DBQTmwHiAbBzPHmVUcxRyd_17.pth,17,1.0970396995544434,0.7385416626930237
-s0ejeeu5,golden-disco-727,sewing_machine,pick,running_shoe,DBQTmwHiAbBzPHmVUcxRyd_31.pth,31,0.9234688878059388,0.7958333492279053
-fwxiz37s,vibrant-river-726,Ibizan_hound,chambered_nautilus,limpkin,6P9kdf24KMgx2c4m4B42rG_12.pth,12,0.22376899421215057,0.9386792182922363
-fwxiz37s,vibrant-river-726,Ibizan_hound,chambered_nautilus,limpkin,6P9kdf24KMgx2c4m4B42rG_26.pth,26,0.3786472082138061,0.9127358198165894
-j8y7ytar,lively-paper-725,Siamese_cat,barn_spider,planetarium,JCQKDTWhbzkshrH83qUfCV_16.pth,16,0.39785873889923096,0.9169231057167053
-j8y7ytar,lively-paper-725,Siamese_cat,barn_spider,planetarium,JCQKDTWhbzkshrH83qUfCV_79.pth,79,0.3785918653011322,0.9076923131942748
-imd69viw,curious-gorge-724,police_van,sea_slug,missile,8haaP7nyJZzfQQtf4SGY8A_10.pth,10,0.44208553433418274,0.861920177936554
-imd69viw,curious-gorge-724,police_van,sea_slug,missile,8haaP7nyJZzfQQtf4SGY8A_80.pth,80,0.3999378681182861,0.8899676203727722
-ylyu1qbw,mild-oath-723,strawberry,running_shoe,dock,SzSdxTd2vSvJYMjnrhQK5A_13.pth,13,0.28632116317749023,0.9137709140777588
-ylyu1qbw,mild-oath-723,strawberry,running_shoe,dock,SzSdxTd2vSvJYMjnrhQK5A_60.pth,60,0.3481684923171997,0.9317889213562012
-9nrfzmpo,feasible-leaf-722,tow_truck,vacuum,mixing_bowl,AEYFmgiwY4sKN9w9qWdEZv_18.pth,18,5.813549518585205,0.542890727519989
-9nrfzmpo,feasible-leaf-722,tow_truck,vacuum,mixing_bowl,AEYFmgiwY4sKN9w9qWdEZv_54.pth,54,0.6213529706001282,0.8319624066352844
-si7wfpor,crimson-valley-721,Airedale,breakwater,barn_spider,gQ9FbxVhPEmrx22BkQjy8F_12.pth,12,0.36577391624450684,0.9262899160385132
-si7wfpor,crimson-valley-721,Airedale,breakwater,barn_spider,gQ9FbxVhPEmrx22BkQjy8F_58.pth,58,0.3695619702339173,0.933660924434662
-awmchuj1,serene-haze-720,necklace,mashed_potato,pajama,hpqTnXdEjRsXGcpHBiAQB8_15.pth,15,0.6541532874107361,0.8458498120307922
-awmchuj1,serene-haze-720,necklace,mashed_potato,pajama,hpqTnXdEjRsXGcpHBiAQB8_78.pth,78,0.5106741189956665,0.91304349899292
-pvhl4i97,blooming-snowflake-719,cellular_telephone,police_van,vacuum,SVUAcvK2jLTi9cRzpm5okW_17.pth,17,1.6017247438430786,0.6721311211585999
-pvhl4i97,blooming-snowflake-719,cellular_telephone,police_van,vacuum,SVUAcvK2jLTi9cRzpm5okW_42.pth,42,1.127764105796814,0.7740046977996826
-9xamwwql,chocolate-glade-718,canoe,strawberry,barn_spider,R5M4p5kikE8iWkZDGwvjYq_11.pth,11,0.27437764406204224,0.9166666865348816
-9xamwwql,chocolate-glade-718,canoe,strawberry,barn_spider,R5M4p5kikE8iWkZDGwvjYq_24.pth,24,0.2646953165531158,0.9345238208770752
-7gbxsx91,northern-gorge-717,running_shoe,pick,maillot,8NSXop7cuECei3YFD4bpRJ_10.pth,10,1.1890504360198975,0.6568915247917175
-7gbxsx91,northern-gorge-717,running_shoe,pick,maillot,8NSXop7cuECei3YFD4bpRJ_62.pth,62,0.9708907008171082,0.7551319599151611
-esbhbnko,eager-sea-716,wire-haired_fox_terrier,dock,strawberry,JxKgdHspwpAExukqSCuZTr_18.pth,18,0.46896764636039734,0.9165217280387878
-esbhbnko,eager-sea-716,wire-haired_fox_terrier,dock,strawberry,JxKgdHspwpAExukqSCuZTr_53.pth,53,0.4050279557704925,0.9113043546676636
-n43d8qd1,bright-voice-715,breakwater,maillot,running_shoe,cFEkzsYa5wneMnEYoAw74F_18.pth,18,0.5110307335853577,0.854107677936554
-n43d8qd1,bright-voice-715,breakwater,maillot,running_shoe,cFEkzsYa5wneMnEYoAw74F_61.pth,61,0.5539891719818115,0.8725212216377258
-3294fiow,peach-grass-714,barometer,mashed_potato,Ibizan_hound,FEHeYDRL3cijZ9PqWqdMP3_18.pth,18,0.43037697672843933,0.8565121293067932
-3294fiow,peach-grass-714,barometer,mashed_potato,Ibizan_hound,FEHeYDRL3cijZ9PqWqdMP3_39.pth,39,0.5077203512191772,0.876379668712616
-0vnajpio,dashing-wave-713,strawberry,trombone,mashed_potato,YZcpYHaw6KFdBUTD9kc9FF_16.pth,16,0.43178150057792664,0.887499988079071
-0vnajpio,dashing-wave-713,strawberry,trombone,mashed_potato,YZcpYHaw6KFdBUTD9kc9FF_41.pth,41,0.4667990207672119,0.8965908885002136
-jwjf4xwc,summer-elevator-712,limpkin,Ibizan_hound,cellular_telephone,aHuRAMzHuXTopZ3NxewQmf_18.pth,18,0.1878105103969574,0.9252873659133911
-jwjf4xwc,summer-elevator-712,limpkin,Ibizan_hound,cellular_telephone,aHuRAMzHuXTopZ3NxewQmf_57.pth,57,0.2593431174755096,0.9406130313873292
-z3v7578s,upbeat-puddle-711,carpenter's_kit,limpkin,barn_spider,E5irzjLx2woGZTVkvBoWxY_9.pth,9,1.1953613758087158,0.7116666436195374
-z3v7578s,upbeat-puddle-711,carpenter's_kit,limpkin,barn_spider,E5irzjLx2woGZTVkvBoWxY_57.pth,57,0.604428768157959,0.82833331823349
-7yd0o73c,rose-wave-710,police_van,necklace,maillot,eamNKwPzzEuQtxhFnDE2mU_15.pth,15,0.476094514131546,0.8732612133026123
-7yd0o73c,rose-wave-710,police_van,necklace,maillot,eamNKwPzzEuQtxhFnDE2mU_60.pth,60,0.4698752462863922,0.885625958442688
-7mmxvz4m,polished-sun-709,trombone,chambered_nautilus,sewing_machine,NCGgzcuE9T3do3YTjy4wzt_11.pth,11,1.1050834655761719,0.751599133014679
-7mmxvz4m,polished-sun-709,trombone,chambered_nautilus,sewing_machine,NCGgzcuE9T3do3YTjy4wzt_57.pth,57,0.9508355855941772,0.8422175049781799
-u7n5snyf,dazzling-capybara-708,mud_turtle,barn_spider,Airedale,XjzAyGhw62RE4E69xdBciX_10.pth,10,0.5988293886184692,0.7566765546798706
-u7n5snyf,dazzling-capybara-708,mud_turtle,barn_spider,Airedale,XjzAyGhw62RE4E69xdBciX_55.pth,55,0.7076095342636108,0.8694362044334412
-wc4ed6bk,vibrant-firefly-707,soft-coated_wheaten_terrier,canoe,tow_truck,ZQiaQQ3sVKjkuUv6QHEXop_11.pth,11,1.4572150707244873,0.732833981513977
-wc4ed6bk,vibrant-firefly-707,soft-coated_wheaten_terrier,canoe,tow_truck,ZQiaQQ3sVKjkuUv6QHEXop_52.pth,52,0.6937595009803772,0.8352059721946716
-b6da9onp,vague-thunder-706,running_shoe,vizsla,tow_truck,67Mw94agtsnziQF3We9tUf_10.pth,10,0.7418671250343323,0.7996127605438232
-b6da9onp,vague-thunder-706,running_shoe,vizsla,tow_truck,67Mw94agtsnziQF3We9tUf_31.pth,31,0.6540868282318115,0.8276863694190979
-nvtewf87,fanciful-blaze-705,tow_truck,bolete,Angora,QjR63t72Bp5KyzsSdHwLpV_18.pth,18,0.2047370970249176,0.9360568523406982
-nvtewf87,fanciful-blaze-705,tow_truck,bolete,Angora,QjR63t72Bp5KyzsSdHwLpV_42.pth,42,0.2494997084140777,0.9555950164794922
-sjjdol9a,celestial-glade-704,vizsla,lesser_panda,sea_slug,AmTAV8LFQeTAWNW634DBzL_16.pth,16,0.6492884159088135,0.8195669651031494
-sjjdol9a,celestial-glade-704,vizsla,lesser_panda,sea_slug,AmTAV8LFQeTAWNW634DBzL_72.pth,72,0.6633854508399963,0.8275862336158752
-a8ic47od,dandy-river-703,Appenzeller,lesser_panda,mixing_bowl,Jo6jqd6LgmeRqaQvpusse2_9.pth,9,0.2805686891078949,0.9086378812789917
-a8ic47od,dandy-river-703,Appenzeller,lesser_panda,mixing_bowl,Jo6jqd6LgmeRqaQvpusse2_41.pth,41,0.3219558000564575,0.9318937063217164
-rf5vpbox,lemon-grass-702,vizsla,tow_truck,canoe,9jkQwcFJHbqfZLYDbbQyCy_9.pth,9,0.7174233198165894,0.8182772994041443
-rf5vpbox,lemon-grass-702,vizsla,tow_truck,canoe,9jkQwcFJHbqfZLYDbbQyCy_56.pth,56,0.7360363602638245,0.825630247592926
-vmbo8p37,vivid-valley-701,vacuum,pug,barn_spider,PXGovT7sNBoqt7xjmopPNE_11.pth,11,0.4646414518356323,0.8219178318977356
-vmbo8p37,vivid-valley-701,vacuum,pug,barn_spider,PXGovT7sNBoqt7xjmopPNE_69.pth,69,0.579728364944458,0.8575342297554016
-81bkktoj,valiant-pyramid-700,American_lobster,vacuum,black_and_gold_garden_spider,NSPJNmDt7Y2HaVY9GEunc3_13.pth,13,0.24432718753814697,0.9420560598373413
-81bkktoj,valiant-pyramid-700,American_lobster,vacuum,black_and_gold_garden_spider,NSPJNmDt7Y2HaVY9GEunc3_34.pth,34,0.2198213338851928,0.949532687664032
-o6kmtun0,sage-mountain-699,pick,trombone,dock,Td8EA7ZqDWuwvoZteaCGWe_11.pth,11,0.9270442724227905,0.8110661506652832
-o6kmtun0,sage-mountain-699,pick,trombone,dock,Td8EA7ZqDWuwvoZteaCGWe_48.pth,48,0.9301201105117798,0.8205128312110901
-jluivoeb,dutiful-aardvark-698,cellular_telephone,bolete,chimpanzee,QGkx74d8jfPMHkVJ4Tn3FU_9.pth,9,0.7335888743400574,0.7586981058120728
-jluivoeb,dutiful-aardvark-698,cellular_telephone,bolete,chimpanzee,QGkx74d8jfPMHkVJ4Tn3FU_53.pth,53,0.5990108847618103,0.8776655197143555
-1ic2m8jp,morning-haze-697,Siamese_cat,maillot,schooner,8K4gprFhRvFSX8ka34UKak_9.pth,9,0.32562366127967834,0.8808290362358093
-1ic2m8jp,morning-haze-697,Siamese_cat,maillot,schooner,8K4gprFhRvFSX8ka34UKak_41.pth,41,0.5300791263580322,0.924870491027832
-qlduxga5,pious-tree-696,mashed_potato,sewing_machine,police_van,BERbsuG9er7EYuKgaoDt6y_11.pth,11,1.13652765750885,0.7314916849136353
-qlduxga5,pious-tree-696,mashed_potato,sewing_machine,police_van,BERbsuG9er7EYuKgaoDt6y_53.pth,53,0.5983858108520508,0.9160221219062804
-fwjj1slb,lyric-resonance-695,ruddy_turnstone,black_and_gold_garden_spider,crash_helmet,FsZSWA7tJqkupmZYNXsx3s_10.pth,10,0.681714653968811,0.8413792848587036
-fwjj1slb,lyric-resonance-695,ruddy_turnstone,black_and_gold_garden_spider,crash_helmet,FsZSWA7tJqkupmZYNXsx3s_28.pth,28,0.4152356088161469,0.8937931060791016
-eos2lb98,divine-cherry-694,limpkin,mixing_bowl,planetarium,GvrRYwE4C4TUwBizbpo7iP_16.pth,16,0.2991659939289093,0.8908554315567017
-eos2lb98,divine-cherry-694,limpkin,mixing_bowl,planetarium,GvrRYwE4C4TUwBizbpo7iP_20.pth,20,1.2833694219589231,0.7404129505157471
-pjnu902b,efficient-shadow-693,indigo_bunting,necklace,trombone,9ezFHi6YK7tHmHHdpuS4im_12.pth,12,0.5910469889640808,0.8308227062225342
-pjnu902b,efficient-shadow-693,indigo_bunting,necklace,trombone,9ezFHi6YK7tHmHHdpuS4im_80.pth,80,0.5414116978645325,0.8574739098548889
-htg826qs,fanciful-river-692,tow_truck,Siamese_cat,police_van,5GL3ZS7bYmGodByWwSYZ7K_9.pth,9,1.5073866844177246,0.6841046214103699
-htg826qs,fanciful-river-692,tow_truck,Siamese_cat,police_van,5GL3ZS7bYmGodByWwSYZ7K_68.pth,68,0.811826765537262,0.8269617557525635
-uxbif1w1,desert-lion-691,missile,maillot,chambered_nautilus,a8EfVnafozJWtFEoPRF22M_10.pth,10,0.5889281630516052,0.826010525226593
-uxbif1w1,desert-lion-691,missile,maillot,chambered_nautilus,a8EfVnafozJWtFEoPRF22M_24.pth,24,0.360860139131546,0.8927943706512451
-cbcd4fvr,scarlet-armadillo-690,barn_spider,carpenter's_kit,missile,EDDf4qVAUZXnJR6XTtcwLs_15.pth,15,1.3065483570098877,0.7182866334915161
-cbcd4fvr,scarlet-armadillo-690,barn_spider,carpenter's_kit,missile,EDDf4qVAUZXnJR6XTtcwLs_57.pth,57,0.641661524772644,0.8171334266662598
-w887nw65,misunderstood-planet-689,chimpanzee,barn_spider,running_shoe,7UshtHXpj7VjL6okuEY4rg_16.pth,16,0.7743268013000488,0.7957839369773865
-w887nw65,misunderstood-planet-689,chimpanzee,barn_spider,running_shoe,7UshtHXpj7VjL6okuEY4rg_47.pth,47,0.7576258778572083,0.8366271257400513
-x9cdp5bi,bumbling-aardvark-688,Appenzeller,pug,American_lobster,9HQNJCFnCKMceKXBWMTt7G_12.pth,12,3.9390687334162067e-07,1.0
-x9cdp5bi,bumbling-aardvark-688,Appenzeller,pug,American_lobster,9HQNJCFnCKMceKXBWMTt7G_36.pth,36,7.727391704293042e-08,1.0
-tcmjyvgi,swept-plasma-687,crash_helmet,ant,chambered_nautilus,KVdmFfs7sQKiwSf8B8HCmD_13.pth,13,0.7051599621772766,0.7909677624702454
-tcmjyvgi,swept-plasma-687,crash_helmet,ant,chambered_nautilus,KVdmFfs7sQKiwSf8B8HCmD_50.pth,50,0.748149573802948,0.78838711977005
-088va348,swift-paper-686,indigo_bunting,black_and_gold_garden_spider,sea_slug,QXcjtrgu7YmHvA3r4ss8y5_16.pth,16,0.3175634443759918,0.9229074716567993
-088va348,swift-paper-686,indigo_bunting,black_and_gold_garden_spider,sea_slug,QXcjtrgu7YmHvA3r4ss8y5_61.pth,61,0.3529826998710632,0.9185022115707396
-xyxo8hja,vivid-sponge-685,Siamese_cat,planetarium,police_van,4nurjfhbXpeoLDsxGwRFgT_9.pth,9,0.3758265972137451,0.9064748287200928
-xyxo8hja,vivid-sponge-685,Siamese_cat,planetarium,police_van,4nurjfhbXpeoLDsxGwRFgT_64.pth,64,0.4158776104450226,0.9088729023933412
-ax56xxw9,light-snow-684,cellular_telephone,borzoi,American_lobster,aNjSUyTrHXuek5JviGuUKt_18.pth,18,0.32156822085380554,0.8873517513275146
-ax56xxw9,light-snow-684,cellular_telephone,borzoi,American_lobster,aNjSUyTrHXuek5JviGuUKt_75.pth,75,0.4563820660114288,0.9071146249771118
-9stqtj1b,visionary-shape-683,Angora,mud_turtle,crash_helmet,Ziu3N5WzLTbHzcwSkZhK6w_11.pth,11,0.4330058991909027,0.8901345133781433
-9stqtj1b,visionary-shape-683,Angora,mud_turtle,crash_helmet,Ziu3N5WzLTbHzcwSkZhK6w_53.pth,53,0.3510050475597381,0.9349775910377502
-a1207dkb,toasty-galaxy-682,strawberry,Angora,chimpanzee,4dqJMDieupuCQ73FD5sxqj_18.pth,18,0.04444177821278572,0.9848993420600891
-a1207dkb,toasty-galaxy-682,strawberry,Angora,chimpanzee,4dqJMDieupuCQ73FD5sxqj_59.pth,59,0.0241438224911689,0.9916107654571532
-xt2efn8u,devoted-wood-681,Siamese_cat,pajama,mud_turtle,Fq6sf6tK4VRCUYAHGd6v7B_18.pth,18,0.6008300185203552,0.8720930218696594
-xt2efn8u,devoted-wood-681,Siamese_cat,pajama,mud_turtle,Fq6sf6tK4VRCUYAHGd6v7B_36.pth,36,0.4680561125278473,0.895348846912384
-9s5sg081,golden-aardvark-680,maillot,ruddy_turnstone,mud_turtle,2RA9erN54nHaPYgg4RsrmZ_12.pth,12,6.847649097442627,0.5663265585899353
-9s5sg081,golden-aardvark-680,maillot,ruddy_turnstone,mud_turtle,2RA9erN54nHaPYgg4RsrmZ_48.pth,48,0.6060524582862854,0.8418367505073547
-ed3yjl6g,genial-donkey-679,planetarium,breakwater,sea_slug,faXcQyp9m2R34TQprnykTH_10.pth,10,0.3777502477169037,0.8814139366149902
-ed3yjl6g,genial-donkey-679,planetarium,breakwater,sea_slug,faXcQyp9m2R34TQprnykTH_68.pth,68,0.4096192121505738,0.9258837103843688
-mz31ib6c,comfy-bee-678,pug,otterhound,mashed_potato,BAiDWD4gN6BPaiXSDDa6tz_12.pth,12,0.7936553955078125,0.826161801815033
-mz31ib6c,comfy-bee-678,pug,otterhound,mashed_potato,BAiDWD4gN6BPaiXSDDa6tz_76.pth,76,0.7169799208641052,0.8313252925872803
-2tabnqe4,glad-rain-677,indigo_bunting,dock,canoe,fnrVn94X56sG6UH6AAgkXk_13.pth,13,2.9537224769592285,0.6737480759620667
-2tabnqe4,glad-rain-677,indigo_bunting,dock,canoe,fnrVn94X56sG6UH6AAgkXk_54.pth,54,0.7110579609870911,0.8270106315612793
-s3qg7v19,swift-wood-676,police_van,Siamese_cat,Airedale,Xime4mxS2GaAxVQW9PTHDB_14.pth,14,4.967053435223079e-10,1.0
-s3qg7v19,swift-wood-676,police_van,Siamese_cat,Airedale,Xime4mxS2GaAxVQW9PTHDB_58.pth,58,0.0,1.0
-kejt9p5q,clean-thunder-675,maillot,pug,wire-haired_fox_terrier,CGqb4G8ouiefRnrDTPUSg6_18.pth,18,1.0963149070739746,0.6646586060523987
-kejt9p5q,clean-thunder-675,maillot,pug,wire-haired_fox_terrier,CGqb4G8ouiefRnrDTPUSg6_62.pth,62,1.0054571628570557,0.7489959597587585
-twv7k8ou,tough-wildflower-674,mixing_bowl,sea_slug,wire-haired_fox_terrier,QdwuvKLQqxaj7tvqPVqsca_18.pth,18,0.49532029032707214,0.8685503602027893
-twv7k8ou,tough-wildflower-674,mixing_bowl,sea_slug,wire-haired_fox_terrier,QdwuvKLQqxaj7tvqPVqsca_56.pth,56,0.5603605508804321,0.859950840473175
-9h5elh8f,sunny-firebrand-673,breakwater,black_and_gold_garden_spider,ruddy_turnstone,incxqmE6TKni4eWN8f3UhL_15.pth,15,0.4377964437007904,0.8842975497245789
-9h5elh8f,sunny-firebrand-673,breakwater,black_and_gold_garden_spider,ruddy_turnstone,incxqmE6TKni4eWN8f3UhL_49.pth,49,0.226955845952034,0.9517906308174132
-z44jt02d,silver-flower-672,tow_truck,red_wolf,crash_helmet,K4MPZ9fvfrQEXNWbRg75tq_13.pth,13,0.5697058439254761,0.8418230414390564
-z44jt02d,silver-flower-672,tow_truck,red_wolf,crash_helmet,K4MPZ9fvfrQEXNWbRg75tq_63.pth,63,0.8912109732627869,0.8109919428825378
-5gphihlf,lilac-resonance-671,wire-haired_fox_terrier,mashed_potato,crash_helmet,NAdcPQGLoDK5Rx5yUnPJJu_9.pth,9,0.37693122029304504,0.871335506439209
-5gphihlf,lilac-resonance-671,wire-haired_fox_terrier,mashed_potato,crash_helmet,NAdcPQGLoDK5Rx5yUnPJJu_52.pth,52,0.3353127837181091,0.905537486076355
-xx6l3dpv,splendid-lion-670,borzoi,Angora,planetarium,canvgcieszNHuJTndBfaE5_12.pth,12,0.5248802900314331,0.8819095492362976
-xx6l3dpv,splendid-lion-670,borzoi,Angora,planetarium,canvgcieszNHuJTndBfaE5_49.pth,49,0.9510506987571716,0.8793969750404358
-4k9ahiet,devoted-haze-669,Siamese_cat,running_shoe,pug,AWVfrNddLTXfHke8ktb7p3_15.pth,15,0.45443588495254517,0.8487544655799866
-4k9ahiet,devoted-haze-669,Siamese_cat,running_shoe,pug,AWVfrNddLTXfHke8ktb7p3_67.pth,67,0.6366212964057922,0.8487544655799866
-wyu0xcfe,colorful-durian-668,mud_turtle,chambered_nautilus,missile,XvuRfF2P9982bxXzEsqZgN_13.pth,13,0.36577683687210083,0.8691437840461731
-wyu0xcfe,colorful-durian-668,mud_turtle,chambered_nautilus,missile,XvuRfF2P9982bxXzEsqZgN_31.pth,31,0.7577465176582336,0.8578352332115173
-c9uq1n4n,hopeful-butterfly-667,American_lobster,vizsla,necklace,NuApR78jxvQfyebNDM9LZR_18.pth,18,0.15496811270713806,0.9401360750198364
-c9uq1n4n,hopeful-butterfly-667,American_lobster,vizsla,necklace,NuApR78jxvQfyebNDM9LZR_40.pth,40,1.6369907855987549,0.7863945364952087
-km0h7zie,fancy-sunset-666,lesser_panda,mashed_potato,pick,BEXqHjDwYbm4mUcq6Sceo4_18.pth,18,0.3778769373893738,0.8952497243881226
-km0h7zie,fancy-sunset-666,lesser_panda,mashed_potato,pick,BEXqHjDwYbm4mUcq6Sceo4_49.pth,49,0.3528226315975189,0.9037758708000184
-wavkx1wz,dark-snowflake-665,police_van,ruddy_turnstone,acoustic_guitar,dzQKfYXMtS7hP3ernKMRdF_13.pth,13,0.1316966563463211,0.9480662941932678
-wavkx1wz,dark-snowflake-665,police_van,ruddy_turnstone,acoustic_guitar,dzQKfYXMtS7hP3ernKMRdF_20.pth,20,0.4082671403884888,0.8917127251625061
-ww11kmsw,playful-butterfly-664,barn_spider,acoustic_guitar,mixing_bowl,WTzYXbvnzbXo7gSMmHyf48_12.pth,12,0.9204785823822021,0.7135862708091736
-ww11kmsw,playful-butterfly-664,barn_spider,acoustic_guitar,mixing_bowl,WTzYXbvnzbXo7gSMmHyf48_58.pth,58,1.0086859464645386,0.8347613215446472
-cxlwk40b,unique-terrain-663,borzoi,ruddy_turnstone,necklace,8FXDEFfFZjeBNegVrKzVoi_9.pth,9,0.33644193410873413,0.9081224799156189
-cxlwk40b,unique-terrain-663,borzoi,ruddy_turnstone,necklace,8FXDEFfFZjeBNegVrKzVoi_28.pth,28,0.5805442333221436,0.889480710029602
-d8y4k3re,floral-violet-662,pick,dock,breakwater,euBScoTFuPGG98bY6x9sMe_13.pth,13,0.6837223172187805,0.7849624156951904
-d8y4k3re,floral-violet-662,pick,dock,breakwater,euBScoTFuPGG98bY6x9sMe_45.pth,45,0.7711490988731384,0.7924811840057373
-rpn0b99c,treasured-water-661,sewing_machine,dock,chambered_nautilus,aAi6zQUi9y6fTRyXwHMBAc_17.pth,17,0.4067762494087219,0.8927648663520813
-rpn0b99c,treasured-water-661,sewing_machine,dock,chambered_nautilus,aAi6zQUi9y6fTRyXwHMBAc_60.pth,60,0.713142991065979,0.8733850121498108
-9a72voc0,proud-lake-660,carpenter's_kit,bolete,ant,d2iCefEgEpGf8hj7VHkfwL_14.pth,14,0.4098905026912689,0.8744131326675415
-9a72voc0,proud-lake-660,carpenter's_kit,bolete,ant,d2iCefEgEpGf8hj7VHkfwL_66.pth,66,0.924325942993164,0.8262910842895508
-qwfggbhk,wandering-dew-659,Airedale,tow_truck,sewing_machine,JVHUUgWTd6jFywc8qZf3De_13.pth,13,0.5253249406814575,0.8855869174003601
-qwfggbhk,wandering-dew-659,Airedale,tow_truck,sewing_machine,JVHUUgWTd6jFywc8qZf3De_20.pth,20,0.3482831418514251,0.9004457592964172
-yayd2qm5,desert-haze-658,soft-coated_wheaten_terrier,ant,pick,HnTKcoqu6fAFcivERR64Va_11.pth,11,0.6233739852905273,0.8015872836112976
-yayd2qm5,desert-haze-658,soft-coated_wheaten_terrier,ant,pick,HnTKcoqu6fAFcivERR64Va_70.pth,70,1.0383795499801636,0.8219954371452332
-xz54yh9w,leafy-planet-657,indigo_bunting,running_shoe,vizsla,DFTMmyKereUPDgN9EH87SR_18.pth,18,0.6923048496246338,0.8571428656578064
-xz54yh9w,leafy-planet-657,indigo_bunting,running_shoe,vizsla,DFTMmyKereUPDgN9EH87SR_80.pth,80,0.3754508197307586,0.90250962972641
-r80um1h9,iconic-donkey-656,wire-haired_fox_terrier,ant,indigo_bunting,NvxwqJGA2AHrPdS2JR7Gac_11.pth,11,0.32754847407341003,0.8839541673660278
-r80um1h9,iconic-donkey-656,wire-haired_fox_terrier,ant,indigo_bunting,NvxwqJGA2AHrPdS2JR7Gac_58.pth,58,0.4059446454048157,0.8868194818496704
-6q8qrm53,wild-lake-655,schooner,mixing_bowl,vizsla,CYVkdkvajEAvUEUUQeJS2g_15.pth,15,0.32779330015182495,0.9090909361839294
-6q8qrm53,wild-lake-655,schooner,mixing_bowl,vizsla,CYVkdkvajEAvUEUUQeJS2g_73.pth,73,0.6010779738426208,0.8937691450119019
-d9ukwcj3,dutiful-oath-654,red_wolf,Airedale,Angora,RipGdFX3TPz7uoPHCAmFMv_14.pth,14,0.00029011748847551644,1.0
-d9ukwcj3,dutiful-oath-654,red_wolf,Airedale,Angora,RipGdFX3TPz7uoPHCAmFMv_80.pth,80,7.43661948945e-05,1.0
-fr75qyt3,toasty-wind-653,barn_spider,planetarium,breakwater,Rx9zbRA8oWff2z4dbWm9Gc_13.pth,13,1.186464548110962,0.642123281955719
-fr75qyt3,toasty-wind-653,barn_spider,planetarium,breakwater,Rx9zbRA8oWff2z4dbWm9Gc_45.pth,45,0.5990821123123169,0.8767123222351074
-r9hef8yb,golden-plasma-652,planetarium,police_van,maillot,58kNUEvFQVcbGp4XGfYjnR_15.pth,15,2.5206286907196045,0.5603603720664978
-r9hef8yb,golden-plasma-652,planetarium,police_van,maillot,58kNUEvFQVcbGp4XGfYjnR_44.pth,44,0.4400286078453064,0.8684684634208679
-7llmt0p6,rose-monkey-651,tow_truck,crash_helmet,Angora,6okNPgTeosQutUtZUKjsg6_9.pth,9,0.7163905501365662,0.7957198619842529
-7llmt0p6,rose-monkey-651,tow_truck,crash_helmet,Angora,6okNPgTeosQutUtZUKjsg6_20.pth,20,0.3719356656074524,0.881322979927063
-nqztq6hm,grateful-firebrand-650,schooner,wire-haired_fox_terrier,dock,QESdpVfPw5Dtdg8aTwrShb_13.pth,13,0.7124925851821899,0.8498098850250244
-nqztq6hm,grateful-firebrand-650,schooner,wire-haired_fox_terrier,dock,QESdpVfPw5Dtdg8aTwrShb_32.pth,32,0.7359000444412231,0.8212927579879761
-fpuss3o0,legendary-cosmos-649,sewing_machine,trombone,Airedale,RzcjRK49nGbAEt7EhGKk6m_16.pth,16,0.5825459361076355,0.8268974423408508
-fpuss3o0,legendary-cosmos-649,sewing_machine,trombone,Airedale,RzcjRK49nGbAEt7EhGKk6m_39.pth,39,0.8997666835784912,0.8415446281433105
-szi4b1r9,spring-morning-648,planetarium,American_lobster,barometer,YMF4WRU6GwqQFcCbDqLzXP_17.pth,17,0.3039017617702484,0.9210526347160339
-szi4b1r9,spring-morning-648,planetarium,American_lobster,barometer,YMF4WRU6GwqQFcCbDqLzXP_36.pth,36,0.3449196219444275,0.9157894849777222
-g8jtmpu7,stoic-sponge-647,breakwater,Angora,American_lobster,kv58xnrrEbSbULk7hHeRdU_14.pth,14,0.0009939830051735044,1.0
-g8jtmpu7,stoic-sponge-647,breakwater,Angora,American_lobster,kv58xnrrEbSbULk7hHeRdU_51.pth,51,0.0001955385087057,1.0
-w8qkzjnt,dark-sky-646,strawberry,red_wolf,Airedale,9XZdnmYyUysNaengBtn27E_10.pth,10,0.06602645665407181,0.9791271090507507
-w8qkzjnt,dark-sky-646,strawberry,red_wolf,Airedale,9XZdnmYyUysNaengBtn27E_53.pth,53,0.0591155365109443,0.9848197102546692
-u47yfwwp,smart-dawn-645,otterhound,missile,vizsla,fyouBkrb2h4QJ9F2NvgSRX_9.pth,9,0.4576317071914673,0.850632905960083
-u47yfwwp,smart-dawn-645,otterhound,missile,vizsla,fyouBkrb2h4QJ9F2NvgSRX_67.pth,67,0.5004038214683533,0.8594936728477478
-8yjy3nev,electric-armadillo-644,trombone,vizsla,indigo_bunting,VLN2HKtQLzdc47HyJWUF58_18.pth,18,0.28355103731155396,0.9066917896270752
-8yjy3nev,electric-armadillo-644,trombone,vizsla,indigo_bunting,VLN2HKtQLzdc47HyJWUF58_58.pth,58,0.5004099011421204,0.9029217958450316
-6ytk2l2l,worldly-grass-643,bolete,tow_truck,soft-coated_wheaten_terrier,WUBRZ9RucjZvNffnfSGaAh_18.pth,18,0.47213324904441833,0.8657565712928772
-6ytk2l2l,worldly-grass-643,bolete,tow_truck,soft-coated_wheaten_terrier,WUBRZ9RucjZvNffnfSGaAh_38.pth,38,0.4466552138328552,0.8759954571723938
-61bxaju8,devout-field-642,American_lobster,carpenter's_kit,cellular_telephone,bpG4N9tyAi8Bbh7LDAMkCX_9.pth,9,2.318972110748291,0.6533066034317017
-61bxaju8,devout-field-642,American_lobster,carpenter's_kit,cellular_telephone,bpG4N9tyAi8Bbh7LDAMkCX_46.pth,46,0.9703825116157532,0.8176352977752686
-ckt80js4,super-durian-641,otterhound,Angora,paddle,56ghdMzqCPSnjUVd8pmq5D_13.pth,13,0.3069990277290344,0.9071207642555237
-ckt80js4,super-durian-641,otterhound,Angora,paddle,56ghdMzqCPSnjUVd8pmq5D_36.pth,36,0.5476676225662231,0.9164086580276488
-1w55pn7c,pious-sky-640,red_wolf,missile,mixing_bowl,KW6HmamU39SKWVemMvG9UJ_17.pth,17,0.5541977882385254,0.8500000238418579
-1w55pn7c,pious-sky-640,red_wolf,missile,mixing_bowl,KW6HmamU39SKWVemMvG9UJ_63.pth,63,1.1062591075897217,0.8689188957214355
-xyapi86m,fancy-dew-639,breakwater,police_van,pug,gdvf9Xc2mYBEwP98wx4TQL_15.pth,15,0.3666028678417206,0.9094540476799011
-xyapi86m,fancy-dew-639,breakwater,police_van,pug,gdvf9Xc2mYBEwP98wx4TQL_44.pth,44,0.3665977120399475,0.9227696657180786
-l550p4dc,decent-planet-638,ruddy_turnstone,soft-coated_wheaten_terrier,maillot,ka5S9mteLjVy7LCLKJXaJa_13.pth,13,0.6365087032318115,0.8519552946090698
-l550p4dc,decent-planet-638,ruddy_turnstone,soft-coated_wheaten_terrier,maillot,ka5S9mteLjVy7LCLKJXaJa_57.pth,57,0.7449140548706055,0.8868715167045593
-d6dzj7aw,dulcet-surf-637,strawberry,barometer,crash_helmet,FNuGHrwfuzU2u9RmgFFWcB_18.pth,18,0.8287796378135681,0.8203434348106384
-d6dzj7aw,dulcet-surf-637,strawberry,barometer,crash_helmet,FNuGHrwfuzU2u9RmgFFWcB_63.pth,63,0.6708168983459473,0.844121515750885
+run_id,run_name,class1,class2,class3,artifact_name,artifact_epoch,val_loss,val_accuracy,calculated_mean,calculated_std
+8v7j1q7j,unsettling-scream-1343,breakwater,running_shoe,mixing_bowl,FoaEBjyQ4pKQibmRdfLE73_13.pth,13,0.6600780487060547,0.8079231977462769,"[0.5178992748260498, 0.5039118528366089, 0.4850257337093353]","[0.28022700548171997, 0.28117093443870544, 0.30005204677581787]"
+8v7j1q7j,unsettling-scream-1343,breakwater,running_shoe,mixing_bowl,FoaEBjyQ4pKQibmRdfLE73_52.pth,52,0.6462230682373047,0.8307322859764099,"[0.5178992748260498, 0.5039118528366089, 0.4850257337093353]","[0.28022700548171997, 0.28117093443870544, 0.30005204677581787]"
+d3hhz4js,ghostly-fantasy-1342,pajama,schooner,black_and_gold_garden_spider,SAxo8rRqbJmK33q6GPME5F_15.pth,15,0.3397858738899231,0.9194244742393494,"[0.5037416815757751, 0.5023298263549805, 0.4697614908218384]","[0.26076483726501465, 0.2536565065383911, 0.2829560935497284]"
+d3hhz4js,ghostly-fantasy-1342,pajama,schooner,black_and_gold_garden_spider,SAxo8rRqbJmK33q6GPME5F_71.pth,71,0.3644361197948456,0.92949640750885,"[0.5037416815757751, 0.5023298263549805, 0.4697614908218384]","[0.26076483726501465, 0.2536565065383911, 0.2829560935497284]"
+q0kexl4b,uncanny-force-1341,indigo_bunting,mashed_potato,vizsla,AhMocMYCive6EuoUi6ugpm_9.pth,9,0.3024377226829529,0.8953846096992493,"[0.4936072826385498, 0.4637037217617035, 0.35763436555862427]","[0.24639125168323517, 0.23583801090717316, 0.24705743789672852]"
+q0kexl4b,uncanny-force-1341,indigo_bunting,mashed_potato,vizsla,AhMocMYCive6EuoUi6ugpm_43.pth,43,0.3334388732910156,0.9035897254943848,"[0.4936072826385498, 0.4637037217617035, 0.35763436555862427]","[0.24639125168323517, 0.23583801090717316, 0.24705743789672852]"
+3drumooq,moonlit-poltergeist-1340,siamese_cat,indigo_bunting,strawberry,NDa4yfErR3P8vx3gH5PNt9_17.pth,17,0.2311820238828659,0.9357696771621704,"[0.5149713158607483, 0.44569262862205505, 0.375923752784729]","[0.2740687429904938, 0.2732201814651489, 0.28248459100723267]"
+3drumooq,moonlit-poltergeist-1340,siamese_cat,indigo_bunting,strawberry,NDa4yfErR3P8vx3gH5PNt9_47.pth,47,0.1973342150449752,0.9512735605239868,"[0.5149713158607483, 0.44569262862205505, 0.375923752784729]","[0.2740687429904938, 0.2732201814651489, 0.28248459100723267]"
+e9l4fdxx,faded-husk-1339,dock,schooner,sea_slug,ab55LnvwtcNZaL35HXPMoF_13.pth,13,0.47391441464424133,0.873403012752533,"[0.46110132336616516, 0.45183324813842773, 0.4254785180091858]","[0.27110347151756287, 0.26556968688964844, 0.289907842874527]"
+e9l4fdxx,faded-husk-1339,dock,schooner,sea_slug,ab55LnvwtcNZaL35HXPMoF_36.pth,36,0.4726242125034332,0.8815330862998962,"[0.46110132336616516, 0.45183324813842773, 0.4254785180091858]","[0.27110347151756287, 0.26556968688964844, 0.289907842874527]"
+5uwwns0r,elusive-bat-1338,pick,barn_spider,borzoi,BqRooaH5Swg6vDo5dbkhjd_14.pth,14,0.7364335656166077,0.7702479362487793,"[0.4895125925540924, 0.46023496985435486, 0.4164866507053375]","[0.2990280091762543, 0.2919354736804962, 0.30337366461753845]"
+5uwwns0r,elusive-bat-1338,pick,barn_spider,borzoi,BqRooaH5Swg6vDo5dbkhjd_68.pth,68,0.7359548807144165,0.7933884263038635,"[0.4895125925540924, 0.46023496985435486, 0.4164866507053375]","[0.2990280091762543, 0.2919354736804962, 0.30337366461753845]"
+in9g0hfn,forlorn-mummy-1337,schooner,red_wolf,chambered_nautilus,MGv5F8ZBgXAnhZ6rCMynQU_9.pth,9,2.931640148162842,0.6315789222717285,"[0.4606480598449707, 0.4627630114555359, 0.4335147738456726]","[0.2740730345249176, 0.2661404311656952, 0.2828264534473419]"
+in9g0hfn,forlorn-mummy-1337,schooner,red_wolf,chambered_nautilus,MGv5F8ZBgXAnhZ6rCMynQU_42.pth,42,1.1627854108810425,0.7699248194694519,"[0.4606480598449707, 0.4627630114555359, 0.4335147738456726]","[0.2740730345249176, 0.2661404311656952, 0.2828264534473419]"
+4mxpalgd,ghostly-darkness-1336,carpenter's_kit,cellular_telephone,bolete,6j5f2rtALKeDF7JSP3XkNe_10.pth,10,0.8052058815956116,0.7900621294975281,"[0.4935002028942108, 0.46113139390945435, 0.4119877517223358]","[0.30614155530929565, 0.30066239833831787, 0.31291961669921875]"
+4mxpalgd,ghostly-darkness-1336,carpenter's_kit,cellular_telephone,bolete,6j5f2rtALKeDF7JSP3XkNe_53.pth,53,0.811995804309845,0.8086956739425659,"[0.4935002028942108, 0.46113139390945435, 0.4119877517223358]","[0.30614155530929565, 0.30066239833831787, 0.31291961669921875]"
+2zhllbve,frightful-labyrinth-1335,breakwater,ibizan_hound,angora,Q2h9HWkTfhNyquMxRtAMVV_11.pth,11,0.5541626811027527,0.8712871074676514,"[0.47748130559921265, 0.4728478491306305, 0.4490087628364563]","[0.253460556268692, 0.25105518102645874, 0.27618110179901123]"
+2zhllbve,frightful-labyrinth-1335,breakwater,ibizan_hound,angora,Q2h9HWkTfhNyquMxRtAMVV_45.pth,45,0.7215251326560974,0.8514851331710815,"[0.47748130559921265, 0.4728478491306305, 0.4490087628364563]","[0.253460556268692, 0.25105518102645874, 0.27618110179901123]"
+ck1v3euw,endless-incantation-1334,paddle,indigo_bunting,tow_truck,Z2RCRcgYPP6fJQeJCG2Rvd_14.pth,14,0.4070715308189392,0.8774703741073608,"[0.47228899598121643, 0.48796793818473816, 0.43230605125427246]","[0.2632966935634613, 0.2540254294872284, 0.2785012722015381]"
+ck1v3euw,endless-incantation-1334,paddle,indigo_bunting,tow_truck,Z2RCRcgYPP6fJQeJCG2Rvd_43.pth,43,0.6507976055145264,0.8616600632667542,"[0.47228899598121643, 0.48796793818473816, 0.43230605125427246]","[0.2632966935634613, 0.2540254294872284, 0.2785012722015381]"
+6i3lff4f,tricky-skeleton-1333,soft-coated_wheaten_terrier,barn_spider,limpkin,6cxhzR9M9m9vK6Y9D9jn4n_14.pth,14,0.5706061720848083,0.8290598392486572,"[0.46486547589302063, 0.4551275074481964, 0.37969207763671875]","[0.25010940432548523, 0.24204771220684052, 0.25456956028938293]"
+6i3lff4f,tricky-skeleton-1333,soft-coated_wheaten_terrier,barn_spider,limpkin,6cxhzR9M9m9vK6Y9D9jn4n_43.pth,43,0.8365679383277893,0.8404558300971985,"[0.46486547589302063, 0.4551275074481964, 0.37969207763671875]","[0.25010940432548523, 0.24204771220684052, 0.25456956028938293]"
+swj28yh3,sleepless-veil-1332,cellular_telephone,borzoi,appenzeller,YkpPZ9FTG4kinJwxz5pxSR_10.pth,10,0.8921197652816772,0.7311828136444092,"[0.4822808802127838, 0.4667881727218628, 0.42262235283851624]","[0.29386666417121887, 0.2890865206718445, 0.29606860876083374]"
+swj28yh3,sleepless-veil-1332,cellular_telephone,borzoi,appenzeller,YkpPZ9FTG4kinJwxz5pxSR_51.pth,51,0.7597289681434631,0.7809139490127563,"[0.4822808802127838, 0.4667881727218628, 0.42262235283851624]","[0.29386666417121887, 0.2890865206718445, 0.29606860876083374]"
+c2fhqu4l,moonlit-werewolf-1331,wire-haired_fox_terrier,chimpanzee,vizsla,RGSKqWM4ZsRtxqptPjPhBu_18.pth,18,0.5765686631202698,0.8617143034934998,"[0.4747406244277954, 0.4483124613761902, 0.37616175413131714]","[0.2545359432697296, 0.2471926212310791, 0.25033530592918396]"
+c2fhqu4l,moonlit-werewolf-1331,wire-haired_fox_terrier,chimpanzee,vizsla,RGSKqWM4ZsRtxqptPjPhBu_42.pth,42,1.209184169769287,0.7919999957084656,"[0.4747406244277954, 0.4483124613761902, 0.37616175413131714]","[0.2545359432697296, 0.2471926212310791, 0.25033530592918396]"
+dpfu7jzp,dreadful-bones-1330,missile,siamese_cat,barn_spider,J2WRjBDVuACSPKrFnBaHcd_18.pth,18,0.739203929901123,0.8137651681900024,"[0.47356438636779785, 0.46225765347480774, 0.44133636355400085]","[0.27735435962677, 0.2714826464653015, 0.28849077224731445]"
+dpfu7jzp,dreadful-bones-1330,missile,siamese_cat,barn_spider,J2WRjBDVuACSPKrFnBaHcd_64.pth,64,0.6761045455932617,0.8313090205192566,"[0.47356438636779785, 0.46225765347480774, 0.44133636355400085]","[0.27735435962677, 0.2714826464653015, 0.28849077224731445]"
+bx82y5nu,forlorn-dance-1329,angora,paddle,canoe,gSX57bikkBKU7BnXhFM8Na_15.pth,15,0.7955079078674316,0.6907514333724976,"[0.47667789459228516, 0.46981823444366455, 0.4424125850200653]","[0.2656221389770508, 0.2578769028186798, 0.27823883295059204]"
+bx82y5nu,forlorn-dance-1329,angora,paddle,canoe,gSX57bikkBKU7BnXhFM8Na_50.pth,50,1.402958869934082,0.7153179049491882,"[0.47667789459228516, 0.46981823444366455, 0.4424125850200653]","[0.2656221389770508, 0.2578769028186798, 0.27823883295059204]"
+i2te5vdl,murky-cobweb-1328,otterhound,mud_turtle,trombone,XVjPuAPSZCNCEePJvUiMyR_16.pth,16,0.5126346945762634,0.8623548746109009,"[0.5032380819320679, 0.46577325463294983, 0.41547998785972595]","[0.3076493442058563, 0.3038412928581238, 0.3103325664997101]"
+i2te5vdl,murky-cobweb-1328,otterhound,mud_turtle,trombone,XVjPuAPSZCNCEePJvUiMyR_50.pth,50,0.6087729930877686,0.8424543738365173,"[0.5032380819320679, 0.46577325463294983, 0.41547998785972595]","[0.3076493442058563, 0.3038412928581238, 0.3103325664997101]"
+llh2zzgg,phantasmal-goblin-1327,planetarium,trombone,missile,XMBs3TnEeo3Q9kzUjWaBcU_10.pth,10,0.9911829829216003,0.6560846567153931,"[0.4874587655067444, 0.4837583899497986, 0.48016902804374695]","[0.3068234622478485, 0.3033066391944885, 0.32146161794662476]"
+llh2zzgg,phantasmal-goblin-1327,planetarium,trombone,missile,XMBs3TnEeo3Q9kzUjWaBcU_60.pth,60,1.5029758214950562,0.7671957612037659,"[0.4874587655067444, 0.4837583899497986, 0.48016902804374695]","[0.3068234622478485, 0.3033066391944885, 0.32146161794662476]"
+ujd78i70,shadowed-jitter-1326,mud_turtle,limpkin,acoustic_guitar,WefoF4hVsuLP6vsKqHqtCn_16.pth,16,0.4339703321456909,0.8442028760910034,"[0.5048830509185791, 0.46851131319999695, 0.3885437548160553]","[0.29709592461586, 0.29179906845092773, 0.3049171268939972]"
+ujd78i70,shadowed-jitter-1326,mud_turtle,limpkin,acoustic_guitar,WefoF4hVsuLP6vsKqHqtCn_49.pth,49,0.5214094519615173,0.8913043737411499,"[0.5048830509185791, 0.46851131319999695, 0.3885437548160553]","[0.29709592461586, 0.29179906845092773, 0.3049171268939972]"
+0ltnvrlu,wicked-pitchfork-1325,vacuum,wire-haired_fox_terrier,sewing_machine,oPysGNR3B85tPq4vsRwgjB_9.pth,9,1.0024747848510742,0.7312206625938416,"[0.5664123892784119, 0.5368302464485168, 0.5051518678665161]","[0.31148114800453186, 0.31724104285240173, 0.33083704113960266]"
+0ltnvrlu,wicked-pitchfork-1325,vacuum,wire-haired_fox_terrier,sewing_machine,oPysGNR3B85tPq4vsRwgjB_65.pth,65,0.9853841066360474,0.7253521084785461,"[0.5664123892784119, 0.5368302464485168, 0.5051518678665161]","[0.31148114800453186, 0.31724104285240173, 0.33083704113960266]"
+6hmo73nm,faded-apparition-1324,ant,breakwater,vacuum,UJ9k6nimt8GgMp9HwTNGrH_9.pth,9,0.9997820854187012,0.771490752696991,"[0.5451056361198425, 0.5377081036567688, 0.4965112507343292]","[0.28719210624694824, 0.2842363715171814, 0.3110050559043884]"
+6hmo73nm,faded-apparition-1324,ant,breakwater,vacuum,UJ9k6nimt8GgMp9HwTNGrH_33.pth,33,0.5722808837890625,0.8835691213607788,"[0.5451056361198425, 0.5377081036567688, 0.4965112507343292]","[0.28719210624694824, 0.2842363715171814, 0.3110050559043884]"
+vclel2zx,dire-witch-1323,lesser_panda,crash_helmet,dock,KSjbCijc4ixAFSUeRQLirF_12.pth,12,0.4608057737350464,0.8720626831054688,"[0.45549044013023376, 0.4461296796798706, 0.40975457429885864]","[0.2829628586769104, 0.2787525951862335, 0.2909080684185028]"
+vclel2zx,dire-witch-1323,lesser_panda,crash_helmet,dock,KSjbCijc4ixAFSUeRQLirF_30.pth,30,0.436204046010971,0.8798955678939819,"[0.45549044013023376, 0.4461296796798706, 0.40975457429885864]","[0.2829628586769104, 0.2787525951862335, 0.2909080684185028]"
+hdy69vrf,abominable-fog-1322,otterhound,sewing_machine,mashed_potato,NuvhzzmibYAft3xWrAB4iZ_11.pth,11,0.21340610086917877,0.9381720423698425,"[0.5394122004508972, 0.4880490005016327, 0.41979047656059265]","[0.28777095675468445, 0.28923773765563965, 0.3013207018375397]"
+hdy69vrf,abominable-fog-1322,otterhound,sewing_machine,mashed_potato,NuvhzzmibYAft3xWrAB4iZ_54.pth,54,0.5621498227119446,0.8911290168762207,"[0.5394122004508972, 0.4880490005016327, 0.41979047656059265]","[0.28777095675468445, 0.28923773765563965, 0.3013207018375397]"
+dw2h9lj8,paranormal-possession-1321,mixing_bowl,sea_slug,chimpanzee,W7KAyX52r3o7Fmv99f4s8G_9.pth,9,0.552802562713623,0.8283730149269104,"[0.46395939588546753, 0.4333157241344452, 0.3716311454772949]","[0.28262728452682495, 0.27426138520240784, 0.27483850717544556]"
+dw2h9lj8,paranormal-possession-1321,mixing_bowl,sea_slug,chimpanzee,W7KAyX52r3o7Fmv99f4s8G_53.pth,53,0.5093458890914917,0.875,"[0.46395939588546753, 0.4333157241344452, 0.3716311454772949]","[0.28262728452682495, 0.27426138520240784, 0.27483850717544556]"
+j2u5v2tf,twisted-claw-1320,carpenter's_kit,chimpanzee,pick,gRdrMZNh5aomjxncJ7LhYj_17.pth,17,0.7099950909614563,0.8226666450500488,"[0.5053585171699524, 0.48268190026283264, 0.4489213526248932]","[0.31114649772644043, 0.30749136209487915, 0.31103742122650146]"
+j2u5v2tf,twisted-claw-1320,carpenter's_kit,chimpanzee,pick,gRdrMZNh5aomjxncJ7LhYj_56.pth,56,0.7419004440307617,0.8293333053588867,"[0.5053585171699524, 0.48268190026283264, 0.4489213526248932]","[0.31114649772644043, 0.30749136209487915, 0.31103742122650146]"
+rpqmgr1q,murky-cauldron-1319,acoustic_guitar,pajama,paddle,9z7zZCtXu9fknCqgWPcaUN_13.pth,13,0.9392102956771851,0.7387387156486511,"[0.5353390574455261, 0.4824846088886261, 0.4427936375141144]","[0.3111995756626129, 0.30737221240997314, 0.3201989531517029]"
+rpqmgr1q,murky-cauldron-1319,acoustic_guitar,pajama,paddle,9z7zZCtXu9fknCqgWPcaUN_25.pth,25,1.276686191558838,0.772522509098053,"[0.5353390574455261, 0.4824846088886261, 0.4427936375141144]","[0.3111995756626129, 0.30737221240997314, 0.3201989531517029]"
+nbxganq5,intangible-trouble-1318,trombone,red_wolf,wire-haired_fox_terrier,J7yLPERDpwcjAgidJGkWBR_9.pth,9,0.5069172978401184,0.8145400881767273,"[0.4873230457305908, 0.45664259791374207, 0.3991365134716034]","[0.30108073353767395, 0.2958023250102997, 0.3015921413898468]"
+nbxganq5,intangible-trouble-1318,trombone,red_wolf,wire-haired_fox_terrier,J7yLPERDpwcjAgidJGkWBR_48.pth,48,0.5027696490287781,0.8842729926109314,"[0.4873230457305908, 0.45664259791374207, 0.3991365134716034]","[0.30108073353767395, 0.2958023250102997, 0.3015921413898468]"
+6rsxvtrh,ethereal-spider-1317,necklace,cellular_telephone,ibizan_hound,idEi8UfDDxNDoqmDiG2Pxy_11.pth,11,0.6968932151794434,0.786171555519104,"[0.5324053764343262, 0.49938103556632996, 0.4631431996822357]","[0.2999568283557892, 0.2984747290611267, 0.3114628493785858]"
+6rsxvtrh,ethereal-spider-1317,necklace,cellular_telephone,ibizan_hound,idEi8UfDDxNDoqmDiG2Pxy_56.pth,56,0.6772945523262024,0.806658148765564,"[0.5324053764343262, 0.49938103556632996, 0.4631431996822357]","[0.2999568283557892, 0.2984747290611267, 0.3114628493785858]"
+qynav7dy,lurking-beast-1316,schooner,otterhound,mixing_bowl,mWEy4mSg7FpQzUq92ZaPnj_18.pth,18,0.5008512139320374,0.866328239440918,"[0.5364593863487244, 0.533495306968689, 0.5162510275840759]","[0.2713555693626404, 0.26789936423301697, 0.2896732687950134]"
+qynav7dy,lurking-beast-1316,schooner,otterhound,mixing_bowl,mWEy4mSg7FpQzUq92ZaPnj_62.pth,62,0.5289583802223206,0.8815566897392273,"[0.5364593863487244, 0.533495306968689, 0.5162510275840759]","[0.2713555693626404, 0.26789936423301697, 0.2896732687950134]"
+qef0df8i,unearthly-force-1315,ibizan_hound,ant,pick,bnYeDMbZM3nVqyrM27tM3D_18.pth,18,1.261259913444519,0.6863979697227478,"[0.5152965188026428, 0.4820643961429596, 0.40618056058883667]","[0.28465735912323, 0.27670904994010925, 0.29397404193878174]"
+qef0df8i,unearthly-force-1315,ibizan_hound,ant,pick,bnYeDMbZM3nVqyrM27tM3D_66.pth,66,0.8234401345252991,0.7833753228187561,"[0.5152965188026428, 0.4820643961429596, 0.40618056058883667]","[0.28465735912323, 0.27670904994010925, 0.29397404193878174]"
+5ecbmnh7,moonlit-ember-1314,mud_turtle,chimpanzee,trombone,apcVcbgpdLKvhdCqczpvK4_13.pth,13,0.7232789993286133,0.7815533876419067,"[0.47298291325569153, 0.45051929354667664, 0.4027985632419586]","[0.2986108362674713, 0.29420962929725647, 0.29452812671661377]"
+5ecbmnh7,moonlit-ember-1314,mud_turtle,chimpanzee,trombone,apcVcbgpdLKvhdCqczpvK4_58.pth,58,0.7431164979934692,0.7985436916351318,"[0.47298291325569153, 0.45051929354667664, 0.4027985632419586]","[0.2986108362674713, 0.29420962929725647, 0.29452812671661377]"
+va69n2ye,ethereal-witch-1313,pug,maillot,chimpanzee,6m6vZjrVUSFswzM5ZDjA6c_13.pth,13,2.0508670806884766,0.6425470113754272,"[0.4845964014530182, 0.47211551666259766, 0.4287702143192291]","[0.28442367911338806, 0.2769336998462677, 0.2779134213924408]"
+va69n2ye,ethereal-witch-1313,pug,maillot,chimpanzee,6m6vZjrVUSFswzM5ZDjA6c_59.pth,59,1.2567720413208008,0.713458776473999,"[0.4845964014530182, 0.47211551666259766, 0.4287702143192291]","[0.28442367911338806, 0.2769336998462677, 0.2779134213924408]"
+4bnf4qe1,forlorn-fang-1312,paddle,ant,trombone,UF65GJoJWWhsogtWB47CjD_13.pth,13,0.7855279445648193,0.7373626232147217,"[0.5101991891860962, 0.4853374660015106, 0.42875462770462036]","[0.2992432117462158, 0.2929272949695587, 0.30850744247436523]"
+4bnf4qe1,forlorn-fang-1312,paddle,ant,trombone,UF65GJoJWWhsogtWB47CjD_55.pth,55,1.9302053451538088,0.7725274562835693,"[0.5101991891860962, 0.4853374660015106, 0.42875462770462036]","[0.2992432117462158, 0.2929272949695587, 0.30850744247436523]"
+pwu165c6,wavering-shadow-1311,tow_truck,trombone,canoe,4Hwnhj4psanPs4Wdwxph9V_15.pth,15,0.9738613963127136,0.8012195229530334,"[0.49031081795692444, 0.4721335172653198, 0.4458504021167755]","[0.30371326208114624, 0.3011021912097931, 0.31374529004096985]"
+pwu165c6,wavering-shadow-1311,tow_truck,trombone,canoe,4Hwnhj4psanPs4Wdwxph9V_29.pth,29,0.7988531589508057,0.8402438759803772,"[0.49031081795692444, 0.4721335172653198, 0.4458504021167755]","[0.30371326208114624, 0.3011021912097931, 0.31374529004096985]"
+vd33rec7,forlorn-pitchfork-1310,cellular_telephone,american_lobster,mashed_potato,ZXtc2ee7SpmNdfShy3QCwZ_13.pth,13,0.647224485874176,0.8142292499542236,"[0.5355772376060486, 0.4583054184913635, 0.39699339866638184]","[0.2961593270301819, 0.29533571004867554, 0.30522382259368896]"
+vd33rec7,forlorn-pitchfork-1310,cellular_telephone,american_lobster,mashed_potato,ZXtc2ee7SpmNdfShy3QCwZ_52.pth,52,0.6316653490066528,0.8260869383811951,"[0.5355772376060486, 0.4583054184913635, 0.39699339866638184]","[0.2961593270301819, 0.29533571004867554, 0.30522382259368896]"
+wvi0hk5a,vacant-ghoul-1309,maillot,acoustic_guitar,trombone,fsprpwvqme6kgnxwkg6rtQ_11.pth,11,0.9260901808738708,0.7137970328330994,"[0.5453358292579651, 0.49091649055480957, 0.4491286277770996]","[0.33926883339881897, 0.3390037715435028, 0.3492666184902191]"
+wvi0hk5a,vacant-ghoul-1309,maillot,acoustic_guitar,trombone,fsprpwvqme6kgnxwkg6rtQ_59.pth,59,0.887739896774292,0.7594070434570312,"[0.5453358292579651, 0.49091649055480957, 0.4491286277770996]","[0.33926883339881897, 0.3390037715435028, 0.3492666184902191]"
+swaf8rnx,fearsome-void-1308,black_and_gold_garden_spider,police_van,wire-haired_fox_terrier,BQ7nRLKHTabNK5jMxFySPj_14.pth,14,0.3238796293735504,0.9132007360458374,"[0.44711557030677795, 0.45693886280059814, 0.39489689469337463]","[0.256773442029953, 0.25065815448760986, 0.26695317029953003]"
+swaf8rnx,fearsome-void-1308,black_and_gold_garden_spider,police_van,wire-haired_fox_terrier,BQ7nRLKHTabNK5jMxFySPj_48.pth,48,0.2319165617227554,0.943942129611969,"[0.44711557030677795, 0.45693886280059814, 0.39489689469337463]","[0.256773442029953, 0.25065815448760986, 0.26695317029953003]"
+ke8hnaqz,venomous-seance-1307,bolete,mashed_potato,sea_slug,WAvEVUqV2K2bHxRTLrQ5i2_13.pth,13,0.7328749299049377,0.7865731716156006,"[0.4566056430339813, 0.4034702181816101, 0.3090766966342926]","[0.27269241213798523, 0.25534653663635254, 0.24786022305488586]"
+ke8hnaqz,venomous-seance-1307,bolete,mashed_potato,sea_slug,WAvEVUqV2K2bHxRTLrQ5i2_46.pth,46,0.6811655163764954,0.8106212615966797,"[0.4566056430339813, 0.4034702181816101, 0.3090766966342926]","[0.27269241213798523, 0.25534653663635254, 0.24786022305488586]"
+mndmc2wm,forgotten-portal-1306,cellular_telephone,ruddy_turnstone,soft-coated_wheaten_terrier,HmB2X4offcJPuq2oLZcrds_13.pth,13,0.6781514883041382,0.8468677401542664,"[0.5049722194671631, 0.4838995933532715, 0.4488379657268524]","[0.27171817421913147, 0.2674986720085144, 0.2789154052734375]"
+mndmc2wm,forgotten-portal-1306,cellular_telephone,ruddy_turnstone,soft-coated_wheaten_terrier,HmB2X4offcJPuq2oLZcrds_39.pth,39,0.3611210286617279,0.9164733290672302,"[0.5049722194671631, 0.4838995933532715, 0.4488379657268524]","[0.27171817421913147, 0.2674986720085144, 0.2789154052734375]"
+khjn3mdd,scary-fang-1305,pug,red_wolf,carpenter's_kit,jy7iX9wbzT4m3oEbTDuJBq_9.pth,9,0.7771602869033813,0.7793696522712708,"[0.4980454444885254, 0.472944051027298, 0.41962239146232605]","[0.286109060049057, 0.2787403166294098, 0.28716376423835754]"
+khjn3mdd,scary-fang-1305,pug,red_wolf,carpenter's_kit,jy7iX9wbzT4m3oEbTDuJBq_26.pth,26,0.8441174626350403,0.7936962842941284,"[0.4980454444885254, 0.472944051027298, 0.41962239146232605]","[0.286109060049057, 0.2787403166294098, 0.28716376423835754]"
+p81upw5i,toxic-imp-1304,mashed_potato,crash_helmet,mud_turtle,Hfk6ebqjua8ve73r5UK7bX_14.pth,14,0.38034743070602417,0.8906474709510803,"[0.5070343017578125, 0.4598037898540497, 0.39062196016311646]","[0.28455090522766113, 0.2778461277484894, 0.28488197922706604]"
+p81upw5i,toxic-imp-1304,mashed_potato,crash_helmet,mud_turtle,Hfk6ebqjua8ve73r5UK7bX_59.pth,59,0.5467159152030945,0.8776978254318237,"[0.5070343017578125, 0.4598037898540497, 0.39062196016311646]","[0.28455090522766113, 0.2778461277484894, 0.28488197922706604]"
+6dv1sx9s,fearsome-poltergeist-1303,barometer,maillot,ant,GyGfgwSpLuXdwSbhvqv5pV_15.pth,15,2.412782669067383,0.5356082916259766,"[0.5465902090072632, 0.5192525386810303, 0.449209988117218]","[0.2810750901699066, 0.27765989303588867, 0.30102887749671936]"
+6dv1sx9s,fearsome-poltergeist-1303,barometer,maillot,ant,GyGfgwSpLuXdwSbhvqv5pV_64.pth,64,1.807166337966919,0.6943620443344116,"[0.5465902090072632, 0.5192525386810303, 0.449209988117218]","[0.2810750901699066, 0.27765989303588867, 0.30102887749671936]"
+ucy0xdu0,unraveling-howl-1302,strawberry,crash_helmet,mashed_potato,73b3P3hVQmcCJGcA6MLKLX_13.pth,13,0.5557136535644531,0.8254364132881165,"[0.5547276735305786, 0.4463682770729065, 0.3814363479614258]","[0.29585710167884827, 0.30329275131225586, 0.30882635712623596]"
+ucy0xdu0,unraveling-howl-1302,strawberry,crash_helmet,mashed_potato,73b3P3hVQmcCJGcA6MLKLX_59.pth,59,0.4727199971675873,0.9189526438713074,"[0.5547276735305786, 0.4463682770729065, 0.3814363479614258]","[0.29585710167884827, 0.30329275131225586, 0.30882635712623596]"
+2aymggwe,phantasmal-incantation-1301,lesser_panda,ruddy_turnstone,soft-coated_wheaten_terrier,nYxx7jBmSN35N6w7oSSGSX_9.pth,9,0.5241202116012573,0.8524590134620667,"[0.4744098484516144, 0.45743486285209656, 0.4023783206939697]","[0.24644392728805542, 0.24042490124702454, 0.24976271390914917]"
+2aymggwe,phantasmal-incantation-1301,lesser_panda,ruddy_turnstone,soft-coated_wheaten_terrier,nYxx7jBmSN35N6w7oSSGSX_41.pth,41,0.3761468827724457,0.8983606696128845,"[0.4744098484516144, 0.45743486285209656, 0.4023783206939697]","[0.24644392728805542, 0.24042490124702454, 0.24976271390914917]"
+rosslvaf,endless-nightmare-1300,pug,ruddy_turnstone,pajama,LWiHBSiWP3DfbomSoUV4c3_11.pth,11,0.6002447605133057,0.8410596251487732,"[0.51627516746521, 0.48049843311309814, 0.4482792615890503]","[0.2607625424861908, 0.25633761286735535, 0.2666204869747162]"
+rosslvaf,endless-nightmare-1300,pug,ruddy_turnstone,pajama,LWiHBSiWP3DfbomSoUV4c3_60.pth,60,0.6453462243080139,0.8768212199211121,"[0.51627516746521, 0.48049843311309814, 0.4482792615890503]","[0.2607625424861908, 0.25633761286735535, 0.2666204869747162]"
+9nq6quww,cryptic-wraith-1299,police_van,canoe,appenzeller,KRQ2DxxzrJiqbsfcmfapN7_17.pth,17,0.4379534423351288,0.8951841592788696,"[0.44884565472602844, 0.4510189890861511, 0.41208747029304504]","[0.26907673478126526, 0.2639305591583252, 0.2736920118331909]"
+9nq6quww,cryptic-wraith-1299,police_van,canoe,appenzeller,KRQ2DxxzrJiqbsfcmfapN7_77.pth,77,0.4753711819648742,0.9050991535186768,"[0.44884565472602844, 0.4510189890861511, 0.41208747029304504]","[0.26907673478126526, 0.2639305591583252, 0.2736920118331909]"
+ztqc6k0p,vacant-ghoul-1298,mud_turtle,pick,wire-haired_fox_terrier,mGWPWxmJPK9Viy85RYmWU7_10.pth,10,0.6026905179023743,0.801886796951294,"[0.5098597407341003, 0.47122621536254883, 0.4210161566734314]","[0.29227349162101746, 0.28703418374061584, 0.29844337701797485]"
+ztqc6k0p,vacant-ghoul-1298,mud_turtle,pick,wire-haired_fox_terrier,mGWPWxmJPK9Viy85RYmWU7_40.pth,40,0.3918167054653168,0.8886792659759521,"[0.5098597407341003, 0.47122621536254883, 0.4210161566734314]","[0.29227349162101746, 0.28703418374061584, 0.29844337701797485]"
+fmirman5,creepy-magic-1297,airedale,barometer,dock,PK5kbkP6VPTSWXzA9RA8NU_9.pth,9,0.5339621901512146,0.8363047242164612,"[0.50098717212677, 0.48656484484672546, 0.4512964189052582]","[0.2719019651412964, 0.27196377515792847, 0.29042544960975647]"
+fmirman5,creepy-magic-1297,airedale,barometer,dock,PK5kbkP6VPTSWXzA9RA8NU_76.pth,76,0.4549805521965027,0.8752025961875916,"[0.50098717212677, 0.48656484484672546, 0.4512964189052582]","[0.2719019651412964, 0.27196377515792847, 0.29042544960975647]"
+uzbvnkm0,magical-mirage-1296,airedale,tow_truck,indigo_bunting,nCJjUTpqUe6C2XzjnRXaVs_9.pth,9,0.47959432005882263,0.8548812866210938,"[0.46993929147720337, 0.47712278366088867, 0.40503448247909546]","[0.256898432970047, 0.24980489909648895, 0.26776430010795593]"
+uzbvnkm0,magical-mirage-1296,airedale,tow_truck,indigo_bunting,nCJjUTpqUe6C2XzjnRXaVs_49.pth,49,0.4687934517860412,0.9102902412414552,"[0.46993929147720337, 0.47712278366088867, 0.40503448247909546]","[0.256898432970047, 0.24980489909648895, 0.26776430010795593]"
+pg8hkp3m,tenebrous-incantation-1295,cellular_telephone,pick,canoe,nZB9W3KH8JcDARcMUbVgbu_14.pth,14,0.898078978061676,0.7041499614715576,"[0.5041123628616333, 0.4780083894729614, 0.4514082074165344]","[0.3099944293498993, 0.3055369555950165, 0.3194628357887268]"
+pg8hkp3m,tenebrous-incantation-1295,cellular_telephone,pick,canoe,nZB9W3KH8JcDARcMUbVgbu_39.pth,39,1.2074934244155884,0.7603748440742493,"[0.5041123628616333, 0.4780083894729614, 0.4514082074165344]","[0.3099944293498993, 0.3055369555950165, 0.3194628357887268]"
+wziewdmr,abominable-pitchfork-1294,vizsla,appenzeller,trombone,aeFCERcESoGbB7F9U6iREq_17.pth,17,0.33359187841415405,0.8990384340286255,"[0.4948645830154419, 0.45692384243011475, 0.3920765221118927]","[0.2875118851661682, 0.28314220905303955, 0.29099130630493164]"
+wziewdmr,abominable-pitchfork-1294,vizsla,appenzeller,trombone,aeFCERcESoGbB7F9U6iREq_67.pth,67,0.5956371426582336,0.8894230723381042,"[0.4948645830154419, 0.45692384243011475, 0.3920765221118927]","[0.2875118851661682, 0.28314220905303955, 0.29099130630493164]"
+ktlkupgy,arcane-labyrinth-1293,barometer,chimpanzee,vizsla,mwRZKig8QpGnHuuxUGuGmj_18.pth,18,0.547073483467102,0.8486096858978271,"[0.4864695370197296, 0.4580273926258087, 0.39156001806259155]","[0.2634921669960022, 0.26032862067222595, 0.2674137353897095]"
+ktlkupgy,arcane-labyrinth-1293,barometer,chimpanzee,vizsla,mwRZKig8QpGnHuuxUGuGmj_48.pth,48,0.5634483098983765,0.8578784465789795,"[0.4864695370197296, 0.4580273926258087, 0.39156001806259155]","[0.2634921669960022, 0.26032862067222595, 0.2674137353897095]"
+il01fybs,restless-seance-1292,vizsla,cellular_telephone,breakwater,ekDCZxna9Z5sVEHYpqiCeh_13.pth,13,0.44842150807380676,0.8693069219589233,"[0.4929819107055664, 0.4720853269100189, 0.43102121353149414]","[0.268356591463089, 0.2654234766960144, 0.2880175709724426]"
+il01fybs,restless-seance-1292,vizsla,cellular_telephone,breakwater,ekDCZxna9Z5sVEHYpqiCeh_80.pth,80,0.5044267773628235,0.8673267364501953,"[0.4929819107055664, 0.4720853269100189, 0.43102121353149414]","[0.268356591463089, 0.2654234766960144, 0.2880175709724426]"
+22btl51b,abominable-ripple-1290,red_wolf,soft-coated_wheaten_terrier,limpkin,UsJ6WfXdevDyfrg2NawvM2_9.pth,9,0.645788848400116,0.8022959232330322,"[0.46746960282325745, 0.4567570090293884, 0.3708381950855255]","[0.23938018083572388, 0.2313908487558365, 0.24056662619113922]"
+22btl51b,abominable-ripple-1290,red_wolf,soft-coated_wheaten_terrier,limpkin,UsJ6WfXdevDyfrg2NawvM2_51.pth,51,10.153937339782717,0.5892857313156128,"[0.46746960282325745, 0.4567570090293884, 0.3708381950855255]","[0.23938018083572388, 0.2313908487558365, 0.24056662619113922]"
+z5ddoihx,possessed-relic-1289,planetarium,schooner,strawberry,FnJXHuEeWoYneZbBwBPq3Q_10.pth,10,1.6534396409988403,0.5813630223274231,"[0.5412914156913757, 0.47359833121299744, 0.4647381603717804]","[0.27795857191085815, 0.2889379560947418, 0.31353873014450073]"
+z5ddoihx,possessed-relic-1289,planetarium,schooner,strawberry,FnJXHuEeWoYneZbBwBPq3Q_41.pth,41,0.1770974248647689,0.9554937481880188,"[0.5412914156913757, 0.47359833121299744, 0.4647381603717804]","[0.27795857191085815, 0.2889379560947418, 0.31353873014450073]"
+zyqhpue8,murky-magic-1288,acoustic_guitar,barn_spider,airedale,BhTRi5xgHVmSBJabbTXnku_9.pth,9,1.1166311502456665,0.6826196312904358,"[0.5089156031608582, 0.46251916885375977, 0.3989523947238922]","[0.31217697262763977, 0.3055828809738159, 0.31510454416275024]"
+zyqhpue8,murky-magic-1288,acoustic_guitar,barn_spider,airedale,BhTRi5xgHVmSBJabbTXnku_60.pth,60,0.7846201062202454,0.8073047995567322,"[0.5089156031608582, 0.46251916885375977, 0.3989523947238922]","[0.31217697262763977, 0.3055828809738159, 0.31510454416275024]"
+qxzy4uu2,ethereal-shadow-1287,canoe,ibizan_hound,trombone,Gip6BbDvq5ugrDz4pwKYQ8_14.pth,14,0.6833098530769348,0.8002528548240662,"[0.4888104498386383, 0.4646657109260559, 0.4220942258834839]","[0.2981463372707367, 0.2934456169605255, 0.3078646957874298]"
+qxzy4uu2,ethereal-shadow-1287,canoe,ibizan_hound,trombone,Gip6BbDvq5ugrDz4pwKYQ8_37.pth,37,0.6282482743263245,0.8268015384674072,"[0.4888104498386383, 0.4646657109260559, 0.4220942258834839]","[0.2981463372707367, 0.2934456169605255, 0.3078646957874298]"
+s8cbzvq6,moonlit-scythe-1286,appenzeller,pajama,acoustic_guitar,JAnp6hD8jaRsRriQC95otX_9.pth,9,0.5468783378601074,0.8380520939826965,"[0.5237634778022766, 0.4696281850337982, 0.4177440106868744]","[0.31386226415634155, 0.3102578818798065, 0.31780245900154114]"
+s8cbzvq6,moonlit-scythe-1286,appenzeller,pajama,acoustic_guitar,JAnp6hD8jaRsRriQC95otX_52.pth,52,0.6042304635047913,0.855039656162262,"[0.5237634778022766, 0.4696281850337982, 0.4177440106868744]","[0.31386226415634155, 0.3102578818798065, 0.31780245900154114]"
+q9wnrw9z,phantasmal-wraith-1285,planetarium,pajama,ibizan_hound,RsxfzMhbW8r9i2apBnnrDN_16.pth,16,0.5111693143844604,0.8637771010398865,"[0.4881827235221863, 0.4585472047328949, 0.4308537542819977]","[0.27237772941589355, 0.2654491662979126, 0.28583213686943054]"
+q9wnrw9z,phantasmal-wraith-1285,planetarium,pajama,ibizan_hound,RsxfzMhbW8r9i2apBnnrDN_57.pth,57,0.4815945327281952,0.9195046424865724,"[0.4881827235221863, 0.4585472047328949, 0.4308537542819977]","[0.27237772941589355, 0.2654491662979126, 0.28583213686943054]"
+91e1plw4,hollow-orb-1284,acoustic_guitar,borzoi,barn_spider,PrDMkYUmBANmYhCwEyrmzV_15.pth,15,0.9090268015861511,0.7777777910232544,"[0.5055992007255554, 0.46221810579299927, 0.4050113260746002]","[0.31564587354660034, 0.3083254098892212, 0.3191172182559967]"
+91e1plw4,hollow-orb-1284,acoustic_guitar,borzoi,barn_spider,PrDMkYUmBANmYhCwEyrmzV_80.pth,80,0.5783815979957581,0.9018087983131408,"[0.5055992007255554, 0.46221810579299927, 0.4050113260746002]","[0.31564587354660034, 0.3083254098892212, 0.3191172182559967]"
+zh4ryihl,twisted-dance-1283,mixing_bowl,ibizan_hound,paddle,KprUqkPc2HiRLrYaLDWBPF_13.pth,13,0.7373742461204529,0.7758151888847351,"[0.5069813132286072, 0.4837239384651184, 0.4385220408439636]","[0.27624043822288513, 0.27092909812927246, 0.29029855132102966]"
+zh4ryihl,twisted-dance-1283,mixing_bowl,ibizan_hound,paddle,KprUqkPc2HiRLrYaLDWBPF_35.pth,35,0.7152589559555054,0.7975543737411499,"[0.5069813132286072, 0.4837239384651184, 0.4385220408439636]","[0.27624043822288513, 0.27092909812927246, 0.29029855132102966]"
+no0jlifm,devilish-moon-1282,strawberry,barometer,indigo_bunting,m5mGBAaNnuHcjCJXt2LDT7_10.pth,10,0.1540302038192749,0.9446640610694885,"[0.5421374440193176, 0.4682319760322571, 0.391012579202652]","[0.2768665552139282, 0.28559860587120056, 0.29958611726760864]"
+no0jlifm,devilish-moon-1282,strawberry,barometer,indigo_bunting,m5mGBAaNnuHcjCJXt2LDT7_65.pth,65,0.0925653800368309,0.9815546870231628,"[0.5421374440193176, 0.4682319760322571, 0.391012579202652]","[0.2768665552139282, 0.28559860587120056, 0.29958611726760864]"
+no520v8o,cryptic-dance-1281,wire-haired_fox_terrier,barn_spider,trombone,FJ4PcqHxFFyKdbAVHhAv4G_16.pth,16,0.7576988339424133,0.8037225008010864,"[0.4936818778514862, 0.46232330799102783, 0.4209290146827698]","[0.317125141620636, 0.3125646710395813, 0.32042548060417175]"
+no520v8o,cryptic-dance-1281,wire-haired_fox_terrier,barn_spider,trombone,FJ4PcqHxFFyKdbAVHhAv4G_35.pth,35,0.8548387885093689,0.8104906678199768,"[0.4936818778514862, 0.46232330799102783, 0.4209290146827698]","[0.317125141620636, 0.3125646710395813, 0.32042548060417175]"
+4y8pou9w,devilish-thorn-1280,soft-coated_wheaten_terrier,barometer,sewing_machine,7yFkU7JnBhZ3qBYRs5MVp7_18.pth,18,0.4568779468536377,0.8643162250518799,"[0.5239832401275635, 0.4904076159000397, 0.44794535636901855]","[0.2849041521549225, 0.2867344319820404, 0.2983458936214447]"
+4y8pou9w,devilish-thorn-1280,soft-coated_wheaten_terrier,barometer,sewing_machine,7yFkU7JnBhZ3qBYRs5MVp7_29.pth,29,1.1580241918563845,0.7371794581413269,"[0.5239832401275635, 0.4904076159000397, 0.44794535636901855]","[0.2849041521549225, 0.2867344319820404, 0.2983458936214447]"
+26ywqmzr,ghastly-cat-1279,soft-coated_wheaten_terrier,chimpanzee,american_lobster,m89fA5c3wmJibqDTjSz26E_10.pth,10,5.293156147003174,0.4684898853302002,"[0.4824770987033844, 0.4395408630371094, 0.3857608735561371]","[0.2698958218097687, 0.2616010010242462, 0.26163652539253235]"
+26ywqmzr,ghastly-cat-1279,soft-coated_wheaten_terrier,chimpanzee,american_lobster,m89fA5c3wmJibqDTjSz26E_36.pth,36,1.6569252014160156,0.731272280216217,"[0.4824770987033844, 0.4395408630371094, 0.3857608735561371]","[0.2698958218097687, 0.2616010010242462, 0.26163652539253235]"
+3mfb0ag2,howling-nightmare-1278,borzoi,mashed_potato,necklace,bDvfb7YjFuoHoJD7xWJpgB_17.pth,17,0.36729294061660767,0.9052774310112,"[0.5454729795455933, 0.5005345344543457, 0.43712136149406433]","[0.2743082344532013, 0.2739689350128174, 0.28838014602661133]"
+3mfb0ag2,howling-nightmare-1278,borzoi,mashed_potato,necklace,bDvfb7YjFuoHoJD7xWJpgB_28.pth,28,0.4976896941661834,0.9079837799072266,"[0.5454729795455933, 0.5005345344543457, 0.43712136149406433]","[0.2743082344532013, 0.2739689350128174, 0.28838014602661133]"
+hqrfhavo,eerie-rift-1277,american_lobster,lesser_panda,mixing_bowl,7ZGNXdvyr6UTLsuQKwBpHA_13.pth,13,0.46874192357063293,0.8452237248420715,"[0.5008769631385803, 0.4427247643470764, 0.37995946407318115]","[0.2790212631225586, 0.2747386395931244, 0.28296592831611633]"
+hqrfhavo,eerie-rift-1277,american_lobster,lesser_panda,mixing_bowl,7ZGNXdvyr6UTLsuQKwBpHA_40.pth,40,0.6726559400558472,0.8802902102470398,"[0.5008769631385803, 0.4427247643470764, 0.37995946407318115]","[0.2790212631225586, 0.2747386395931244, 0.28296592831611633]"
+8976knpy,sleepless-bat-1276,borzoi,police_van,soft-coated_wheaten_terrier,geZRzw4Z7ASSk5vuceko3o_11.pth,11,1.2938331365585327,0.6838046312332153,"[0.46279919147491455, 0.4510633945465088, 0.4101267158985138]","[0.2607601583003998, 0.25310808420181274, 0.26143690943717957]"
+8976knpy,sleepless-bat-1276,borzoi,police_van,soft-coated_wheaten_terrier,geZRzw4Z7ASSk5vuceko3o_38.pth,38,0.7766575217247009,0.7892031073570251,"[0.46279919147491455, 0.4510633945465088, 0.4101267158985138]","[0.2607601583003998, 0.25310808420181274, 0.26143690943717957]"
+ubfvb3kw,lurking-labyrinth-1275,pug,tow_truck,schooner,jqte5WSnBTVBnJCA6q6MXZ_10.pth,10,0.8060778975486755,0.8029100298881531,"[0.49763360619544983, 0.4985358417034149, 0.4899771809577942]","[0.2731049358844757, 0.2700059711933136, 0.28727564215660095]"
+ubfvb3kw,lurking-labyrinth-1275,pug,tow_truck,schooner,jqte5WSnBTVBnJCA6q6MXZ_52.pth,52,0.515501856803894,0.8835979104042053,"[0.49763360619544983, 0.4985358417034149, 0.4899771809577942]","[0.2731049358844757, 0.2700059711933136, 0.28727564215660095]"
+187oyjl1,obscure-scarecrow-1274,mashed_potato,mixing_bowl,sea_slug,2ntnJt77KxYPQaFzkW4Aiv_14.pth,14,0.8586953282356262,0.7751045823097229,"[0.4957882761955261, 0.43865612149238586, 0.35987213253974915]","[0.283499151468277, 0.27474698424339294, 0.27850615978240967]"
+187oyjl1,obscure-scarecrow-1274,mashed_potato,mixing_bowl,sea_slug,2ntnJt77KxYPQaFzkW4Aiv_39.pth,39,0.5644110441207886,0.823221743106842,"[0.4957882761955261, 0.43865612149238586, 0.35987213253974915]","[0.283499151468277, 0.27474698424339294, 0.27850615978240967]"
+fqldl6wb,grim-gargoyle-1273,vacuum,mixing_bowl,bolete,F2WkFsEZ6GoPiLDQazAuq9_11.pth,11,0.5350313782691956,0.8188889026641846,"[0.536206066608429, 0.5023831129074097, 0.4455779790878296]","[0.3032281994819641, 0.3044588267803192, 0.3229270279407501]"
+fqldl6wb,grim-gargoyle-1273,vacuum,mixing_bowl,bolete,F2WkFsEZ6GoPiLDQazAuq9_57.pth,57,0.9751185178756714,0.8366666436195374,"[0.536206066608429, 0.5023831129074097, 0.4455779790878296]","[0.3032281994819641, 0.3044588267803192, 0.3229270279407501]"
+m8bicriv,strange-cobweb-1272,ruddy_turnstone,planetarium,acoustic_guitar,DprYVqsWJNKfyWfYpsrtrA_12.pth,12,0.4319809675216675,0.8882282972335815,"[0.518663227558136, 0.48799559473991394, 0.4551685154438019]","[0.29827478528022766, 0.29473239183425903, 0.3132477402687073]"
+m8bicriv,strange-cobweb-1272,ruddy_turnstone,planetarium,acoustic_guitar,DprYVqsWJNKfyWfYpsrtrA_50.pth,50,0.3560077548027038,0.8965517282485962,"[0.518663227558136, 0.48799559473991394, 0.4551685154438019]","[0.29827478528022766, 0.29473239183425903, 0.3132477402687073]"
+vh5ebril,somber-ripple-1271,indigo_bunting,necklace,angora,EvCbFJxDr4gRJ6dGyvo2f8_13.pth,13,0.39770299196243286,0.8970588445663452,"[0.5102173089981079, 0.5058319568634033, 0.44124317169189453]","[0.2684430181980133, 0.25945377349853516, 0.2798044681549072]"
+vh5ebril,somber-ripple-1271,indigo_bunting,necklace,angora,EvCbFJxDr4gRJ6dGyvo2f8_40.pth,40,0.3072890043258667,0.9385026693344116,"[0.5102173089981079, 0.5058319568634033, 0.44124317169189453]","[0.2684430181980133, 0.25945377349853516, 0.2798044681549072]"
+a2ub7lld,restless-fantasy-1270,soft-coated_wheaten_terrier,sea_slug,canoe,BDhYq7f7QvTUKobxKv4F6F_9.pth,9,0.7241643667221069,0.7991886138916016,"[0.4543282389640808, 0.42470282316207886, 0.3649420738220215]","[0.26598310470581055, 0.2534986138343811, 0.2608304023742676]"
+a2ub7lld,restless-fantasy-1270,soft-coated_wheaten_terrier,sea_slug,canoe,BDhYq7f7QvTUKobxKv4F6F_30.pth,30,0.5308930277824402,0.8519269824028015,"[0.4543282389640808, 0.42470282316207886, 0.3649420738220215]","[0.26598310470581055, 0.2534986138343811, 0.2608304023742676]"
+ie1paiz5,moonlit-horseman-1269,angora,mashed_potato,airedale,BeVvrFQ6z6vvqVejSuoxQB_17.pth,17,0.696258008480072,0.7963483333587646,"[0.5057355761528015, 0.4595087170600891, 0.3842584490776062]","[0.2634180784225464, 0.2578602731227875, 0.26476848125457764]"
+ie1paiz5,moonlit-horseman-1269,angora,mashed_potato,airedale,BeVvrFQ6z6vvqVejSuoxQB_22.pth,22,0.7338250875473022,0.8033707737922668,"[0.5057355761528015, 0.4595087170600891, 0.3842584490776062]","[0.2634180784225464, 0.2578602731227875, 0.26476848125457764]"
+nsdm2oe5,vacant-dance-1268,ruddy_turnstone,running_shoe,missile,gUsU8vbRCMqUWuxu4oiaFM_9.pth,9,1.026366949081421,0.7668711543083191,"[0.5067015886306763, 0.5012255907058716, 0.4870236814022064]","[0.26753953099250793, 0.2643149197101593, 0.28235867619514465]"
+nsdm2oe5,vacant-dance-1268,ruddy_turnstone,running_shoe,missile,gUsU8vbRCMqUWuxu4oiaFM_65.pth,65,0.7961511611938477,0.8723926544189453,"[0.5067015886306763, 0.5012255907058716, 0.4870236814022064]","[0.26753953099250793, 0.2643149197101593, 0.28235867619514465]"
+b9z6vb6v,twisted-phantom-1267,ruddy_turnstone,mud_turtle,chambered_nautilus,dDyv43SjZ8d4WEoMTKiekr_14.pth,14,0.6228887438774109,0.8301886916160583,"[0.4658115804195404, 0.44794589281082153, 0.40634259581565857]","[0.262943834066391, 0.2533027231693268, 0.2609342932701111]"
+b9z6vb6v,twisted-phantom-1267,ruddy_turnstone,mud_turtle,chambered_nautilus,dDyv43SjZ8d4WEoMTKiekr_74.pth,74,0.628203809261322,0.849056601524353,"[0.4658115804195404, 0.44794589281082153, 0.40634259581565857]","[0.262943834066391, 0.2533027231693268, 0.2609342932701111]"
+imo8xu6k,eerie-trouble-1266,sewing_machine,wire-haired_fox_terrier,angora,9zaeZoPRRjHVbNFH9ALEKz_12.pth,12,0.6118631958961487,0.8427419066429138,"[0.5119686126708984, 0.4807182550430298, 0.44441238045692444]","[0.2871641218662262, 0.288149356842041, 0.29949110746383667]"
+imo8xu6k,eerie-trouble-1266,sewing_machine,wire-haired_fox_terrier,angora,9zaeZoPRRjHVbNFH9ALEKz_64.pth,64,5.848538875579834,0.6075268983840942,"[0.5119686126708984, 0.4807182550430298, 0.44441238045692444]","[0.2871641218662262, 0.288149356842041, 0.29949110746383667]"
+jbns7bze,crawly-sorcery-1265,sewing_machine,bolete,canoe,GBRmdXBShSPigPkfXcr3Zo_17.pth,17,0.5353057384490967,0.8610526323318481,"[0.47999346256256104, 0.4532245099544525, 0.3969411551952362]","[0.2806564271450043, 0.2760438323020935, 0.29096728563308716]"
+jbns7bze,crawly-sorcery-1265,sewing_machine,bolete,canoe,GBRmdXBShSPigPkfXcr3Zo_53.pth,53,0.5433101654052734,0.8768420815467834,"[0.47999346256256104, 0.4532245099544525, 0.3969411551952362]","[0.2806564271450043, 0.2760438323020935, 0.29096728563308716]"
+it96g0jb,mystical-scream-1264,airedale,otterhound,crash_helmet,37dvuCcmHQZFq5X5E4LVbq_13.pth,13,0.8699880242347717,0.7820069193840027,"[0.497039258480072, 0.47125619649887085, 0.4188598394393921]","[0.29084113240242004, 0.28342172503471375, 0.2908269166946411]"
+it96g0jb,mystical-scream-1264,airedale,otterhound,crash_helmet,37dvuCcmHQZFq5X5E4LVbq_57.pth,57,1.4605858325958252,0.7560553550720215,"[0.497039258480072, 0.47125619649887085, 0.4188598394393921]","[0.29084113240242004, 0.28342172503471375, 0.2908269166946411]"
+7kcv3ah4,trembling-imp-1263,acoustic_guitar,mixing_bowl,borzoi,2eGS2DhfjNLMCg3u7xSBst_10.pth,10,0.7417852878570557,0.7988764047622681,"[0.5301650166511536, 0.4827304780483246, 0.4275822043418884]","[0.3108533024787903, 0.30877092480659485, 0.3214879333972931]"
+7kcv3ah4,trembling-imp-1263,acoustic_guitar,mixing_bowl,borzoi,2eGS2DhfjNLMCg3u7xSBst_65.pth,65,0.7676962018013,0.8146067261695862,"[0.5301650166511536, 0.4827304780483246, 0.4275822043418884]","[0.3108533024787903, 0.30877092480659485, 0.3214879333972931]"
+yi4y75hf,forlorn-raven-1262,ruddy_turnstone,pug,strawberry,fB936aA2c7j992T4W44wvY_18.pth,18,0.8205685615539551,0.7518518567085266,"[0.5453212857246399, 0.45757097005844116, 0.4123167395591736]","[0.26783645153045654, 0.2759788930416107, 0.28574076294898987]"
+yi4y75hf,forlorn-raven-1262,ruddy_turnstone,pug,strawberry,fB936aA2c7j992T4W44wvY_24.pth,24,0.3350158929824829,0.9074074029922484,"[0.5453212857246399, 0.45757097005844116, 0.4123167395591736]","[0.26783645153045654, 0.2759788930416107, 0.28574076294898987]"
+j1tqhot2,vacant-omen-1261,trombone,strawberry,necklace,Bp6nx5TjaY5m2cFhZLnSfE_16.pth,16,0.5183045268058777,0.8387096524238586,"[0.577482283115387, 0.47900357842445374, 0.4388965964317322]","[0.3098665773868561, 0.3256758749485016, 0.3344118595123291]"
+j1tqhot2,vacant-omen-1261,trombone,strawberry,necklace,Bp6nx5TjaY5m2cFhZLnSfE_56.pth,56,0.5505615472793579,0.8476084470748901,"[0.577482283115387, 0.47900357842445374, 0.4388965964317322]","[0.3098665773868561, 0.3256758749485016, 0.3344118595123291]"
+sqc0ax65,lurking-werewolf-1260,trombone,mixing_bowl,chimpanzee,EPBvJ96NVkYT4ihEhBxHgp_18.pth,18,0.5964518785476685,0.8455555438995361,"[0.49654147028923035, 0.4704914093017578, 0.42756980657577515]","[0.30780115723609924, 0.30564457178115845, 0.30844926834106445]"
+sqc0ax65,lurking-werewolf-1260,trombone,mixing_bowl,chimpanzee,EPBvJ96NVkYT4ihEhBxHgp_35.pth,35,0.6777933239936829,0.8566666841506958,"[0.49654147028923035, 0.4704914093017578, 0.42756980657577515]","[0.30780115723609924, 0.30564457178115845, 0.30844926834106445]"
+c58w86os,dire-bat-1259,dock,black_and_gold_garden_spider,sea_slug,9jJvvyb8sQowB9xdKmXH7G_12.pth,12,0.37588900327682495,0.9121951460838318,"[0.4396464228630066, 0.42753317952156067, 0.35871610045433044]","[0.26407110691070557, 0.2554122507572174, 0.2698347568511963]"
+c58w86os,dire-bat-1259,dock,black_and_gold_garden_spider,sea_slug,9jJvvyb8sQowB9xdKmXH7G_52.pth,52,0.3440775573253631,0.9329268336296082,"[0.4396464228630066, 0.42753317952156067, 0.35871610045433044]","[0.26407110691070557, 0.2554122507572174, 0.2698347568511963]"
+hd1uantx,macabre-darkness-1258,bolete,chimpanzee,paddle,Z6yi5xV8eJxQGGsfPjRWtv_18.pth,18,13.110148429870605,0.38235294818878174,"[0.44710367918014526, 0.4371638298034668, 0.3773021697998047]","[0.26729872822761536, 0.2586301565170288, 0.26404115557670593]"
+hd1uantx,macabre-darkness-1258,bolete,chimpanzee,paddle,Z6yi5xV8eJxQGGsfPjRWtv_38.pth,38,0.7371172308921814,0.8423529267311096,"[0.44710367918014526, 0.4371638298034668, 0.3773021697998047]","[0.26729872822761536, 0.2586301565170288, 0.26404115557670593]"
+uj23vgvx,endless-witch-1257,planetarium,vacuum,police_van,EM3qm73e6GJuzAE3Gnux9f_16.pth,16,0.3408764898777008,0.8885905742645264,"[0.5143678784370422, 0.5111985206604004, 0.501071035861969]","[0.3108001947402954, 0.3090730607509613, 0.32338541746139526]"
+uj23vgvx,endless-witch-1257,planetarium,vacuum,police_van,EM3qm73e6GJuzAE3Gnux9f_41.pth,41,0.4702107906341553,0.8818792104721069,"[0.5143678784370422, 0.5111985206604004, 0.501071035861969]","[0.3108001947402954, 0.3090730607509613, 0.32338541746139526]"
+h5t90aze,tenebrous-orb-1256,barn_spider,american_lobster,otterhound,oXcLhJEyXwoTWwnmPtZmVZ_13.pth,13,0.7940327525138855,0.8211920261383057,"[0.5101005434989929, 0.4341016113758087, 0.37160903215408325]","[0.2859947383403778, 0.2760626971721649, 0.28450122475624084]"
+h5t90aze,tenebrous-orb-1256,barn_spider,american_lobster,otterhound,oXcLhJEyXwoTWwnmPtZmVZ_55.pth,55,0.7753735780715942,0.8322295546531677,"[0.5101005434989929, 0.4341016113758087, 0.37160903215408325]","[0.2859947383403778, 0.2760626971721649, 0.28450122475624084]"
+to4zvop3,strange-spirit-1255,necklace,barometer,tow_truck,jWgjXd32hejMv5c3c7A9EY_16.pth,16,0.5961120128631592,0.8010973930358887,"[0.5515417456626892, 0.5235216617584229, 0.4962042570114136]","[0.288425087928772, 0.29302674531936646, 0.3058497905731201]"
+to4zvop3,strange-spirit-1255,necklace,barometer,tow_truck,jWgjXd32hejMv5c3c7A9EY_50.pth,50,0.5152684450149536,0.8641975522041321,"[0.5515417456626892, 0.5235216617584229, 0.4962042570114136]","[0.288425087928772, 0.29302674531936646, 0.3058497905731201]"
+buhzk9rf,endless-force-1254,sewing_machine,mud_turtle,ruddy_turnstone,DhZLGU8h9zopbeoCUv9yE7_14.pth,14,0.5073206424713135,0.8335260152816772,"[0.5128810405731201, 0.48714199662208557, 0.4456203281879425]","[0.26764434576034546, 0.267354279756546, 0.28177958726882935]"
+buhzk9rf,endless-force-1254,sewing_machine,mud_turtle,ruddy_turnstone,DhZLGU8h9zopbeoCUv9yE7_47.pth,47,0.3658843040466308,0.8959537744522095,"[0.5128810405731201, 0.48714199662208557, 0.4456203281879425]","[0.26764434576034546, 0.267354279756546, 0.28177958726882935]"
+0zzmgwef,possessed-whisper-1253,strawberry,tow_truck,police_van,nGx8Dg6WnGbHPKaYYVmqSi_16.pth,16,2.7099058628082275,0.6532156467437744,"[0.5146268010139465, 0.4349689185619354, 0.40254130959510803]","[0.2895715832710266, 0.29207825660705566, 0.3021202087402344]"
+0zzmgwef,possessed-whisper-1253,strawberry,tow_truck,police_van,nGx8Dg6WnGbHPKaYYVmqSi_52.pth,52,0.6301736831665039,0.8423707485198975,"[0.5146268010139465, 0.4349689185619354, 0.40254130959510803]","[0.2895715832710266, 0.29207825660705566, 0.3021202087402344]"
+219r86cc,forsaken-void-1252,breakwater,paddle,carpenter's_kit,RBVcZcRisKigsMSKkuRF7Z_18.pth,18,1.1634687185287476,0.7793295979499817,"[0.509182333946228, 0.5138211250305176, 0.5118502378463745]","[0.2834230661392212, 0.2779932916164398, 0.29646122455596924]"
+219r86cc,forsaken-void-1252,breakwater,paddle,carpenter's_kit,RBVcZcRisKigsMSKkuRF7Z_61.pth,61,0.9609969854354858,0.8351955413818359,"[0.509182333946228, 0.5138211250305176, 0.5118502378463745]","[0.2834230661392212, 0.2779932916164398, 0.29646122455596924]"
+3h9ajovo,ethereal-echo-1251,siamese_cat,tow_truck,sea_slug,ccch2S6UHki7vMNpCFkwKG_17.pth,17,0.3429250419139862,0.9025787711143494,"[0.4623746871948242, 0.42661720514297485, 0.37900665402412415]","[0.27823784947395325, 0.2706553339958191, 0.2788023054599762]"
+3h9ajovo,ethereal-echo-1251,siamese_cat,tow_truck,sea_slug,ccch2S6UHki7vMNpCFkwKG_29.pth,29,0.4305773377418518,0.8968481421470642,"[0.4623746871948242, 0.42661720514297485, 0.37900665402412415]","[0.27823784947395325, 0.2706553339958191, 0.2788023054599762]"
+dhfg39sg,dreadful-shroud-1250,chimpanzee,breakwater,ant,EJgRgUURDSWmTZFMhpNJht_15.pth,15,0.5326036214828491,0.8550561666488647,"[0.47859060764312744, 0.481575608253479, 0.4299575686454773]","[0.262409508228302, 0.25655922293663025, 0.27307167649269104]"
+dhfg39sg,dreadful-shroud-1250,chimpanzee,breakwater,ant,EJgRgUURDSWmTZFMhpNJht_24.pth,24,0.7707222700119019,0.8258426785469055,"[0.47859060764312744, 0.481575608253479, 0.4299575686454773]","[0.262409508228302, 0.25655922293663025, 0.27307167649269104]"
+424iwzrv,toxic-fantasy-1248,necklace,trombone,dock,DrMqoFtCaNszUyjVUQ7GjD_11.pth,11,0.5664950609207153,0.8258064389228821,"[0.5366778373718262, 0.5100456476211548, 0.49205002188682556]","[0.31301209330558777, 0.31376662850379944, 0.32402417063713074]"
+424iwzrv,toxic-fantasy-1248,necklace,trombone,dock,DrMqoFtCaNszUyjVUQ7GjD_54.pth,54,0.5236308574676514,0.843870997428894,"[0.5366778373718262, 0.5100456476211548, 0.49205002188682556]","[0.31301209330558777, 0.31376662850379944, 0.32402417063713074]"
+hmtfgti8,sinister-enchantment-1247,barn_spider,ruddy_turnstone,pick,TJp3Sn8bEAwFmDy8aVzhyN_14.pth,14,0.7750653624534607,0.7720929980278015,"[0.510674774646759, 0.48341232538223267, 0.4463946521282196]","[0.2827230393886566, 0.27812227606773376, 0.2919026017189026]"
+hmtfgti8,sinister-enchantment-1247,barn_spider,ruddy_turnstone,pick,TJp3Sn8bEAwFmDy8aVzhyN_49.pth,49,0.5705502033233643,0.8620154857635498,"[0.510674774646759, 0.48341232538223267, 0.4463946521282196]","[0.2827230393886566, 0.27812227606773376, 0.2919026017189026]"
+02105n86,forgotten-tombstone-1246,trombone,bolete,ant,a3wnNDUDa7GcasdJZUbBVc_14.pth,14,0.8378585577011108,0.7636176943778992,"[0.48924949765205383, 0.4547578692436218, 0.37636834383010864]","[0.2959035634994507, 0.28831911087036133, 0.29760706424713135]"
+02105n86,forgotten-tombstone-1246,trombone,bolete,ant,a3wnNDUDa7GcasdJZUbBVc_44.pth,44,0.6968256235122681,0.8119218945503235,"[0.48924949765205383, 0.4547578692436218, 0.37636834383010864]","[0.2959035634994507, 0.28831911087036133, 0.29760706424713135]"
+0lx8ovz6,faded-disguise-1245,ant,ruddy_turnstone,sewing_machine,U85ELXxJxEAry8EJCPu8wi_13.pth,13,0.6048732995986938,0.8186323046684265,"[0.5248724818229675, 0.5012818574905396, 0.44327810406684875]","[0.2701093852519989, 0.26787298917770386, 0.2863726317882538]"
+0lx8ovz6,faded-disguise-1245,ant,ruddy_turnstone,sewing_machine,U85ELXxJxEAry8EJCPu8wi_52.pth,52,0.631833553314209,0.8344895839691162,"[0.5248724818229675, 0.5012818574905396, 0.44327810406684875]","[0.2701093852519989, 0.26787298917770386, 0.2863726317882538]"
+denwil4g,tenebrous-newt-1244,lesser_panda,carpenter's_kit,black_and_gold_garden_spider,fRSA6gzwD8gJuZiJKMZtKa_9.pth,9,0.3183106780052185,0.9393140077590942,"[0.4716736674308777, 0.46459272503852844, 0.3924895226955414]","[0.2779139578342438, 0.2726764678955078, 0.2856237590312958]"
+denwil4g,tenebrous-newt-1244,lesser_panda,carpenter's_kit,black_and_gold_garden_spider,fRSA6gzwD8gJuZiJKMZtKa_51.pth,51,0.1868938505649567,0.9591029286384584,"[0.4716736674308777, 0.46459272503852844, 0.3924895226955414]","[0.2779139578342438, 0.2726764678955078, 0.2856237590312958]"
+oby9s2hv,mystical-apparition-1243,missile,ibizan_hound,trombone,5vLswfJjve3JbjNebQCVex_9.pth,9,0.8238908052444458,0.7695167064666748,"[0.4954019784927368, 0.4769243896007538, 0.44864898920059204]","[0.30292508006095886, 0.2994581460952759, 0.3160877823829651]"
+oby9s2hv,mystical-apparition-1243,missile,ibizan_hound,trombone,5vLswfJjve3JbjNebQCVex_66.pth,66,0.7002233862876892,0.8141263723373413,"[0.4954019784927368, 0.4769243896007538, 0.44864898920059204]","[0.30292508006095886, 0.2994581460952759, 0.3160877823829651]"
+aj2j41zf,wavering-pumpkin-1242,crash_helmet,soft-coated_wheaten_terrier,paddle,A7JK94DZpium8iJWxYiXNz_17.pth,17,0.8142052292823792,0.7809057235717773,"[0.49437829852104187, 0.476289302110672, 0.4430462419986725]","[0.28466036915779114, 0.2765718996524811, 0.288595587015152]"
+aj2j41zf,wavering-pumpkin-1242,crash_helmet,soft-coated_wheaten_terrier,paddle,A7JK94DZpium8iJWxYiXNz_49.pth,49,0.8182584643363953,0.806609570980072,"[0.49437829852104187, 0.476289302110672, 0.4430462419986725]","[0.28466036915779114, 0.2765718996524811, 0.288595587015152]"
+z425cpsv,occult-threshold-1241,carpenter's_kit,barn_spider,lesser_panda,5zUtmyD6sr64SCQDynuZpa_10.pth,10,0.915355920791626,0.7699999809265137,"[0.4718121886253357, 0.45210105180740356, 0.3982677757740021]","[0.29059356451034546, 0.2843635082244873, 0.29293060302734375]"
+z425cpsv,occult-threshold-1241,carpenter's_kit,barn_spider,lesser_panda,5zUtmyD6sr64SCQDynuZpa_55.pth,55,0.4038594663143158,0.9157142639160156,"[0.4718121886253357, 0.45210105180740356, 0.3982677757740021]","[0.29059356451034546, 0.2843635082244873, 0.29293060302734375]"
+cxdo16y3,uncanny-threshold-1240,barn_spider,pick,pug,GvnXtvQLknkdAeNnFVmpkX_17.pth,17,1.6295427083969116,0.643081784248352,"[0.49903616309165955, 0.4625554382801056, 0.41896045207977295]","[0.30378758907318115, 0.2956550121307373, 0.3043195605278015]"
+cxdo16y3,uncanny-threshold-1240,barn_spider,pick,pug,GvnXtvQLknkdAeNnFVmpkX_41.pth,41,0.9504821300506592,0.7201257944107056,"[0.49903616309165955, 0.4625554382801056, 0.41896045207977295]","[0.30378758907318115, 0.2956550121307373, 0.3043195605278015]"
+6pui80i8,howling-sorcery-1239,crash_helmet,tow_truck,wire-haired_fox_terrier,gGSdGFYGZLNt4qh26LHgsw_12.pth,12,0.5521541237831116,0.8536977767944336,"[0.49192163348197937, 0.47531795501708984, 0.4520719647407532]","[0.29751700162887573, 0.29389530420303345, 0.30470091104507446]"
+6pui80i8,howling-sorcery-1239,crash_helmet,tow_truck,wire-haired_fox_terrier,gGSdGFYGZLNt4qh26LHgsw_48.pth,48,0.6802021265029907,0.8874598145484924,"[0.49192163348197937, 0.47531795501708984, 0.4520719647407532]","[0.29751700162887573, 0.29389530420303345, 0.30470091104507446]"
+p50rnwjb,distant-sorcery-1238,missile,pajama,tow_truck,bQXcA2oDxwNCyeiVTvq3aK_11.pth,11,0.7011698484420776,0.8129205703735352,"[0.5008761286735535, 0.4834774136543274, 0.4769173562526703]","[0.2789252996444702, 0.2751093804836273, 0.2914036214351654]"
+p50rnwjb,distant-sorcery-1238,missile,pajama,tow_truck,bQXcA2oDxwNCyeiVTvq3aK_53.pth,53,0.6832756996154785,0.8317631483078003,"[0.5008761286735535, 0.4834774136543274, 0.4769173562526703]","[0.2789252996444702, 0.2751093804836273, 0.2914036214351654]"
+2h8g77no,muted-ghost-1237,planetarium,running_shoe,mud_turtle,aPYWHvRkuUXh4qY8N4XEuE_11.pth,11,0.37550583481788635,0.8724035620689392,"[0.48122355341911316, 0.4659711718559265, 0.43635818362236023]","[0.2781314253807068, 0.27483054995536804, 0.2938460409641266]"
+2h8g77no,muted-ghost-1237,planetarium,running_shoe,mud_turtle,aPYWHvRkuUXh4qY8N4XEuE_75.pth,75,0.5878450870513916,0.8857566714286804,"[0.48122355341911316, 0.4659711718559265, 0.43635818362236023]","[0.2781314253807068, 0.27483054995536804, 0.2938460409641266]"
+4ersgkl9,unsettling-newt-1236,limpkin,mud_turtle,black_and_gold_garden_spider,F2FMtGqTz7G4A9TKi2Z7kH_12.pth,12,0.621707022190094,0.8114104866981506,"[0.4519535005092621, 0.46245014667510986, 0.356461763381958]","[0.23069557547569275, 0.2252780795097351, 0.24304215610027313]"
+4ersgkl9,unsettling-newt-1236,limpkin,mud_turtle,black_and_gold_garden_spider,F2FMtGqTz7G4A9TKi2Z7kH_20.pth,20,0.6836003065109253,0.8161647915840149,"[0.4519535005092621, 0.46245014667510986, 0.356461763381958]","[0.23069557547569275, 0.2252780795097351, 0.24304215610027313]"
+alcos03w,spooky-horseman-1235,ant,running_shoe,lesser_panda,6Kq2E4bsWRiHx99oojGE2f_13.pth,13,0.6345582604408264,0.8026584982872009,"[0.4888921082019806, 0.46620526909828186, 0.39348775148391724]","[0.27517807483673096, 0.26981887221336365, 0.2811531722545624]"
+alcos03w,spooky-horseman-1235,ant,running_shoe,lesser_panda,6Kq2E4bsWRiHx99oojGE2f_76.pth,76,1.2867436408996582,0.7126789093017578,"[0.4888921082019806, 0.46620526909828186, 0.39348775148391724]","[0.27517807483673096, 0.26981887221336365, 0.2811531722545624]"
+t4tf4ltk,distant-memory-1234,police_van,running_shoe,acoustic_guitar,cMs2Qrqt3NLTpXqVkEr5Kf_13.pth,13,0.8161343336105347,0.8384050130844116,"[0.5113437175750732, 0.47252634167671204, 0.43426385521888733]","[0.31767958402633667, 0.3147064745426178, 0.32540786266326904]"
+t4tf4ltk,distant-memory-1234,police_van,running_shoe,acoustic_guitar,cMs2Qrqt3NLTpXqVkEr5Kf_30.pth,30,0.5532185435295105,0.86149001121521,"[0.5113437175750732, 0.47252634167671204, 0.43426385521888733]","[0.31767958402633667, 0.3147064745426178, 0.32540786266326904]"
+qqrykego,crawly-gloom-1233,running_shoe,lesser_panda,acoustic_guitar,WdVTQHfTPWPEF4jnWqgFcb_14.pth,14,3.084223747253418,0.561904788017273,"[0.5047368407249451, 0.464011549949646, 0.40824246406555176]","[0.3097849190235138, 0.30652520060539246, 0.3168458342552185]"
+qqrykego,crawly-gloom-1233,running_shoe,lesser_panda,acoustic_guitar,WdVTQHfTPWPEF4jnWqgFcb_59.pth,59,0.6532440185546875,0.8428571224212646,"[0.5047368407249451, 0.464011549949646, 0.40824246406555176]","[0.3097849190235138, 0.30652520060539246, 0.3168458342552185]"
+jrgvof0c,liminal-shroud-1232,cellular_telephone,otterhound,sewing_machine,D2KEHtu7utxciWBZ8gjsUx_13.pth,13,0.9096282720565796,0.7589743733406067,"[0.5247564911842346, 0.492114394903183, 0.4573339521884918]","[0.3103082776069641, 0.31057143211364746, 0.32051658630371094]"
+jrgvof0c,liminal-shroud-1232,cellular_telephone,otterhound,sewing_machine,D2KEHtu7utxciWBZ8gjsUx_26.pth,26,0.9471833109855652,0.7576923370361328,"[0.5247564911842346, 0.492114394903183, 0.4573339521884918]","[0.3103082776069641, 0.31057143211364746, 0.32051658630371094]"
+h2a30blg,liminal-fantasy-1231,bolete,chambered_nautilus,borzoi,CARJ6Hxer5MGJ2rPcnobd3_18.pth,18,0.9195725321769714,0.7913165092468262,"[0.4304870367050171, 0.4064730405807495, 0.34050920605659485]","[0.2760452628135681, 0.2622135281562805, 0.263423889875412]"
+h2a30blg,liminal-fantasy-1231,bolete,chambered_nautilus,borzoi,CARJ6Hxer5MGJ2rPcnobd3_28.pth,28,0.4126391112804413,0.900560200214386,"[0.4304870367050171, 0.4064730405807495, 0.34050920605659485]","[0.2760452628135681, 0.2622135281562805, 0.263423889875412]"
+ynx7bpls,ethereal-broomstick-1230,maillot,mixing_bowl,trombone,7jL5WpXYR2a4Uz9N7tNfD8_14.pth,14,1.8347617387771606,0.6124660968780518,"[0.5459340810775757, 0.505937933921814, 0.47097378969192505]","[0.317379891872406, 0.3184923231601715, 0.32871752977371216]"
+ynx7bpls,ethereal-broomstick-1230,maillot,mixing_bowl,trombone,7jL5WpXYR2a4Uz9N7tNfD8_39.pth,39,0.928577721118927,0.7994579672813416,"[0.5459340810775757, 0.505937933921814, 0.47097378969192505]","[0.317379891872406, 0.3184923231601715, 0.32871752977371216]"
+fvkg9wkj,spectral-phantom-1229,otterhound,mashed_potato,schooner,DG5wRWAdnxDEc93tb4v3RF_13.pth,13,0.2748175859451294,0.9236111044883728,"[0.533481776714325, 0.513064444065094, 0.46583908796310425]","[0.2619214653968811, 0.2581057548522949, 0.2856704294681549]"
+fvkg9wkj,spectral-phantom-1229,otterhound,mashed_potato,schooner,DG5wRWAdnxDEc93tb4v3RF_65.pth,65,0.2383719086647033,0.9427083134651184,"[0.533481776714325, 0.513064444065094, 0.46583908796310425]","[0.2619214653968811, 0.2581057548522949, 0.2856704294681549]"
+fcqwnyc7,ghostly-crypt-1228,red_wolf,ruddy_turnstone,breakwater,RrsFa56fpXy2RQE7ygioSe_14.pth,14,0.5272830128669739,0.8655126690864563,"[0.4834911823272705, 0.48752692341804504, 0.4565741717815399]","[0.2341146022081375, 0.23036159574985504, 0.25592711567878723]"
+fcqwnyc7,ghostly-crypt-1228,red_wolf,ruddy_turnstone,breakwater,RrsFa56fpXy2RQE7ygioSe_42.pth,42,0.4190479516983032,0.8908122777938843,"[0.4834911823272705, 0.48752692341804504, 0.4565741717815399]","[0.2341146022081375, 0.23036159574985504, 0.25592711567878723]"
+feu8ti1d,scary-newt-1227,planetarium,red_wolf,sea_slug,dxVme7F7UeYJMeraxkUxKw_9.pth,9,1.8392871618270874,0.7235293984413147,"[0.4364776015281677, 0.41194015741348267, 0.34827274084091187]","[0.2659338116645813, 0.25323617458343506, 0.2625281810760498]"
+feu8ti1d,scary-newt-1227,planetarium,red_wolf,sea_slug,dxVme7F7UeYJMeraxkUxKw_47.pth,47,0.471297413110733,0.8847059011459351,"[0.4364776015281677, 0.41194015741348267, 0.34827274084091187]","[0.2659338116645813, 0.25323617458343506, 0.2625281810760498]"
+ezh1gxdl,occult-nightmare-1226,sewing_machine,pick,running_shoe,Xd7iSQ3myvabBGeLoQoqGx_16.pth,16,1.673460602760315,0.7072916626930237,"[0.5333997011184692, 0.4942377507686615, 0.461338073015213]","[0.3080551028251648, 0.31074684858322144, 0.32294827699661255]"
+ezh1gxdl,occult-nightmare-1226,sewing_machine,pick,running_shoe,Xd7iSQ3myvabBGeLoQoqGx_63.pth,63,1.3453673124313354,0.793749988079071,"[0.5333997011184692, 0.4942377507686615, 0.461338073015213]","[0.3080551028251648, 0.31074684858322144, 0.32294827699661255]"
+ajm4pjs5,cryptic-werewolf-1225,ibizan_hound,chambered_nautilus,limpkin,ZHVRVZ6BEf46KteBRNYT4S_17.pth,17,0.6518109440803528,0.8450919985771179,"[0.4425867199897766, 0.4338662028312683, 0.3589586615562439]","[0.26761332154273987, 0.25864478945732117, 0.26638755202293396]"
+ajm4pjs5,cryptic-werewolf-1225,ibizan_hound,chambered_nautilus,limpkin,ZHVRVZ6BEf46KteBRNYT4S_31.pth,31,0.5662863850593567,0.8588957190513611,"[0.4425867199897766, 0.4338662028312683, 0.3589586615562439]","[0.26761332154273987, 0.25864478945732117, 0.26638755202293396]"
+d18v85i7,mystical-coffin-1224,siamese_cat,barn_spider,planetarium,JTap33AwrufszHfJt4iGAT_9.pth,9,2.4952428340911865,0.7057949304580688,"[0.46191611886024475, 0.44481518864631653, 0.41914498805999756]","[0.2762298285961151, 0.27048346400260925, 0.28698787093162537]"
+d18v85i7,mystical-coffin-1224,siamese_cat,barn_spider,planetarium,JTap33AwrufszHfJt4iGAT_54.pth,54,2.454278945922852,0.6805348992347717,"[0.46191611886024475, 0.44481518864631653, 0.41914498805999756]","[0.2762298285961151, 0.27048346400260925, 0.28698787093162537]"
+5ywlkak9,unraveling-magic-1223,police_van,sea_slug,missile,7ZqnfvQdcVP23awQZytKHL_17.pth,17,0.3151412606239319,0.907227635383606,"[0.44108495116233826, 0.42570066452026367, 0.3886612355709076]","[0.27649202942848206, 0.26693373918533325, 0.28209730982780457]"
+5ywlkak9,unraveling-magic-1223,police_van,sea_slug,missile,7ZqnfvQdcVP23awQZytKHL_45.pth,45,0.4574439823627472,0.9029126167297364,"[0.44108495116233826, 0.42570066452026367, 0.3886612355709076]","[0.27649202942848206, 0.26693373918533325, 0.28209730982780457]"
+rw74m9f9,faded-monster-1222,strawberry,running_shoe,dock,Ee6vPtLtVHWr9fHW32he4F_11.pth,11,0.26226353645324707,0.9292149543762207,"[0.5433788895606995, 0.4571095108985901, 0.4279397428035736]","[0.2903142273426056, 0.30097031593322754, 0.3161642253398895]"
+rw74m9f9,faded-monster-1222,strawberry,running_shoe,dock,Ee6vPtLtVHWr9fHW32he4F_58.pth,58,0.6828519105911255,0.8751608729362488,"[0.5433788895606995, 0.4571095108985901, 0.4279397428035736]","[0.2903142273426056, 0.30097031593322754, 0.3161642253398895]"
+2lvqblr1,possessed-werewolf-1221,tow_truck,vacuum,mixing_bowl,CpZQ6X3Hkeg8qWFvBkx4Wa_9.pth,9,3.5677149295806885,0.6474735736846924,"[0.5581650137901306, 0.5332342386245728, 0.5041647553443909]","[0.30544453859329224, 0.3094152808189392, 0.32433974742889404]"
+2lvqblr1,possessed-werewolf-1221,tow_truck,vacuum,mixing_bowl,CpZQ6X3Hkeg8qWFvBkx4Wa_59.pth,59,0.8526326417922974,0.8401880264282227,"[0.5581650137901306, 0.5332342386245728, 0.5041647553443909]","[0.30544453859329224, 0.3094152808189392, 0.32433974742889404]"
+kxmxi87w,endless-possession-1220,airedale,breakwater,barn_spider,P6s7khRPJzSQZCiBs8rFTL_15.pth,15,0.3909618556499481,0.8721109628677368,"[0.4723000228404999, 0.47248998284339905, 0.44058823585510254]","[0.2591454088687897, 0.25481128692626953, 0.27766749262809753]"
+kxmxi87w,endless-possession-1220,airedale,breakwater,barn_spider,P6s7khRPJzSQZCiBs8rFTL_33.pth,33,2.0450735092163086,0.6209552884101868,"[0.4723000228404999, 0.47248998284339905, 0.44058823585510254]","[0.2591454088687897, 0.25481128692626953, 0.27766749262809753]"
+hhfxdaly,ghoulish-fantasy-1219,necklace,mashed_potato,pajama,ePZZH36doz3RPjmETdaTxo_17.pth,17,0.4323675334453583,0.8919631242752075,"[0.566736102104187, 0.5018672943115234, 0.4465371072292328]","[0.27817511558532715, 0.2826438248157501, 0.2951779067516327]"
+hhfxdaly,ghoulish-fantasy-1219,necklace,mashed_potato,pajama,ePZZH36doz3RPjmETdaTxo_67.pth,67,0.6348965167999268,0.888010561466217,"[0.566736102104187, 0.5018672943115234, 0.4465371072292328]","[0.27817511558532715, 0.2826438248157501, 0.2951779067516327]"
+m7xtu97v,grim-possession-1218,cellular_telephone,police_van,vacuum,XePQuYNX2yFLnkWv4aFs3H_16.pth,16,0.9733227491378784,0.7587822079658508,"[0.5273363590240479, 0.5088393092155457, 0.4896063208580017]","[0.3216829299926758, 0.32149577140808105, 0.33098098635673523]"
+m7xtu97v,grim-possession-1218,cellular_telephone,police_van,vacuum,XePQuYNX2yFLnkWv4aFs3H_44.pth,44,1.3699195384979248,0.7552693486213684,"[0.5273363590240479, 0.5088393092155457, 0.4896063208580017]","[0.3216829299926758, 0.32149577140808105, 0.33098098635673523]"
+sxzcaxx1,distant-claw-1217,canoe,strawberry,barn_spider,azLB4obAdfZ2FPJVwoibKo_12.pth,12,0.4640216827392578,0.8705357313156128,"[0.5211530327796936, 0.42717814445495605, 0.37695375084877014]","[0.28626132011413574, 0.2853430509567261, 0.29714322090148926]"
+sxzcaxx1,distant-claw-1217,canoe,strawberry,barn_spider,azLB4obAdfZ2FPJVwoibKo_56.pth,56,0.5271666646003723,0.8764880895614624,"[0.5211530327796936, 0.42717814445495605, 0.37695375084877014]","[0.28626132011413574, 0.2853430509567261, 0.29714322090148926]"
+5xklr91e,abominable-incantation-1216,running_shoe,pick,maillot,RLWSfuoAhxSACt2NEG6xCy_18.pth,18,1.657365083694458,0.6642228960990906,"[0.54449862241745, 0.5043012499809265, 0.47658783197402954]","[0.3100104331970215, 0.3110612630844116, 0.3234504163265228]"
+5xklr91e,abominable-incantation-1216,running_shoe,pick,maillot,RLWSfuoAhxSACt2NEG6xCy_60.pth,60,1.4079101085662842,0.7609970569610596,"[0.54449862241745, 0.5043012499809265, 0.47658783197402954]","[0.3100104331970215, 0.3110612630844116, 0.3234504163265228]"
+jcz339vg,venomous-shroud-1215,wire-haired_fox_terrier,dock,strawberry,Zhdme3mCqqZnYqms3VxLTi_10.pth,10,0.4581555128097534,0.9026086926460266,"[0.5459834933280945, 0.44223660230636597, 0.40991413593292236]","[0.28204455971717834, 0.2926189601421356, 0.3086382746696472]"
+jcz339vg,venomous-shroud-1215,wire-haired_fox_terrier,dock,strawberry,Zhdme3mCqqZnYqms3VxLTi_44.pth,44,0.4499649703502655,0.91304349899292,"[0.5459834933280945, 0.44223660230636597, 0.40991413593292236]","[0.28204455971717834, 0.2926189601421356, 0.3086382746696472]"
+2yk3aoj4,macabre-darkness-1214,breakwater,maillot,running_shoe,e6EE6zvmBRtAGNYKhb7TDd_11.pth,11,0.49878764152526855,0.8597733974456787,"[0.5185317993164062, 0.5118065476417542, 0.5043292045593262]","[0.28137263655662537, 0.2795310616493225, 0.29744952917099]"
+2yk3aoj4,macabre-darkness-1214,breakwater,maillot,running_shoe,e6EE6zvmBRtAGNYKhb7TDd_46.pth,46,0.644342303276062,0.8824362754821777,"[0.5185317993164062, 0.5118065476417542, 0.5043292045593262]","[0.28137263655662537, 0.2795310616493225, 0.29744952917099]"
+qr9o9dbi,distant-fang-1213,barometer,mashed_potato,ibizan_hound,bGY3USiecLc5ebm45LaSSU_15.pth,15,2.359724283218384,0.5903083682060242,"[0.5260639786720276, 0.47696560621261597, 0.3997044265270233]","[0.2736942172050476, 0.2739083468914032, 0.28746914863586426]"
+qr9o9dbi,distant-fang-1213,barometer,mashed_potato,ibizan_hound,bGY3USiecLc5ebm45LaSSU_60.pth,60,0.6946337819099426,0.8179148435592651,"[0.5260639786720276, 0.47696560621261597, 0.3997044265270233]","[0.2736942172050476, 0.2739083468914032, 0.28746914863586426]"
+9nzdt6bg,mystical-treat-1212,strawberry,trombone,mashed_potato,Wd3sykj8swbYp54YX6xj9z_11.pth,11,0.3926551938056946,0.8886363506317139,"[0.5594295263290405, 0.44924619793891907, 0.3845631778240204]","[0.30568981170654297, 0.31594792008399963, 0.3213135004043579]"
+9nzdt6bg,mystical-treat-1212,strawberry,trombone,mashed_potato,Wd3sykj8swbYp54YX6xj9z_31.pth,31,0.4869358539581299,0.8636363744735718,"[0.5594295263290405, 0.44924619793891907, 0.3845631778240204]","[0.30568981170654297, 0.31594792008399963, 0.3213135004043579]"
+o1f32puw,scary-pitchfork-1211,limpkin,ibizan_hound,cellular_telephone,QeyskQqhhzzrWvZrTXx3wa_18.pth,18,0.48082756996154785,0.8479999899864197,"[0.4805455803871155, 0.4686438739299774, 0.40268078446388245]","[0.27712127566337585, 0.27280187606811523, 0.29010212421417236]"
+o1f32puw,scary-pitchfork-1211,limpkin,ibizan_hound,cellular_telephone,QeyskQqhhzzrWvZrTXx3wa_57.pth,57,0.4950262308120727,0.8853333592414856,"[0.4805455803871155, 0.4686438739299774, 0.40268078446388245]","[0.27712127566337585, 0.27280187606811523, 0.29010212421417236]"
+h8ju0w0i,unraveling-fang-1210,carpenter's_kit,limpkin,barn_spider,2HDhNdy6GEJvYy4ZjgVyiH_18.pth,18,0.49303409457206726,0.8433333039283752,"[0.4858304262161255, 0.47924697399139404, 0.41395220160484314]","[0.28300413489341736, 0.27788034081459045, 0.2960517406463623]"
+h8ju0w0i,unraveling-fang-1210,carpenter's_kit,limpkin,barn_spider,2HDhNdy6GEJvYy4ZjgVyiH_42.pth,42,0.7021664381027222,0.8450000286102295,"[0.4858304262161255, 0.47924697399139404, 0.41395220160484314]","[0.28300413489341736, 0.27788034081459045, 0.2960517406463623]"
+fka0d39u,spooky-fog-1209,police_van,necklace,maillot,78FWChmTzQExAhzsbhvqcf_15.pth,15,0.408983051776886,0.9026275277137756,"[0.5343168377876282, 0.5124594569206238, 0.49162766337394714]","[0.293336421251297, 0.28902602195739746, 0.2978845238685608]"
+fka0d39u,spooky-fog-1209,police_van,necklace,maillot,78FWChmTzQExAhzsbhvqcf_33.pth,33,0.5291898250579834,0.901081919670105,"[0.5343168377876282, 0.5124594569206238, 0.49162766337394714]","[0.293336421251297, 0.28902602195739746, 0.2978845238685608]"
+9u4bp2jo,supernatural-abyss-1208,trombone,chambered_nautilus,sewing_machine,cNfXYmGmMpVCd9nRaifz95_14.pth,14,0.7103068232536316,0.772921085357666,"[0.4982219338417053, 0.46133023500442505, 0.42917725443840027]","[0.3262281119823456, 0.32349368929862976, 0.32947126030921936]"
+9u4bp2jo,supernatural-abyss-1208,trombone,chambered_nautilus,sewing_machine,cNfXYmGmMpVCd9nRaifz95_60.pth,60,0.737532377243042,0.7867803573608398,"[0.4982219338417053, 0.46133023500442505, 0.42917725443840027]","[0.3262281119823456, 0.32349368929862976, 0.32947126030921936]"
+bxhzh5rb,supernatural-wizard-1207,mud_turtle,barn_spider,airedale,FD4QNQAhZawgcFt26CtTax_11.pth,11,2.4754526615142822,0.4956822097301483,"[0.4682838022708893, 0.44366633892059326, 0.37250614166259766]","[0.260733038187027, 0.2504567503929138, 0.25592297315597534]"
+bxhzh5rb,supernatural-wizard-1207,mud_turtle,barn_spider,airedale,FD4QNQAhZawgcFt26CtTax_69.pth,69,1.7212364673614502,0.6493955254554749,"[0.4682838022708893, 0.44366633892059326, 0.37250614166259766]","[0.260733038187027, 0.2504567503929138, 0.25592297315597534]"
+p3s6s572,muted-fog-1206,soft-coated_wheaten_terrier,canoe,tow_truck,BAkyC4ChkqzKsJ9gUtGxZJ_14.pth,14,1.7051405906677246,0.7128589153289795,"[0.4799369275569916, 0.46874961256980896, 0.4332837760448456]","[0.26284855604171753, 0.2568446695804596, 0.27257758378982544]"
+p3s6s572,muted-fog-1206,soft-coated_wheaten_terrier,canoe,tow_truck,BAkyC4ChkqzKsJ9gUtGxZJ_64.pth,64,0.5781691074371338,0.8352059721946716,"[0.4799369275569916, 0.46874961256980896, 0.4332837760448456]","[0.26284855604171753, 0.2568446695804596, 0.27257758378982544]"
+uv06o06l,paranormal-labyrinth-1205,running_shoe,vizsla,tow_truck,jdo6sZJn2zbsdJphC7zAMP_12.pth,12,0.5401820540428162,0.8431752324104309,"[0.50126051902771, 0.468034952878952, 0.41567346453666687]","[0.2695992887020111, 0.2676461637020111, 0.2846331298351288]"
+uv06o06l,paranormal-labyrinth-1205,running_shoe,vizsla,tow_truck,jdo6sZJn2zbsdJphC7zAMP_76.pth,76,0.7131455540657043,0.8151016235351562,"[0.50126051902771, 0.468034952878952, 0.41567346453666687]","[0.2695992887020111, 0.2676461637020111, 0.2846331298351288]"
+3i1xj7c4,frightful-spirit-1204,tow_truck,bolete,angora,a7VQ5jVRKvNQpPvdqoK56e_12.pth,12,0.45129093527793884,0.8852040767669678,"[0.4593786895275116, 0.4336436688899994, 0.37938985228538513]","[0.26715102791786194, 0.26146432757377625, 0.27406054735183716]"
+3i1xj7c4,frightful-spirit-1204,tow_truck,bolete,angora,a7VQ5jVRKvNQpPvdqoK56e_33.pth,33,0.4170238077640533,0.8954081535339355,"[0.4593786895275116, 0.4336436688899994, 0.37938985228538513]","[0.26715102791786194, 0.26146432757377625, 0.27406054735183716]"
+sp44hfx0,creepy-glimpse-1203,vizsla,lesser_panda,sea_slug,JSJkQKizxhwrFVpPtz3b3h_17.pth,17,0.6552945971488953,0.7995188236236572,"[0.45515522360801697, 0.41449666023254395, 0.3323087692260742]","[0.2603064477443695, 0.2473512887954712, 0.2470463216304779]"
+sp44hfx0,creepy-glimpse-1203,vizsla,lesser_panda,sea_slug,JSJkQKizxhwrFVpPtz3b3h_38.pth,38,0.6159053444862366,0.8219727277755737,"[0.45515522360801697, 0.41449666023254395, 0.3323087692260742]","[0.2603064477443695, 0.2473512887954712, 0.2470463216304779]"
+s6fpzjsr,supernatural-ripple-1202,appenzeller,lesser_panda,mixing_bowl,DhUVmTLRezLbnoSshESMUV_15.pth,15,0.6069130897521973,0.8571428656578064,"[0.47630774974823, 0.45546847581863403, 0.38937821984291077]","[0.2781126797199249, 0.2739557921886444, 0.27842777967453003]"
+s6fpzjsr,supernatural-ripple-1202,appenzeller,lesser_panda,mixing_bowl,DhUVmTLRezLbnoSshESMUV_28.pth,28,0.6119984984397888,0.8642857074737549,"[0.47630774974823, 0.45546847581863403, 0.38937821984291077]","[0.2781126797199249, 0.2739557921886444, 0.27842777967453003]"
+9jt93qky,shadowed-crypt-1201,vizsla,tow_truck,canoe,eC7C5VC3Gn5xAczhJbKhB8_9.pth,9,0.618365466594696,0.8151260614395142,"[0.4835631549358368, 0.4579368531703949, 0.4028685390949249]","[0.2562715411186218, 0.2505507469177246, 0.2696620225906372]"
+9jt93qky,shadowed-crypt-1201,vizsla,tow_truck,canoe,eC7C5VC3Gn5xAczhJbKhB8_44.pth,44,0.8241060376167297,0.8392857313156128,"[0.4835631549358368, 0.4579368531703949, 0.4028685390949249]","[0.2562715411186218, 0.2505507469177246, 0.2696620225906372]"
+1ftv6882,creepy-disguise-1200,vacuum,pug,barn_spider,WRQGZK2z2WgdChdDU5cBkd_12.pth,12,2.148681402206421,0.6164383292198181,"[0.538863480091095, 0.5137821435928345, 0.47551384568214417]","[0.3124581277370453, 0.3113939166069031, 0.3238269090652466]"
+1ftv6882,creepy-disguise-1200,vacuum,pug,barn_spider,WRQGZK2z2WgdChdDU5cBkd_44.pth,44,1.2475723028182983,0.732876718044281,"[0.538863480091095, 0.5137821435928345, 0.47551384568214417]","[0.3124581277370453, 0.3113939166069031, 0.3238269090652466]"
+45szpzrd,paranormal-mummy-1199,american_lobster,vacuum,black_and_gold_garden_spider,5Ci6ty3KWBF5hAenWrWq8w_14.pth,14,0.8144156336784363,0.7671052813529968,"[0.5531131029129028, 0.5107756853103638, 0.4495875835418701]","[0.2990550100803375, 0.30267757177352905, 0.3262538015842438]"
+45szpzrd,paranormal-mummy-1199,american_lobster,vacuum,black_and_gold_garden_spider,5Ci6ty3KWBF5hAenWrWq8w_20.pth,20,1.2279497385025024,0.8763157725334167,"[0.5531131029129028, 0.5107756853103638, 0.4495875835418701]","[0.2990550100803375, 0.30267757177352905, 0.3262538015842438]"
+jb06rlnf,enchanted-candle-1198,pick,trombone,dock,ZJybP5fKQRs3JxWaSQgLxi_9.pth,9,0.5122346878051758,0.8340080976486206,"[0.5139890909194946, 0.4832371473312378, 0.46488431096076965]","[0.32613879442214966, 0.325152188539505, 0.3366897404193878]"
+jb06rlnf,enchanted-candle-1198,pick,trombone,dock,ZJybP5fKQRs3JxWaSQgLxi_68.pth,68,0.9905507564544678,0.8245614171028137,"[0.5139890909194946, 0.4832371473312378, 0.46488431096076965]","[0.32613879442214966, 0.325152188539505, 0.3366897404193878]"
+5jz48dyf,strange-spell-1197,cellular_telephone,bolete,chimpanzee,gYGvPkA7VCPiTJzHQcxQCK_16.pth,16,0.6078848838806152,0.8237934708595276,"[0.45248541235923767, 0.43385669589042664, 0.37590491771698]","[0.2862582802772522, 0.2793235182762146, 0.28132349252700806]"
+5jz48dyf,strange-spell-1197,cellular_telephone,bolete,chimpanzee,gYGvPkA7VCPiTJzHQcxQCK_66.pth,66,0.7117182016372681,0.8900112509727478,"[0.45248541235923767, 0.43385669589042664, 0.37590491771698]","[0.2862582802772522, 0.2793235182762146, 0.28132349252700806]"
+1esha0qb,occult-darkness-1196,siamese_cat,maillot,schooner,FreABpoNLEZpKqLmAyh4r8_11.pth,11,0.466841459274292,0.8608458638191223,"[0.5196188688278198, 0.5098538994789124, 0.5025248527526855]","[0.27525922656059265, 0.27190977334976196, 0.28704607486724854]"
+1esha0qb,occult-darkness-1196,siamese_cat,maillot,schooner,FreABpoNLEZpKqLmAyh4r8_20.pth,20,0.4548626244068146,0.8731241226196289,"[0.5196188688278198, 0.5098538994789124, 0.5025248527526855]","[0.27525922656059265, 0.27190977334976196, 0.28704607486724854]"
+20bm1gys,shadowed-lantern-1195,mashed_potato,sewing_machine,police_van,kQpCTsEnBQLFgvEcYHra9s_14.pth,14,1.136676549911499,0.7546961307525635,"[0.5074440240859985, 0.46780043840408325, 0.41512489318847656]","[0.28978100419044495, 0.2876043915748596, 0.2971017360687256]"
+20bm1gys,shadowed-lantern-1195,mashed_potato,sewing_machine,police_van,kQpCTsEnBQLFgvEcYHra9s_72.pth,72,2.481750965118408,0.6828729510307312,"[0.5074440240859985, 0.46780043840408325, 0.41512489318847656]","[0.28978100419044495, 0.2876043915748596, 0.2971017360687256]"
+k9fkolg5,ghastly-pitchfork-1194,ruddy_turnstone,black_and_gold_garden_spider,crash_helmet,T3MuFUKxxvpSeFWeMFoN9z_13.pth,13,0.6413853168487549,0.8965517282485962,"[0.4873613715171814, 0.487201988697052, 0.43385010957717896]","[0.2658826410770416, 0.2591891586780548, 0.27883562445640564]"
+k9fkolg5,ghastly-pitchfork-1194,ruddy_turnstone,black_and_gold_garden_spider,crash_helmet,T3MuFUKxxvpSeFWeMFoN9z_46.pth,46,0.278910219669342,0.9393103718757628,"[0.4873613715171814, 0.487201988697052, 0.43385010957717896]","[0.2658826410770416, 0.2591891586780548, 0.27883562445640564]"
+pwvswn1r,crawly-disguise-1193,limpkin,mixing_bowl,planetarium,KashEjiqdFEuEcB5bUEPut_13.pth,13,0.36044615507125854,0.8952802419662476,"[0.4891282618045807, 0.48623621463775635, 0.43166863918304443]","[0.2659182846546173, 0.26377809047698975, 0.29085373878479004]"
+pwvswn1r,crawly-disguise-1193,limpkin,mixing_bowl,planetarium,KashEjiqdFEuEcB5bUEPut_51.pth,51,0.355506956577301,0.9129793643951416,"[0.4891282618045807, 0.48623621463775635, 0.43166863918304443]","[0.2659182846546173, 0.26377809047698975, 0.29085373878479004]"
+o9xpx5kg,eldritch-zombie-1192,indigo_bunting,necklace,trombone,iCcqX9YnfHpRAjqz3ZRqup_10.pth,10,0.5276797413825989,0.8563151955604553,"[0.5205751061439514, 0.5072612762451172, 0.4481750428676605]","[0.30117976665496826, 0.29560351371765137, 0.31214261054992676]"
+o9xpx5kg,eldritch-zombie-1192,indigo_bunting,necklace,trombone,iCcqX9YnfHpRAjqz3ZRqup_39.pth,39,0.5137770175933838,0.852838933467865,"[0.5205751061439514, 0.5072612762451172, 0.4481750428676605]","[0.30117976665496826, 0.29560351371765137, 0.31214261054992676]"
+cb19iydx,strange-crypt-1191,tow_truck,siamese_cat,police_van,M4iF8Jyv7rHXyfkx94VRDj_18.pth,18,0.6642895936965942,0.831952691078186,"[0.46919238567352295, 0.45050352811813354, 0.4274229109287262]","[0.27709993720054626, 0.27408739924430847, 0.28355786204338074]"
+cb19iydx,strange-crypt-1191,tow_truck,siamese_cat,police_van,M4iF8Jyv7rHXyfkx94VRDj_41.pth,41,0.5795679688453674,0.8461538553237915,"[0.46919238567352295, 0.45050352811813354, 0.4274229109287262]","[0.27709993720054626, 0.27408739924430847, 0.28355786204338074]"
+j47uknj9,endless-rift-1190,missile,maillot,chambered_nautilus,5mrfty7MCBVEssB6e5r66E_10.pth,10,1.1383161544799805,0.8014059662818909,"[0.4822503924369812, 0.4799347519874573, 0.4732167422771454]","[0.3049708604812622, 0.29370221495628357, 0.30679890513420105]"
+j47uknj9,endless-rift-1190,missile,maillot,chambered_nautilus,5mrfty7MCBVEssB6e5r66E_49.pth,49,7.464115142822266,0.5237258076667786,"[0.4822503924369812, 0.4799347519874573, 0.4732167422771454]","[0.3049708604812622, 0.29370221495628357, 0.30679890513420105]"
+u6z9mikn,elusive-candle-1189,barn_spider,carpenter's_kit,missile,juj6P8jdHXezkxnxcdHfZF_17.pth,17,0.8546895980834961,0.8072487711906433,"[0.49802449345588684, 0.49610480666160583, 0.48430970311164856]","[0.3001338243484497, 0.2928708493709564, 0.3104030191898346]"
+u6z9mikn,elusive-candle-1189,barn_spider,carpenter's_kit,missile,juj6P8jdHXezkxnxcdHfZF_41.pth,41,0.7456755638122559,0.8550246953964233,"[0.49802449345588684, 0.49610480666160583, 0.48430970311164856]","[0.3001338243484497, 0.2928708493709564, 0.3104030191898346]"
+h288eyrl,ineffable-thriller-1188,chimpanzee,barn_spider,running_shoe,CNLpE2ejuV6bzKLhAazRxp_18.pth,18,0.5853761434555054,0.8300395011901855,"[0.4694604277610779, 0.45790889859199524, 0.41456305980682373]","[0.28758323192596436, 0.2839174270629883, 0.28798219561576843]"
+h288eyrl,ineffable-thriller-1188,chimpanzee,barn_spider,running_shoe,CNLpE2ejuV6bzKLhAazRxp_41.pth,41,1.0722131729125977,0.8102766871452332,"[0.4694604277610779, 0.45790889859199524, 0.41456305980682373]","[0.28758323192596436, 0.2839174270629883, 0.28798219561576843]"
+bzlqer9u,grim-shroud-1187,appenzeller,pug,american_lobster,HHh37iN7pRtKAmdvTYx4vx_16.pth,16,0.6143209934234619,0.7818182110786438,"[0.5032918453216553, 0.4478049576282501, 0.3904919922351837]","[0.2824375033378601, 0.27649128437042236, 0.28079646825790405]"
+bzlqer9u,grim-shroud-1187,appenzeller,pug,american_lobster,HHh37iN7pRtKAmdvTYx4vx_47.pth,47,1.130058526992798,0.8265734314918518,"[0.5032918453216553, 0.4478049576282501, 0.3904919922351837]","[0.2824375033378601, 0.27649128437042236, 0.28079646825790405]"
+79gicukq,lurking-fantasy-1186,crash_helmet,ant,chambered_nautilus,ncUd5mS2dGMSiLDK5AYi6H_15.pth,15,0.602385938167572,0.8103225827217102,"[0.48171326518058777, 0.45897775888442993, 0.3981277048587799]","[0.30307355523109436, 0.2909795045852661, 0.298288494348526]"
+79gicukq,lurking-fantasy-1186,crash_helmet,ant,chambered_nautilus,ncUd5mS2dGMSiLDK5AYi6H_52.pth,52,0.6612436771392822,0.8658064603805542,"[0.48171326518058777, 0.45897775888442993, 0.3981277048587799]","[0.30307355523109436, 0.2909795045852661, 0.298288494348526]"
+0m2cg1oa,liminal-jitter-1185,indigo_bunting,black_and_gold_garden_spider,sea_slug,GWgQzN7KGjdENpjtdHRoQQ_14.pth,14,0.32396090030670166,0.9295154213905334,"[0.4353707432746887, 0.434566855430603, 0.3313330411911011]","[0.2550964653491974, 0.24411173164844513, 0.24884474277496338]"
+0m2cg1oa,liminal-jitter-1185,indigo_bunting,black_and_gold_garden_spider,sea_slug,GWgQzN7KGjdENpjtdHRoQQ_49.pth,49,0.2380470782518386,0.9515418410301208,"[0.4353707432746887, 0.434566855430603, 0.3313330411911011]","[0.2550964653491974, 0.24411173164844513, 0.24884474277496338]"
+ssetqldl,crawly-ritual-1184,siamese_cat,planetarium,police_van,VATS2Pp4g4AEyTDTQtWktA_9.pth,9,0.50755375623703,0.8861256837844849,"[0.4551422894001007, 0.44341081380844116, 0.42651885747909546]","[0.27342846989631653, 0.26965051889419556, 0.2842654585838318]"
+ssetqldl,crawly-ritual-1184,siamese_cat,planetarium,police_van,VATS2Pp4g4AEyTDTQtWktA_50.pth,50,0.3530133366584778,0.9319371581077576,"[0.4551422894001007, 0.44341081380844116, 0.42651885747909546]","[0.27342846989631653, 0.26965051889419556, 0.2842654585838318]"
+ev2z84o3,devilish-mirage-1183,cellular_telephone,borzoi,american_lobster,FtAGHeY4MNzggooPvfzDBH_18.pth,18,0.6694285273551941,0.800273597240448,"[0.5107084512710571, 0.4554145634174347, 0.4150400757789612]","[0.2967315912246704, 0.29307428002357483, 0.3052178919315338]"
+ev2z84o3,devilish-mirage-1183,cellular_telephone,borzoi,american_lobster,FtAGHeY4MNzggooPvfzDBH_50.pth,50,0.7855769991874695,0.7852256894111633,"[0.5107084512710571, 0.4554145634174347, 0.4150400757789612]","[0.2967315912246704, 0.29307428002357483, 0.3052178919315338]"
+n37gq0fq,unraveling-ghost-1182,angora,mud_turtle,crash_helmet,3ZrtnchCcckQWUfbA8uakA_18.pth,18,0.7058312296867371,0.8858858942985535,"[0.4820490777492523, 0.45513999462127686, 0.4150349497795105]","[0.2833326458930969, 0.27729105949401855, 0.2864334285259247]"
+n37gq0fq,unraveling-ghost-1182,angora,mud_turtle,crash_helmet,3ZrtnchCcckQWUfbA8uakA_80.pth,80,0.7118683457374573,0.879879891872406,"[0.4820490777492523, 0.45513999462127686, 0.4150349497795105]","[0.2833326458930969, 0.27729105949401855, 0.2864334285259247]"
+cv8aynln,ethereal-possession-1181,strawberry,angora,chimpanzee,G6yHtNR2jfR8Ht9TFrG9m7_17.pth,17,0.37310299277305603,0.8604651093482971,"[0.510985255241394, 0.42748650908470154, 0.3783046007156372]","[0.2824231684207916, 0.2826611399650574, 0.28270259499549866]"
+cv8aynln,ethereal-possession-1181,strawberry,angora,chimpanzee,G6yHtNR2jfR8Ht9TFrG9m7_33.pth,33,0.2183629125356674,0.9339045286178588,"[0.510985255241394, 0.42748650908470154, 0.3783046007156372]","[0.2824231684207916, 0.2826611399650574, 0.28270259499549866]"
+14htgn66,silent-whisper-1180,siamese_cat,pajama,mud_turtle,FGAYz5KTXuMPu4MmBGCrVi_10.pth,10,0.43403100967407227,0.8470436930656433,"[0.4983305335044861, 0.4510965347290039, 0.4118262827396393]","[0.2693018913269043, 0.26366549730300903, 0.27125948667526245]"
+14htgn66,silent-whisper-1180,siamese_cat,pajama,mud_turtle,FGAYz5KTXuMPu4MmBGCrVi_45.pth,45,0.5484030842781067,0.8508997559547424,"[0.4983305335044861, 0.4510965347290039, 0.4118262827396393]","[0.2693018913269043, 0.26366549730300903, 0.27125948667526245]"
+uzuco95d,obscure-echo-1179,maillot,ruddy_turnstone,mud_turtle,8T4a4NqrXCrRaebx3cZLcT_15.pth,15,0.6871509552001953,0.8299319744110107,"[0.5180162787437439, 0.4995570182800293, 0.4598856568336487]","[0.25120437145233154, 0.24486428499221802, 0.2617783844470978]"
+uzuco95d,obscure-echo-1179,maillot,ruddy_turnstone,mud_turtle,8T4a4NqrXCrRaebx3cZLcT_66.pth,66,0.4813996255397796,0.9030612111091614,"[0.5180162787437439, 0.4995570182800293, 0.4598856568336487]","[0.25120437145233154, 0.24486428499221802, 0.2617783844470978]"
+0iv9avee,ethereal-spirit-1178,planetarium,breakwater,sea_slug,ThEu6qa5mh5rtdRkBAAAMP_11.pth,11,0.5253323316574097,0.8494868874549866,"[0.44610339403152466, 0.4362465441226959, 0.40783441066741943]","[0.267837256193161, 0.26211392879486084, 0.2874719202518463]"
+0iv9avee,ethereal-spirit-1178,planetarium,breakwater,sea_slug,ThEu6qa5mh5rtdRkBAAAMP_77.pth,77,0.5494995713233948,0.866590678691864,"[0.44610339403152466, 0.4362465441226959, 0.40783441066741943]","[0.267837256193161, 0.26211392879486084, 0.2874719202518463]"
+5jra54qg,ghostly-gargoyle-1177,pug,otterhound,mashed_potato,2qrZZxz7s2pw8jZpc3uQ6w_13.pth,13,0.9187161922454834,0.7934595346450806,"[0.521104633808136, 0.46865060925483704, 0.38595542311668396]","[0.2731247842311859, 0.2663750648498535, 0.2712375223636627]"
+5jra54qg,ghostly-gargoyle-1177,pug,otterhound,mashed_potato,2qrZZxz7s2pw8jZpc3uQ6w_60.pth,60,2.43208646774292,0.8227194547653198,"[0.521104633808136, 0.46865060925483704, 0.38595542311668396]","[0.2731247842311859, 0.2663750648498535, 0.2712375223636627]"
+4lxmot4t,muted-goblin-1176,indigo_bunting,dock,canoe,NTC953tsivv7rvRbPveqVv_18.pth,18,3.143770933151245,0.5933232307434082,"[0.4485832750797272, 0.47877153754234314, 0.42378532886505127]","[0.24580521881580353, 0.23750141263008118, 0.2682061791419983]"
+4lxmot4t,muted-goblin-1176,indigo_bunting,dock,canoe,NTC953tsivv7rvRbPveqVv_46.pth,46,0.6884413957595825,0.8224582672119141,"[0.4485832750797272, 0.47877153754234314, 0.42378532886505127]","[0.24580521881580353, 0.23750141263008118, 0.2682061791419983]"
+snf4rzoj,ominous-shroud-1175,police_van,siamese_cat,airedale,P2LArrtfTHkt5zwvjHBUbJ_15.pth,15,0.4928785264492035,0.8578312993049622,"[0.46975651383399963, 0.4456785321235657, 0.4052308201789856]","[0.2684689462184906, 0.26299548149108887, 0.2700481116771698]"
+snf4rzoj,ominous-shroud-1175,police_van,siamese_cat,airedale,P2LArrtfTHkt5zwvjHBUbJ_49.pth,49,0.5048368573188782,0.8722891807556152,"[0.46975651383399963, 0.4456785321235657, 0.4052308201789856]","[0.2684689462184906, 0.26299548149108887, 0.2700481116771698]"
+sbq9t1sz,forgotten-beast-1174,maillot,pug,wire-haired_fox_terrier,mpTyNaBs7GkBhBAbusY8rr_18.pth,18,1.3236842155456543,0.6807228922843933,"[0.5172187685966492, 0.49254748225212097, 0.4549388587474823]","[0.2839265465736389, 0.2763228714466095, 0.2868621349334717]"
+sbq9t1sz,forgotten-beast-1174,maillot,pug,wire-haired_fox_terrier,mpTyNaBs7GkBhBAbusY8rr_20.pth,20,4.969111919403076,0.421686738729477,"[0.5172187685966492, 0.49254748225212097, 0.4549388587474823]","[0.2839265465736389, 0.2763228714466095, 0.2868621349334717]"
+1r915p26,distant-treat-1173,mixing_bowl,sea_slug,wire-haired_fox_terrier,h7CTx9uA6t7eE3Znm5TcWD_18.pth,18,0.4050275385379791,0.8943489193916321,"[0.47899818420410156, 0.4364984333515167, 0.3722069561481476]","[0.2837204337120056, 0.2745252251625061, 0.2812538146972656]"
+1r915p26,distant-treat-1173,mixing_bowl,sea_slug,wire-haired_fox_terrier,h7CTx9uA6t7eE3Znm5TcWD_45.pth,45,0.4358261823654175,0.8906633853912354,"[0.47899818420410156, 0.4364984333515167, 0.3722069561481476]","[0.2837204337120056, 0.2745252251625061, 0.2812538146972656]"
+wgs5di6h,shadowed-cobweb-1172,breakwater,black_and_gold_garden_spider,ruddy_turnstone,WuJCb47eH7eXnQiNB2hQoJ_13.pth,13,0.862641453742981,0.8002755045890808,"[0.48248887062072754, 0.5026274919509888, 0.4657699763774872]","[0.23336410522460938, 0.22850055992603302, 0.2626797556877136]"
+wgs5di6h,shadowed-cobweb-1172,breakwater,black_and_gold_garden_spider,ruddy_turnstone,WuJCb47eH7eXnQiNB2hQoJ_46.pth,46,0.4270749986171722,0.8994490504264832,"[0.48248887062072754, 0.5026274919509888, 0.4657699763774872]","[0.23336410522460938, 0.22850055992603302, 0.2626797556877136]"
+9wiwkpyj,forgotten-claw-1171,tow_truck,red_wolf,crash_helmet,fFUxenKM4yd6fopwn3qD5t_15.pth,15,6.049841403961182,0.5134048461914062,"[0.47767794132232666, 0.46076226234436035, 0.41804325580596924]","[0.28650352358818054, 0.281255841255188, 0.2918720543384552]"
+9wiwkpyj,forgotten-claw-1171,tow_truck,red_wolf,crash_helmet,fFUxenKM4yd6fopwn3qD5t_27.pth,27,1.219933032989502,0.7560321688652039,"[0.47767794132232666, 0.46076226234436035, 0.41804325580596924]","[0.28650352358818054, 0.281255841255188, 0.2918720543384552]"
+eby43a6k,ineffable-cauldron-1170,wire-haired_fox_terrier,mashed_potato,crash_helmet,VosYUcDPcYy986N7bBMQkQ_17.pth,17,0.38758111000061035,0.8794788122177124,"[0.5167168974876404, 0.4706140458583832, 0.4082474112510681]","[0.29408034682273865, 0.28902098536491394, 0.2973417341709137]"
+eby43a6k,ineffable-cauldron-1170,wire-haired_fox_terrier,mashed_potato,crash_helmet,VosYUcDPcYy986N7bBMQkQ_46.pth,46,0.4067138433456421,0.9006514549255371,"[0.5167168974876404, 0.4706140458583832, 0.4082474112510681]","[0.29408034682273865, 0.28902098536491394, 0.2973417341709137]"
+ablz4vba,sleepless-disguise-1169,borzoi,angora,planetarium,SQjYoJGfHjrBKuZEqcncqb_15.pth,15,0.5169416666030884,0.835218071937561,"[0.46182936429977417, 0.45513254404067993, 0.42968177795410156]","[0.263759583234787, 0.2592185437679291, 0.27892693877220154]"
+ablz4vba,sleepless-disguise-1169,borzoi,angora,planetarium,SQjYoJGfHjrBKuZEqcncqb_75.pth,75,1.040607213973999,0.848142147064209,"[0.46182936429977417, 0.45513254404067993, 0.42968177795410156]","[0.263759583234787, 0.2592185437679291, 0.27892693877220154]"
+xizsgp02,spectral-crypt-1168,siamese_cat,running_shoe,pug,TvcLonYMW8vsVurAeZqQJF_13.pth,13,1.1542402505874634,0.6703296899795532,"[0.4993133842945099, 0.4664930999279022, 0.4314231276512146]","[0.2835821807384491, 0.2809188663959503, 0.2892131805419922]"
+xizsgp02,spectral-crypt-1168,siamese_cat,running_shoe,pug,TvcLonYMW8vsVurAeZqQJF_44.pth,44,1.0084394216537476,0.7098901271820068,"[0.4993133842945099, 0.4664930999279022, 0.4314231276512146]","[0.2835821807384491, 0.2809188663959503, 0.2892131805419922]"
+2mao0cdy,howling-seance-1167,mud_turtle,chambered_nautilus,missile,gDiwxdfc2TdGvRJAUzWmku_12.pth,12,2.084149122238159,0.6268174648284912,"[0.4495488405227661, 0.4450919032096863, 0.4215947389602661]","[0.28276947140693665, 0.2734486758708954, 0.28814154863357544]"
+2mao0cdy,howling-seance-1167,mud_turtle,chambered_nautilus,missile,gDiwxdfc2TdGvRJAUzWmku_30.pth,30,0.6082096695899963,0.8239095211029053,"[0.4495488405227661, 0.4450919032096863, 0.4215947389602661]","[0.28276947140693665, 0.2734486758708954, 0.28814154863357544]"
+oim1flzx,ineffable-skeleton-1166,american_lobster,vizsla,necklace,M8DQQZgH2bYxrwSNDUub9h_13.pth,13,0.5105894207954407,0.846875011920929,"[0.5394799113273621, 0.4725450873374939, 0.4084242880344391]","[0.2672157287597656, 0.2678459584712982, 0.28365495800971985]"
+oim1flzx,ineffable-skeleton-1166,american_lobster,vizsla,necklace,M8DQQZgH2bYxrwSNDUub9h_30.pth,30,0.5388987064361572,0.840624988079071,"[0.5394799113273621, 0.4725450873374939, 0.4084242880344391]","[0.2672157287597656, 0.2678459584712982, 0.28365495800971985]"
+8tj0sgtk,possessed-horseman-1165,lesser_panda,mashed_potato,pick,hHLjAHiYrvrBrpmpAcfdj6_12.pth,12,0.4229637384414673,0.8842874765396118,"[0.4960874319076538, 0.45051589608192444, 0.3740960955619812]","[0.2877665162086487, 0.2819960117340088, 0.28707802295684814]"
+8tj0sgtk,possessed-horseman-1165,lesser_panda,mashed_potato,pick,hHLjAHiYrvrBrpmpAcfdj6_51.pth,51,0.3842735886573791,0.8915956020355225,"[0.4960874319076538, 0.45051589608192444, 0.3740960955619812]","[0.2877665162086487, 0.2819960117340088, 0.28707802295684814]"
+hwwrobte,strange-skull-1164,police_van,ruddy_turnstone,acoustic_guitar,TjReEM9t34rLtgT8od2fPj_17.pth,17,21.00178337097168,0.5160220861434937,"[0.5090746283531189, 0.4771859645843506, 0.4386168420314789]","[0.2990373969078064, 0.29456523060798645, 0.3065715432167053]"
+hwwrobte,strange-skull-1164,police_van,ruddy_turnstone,acoustic_guitar,TjReEM9t34rLtgT8od2fPj_62.pth,62,0.2196427285671234,0.939226508140564,"[0.5090746283531189, 0.4771859645843506, 0.4386168420314789]","[0.2990373969078064, 0.29456523060798645, 0.3065715432167053]"
+t3r288qo,forlorn-seance-1163,barn_spider,acoustic_guitar,mixing_bowl,PkQcWcwebYqfpxQ9AQ3nKX_11.pth,11,1.9804188013076782,0.5997552275657654,"[0.5348526835441589, 0.4839431047439575, 0.4284619092941284]","[0.3205922842025757, 0.3180936872959137, 0.3304835557937622]"
+t3r288qo,forlorn-seance-1163,barn_spider,acoustic_guitar,mixing_bowl,PkQcWcwebYqfpxQ9AQ3nKX_25.pth,25,0.4425871074199677,0.8776009678840637,"[0.5348526835441589, 0.4839431047439575, 0.4284619092941284]","[0.3205922842025757, 0.3180936872959137, 0.3304835557937622]"
+rtdnxio0,eldritch-monster-1162,borzoi,ruddy_turnstone,necklace,dXnK663qp9qfCHsjsZcV35_13.pth,13,0.4970826804637909,0.8601863980293274,"[0.5343655347824097, 0.5153159499168396, 0.48103415966033936]","[0.260593980550766, 0.2583814859390259, 0.2733776867389679]"
+rtdnxio0,eldritch-monster-1162,borzoi,ruddy_turnstone,necklace,dXnK663qp9qfCHsjsZcV35_34.pth,34,0.4946250319480896,0.868175745010376,"[0.5343655347824097, 0.5153159499168396, 0.48103415966033936]","[0.260593980550766, 0.2583814859390259, 0.2733776867389679]"
+di29pjhp,arcane-fantasy-1161,pick,dock,breakwater,7bpJhWzwbdAFP8Wbz8vAi4_13.pth,13,0.3831314146518707,0.8285714387893677,"[0.49823856353759766, 0.49746593832969666, 0.5005064010620117]","[0.2841923236846924, 0.28265050053596497, 0.3027295470237732]"
+di29pjhp,arcane-fantasy-1161,pick,dock,breakwater,7bpJhWzwbdAFP8Wbz8vAi4_43.pth,43,0.646341860294342,0.7984962463378906,"[0.49823856353759766, 0.49746593832969666, 0.5005064010620117]","[0.2841923236846924, 0.28265050053596497, 0.3027295470237732]"
+7yea94pe,unearthly-ghoul-1160,sewing_machine,dock,chambered_nautilus,bFFucNm8wrHoUpYRyVdcvV_18.pth,18,0.40041565895080566,0.8875969052314758,"[0.48389875888824463, 0.46489062905311584, 0.44441765546798706]","[0.30576032400131226, 0.30203336477279663, 0.31321972608566284]"
+7yea94pe,unearthly-ghoul-1160,sewing_machine,dock,chambered_nautilus,bFFucNm8wrHoUpYRyVdcvV_47.pth,47,0.3902386724948883,0.8837209343910217,"[0.48389875888824463, 0.46489062905311584, 0.44441765546798706]","[0.30576032400131226, 0.30203336477279663, 0.31321972608566284]"
+83tcpboy,restless-spirit-1159,carpenter's_kit,bolete,ant,SPDgGD3J4iMdEX49TaiYkg_11.pth,11,0.627383828163147,0.81455397605896,"[0.49573254585266113, 0.46594932675361633, 0.3842321038246155]","[0.28204479813575745, 0.2733927369117737, 0.28705301880836487]"
+83tcpboy,restless-spirit-1159,carpenter's_kit,bolete,ant,SPDgGD3J4iMdEX49TaiYkg_72.pth,72,0.5681971311569214,0.8462441563606262,"[0.49573254585266113, 0.46594932675361633, 0.3842321038246155]","[0.28204479813575745, 0.2733927369117737, 0.28705301880836487]"
+2g9yjy2p,forgotten-apparition-1158,airedale,tow_truck,sewing_machine,5pb9UcfxwrLcC6kmvYyt5o_12.pth,12,0.4843284487724304,0.8796498775482178,"[0.507526695728302, 0.4801860451698303, 0.43917256593704224]","[0.2855680286884308, 0.2856135964393616, 0.29834726452827454]"
+2g9yjy2p,forgotten-apparition-1158,airedale,tow_truck,sewing_machine,5pb9UcfxwrLcC6kmvYyt5o_24.pth,24,1.2294796705245972,0.833698034286499,"[0.507526695728302, 0.4801860451698303, 0.43917256593704224]","[0.2855680286884308, 0.2856135964393616, 0.29834726452827454]"
+qonw2dwt,cryptic-vampire-1157,soft-coated_wheaten_terrier,ant,pick,B6AkqyA5UxUr7inszj3VQD_15.pth,15,0.8931287527084351,0.7358276844024658,"[0.5159539580345154, 0.48255103826522827, 0.41330084204673767]","[0.27961355447769165, 0.2727808654308319, 0.28645622730255127]"
+qonw2dwt,cryptic-vampire-1157,soft-coated_wheaten_terrier,ant,pick,B6AkqyA5UxUr7inszj3VQD_66.pth,66,0.928066611289978,0.7709750533103943,"[0.5159539580345154, 0.48255103826522827, 0.41330084204673767]","[0.27961355447769165, 0.2727808654308319, 0.28645622730255127]"
+otnwgcej,abominable-rift-1156,indigo_bunting,running_shoe,vizsla,hDJ2hTFHJe8Q3F4c56jkw9_17.pth,17,0.28482937812805176,0.9179536700248718,"[0.4894734025001526, 0.47069650888442993, 0.3899422883987427]","[0.25682491064071655, 0.24977029860019684, 0.26788681745529175]"
+otnwgcej,abominable-rift-1156,indigo_bunting,running_shoe,vizsla,hDJ2hTFHJe8Q3F4c56jkw9_50.pth,50,7.653326034545898,0.7239382266998291,"[0.4894734025001526, 0.47069650888442993, 0.3899422883987427]","[0.25682491064071655, 0.24977029860019684, 0.26788681745529175]"
+fm2qrrtb,shadowed-void-1155,wire-haired_fox_terrier,ant,indigo_bunting,MqBcBfKNR4vxu2Sras4JW7_11.pth,11,0.4089500308036804,0.8810888528823853,"[0.48753637075424194, 0.4931873381137848, 0.38807666301727295]","[0.2530459463596344, 0.23869019746780396, 0.260297954082489]"
+fm2qrrtb,shadowed-void-1155,wire-haired_fox_terrier,ant,indigo_bunting,MqBcBfKNR4vxu2Sras4JW7_48.pth,48,0.3576902151107788,0.9097421169281006,"[0.48753637075424194, 0.4931873381137848, 0.38807666301727295]","[0.2530459463596344, 0.23869019746780396, 0.260297954082489]"
+ys41522x,obscure-scarecrow-1154,schooner,mixing_bowl,vizsla,4aDxBFkc4qtLwkjnYsADzW_17.pth,17,0.45192861557006836,0.8968334794044495,"[0.5154575705528259, 0.4911121129989624, 0.4450606107711792]","[0.25832295417785645, 0.2560359835624695, 0.28193214535713196]"
+ys41522x,obscure-scarecrow-1154,schooner,mixing_bowl,vizsla,4aDxBFkc4qtLwkjnYsADzW_35.pth,35,0.3901898562908172,0.925434112548828,"[0.5154575705528259, 0.4911121129989624, 0.4450606107711792]","[0.25832295417785645, 0.2560359835624695, 0.28193214535713196]"
+6og9olzo,vacant-abyss-1153,red_wolf,airedale,angora,fhPDDsUyfJ6AYwtDwEWcSD_12.pth,12,0.8115293383598328,0.7363112568855286,"[0.47398343682289124, 0.44776496291160583, 0.3774583041667938]","[0.25283536314964294, 0.24422986805438995, 0.25010111927986145]"
+6og9olzo,vacant-abyss-1153,red_wolf,airedale,angora,fhPDDsUyfJ6AYwtDwEWcSD_42.pth,42,0.948164999485016,0.7161383032798767,"[0.47398343682289124, 0.44776496291160583, 0.3774583041667938]","[0.25283536314964294, 0.24422986805438995, 0.25010111927986145]"
+5a1fsafr,obscure-vampire-1152,barn_spider,planetarium,breakwater,6GuNTk3ZGN76raPSvhmyAc_9.pth,9,0.8269854784011841,0.7722602486610413,"[0.456868976354599, 0.47703686356544495, 0.4777834713459015]","[0.2638345956802368, 0.2625107765197754, 0.29226547479629517]"
+5a1fsafr,obscure-vampire-1152,barn_spider,planetarium,breakwater,6GuNTk3ZGN76raPSvhmyAc_73.pth,73,0.7422156929969788,0.8304794430732727,"[0.456868976354599, 0.47703686356544495, 0.4777834713459015]","[0.2638345956802368, 0.2625107765197754, 0.29226547479629517]"
+5p9kb59a,pale-pumpkin-1151,planetarium,police_van,maillot,gzQj8aw7SsdLTAcr8NKHcD_11.pth,11,0.4763624668121338,0.861261248588562,"[0.4722699522972107, 0.47418951988220215, 0.4689633548259735]","[0.28644007444381714, 0.2800252437591553, 0.29673242568969727]"
+5p9kb59a,pale-pumpkin-1151,planetarium,police_van,maillot,gzQj8aw7SsdLTAcr8NKHcD_70.pth,70,0.4404404461383819,0.8756756782531738,"[0.4722699522972107, 0.47418951988220215, 0.4689633548259735]","[0.28644007444381714, 0.2800252437591553, 0.29673242568969727]"
+j9q6mhyk,abominable-spirit-1150,tow_truck,crash_helmet,angora,ckcvGPRvJPE5vJA3Gh4poB_14.pth,14,0.48597365617752075,0.8653061389923096,"[0.486661434173584, 0.46555590629577637, 0.44308289885520935]","[0.29226770997047424, 0.28890925645828247, 0.29954227805137634]"
+j9q6mhyk,abominable-spirit-1150,tow_truck,crash_helmet,angora,ckcvGPRvJPE5vJA3Gh4poB_78.pth,78,0.7034363746643066,0.8612244725227356,"[0.486661434173584, 0.46555590629577637, 0.44308289885520935]","[0.29226770997047424, 0.28890925645828247, 0.29954227805137634]"
+v2fvcoai,grim-candle-1149,schooner,wire-haired_fox_terrier,dock,mBhkRxKsHnBYRPSr7Hbxsp_17.pth,17,0.7023066878318787,0.8307985067367554,"[0.4963536858558655, 0.5214678645133972, 0.5368044376373291]","[0.2602488398551941, 0.25503286719322205, 0.27576693892478943]"
+v2fvcoai,grim-candle-1149,schooner,wire-haired_fox_terrier,dock,mBhkRxKsHnBYRPSr7Hbxsp_57.pth,57,0.738878071308136,0.8365018963813782,"[0.4963536858558655, 0.5214678645133972, 0.5368044376373291]","[0.2602488398551941, 0.25503286719322205, 0.27576693892478943]"
+i3t9ymys,intangible-shadow-1148,sewing_machine,trombone,airedale,YXjpantVgur78w6gQ8Ya2B_12.pth,12,0.9176809787750244,0.7280966639518738,"[0.5185929536819458, 0.4810572564601898, 0.4379679560661316]","[0.3085063397884369, 0.3091598451137543, 0.3185017704963684]"
+i3t9ymys,intangible-shadow-1148,sewing_machine,trombone,airedale,YXjpantVgur78w6gQ8Ya2B_38.pth,38,0.7950751781463623,0.7562940716743469,"[0.5185929536819458, 0.4810572564601898, 0.4379679560661316]","[0.3085063397884369, 0.3091598451137543, 0.3185017704963684]"
+0o3o4luc,hollow-spider-1147,planetarium,american_lobster,barometer,Gn2eo8JNUQ8nW9yhWpyqXx_9.pth,9,3.048823118209839,0.6066115498542786,"[0.5191319584846497, 0.4654940366744995, 0.4359939992427826]","[0.28552067279815674, 0.28746822476387024, 0.30855506658554077]"
+0o3o4luc,hollow-spider-1147,planetarium,american_lobster,barometer,Gn2eo8JNUQ8nW9yhWpyqXx_53.pth,53,0.6317510604858398,0.8694214820861816,"[0.5191319584846497, 0.4654940366744995, 0.4359939992427826]","[0.28552067279815674, 0.28746822476387024, 0.30855506658554077]"
+9eimjlnn,twisted-warlock-1146,breakwater,angora,american_lobster,AhxyZLpDPXN2LgVVfGqM6s_9.pth,9,0.20469747483730316,0.9247159361839294,"[0.5015265941619873, 0.4602333903312683, 0.4400750994682312]","[0.2644272446632385, 0.26337555050849915, 0.2859160006046295]"
+9eimjlnn,twisted-warlock-1146,breakwater,angora,american_lobster,AhxyZLpDPXN2LgVVfGqM6s_57.pth,57,0.3898960947990417,0.9176136255264282,"[0.5015265941619873, 0.4602333903312683, 0.4400750994682312]","[0.2644272446632385, 0.26337555050849915, 0.2859160006046295]"
+r6j9ylto,twisted-treat-1145,strawberry,red_wolf,airedale,eqtz4uyzM2W5fVkywXGds7_17.pth,17,0.9237264394760132,0.7711313366889954,"[0.5248845815658569, 0.42977175116539, 0.35273346304893494]","[0.26987195014953613, 0.2693437337875366, 0.2699684500694275]"
+r6j9ylto,twisted-treat-1145,strawberry,red_wolf,airedale,eqtz4uyzM2W5fVkywXGds7_60.pth,60,0.7010842561721802,0.8231469392776489,"[0.5248845815658569, 0.42977175116539, 0.35273346304893494]","[0.26987195014953613, 0.2693437337875366, 0.2699684500694275]"
+3z7aocfo,murky-seance-1144,otterhound,missile,vizsla,NtcyLyyLdAqGm5XLreFTRB_11.pth,11,1.13624107837677,0.7898734211921692,"[0.49414849281311035, 0.47266098856925964, 0.4173940122127533]","[0.25413358211517334, 0.24683761596679688, 0.2712096869945526]"
+3z7aocfo,murky-seance-1144,otterhound,missile,vizsla,NtcyLyyLdAqGm5XLreFTRB_51.pth,51,0.5873901844024658,0.8481012582778931,"[0.49414849281311035, 0.47266098856925964, 0.4173940122127533]","[0.25413358211517334, 0.24683761596679688, 0.2712096869945526]"
+gf2e9gus,spooky-candy-1143,trombone,vizsla,indigo_bunting,jtHSyAnUaKLpEZFbSyQWJi_17.pth,17,0.41690248250961304,0.8746465444564819,"[0.4890808165073395, 0.4675137996673584, 0.38804611563682556]","[0.27679356932640076, 0.27002254128456116, 0.28373029828071594]"
+gf2e9gus,spooky-candy-1143,trombone,vizsla,indigo_bunting,jtHSyAnUaKLpEZFbSyQWJi_51.pth,51,0.383113831281662,0.8925542235374451,"[0.4890808165073395, 0.4675137996673584, 0.38804611563682556]","[0.27679356932640076, 0.27002254128456116, 0.28373029828071594]"
+pv336kba,howling-memory-1142,bolete,tow_truck,soft-coated_wheaten_terrier,Yu9Gmhri3pmiR3aMqGKQrQ_15.pth,15,0.4363773465156555,0.8612059354782104,"[0.46453434228897095, 0.4390975534915924, 0.37986838817596436]","[0.263622522354126, 0.25598081946372986, 0.26605239510536194]"
+pv336kba,howling-memory-1142,bolete,tow_truck,soft-coated_wheaten_terrier,Yu9Gmhri3pmiR3aMqGKQrQ_80.pth,80,0.4117571115493774,0.8794084191322327,"[0.46453434228897095, 0.4390975534915924, 0.37986838817596436]","[0.263622522354126, 0.25598081946372986, 0.26605239510536194]"
+2aqhzmk2,devilish-pumpkin-1141,american_lobster,carpenter's_kit,cellular_telephone,F9JWeacPyYrXJFc5AWikxK_15.pth,15,0.9162493348121643,0.738950252532959,"[0.5386902093887329, 0.4764898419380188, 0.4481102526187897]","[0.3144870400428772, 0.315745085477829, 0.3268798887729645]"
+2aqhzmk2,devilish-pumpkin-1141,american_lobster,carpenter's_kit,cellular_telephone,F9JWeacPyYrXJFc5AWikxK_33.pth,33,1.51308012008667,0.7140883803367615,"[0.5386902093887329, 0.4764898419380188, 0.4481102526187897]","[0.3144870400428772, 0.315745085477829, 0.3268798887729645]"
+hhrkdo2a,pale-warlock-1140,otterhound,angora,paddle,mWA9NSt3oNbQAuYTkiTXVU_9.pth,9,0.6438062191009521,0.8268876671791077,"[0.491208016872406, 0.4763752520084381, 0.44211000204086304]","[0.2694646120071411, 0.26161497831344604, 0.2773338556289673]"
+hhrkdo2a,pale-warlock-1140,otterhound,angora,paddle,mWA9NSt3oNbQAuYTkiTXVU_54.pth,54,0.5429988503456116,0.8581951856613159,"[0.491208016872406, 0.4763752520084381, 0.44211000204086304]","[0.2694646120071411, 0.26161497831344604, 0.2773338556289673]"
+czow9cqy,possessed-labyrinth-1139,red_wolf,missile,mixing_bowl,kQNN9BKxw27icC5FQgDoYL_13.pth,13,0.5169346928596497,0.8310810923576355,"[0.49788379669189453, 0.48507997393608093, 0.4414688050746918]","[0.27117714285850525, 0.26513826847076416, 0.2850364148616791]"
+czow9cqy,possessed-labyrinth-1139,red_wolf,missile,mixing_bowl,kQNN9BKxw27icC5FQgDoYL_49.pth,49,1.0879316329956057,0.8027027249336243,"[0.49788379669189453, 0.48507997393608093, 0.4414688050746918]","[0.27117714285850525, 0.26513826847076416, 0.2850364148616791]"
+d11ee6sh,enchanted-newt-1138,breakwater,police_van,pug,mLCMxTPh7bxSrbF7exvVkN_15.pth,15,0.4130571186542511,0.9081224799156189,"[0.46436941623687744, 0.4678928256034851, 0.4558696448802948]","[0.2668681740760803, 0.26367050409317017, 0.28046610951423645]"
+d11ee6sh,enchanted-newt-1138,breakwater,police_van,pug,mLCMxTPh7bxSrbF7exvVkN_59.pth,59,0.4032508134841919,0.9027962684631348,"[0.46436941623687744, 0.4678928256034851, 0.4558696448802948]","[0.2668681740760803, 0.26367050409317017, 0.28046610951423645]"
+uzaffvmb,endless-sorcery-1137,ruddy_turnstone,soft-coated_wheaten_terrier,maillot,ihji9nNheYJNWTijuSRZRQ_16.pth,16,0.518121063709259,0.9036312699317932,"[0.5202406644821167, 0.500368058681488, 0.46239352226257324]","[0.2526084780693054, 0.24582837522029877, 0.2597651481628418]"
+uzaffvmb,endless-sorcery-1137,ruddy_turnstone,soft-coated_wheaten_terrier,maillot,ihji9nNheYJNWTijuSRZRQ_72.pth,72,0.6760542988777161,0.8994413614273071,"[0.5202406644821167, 0.500368058681488, 0.46239352226257324]","[0.2526084780693054, 0.24582837522029877, 0.2597651481628418]"
+9owib3op,macabre-echo-1136,strawberry,barometer,crash_helmet,VfyDtshcsAw3uvrtJunLyy_15.pth,15,0.642669141292572,0.8256275057792664,"[0.556227445602417, 0.457105427980423, 0.4161381423473358]","[0.303666889667511, 0.31615975499153137, 0.3251967132091522]"
+9owib3op,macabre-echo-1136,strawberry,barometer,crash_helmet,VfyDtshcsAw3uvrtJunLyy_23.pth,23,1.020216464996338,0.7952443957328796,"[0.556227445602417, 0.457105427980423, 0.4161381423473358]","[0.303666889667511, 0.31615975499153137, 0.3251967132091522]"
