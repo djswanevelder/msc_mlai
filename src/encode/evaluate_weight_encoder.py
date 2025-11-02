@@ -121,10 +121,10 @@ def encode_reconstruct_compare(model_file):
     reconstructed_model = decode_latent_to_resnet_model(weight_ae, mapper, latent)
 
 
-    _,val_loader = load_dataset('data/meta_data.csv', model_file)
+    # _,val_loader = load_dataset('data/meta_data.csv', model_file)
     
-    return compare_models_with_permutation_test(model, reconstructed_model, val_loader)
-    # return compare_model_outputs(model, reconstructed_model)
+    # return compare_models_with_permutation_test(model, reconstructed_model, val_loader)
+    return compare_model_outputs(model, reconstructed_model)
 
 def generate_model(classes,result):
 
@@ -179,63 +179,9 @@ if __name__ == '__main__':
         'bFFucNm8wrHoUpYRyVdcvV_18.pth', 'gDiwxdfc2TdGvRJAUzWmku_30.pth', 'kQNN9BKxw27icC5FQgDoYL_13.pth', 'NTC953tsivv7rvRbPveqVv_46.pth', 'TvcLonYMW8vsVurAeZqQJF_13.pth'
     ]
     
-   # Initialize accumulators for the metrics we want to average
-    total_acc_diff = 0.0
-    total_cos_sim = 0.0
-    total_avg_correlation = 0.0
-    num_models = 0 # Counter for the number of models processed
-
-    print("Starting model reconstruction and comparison...")
+    overall_rec_mse = overall_agreement = overall_original_accuracy = overall_reconstructed_accuracy = overall_cos_sim = overall_avg_correlation = 0
+    overall_best_agreement = overall_best_rec_accuracy = 0
 
     for weight in WEIGHT_FILES:
-        try:
-            # The compare_model_outputs function should return the metrics
-            # Based on your internal compare_models_with_permutation_test, 
-            # let's assume it returns: 
-            # (rec_mse, agreement, original_accuracy, reconstructed_accuracy, cos_sim, avg_correlation, best_agreement, best_rec_accuracy)
-            
-            # NOTE: Your original code calls compare_model_outputs, 
-            # but the provided compare_models_with_permutation_test returns 8 values.
-            # I'll update the variable names to match the 8-tuple from the function you provided.
-            
-            # You should ensure 'compare_model_outputs' is defined and returns these 8 values, 
-            # or simply change 'encode_reconstruct_compare' to call the function you provided:
-            # return compare_models_with_permutation_test(model, reconstructed_model, val_loader)
-            
-            # Assuming 'encode_reconstruct_compare' calls 'compare_models_with_permutation_test' and returns the 8 values:
-            rec_mse, agreement, original_accuracy, reconstructed_accuracy, cos_sim, avg_correlation, best_agreement, best_rec_accuracy = encode_reconstruct_compare(weight)
-
-            # Calculate the Accuracy Difference (Original - Best Reconstructed)
-            # The accuracy difference is typically calculated using the best-case (permuted) reconstructed accuracy
-            acc_diff = original_accuracy - best_rec_accuracy
-            
-            # Accumulate the results
-            total_acc_diff += acc_diff
-            total_cos_sim += cos_sim
-            total_avg_correlation += avg_correlation
-            num_models += 1
-            
-            print(f"--- Results for {weight} ---")
-            print(f"Accuracy Diff (Original - Best Rec): {acc_diff:.4f}")
-            print(f"Cosine Sim: {cos_sim:.4f}")
-            print(f"Correlation: {avg_correlation:.4f}\n")
-            
-        except Exception as e:
-            print(f"Skipping model {weight} due to an error: {e}")
-
-
-    # Calculate and print the final averages
-    if num_models > 0:
-        avg_acc_diff = total_acc_diff / num_models
-        avg_cos_sim = total_cos_sim / num_models
-        avg_correlation = total_avg_correlation / num_models
-        
-        print("\n" + "="*50)
-        print(f"✨ Final Averages Over {num_models} Models ✨")
-        print("="*50)
-        print(f"Average Accuracy Difference (Original - Best Rec): {avg_acc_diff:.4f}")
-        print(f"Average Cosine Similarity (Output): {avg_cos_sim:.4f}")
-        print(f"Average Correlation (Output): {avg_correlation:.4f}")
-        print("="*50)
-    else:
-        print("\nNo models were successfully processed to calculate averages.")
+        result = encode_reconstruct_compare(weight)
+        print(result)

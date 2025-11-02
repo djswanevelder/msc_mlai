@@ -62,7 +62,7 @@
     "constant",
     "constant",
     "pca",
-    "identity"
+    "pca"
   ],
   "k_list": [
     32,
@@ -126,7 +126,7 @@
     0,
     0,
     32,
-    3
+    2
   ],
   "specs": [
     {
@@ -626,5 +626,5 @@
     }
   ],
   "total_dims": 11178051,
-  "coeff_dim": 675
+  "coeff_dim": 674
 }

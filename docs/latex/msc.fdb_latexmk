@@ -1,12 +1,12 @@
 # Fdb version 3
-["bibtex msc"] 1761897066 "msc.aux" "msc.bbl" "msc" 1761898660
+["bibtex msc"] 1762095665 "msc.aux" "msc.bbl" "msc" 1762095711
   "/usr/share/texlive/texmf-dist/bibtex/bst/ieeetran/IEEEtran.bst" 1440712899 57748 7c8250ecf02814ce6ddc0cdbb63df1dd ""
-  "msc.aux" 1761898660 11201 098ca41ce7db9548ef499d815b2bef29 "pdflatex"
+  "msc.aux" 1762095710 11770 5e0db2fe4fbcc8ce855bacf5eeff3316 "pdflatex"
   "mybib.bib" 1760900089 5112 e9cb24b74e895cf1f17557bdb32ee26c ""
   (generated)
   "msc.bbl"
   "msc.blg"
-["pdflatex"] 1761898656 "/home/dj/Desktop/msc_mlai/docs/latex/msc.tex" "msc.pdf" "msc" 1761898660
+["pdflatex"] 1762095706 "/home/dj/Desktop/msc_mlai/docs/latex/msc.tex" "msc.pdf" "msc" 1762095711
   "/etc/texmf/web2c/texmf.cnf" 1751808316 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/home/dj/Desktop/msc_mlai/docs/latex/msc.tex" 1761211480 5730 72683038f8fa9f494af5c3eb2123a6ed ""
   "/home/dj/texmf/tex/figs/stb-thesis-frntp.pdf" 1741182730 10779 eb59620f3b7a90e77ae505e52128d31f ""
@@ -261,24 +261,25 @@
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1752255207 4379155 98693266ff65f58d9f98aff394de12d2 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1752255350 2801511 07e2688fdda12c99bacc8551ec818544 ""
   "body/background.tex" 1761748486 18263 d2b78b5fa8998a0efb761c96774a441c ""
-  "body/results.tex" 1761898656 4019 22131cec4974495bd49934e265b204cd ""
+  "body/results.tex" 1762095706 4587 c713651d26e32d780d1304ca783c7c69 ""
   "conclusion/conclusion.tex" 1761642904 75 215f49f8914595cef5838d4ea8657ad3 ""
   "fig//contrastive.png" 1761689797 215656 2f0aaad163a89f6b783ba19d467f73c0 ""
   "fig//encoder.png" 1761688321 48114 fd5eed415f7ce0ef5ad173f4e6a92dd8 ""
   "fig//pca_ae.png" 1761518769 292846 765569d7c6269dcf59e45cbab78fa7b3 ""
   "fig//pipeline.png" 1758121670 1436053 837ff28efc363ccc16e13988c8a3cc36 ""
   "fig//sane.png" 1761690526 51007 8c8367fb97c5cd2a5f13f08f417a704c ""
+  "fig//shared/nt_xent_loss_plot.png" 1762090810 333690 80f89c5790afc1ef51b8f0805a8ecc5c ""
   "fig//weight_encoder/combined_loss_plot.png" 1761896416 255275 6cb28846106510fd679a17e42a29ac60 ""
   "fig//weight_encoder/output_comparison.png" 1761896551 246149 ff742b4ef4409711631df8a7bd478bfb ""
   "frontmatter/abstract.tex" 1759075858 1209 13e2e4f07e45ac6dfee01ba63cf3ced0 ""
   "frontmatter/title_page.tex" 1759075756 814 b7353233e52b4aaabc192faf9b0784d2 ""
   "introduction/introduction.tex" 1761747702 8264 153da755f8a2d422ffe97732a3c5e265 ""
   "introduction/method.tex" 1761749046 18351 d6e0aa171db7d9ff33e636031686a382 ""
-  "msc.aux" 1761898660 11201 098ca41ce7db9548ef499d815b2bef29 "pdflatex"
-  "msc.bbl" 1761897066 5350 794619ebcfe84298b215005609ff7443 "bibtex msc"
-  "msc.out" 1761898660 3071 58f3f695bdfe8f12bb945472a90da7a8 "pdflatex"
+  "msc.aux" 1762095710 11770 5e0db2fe4fbcc8ce855bacf5eeff3316 "pdflatex"
+  "msc.bbl" 1762095665 5350 794619ebcfe84298b215005609ff7443 "bibtex msc"
+  "msc.out" 1762095710 3098 ca442e61454f1bcf28107e74033fc6a4 "pdflatex"
   "msc.tex" 1761211480 5730 72683038f8fa9f494af5c3eb2123a6ed ""
-  "msc.toc" 1761898660 1775 e7011c2c62f734e475744fa782a19c8a "pdflatex"
+  "msc.toc" 1762095710 1789 6d3d623ba603afc3e4b48dfd1da77994 "pdflatex"
   (generated)
   "msc.aux"
   "msc.log"

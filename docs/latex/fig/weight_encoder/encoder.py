@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 # --- Configuration ---
-WANDB_RUN_PATH = "/25205269-stellenbosch-university/weight-space-ae-pca/runs/e5u0alh7"
+WANDB_RUN_PATH = "/25205269-stellenbosch-university/weight-space-ae-pca/runs/glta0tu4"
 TRAIN_LOSS_KEY = 'train_loss_epoch'
 VAL_LOSS_KEY = 'val_loss' # Key for validation loss
 X_AXIS_KEY = 'epoch'

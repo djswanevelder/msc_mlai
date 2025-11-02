@@ -268,7 +268,7 @@ def load_autoencoder(
 
     # Create autoencoder
     weight_ae = WeightSpaceAE(
-        input_dim=675,
+        input_dim=674,
         latent_dim=512,
         hidden_dims=[],
     )

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2025.7.11)  31 OCT 2025 10:17
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2025.7.11)  2 NOV 2025 17:01
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1082,49 +1082,51 @@ Chapter 4.
 <fig//weight_encoder/combined_loss_plot.png, id=345, 722.7pt x 433.62pt>
 File: fig//weight_encoder/combined_loss_plot.png Graphic file (type png)
 <use fig//weight_encoder/combined_loss_plot.png>
-Package pdftex.def Info: fig//weight_encoder/combined_loss_plot.png  used on input line 22.
+Package pdftex.def Info: fig//weight_encoder/combined_loss_plot.png  used on input line 17.
 (pdftex.def)             Requested size: 218.51521pt x 131.10594pt.
 LaTeX Font Info:    Font shape `OT1/Caladea-TLF/b/n' will be
-(Font)              scaled to size 9.60007pt on input line 22.
+(Font)              scaled to size 9.60007pt on input line 17.
 LaTeX Font Info:    Font shape `OT1/Carlito-LF/b/n' will be
-(Font)              scaled to size 9.60007pt on input line 22.
+(Font)              scaled to size 9.60007pt on input line 17.
 <fig//weight_encoder/output_comparison.png, id=346, 867.24pt x 578.16pt>
 File: fig//weight_encoder/output_comparison.png Graphic file (type png)
 <use fig//weight_encoder/output_comparison.png>
-Package pdftex.def Info: fig//weight_encoder/output_comparison.png  used on input line 29.
+Package pdftex.def Info: fig//weight_encoder/output_comparison.png  used on input line 21.
 (pdftex.def)             Requested size: 218.51521pt x 145.66885pt.
 [20
 
  <./fig//weight_encoder/combined_loss_plot.png> <./fig//weight_encoder/output_comparison.png>]
-
-LaTeX Warning: Reference `tab:weight_real_data' on page 21 undefined on input line 42.
-
-) (./conclusion/conclusion.tex [21]
+<fig//shared/nt_xent_loss_plot.png, id=358, 867.24pt x 505.89pt>
+File: fig//shared/nt_xent_loss_plot.png Graphic file (type png)
+<use fig//shared/nt_xent_loss_plot.png>
+Package pdftex.def Info: fig//shared/nt_xent_loss_plot.png  used on input line 67.
+(pdftex.def)             Requested size: 341.43307pt x 199.17207pt.
+) (./conclusion/conclusion.tex [21] [22 <./fig//shared/nt_xent_loss_plot.png>]
 Chapter 5.
-) (./msc.bbl [22
+) (./msc.bbl [23
 
-] [23
+] [24
 
-]) [24] (./msc.aux)
+]) [25] (./msc.aux)
 
 LaTeX Warning: There were undefined references.
 
 Package rerunfilecheck Info: File `msc.out' has not changed.
-(rerunfilecheck)             Checksum: 58F3F695BDFE8F12BB945472A90DA7A8;3071.
+(rerunfilecheck)             Checksum: CA442E61454F1BCF28107E74033FC6A4;3098.
  ) 
 Here is how much of TeX's memory you used:
- 33860 strings out of 478287
- 679456 string characters out of 5849289
- 939340 words of memory out of 5000000
- 51149 multiletter control sequences out of 15000+600000
- 554405 words of font info for 182 fonts, out of 8000000 for 9000
+ 33875 strings out of 478287
+ 679886 string characters out of 5849289
+ 939560 words of memory out of 5000000
+ 51157 multiletter control sequences out of 15000+600000
+ 554560 words of font info for 183 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  99i,12n,117p,1229b,956s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rmtt.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathex.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/caladea/cld_prieif.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/caladea/cld_cb3g7n.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/carlito/crlt_cegsyz.enc}</usr/share/texlive/texmf-dist/fonts/type1/huerta/caladea/Caladea-Bold.pfb></usr/share/texlive/texmf-dist/fonts/type1/huerta/caladea/Caladea-Italic.pfb></usr/share/texlive/texmf-dist/fonts/type1/huerta/caladea/Caladea-Regular.pfb></usr/share/texlive/texmf-dist/fonts/type1/typoland/carlito/Carlito-Bold.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmex10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi12.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi6.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi8.pfb></usr/share/texmf/fonts/type1/public/lm/lmmib10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr6.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on msc.pdf (27 pages, 2280014 bytes).
+Output written on msc.pdf (28 pages, 2539314 bytes).
 PDF statistics:
- 502 PDF objects out of 1000 (max. 8388607)
- 411 compressed objects within 5 object streams
- 87 named destinations out of 1000 (max. 500000)
- 49901 words of extra memory for PDF output out of 51595 (max. 10000000)
+ 511 PDF objects out of 1000 (max. 8388607)
+ 417 compressed objects within 5 object streams
+ 90 named destinations out of 1000 (max. 500000)
+ 49906 words of extra memory for PDF output out of 51595 (max. 10000000)
 

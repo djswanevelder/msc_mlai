@@ -1508,6 +1508,11 @@ INPUT ./fig//weight_encoder/output_comparison.png
 INPUT fig//weight_encoder/output_comparison.png
 INPUT ./fig//weight_encoder/output_comparison.png
 INPUT ./fig//weight_encoder/output_comparison.png
+INPUT ./fig//shared/nt_xent_loss_plot.png
+INPUT ./fig//shared/nt_xent_loss_plot.png
+INPUT fig//shared/nt_xent_loss_plot.png
+INPUT ./fig//shared/nt_xent_loss_plot.png
+INPUT ./fig//shared/nt_xent_loss_plot.png
 INPUT ./conclusion/conclusion.tex
 INPUT ./conclusion/conclusion.tex
 INPUT ./conclusion/conclusion.tex

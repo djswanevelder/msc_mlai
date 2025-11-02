@@ -6,63 +6,51 @@
 
 
 
-
-
-\section{Weight Encoder}
+\section{Weight Autoencoder}
 \label{sec:weights}
 
-
-\begin{figure*}[!t] % Use figure* for full-width across columns, or just figure if it fits
+\begin{figure*}[!t]
     \centering
-    
-    % --- First Subfigure ---
     \subfloat[Training and Validation Loss]{
-        \includegraphics[width=0.48\textwidth]{weight_encoder/combined_loss_plot.png}
-        \label{fig:weight_encoder_loss}
+    \includegraphics[width=0.48\textwidth]{weight_encoder/combined_loss_plot.png}
+        \label{fig:weight_encoder_performance}
     }
-    \hfill % Adds horizontal space (pushes figures apart)
-    
-    % --- Second Subfigure ---
-    \subfloat[Test Output Comparisons]{
-        \includegraphics[width=0.48\textwidth]{weight_encoder/output_comparison.png} % Replace with your second plot's filename
-        \label{fig:metrics_comparison_b}
+    \subfloat[Test Model Output Comparison]{
+    \includegraphics[width=0.48\textwidth]{weight_encoder/output_comparison.png}
+        \label{fig:output_comparison}
     }
-    
-    % --- Overall Caption and Label ---
-    \caption{Performance curves: }
+    \caption{Performance curves of the Weight Autoencoder, showing loss progression and comparative output metrics.}
     \label{fig:combined_plots}
 \end{figure*}
 
-First PCA fitting is done on the training set, the autoencoder is then trained. 
-In order to evaluate the quality of the weight encoder, we plot the loss function during training. Figure \ref{fig:weight_encoder_loss} shows the loss function for the weight encoder, after the PCA projection. The training loss decreases over time, reaching a plateau. The validational loss behaves the same, decreasing over epochs. This indicates that the model is not overfitting to the training data, and is generalizing to unseen data. This indicates that the Weight Encoder is has learnt how to enocode and decode more than jusit the training data, but how to generarte and reconstruct latent representations for the task. 
+PCA is initially applied to the training set of the Model Zoo, after which the autoencoder is subsequently trained.
+
+To evaluate the efficacy of the Weight Autoencoder, the loss function evolution during training is analyzed. Figure \ref{fig:weight_encoder_performance} illustrates the loss function for the Weight Autoencoder following the PCA projection. The training loss consistently decreases over epochs, eventually reaching a plateau. The validation loss exhibits a similar trajectory, decreasing as training progresses. This consistent performance indicates that the model is not overfitting to the training data and demonstrates a capacity for generalization to unseen data. Specifically, this suggests that the Weight Autoencoder has successfully learned to encode and decode model representations beyond the training set, enabling the generation and reconstruction of effective latent representations for the designated task.
+
+The MSE Loss, depicted in Figure \ref{fig:weight_encoder_performance}, confirms that the Weight Autoencoder is progressing in solving the reconstruction task. However, since the magnitude of the error is relative to the scale of the input model weights, it is not directly interpretable as a measure of preserved model performance; thus, a comparative evaluation is requisite.
+
+Figure \ref{fig:output_comparison} presents the results from a comparative experiment: unseen models are encoded and reconstructed, and the reconstructed models are then utilized to classify a specific test dataset. The output of the original model is compared against the output of the reconstructed model. Throughout the training, the model agreement on synthetic images was $100\%$. Model agreement is defined as the percentage of test samples for which the classified label is identical between the original and reconstructed models. Correlation and cosine similarity were calculated on the pre-softmax outputs. It is evident that the Weight Autoencoder is capable of learning model representations with sufficient fidelity to reconstruct models exhibiting highly correlated outputs---specifically, $0.95+\%$ correlation---compared to the original model's outputs.
+
+The same model output comparison procedure is then executed, but using the data upon which the original model was initially trained. Table \ref{tab:weight_real_data} summarizes these cross-dataset performance metrics.
+
+\begin{table}[!h]
+    \centering
+    \caption{Model Reconstruction Performance on Training Data}
+    \label{tab:weight_real_data}
+    \begin{tabularx}{0.8\linewidth}{@{}lX@{}} 
+        \toprule
+        Average Metric & Value \\
+        \midrule
+        Cosine Similarity (Pre-Softmax Output) & $-0.0323$ \\
+        Correlation (Pre-Softmax Output) & $-0.08570$ \\
+        Predition Agreement & $35.6905 \% $ \\
+        \bottomrule
+    \end{tabularx}
+\end{table}
 
 
-The MSE Loss as seen in Figure \ref{fig:weight_encoder_loss} indicates that the Weigth Encoder is learning to solve the task, but as the scale of error is relative to the scale of the input, it is not directly interpretable. Thus further comparsion is required. Figure \ref{fig:metrics_comparison_b} encodes and reconstructs unseen models, and then use the reconstructed mdoel to classify a set of data. The output of the original model is compared to the output of the reconstructed model. At all points in the training, the model agreement was $100\%$ on synthetic images, model agreement being the percent which the classifed label is common between the original and reconstructed. The correlation and cosine simliarity is calculates prior to the softmax. It is clear that Weight Autencoder is capable of learning model representasion with sufficient capablity to reconstruct models which have highly correlated outputs compared to the original model's outputs.$0.95+\%$
 
-The proceduce for comparing model output is followed, but where the input into the models are the same data which the original model was trained on. Table ~\ref{tab:weight_real_data} shows
-
-
-
-% \begin{table}[!h]
-%     \mytable
-%     \caption{}
-%     \begin{tabularx}{\linewidth}{@{}lCCCCC@{}}
-%         \toprule
-%         Metric     & 1 & 2 & 3 & 4 & 5 \\
-%         \midrule
-%         WER (\%)                        & $35.4$ & $23.5$ & $21.5$ & $21.2$ & $22.9$ \\
-%         Average cluster purity (\%)       & $86.5$ & $89.7$ & $89.2$ & $88.5$ & $86.6$ \\
-%         Word boundary $F$-score (\%)         & $70.6$ & $72.2$ & $71.8$ & $70.9$ & $69.4$ \\
-%         Clusters covering 90\% of data   & 20             & 13 & 13 & 13 & 13 \\
-%         \bottomrule
-%     \end{tabularx}
-%     \label{tbl:exemplars}
-% \end{table}
-
-
-It is clear that the Weight Encoder is unable to reconstruct models with enough quality to preserve the descision boundary of the original model. The difference output correlation between sythetic and real data indicates that a representasion of the ResNet18 model is being learning, but not with sufficently fine-grained enough.
-
-
+It is clear from these metrics that the Weight Autoencoder is unable to reconstruct models with sufficient quality to preserve the decision boundary of the original model. The significant discrepancy in output correlation between the synthetic and real data indicates that while a representation of the ResNet18 model is being learned, it lacks the necessary fine-grained resolution required for accurate reconstruction of functional models.
 
 \section{Shared Encoder}
 \label{sec:shared}
@@ -72,11 +60,20 @@ It is clear that the Weight Encoder is unable to reconstruct models with enough 
 
 % Distance matrix
 %     heatmap/ example embedings showing well seperatedness
+The NT-Xent loss is minized on a traing set of model weights, dataset and results, with a 
+
+\begin{figure}[!t]
+    \centering
+    \includegraphics[width=0.75\linewidth]{shared/nt_xent_loss_plot.png}
+    \caption[]{}
+    \label{fig:shared_loss}
+\end{figure}
 
 
 
 
-\section{Conditional Model Sampling}
-\label{sec:conditional_model_sample}
+\subsection{Conditional Model Sampling}
+\label{subsec:conditional_model_sample}
 
-% money Shot
+% money Shot 
+%  input accuracy vs output accuracy

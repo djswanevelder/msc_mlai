@@ -473,11 +473,12 @@ class PCACoeffDataset(Dataset):
 
         # compute mean/std over a sample for normalization in AE space
         logger.info(
-            "Computing PCA-coeff normalization stats (sample up to 512 models)..."
+            "Computing PCA-coeff normalization stats (sample up to 1000 models)..."
         )
-        sample = min(512, len(self.raw))
+        sample = min(1000, len(self.raw))
         zs = []
-        for i in range(sample):
+        for i in tqdm(range(sample), desc="Normalization Stats"):
+        # for i in range(sample):
             flat = (
                 torch.load(self.raw.files[i], map_location="cpu")["weight_vector"]
                 .float().clamp_(-10.0, 10.0)
@@ -1118,19 +1119,19 @@ def final_func_eval(pl_model,dm,DATASET_DIR):
 
 def main():
     # Config
-    BATCH_SIZE = 64
+    BATCH_SIZE = 32
     LATENT_DIM = 512
-    NUM_EPOCHS = 100
+    NUM_EPOCHS = 200
     LR = 1e-3
     WD = 1e-5
     DATASET_DIR = "data/dataset"
     PROJECT_NAME = "weight-space-ae-pca"
     PCA_K_PER_PARAM = 32
-    PCA_MIN_DIM_ID = 4
+    PCA_MIN_DIM_ID = 1
     PCA_CONST_VAR_EPS = 1e-8
-    PCA_MAX_MODELS_FOR_PCA = 1000
+    PCA_MAX_MODELS_FOR_PCA = 1000   
     PCA_LOAD_BATCH = 64
-    NUM_WORKERS = 4
+    NUM_WORKERS = 27
     MODELS_DIR = "data/weights/selected"
     MAX_MODELS = None
     HIDDEN_DIMS = []

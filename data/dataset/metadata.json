@@ -1,5 +1,5 @@
 {
-  "num_models": 412,
+  "num_models": 1000,
   "input_dim": 11178051,
   "model_type": "resnet18_3class",
   "source": "trained_models",
