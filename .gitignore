@@ -7,3 +7,8 @@ downloaded_artifacts/
 __pycache__/
 imagenet_data/
 pca/
+pca_encoder.pth
+final_meta_dataset.pth
+trained_encoder_weights.pth
+trained_encoder_weights_val.pth
+*.pdf
