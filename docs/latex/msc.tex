@@ -121,68 +121,27 @@
 \begin{document}
 
 % Front matter
-\input{frontmatter/title_page} % include
+\input{frontmatter/title_page} 
 \pagenumbering{roman} 
-% \input{frontmatter/declaration}
-\input{frontmatter/abstract} % include
-% \input{frontmatter/acknowledgements} % include
-\tableofcontents % include
-% \listoffigures % include
-%\listoftables % include
+\input{frontmatter/declaration}
+\input{frontmatter/abstract} 
+% \input{frontmatter/acknowledgements}
+\tableofcontents 
+% \listoffigures 
+%\listoftables 
 % \input{frontmatter/nomenclature}
 \newpage
 \pagenumbering{arabic}
 \graphicspath{{fig/}}
 
-% Contents
-\input{introduction/introduction} % include
-\input{body/background} % include
-\input{introduction/method} % include
-\input{body/results} % include
-\input{conclusion/conclusion} % include
 
+\input{introduction/introduction}
+\input{body/background} 
+\input{introduction/method}
+\input{body/results} 
+\input{conclusion/conclusion} 
 
-
-
-
-
-% \begin{table}[!h]
-%     \mytable
-%     \caption{}
-%     \begin{tabularx}{\linewidth}{@{}lCCCCC@{}}
-%         \toprule
-%         Metric     & 1 & 2 & 3 & 4 & 5 \\
-%         \midrule
-%         WER (\%)                        & $35.4$ & $23.5$ & $21.5$ & $21.2$ & $22.9$ \\
-%         Average cluster purity (\%)       & $86.5$ & $89.7$ & $89.2$ & $88.5$ & $86.6$ \\
-%         Word boundary $F$-score (\%)         & $70.6$ & $72.2$ & $71.8$ & $70.9$ & $69.4$ \\
-%         Clusters covering 90\% of data   & 20             & 13 & 13 & 13 & 13 \\
-%         \bottomrule
-%     \end{tabularx}
-%     \label{tbl:exemplars}
-% \end{table}
-
-
-% \begin{table}[!h]
-%     \renewcommand{\arraystretch}{1.1}
-%     \centering
-%     \caption{A table with an example of using multiple columns.}
-%     \begin{tabularx}{0.65\linewidth}{@{}lCCr@{}}
-%         \toprule
-%         & \multicolumn{2}{c}{Accuracy (\%)} \\
-%         \cmidrule(lr){2-3}
-%         Model    & Intermediate & Output & Bitrate\\
-%         \midrule
-%         Baseline & 27.5         & 26.4   & 116 \\
-%         VQ-VAE   & 26.0         & 22.1   & 190 \\
-%         CatVAE   & 28.7         & 24.3   & 215 \\
-%         \bottomrule
-%     \end{tabularx}
-%     \label{tbl:abx_speaker}
-% \end{table}
-
-% Bibliography
-\bibliography{mybib} % include
+\bibliography{mybib} 
 
 % End matter
 % \appendix

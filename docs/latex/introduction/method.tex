@@ -6,11 +6,11 @@
 Our hypothesis is that a unified representation space will enable conditional model sampling, allowing us to accurately approximate the conditional probability $P(W \mid \mathcal{D}, R)$. That is, we aim to sample model weights ($W$) conditioned on both specific dataset properties ($\mathcal{D}$) and target performance results ($R$).
     
 
-To achieve this generative capability, our methodology requires a system that can project the three distinct data types—weights, datasets, and results—into a common, meaningful latent space. This mandates three core encoding components followed by a decoding mechanism for generation, the summation of these componets is visualised in Figure ~\ref{fig:pipeline}:
+To achieve this generative capability, our methodology requires a system that can project the three distinct data types—weights, datasets, and results—into a common, meaningful embedding space. This mandates three core encoding components followed by a decoding mechanism for generation, the summation of these componets is visualised in Figure ~\ref{fig:pipeline}:
 
 
 \begin{enumerate}
-    \item \textbf{Weight Encoder and Decoder (${W} \rightarrow Z_W \rightarrow \hat{{W}}$):} To compress the high-dimensional weight tensor into a low-dimensional latent vector $Z_W$ and reconstruct the functional weights.
+    \item \textbf{Weight Autoencoder (${W} \rightarrow Z_W \rightarrow \hat{{W}}$):} To compress the high-dimensional weight tensor into a low-dimensional latent vector $Z_W$ and reconstruct the functional weights.
     \item \textbf{Dataset Encoder ($\mathcal{D} \rightarrow Z_{\mathcal{D}}$):} To map the dataset characteristics into a latent vector $Z_D$.
     \item \textbf{Results Encoder ($R \rightarrow Z_R$):} To map scalar performance metrics into a latent vector $Z_R$.
     \item \textbf{Shared Embedding/Alignment:} A mechanism to ensure the resultant latent vectors ($Z_W, Z_{\mathcal{D}}, Z_R$) are meaningfully aligned in a single, unified space $Z$.
@@ -18,13 +18,13 @@ To achieve this generative capability, our methodology requires a system that ca
 
 In Section~\ref{sec:data_gen}, we introduce a data generation approach that produces a diverse collection of $(\mathcal{D}, \mathcal{W}, \mathcal{R})$ triplets by systematically varying datasets, and optimisation parameters.
 
-Section~\ref{sec:model} presents the design of the full embedding model, including the weight encoder and decoder,dataset encoder , and results embdding. The weight encoder model transforms the high-dimensional weight tensors ($\mathcal{W}$) into compact latent representations.  The dataset encoder maps each dataset ($\mathcal{D}$) into a semantic representation using pretrained CLIP features, while the results encoder transforms validation losses ($\mathcal{R}$) into fixed-size embeddings through a discretised lookup scheme. 
+Section~\ref{sec:model} presents the design of the full embedding model, including the weight autoencoder,dataset encoder , and results embedding. The weight autoencoder model transforms the high-dimensional weight tensors ($\mathcal{W}$) into compact latent representations.  The dataset encoder maps each dataset ($\mathcal{D}$) into a semantic representation using pretrained CLIP features, while the results encoder transforms validation losses ($\mathcal{R}$) into fixed-size embeddings through a discretised lookup scheme. 
 
-Finally, Section~\ref{sec:shared_enc} integrates these components within a shared latent space.The model learns to align the dataset and result embeddings with their corresponding weight representations, forming a unified space that captures the relationships between data, model parameters, and performance.
+Finally, Section~\ref{sec:shared_enc} integrates these components within a shared embedding space.The model learns to align the dataset and result embeddings with their corresponding weight representations, forming a unified space that captures the relationships between data, model parameters, and performance.
 
 \section{Model Zoo Generation}
 \label{sec:data_gen}
-The construction of the model zoo is fundamentally driven by the need to generate a diverse, reproducible, and analytically valuable dataset of model weights for comprehensive weight-space exploration. 
+We constructed the model zoo to generate a diverse, reproducible, and analytically valuable dataset of model weights for comprehensive weight-space exploration. 
 
 The model zoo is composed of numerous models trained on tasks sampled from the same underlying distribution. For our study, this distribution is defined by 3-class classification problems drawn from ImageNet \cite{ImageNet_VSS09}, a widely used benchmark known for its diversity and richness of visual features. Restricting tasks to three randomly selected classes strikes a balance between computational tractability and the creation of a large number of distinct training instances. This design ensures that the models learn from high-quality, real-world visual data while providing a flexible and varied task space through the many possible class combinations.
 
@@ -73,12 +73,11 @@ To guarantee the model zoo accurately reflects the diversity of the high-dimensi
 
 To analyze the geometry of the weight space at different phases of optimization, two distinct weights snapshots are captured per training trajectory: an 'early epoch' checkpoint and a 'max epoch' checkpoint. The early epoch is sampled uniformly, specifically designed to capture models in low-performing, under-trained states. This intentional approach provides crucial data on the structure of the weight space's nascent landscape and the optimization trajectory. Conversely, the maximum training epoch is sampled from a truncated Normal distribution. This range ensures the model has reached a point reflective of a converged, stable local loss minimum, thereby accurately representing the typical, high-performing outcomes of model training. Finally, the total sample size, $1000$, is set to the maximum number computationally feasible given resource constraints. This practical constraint ensures the generation of a statistically representative number of unique training instances necessary for robust analysis of the weight space.
 
-\section{Model}
+\section{Triplet Encoders}
 \label{sec:model}
-\subsection{Weight Encoder}
+\subsection{Weight Autoencoder}
 \label{subsec:weight_enc}
-The Weight Encoder is implemented to learn a compact, functional latent representation for neural network parameters. The objective is to train an autoencoder that encodes the parameters of each model and reconstructs them with minimal deviation from the originals. This corresponds to minimising the reconstruction loss, $\mathcal{L}_{\text{MSE}}$, as defined in Equation~\ref{eq:weight_recon_loss}. To ensure generalisation, the model is training using on the training set $\mathcal{M}_{\text{train}}$, and performance is validated on a separate validation set $\mathcal{M}_{\text{val}}$ with $100$, and $50$ samples held out for testing final performance metrics.
-
+The weight autoencoder is implemented to learn a compact, functional latent representation for neural network parameters. The objective is to train an autoencoder that encodes the parameters of each model and reconstructs them with minimal deviation from the originals. This corresponds to minimising the reconstruction loss, $\mathcal{L}_{\text{MSE}}$, as defined in Equation~\ref{eq:weight_recon_loss}. To ensure generalisation, the model is trained on the training set $\mathcal{M}_{\text{train}}$, and performance is validated on a separate validation set $\mathcal{M}_{\text{val}}$, with $100$ and $50$ samples held out for testing final performance metrics.
 
 An intuitive baseline is to flatten the entire ResNet18 weight tensor $\mathbf{W}_m$ into a single high-dimensional vector and train an autoencoder directly on it. However, ResNet18 contains over 11 million parameters, so even a single linear layer mapping this input to a modest hidden dimension quickly becomes impractical. For instance, mapping the flattened weights ($\sim 11.7$M parameters) to a hidden dimension of 512 requires approximately 5.99 billion parameters. At 16-bit precision, this alone consumes nearly 12~GB of memory, demonstrating that a naive fully-connected approach is infeasible.
 
@@ -132,8 +131,6 @@ where $\theta_e$ denotes the learnable parameters of the encoder. The decoder re
 \hat{\mathbf{C}}_m = f_{\text{dec}}(\mathbf{z}_m; \theta_d).
 \]
 with $\theta_d$ representing the learnable parameters of the decoder. 
-% Won't go that far, will more indicate that it minisises the **reconstruction loss** of the PCA vector.
-
 
 Training minimises the reconstruction loss of the PCA-compressed model weights, extending the standard mean-squared error loss in Equation~\ref{eq:weight_recon_loss}:
 
@@ -144,7 +141,7 @@ Training minimises the reconstruction loss of the PCA-compressed model weights, 
   \label{eq:pca_ae_loss_simplified}
 \end{equation}
 
-where $\mathbf{C}_m$ denotes the PCA coefficient vector representing all weights of model $m$. This formulation encourages the autoencoder to capture the overall structure of each model in a compact latent space while preserving the key variance across the full set of parameters.
+where $\mathbf{C}_m$ denotes the PCA coefficient vector representing all weights of model $m$. This formulation encourages the autoencoder to capture the overall structure of each model in a compact embedding space while preserving the key variance across the full set of parameters.
 
 
 After reconstruction, each parameter’s coefficients $\hat{\mathbf{c}}_{i,m}$ are transformed back into their original tensor shapes using the stored PCA statistics from the fitting stage. Specifically, for each named parameter $i$, the inverse PCA transform restores the weight tensor by reprojecting the coefficients into the original feature space and re-adding the mean vector:
@@ -194,18 +191,18 @@ To capture the performance of each model, we use the validation loss recorded at
 
 where $\mathcal{L}_{\text{val}, m}$ is the validation loss of model $m$, and $\mathbf{r}_m \in \mathbb{R}^{512}$ is the corresponding learned embedding.  
 
-This approach has several advantages. First, by representing the continuous range of validation losses with trainable embeddings, the system can learn a smooth latent space that captures nuanced performance differences between models. Second, it avoids the need to directly regress continuous loss values, which can be noisy and poorly scaled across diverse architectures or training schedules.
+This approach has several advantages. First, by representing the continuous range of validation losses with trainable embeddings, the system can learn a smooth embedding space that captures nuanced performance differences between models. Second, it avoids the need to directly regress continuous loss values, which can be noisy and poorly scaled across diverse architectures or training schedules.
 
 \section{Shared Encoding}
 \label{sec:shared_enc}
 
-The shared encoding stage aligns the dataset and results embeddings with the weight latent space. To achieve this, the dataset-level vector $\mathbf{z}_{\text{dataset}}$ from Section~\ref{subsec:data_enc} and the results embedding $\mathbf{z}_{\text{results}}$ from Section~\ref{subsec:results_enc} are first concatenated:
+The shared encoding stage aligns the dataset and results embeddings with the weight embedding space. To achieve this, the dataset-level vector $\mathbf{z}_{\text{dataset}}$ from Section~\ref{subsec:data_enc} and the results embedding $\mathbf{z}_{\text{results}}$ from Section~\ref{subsec:results_enc} are first concatenated:
 
 \[
 \mathbf{z}_{\text{input}} = [\mathbf{z}_{\text{dataset}}; \mathbf{z}_{\text{results}}].
 \]
 
-This combined vector is then passed through a multi-layer perceptron (MLP) to produce a predicted embedding $\mathbf{z}_{\text{proj}}$ in the weight latent space:
+This combined vector is then passed through a multi-layer perceptron (MLP) to produce a predicted embedding $\mathbf{z}_{\text{proj}}$ in the weight embedding space:
 
 \[
 \mathbf{z}_{\text{proj}} = \text{MLP}(\mathbf{z}_{\text{input}}; \theta_{\text{MLP}}).
@@ -217,7 +214,7 @@ Training minimises the NT-Xent contrastive loss, as described in Section~\ref{se
 \mathcal{L}_{\text{NT-Xent}}(\mathbf{z}_{\text{proj}}, \mathbf{z}_{\text{weight}}) \rightarrow \min_{\theta_{\text{MLP}}}.
 \]
 
-This design ensures that the mapping from dataset and results space to the weight latent space is fully differentiable and preserves the reversibility of the weight representation. Importantly, the projection is performed from dataset and results to weight space rather than the reverse: applying a non-linear transformation directly to the weight embedding would break invertibility, making it impossible to reconstruct the original weight vector from the shared representation. By contrast, pushing the dataset and results embeddings to the weight space allows the latent weight vector to remain consistent and decodable via the trained autoencoder.
+This design ensures that the mapping from dataset and results space to the weight embedding space is fully differentiable and preserves the reversibility of the weight representation. Importantly, the projection is performed from dataset and results to weight space rather than the reverse: applying a non-linear transformation directly to the weight embedding would break invertibility, making it impossible to reconstruct the original weight vector from the shared representation. By contrast, pushing the dataset and results embeddings to the weight space allows the latent weight vector to remain consistent and decodable via the trained autoencoder.
 
 \begin{figure}[!t]
   \centering

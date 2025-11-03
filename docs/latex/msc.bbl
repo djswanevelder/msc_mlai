@@ -62,7 +62,7 @@ L.~Meynent, I.~Melev, K.~Sch{\"u}rholt, G.~Kauermann, and D.~Borth, ``Structure
   \url{https://openreview.net/forum?id=APsHrpqO3W}
 \BIBentrySTDinterwordspacing
 
-\bibitem{radford2021learningtransferablevisualmodels}
+\bibitem{pmlr-v139-radford21a}
 \BIBentryALTinterwordspacing
 A.~Radford, J.~W. Kim, C.~Hallacy, A.~Ramesh, G.~Goh, S.~Agarwal, G.~Sastry,
   A.~Askell, P.~Mishkin, J.~Clark, G.~Krueger, and I.~Sutskever, ``Learning
@@ -74,10 +74,25 @@ A.~Radford, J.~W. Kim, C.~Hallacy, A.~Ramesh, G.~Goh, S.~Agarwal, G.~Sastry,
   \url{https://proceedings.mlr.press/v139/radford21a.html}
 \BIBentrySTDinterwordspacing
 
-\bibitem{agren2022ntxentlossupperbound}
+\bibitem{pmlr-v119-chen20j}
 \BIBentryALTinterwordspacing
-W.~Ågren, ``The nt-xent loss upper bound,'' 2022. [Online]. Available:
-  \url{https://arxiv.org/abs/2205.03169}
+T.~Chen, S.~Kornblith, M.~Norouzi, and G.~Hinton, ``A simple framework for
+  contrastive learning of visual representations,'' in \emph{Proceedings of the
+  37th International Conference on Machine Learning}, ser. Proceedings of
+  Machine Learning Research, H.~Daumé~III and A.~Singh, Eds., vol. 119.\hskip
+  1em plus 0.5em minus 0.4em\relax PMLR, 13--18 Jul 2020, pp. 1597--1607.
+  [Online]. Available: \url{https://proceedings.mlr.press/v119/chen20j.html}
+\BIBentrySTDinterwordspacing
+
+\bibitem{pmlr-v38-choromanska15}
+\BIBentryALTinterwordspacing
+A.~Choromanska, M.~Henaff, M.~Mathieu, G.~Ben~Arous, and Y.~LeCun, ``{The Loss
+  Surfaces of Multilayer Networks},'' in \emph{Proceedings of the Eighteenth
+  International Conference on Artificial Intelligence and Statistics}, ser.
+  Proceedings of Machine Learning Research, G.~Lebanon and S.~V.~N.
+  Vishwanathan, Eds., vol.~38.\hskip 1em plus 0.5em minus 0.4em\relax San
+  Diego, California, USA: PMLR, 09--12 May 2015, pp. 192--204. [Online].
+  Available: \url{https://proceedings.mlr.press/v38/choromanska15.html}
 \BIBentrySTDinterwordspacing
 
 \bibitem{schurholt2022modelzoosdatasetdiverse}
@@ -96,24 +111,20 @@ T.~Unterthiner, D.~Keysers, S.~Gelly, O.~Bousquet, and I.~Tolstikhin,
   Available: \url{https://arxiv.org/abs/2002.11448}
 \BIBentrySTDinterwordspacing
 
+\bibitem{Hinton2006Reducing}
+\BIBentryALTinterwordspacing
+G.~E. Hinton and R.~R. Salakhutdinov, ``Reducing the dimensionality of data
+  with neural networks,'' \emph{Science}, vol. 313, no. 5786, pp. 504--507,
+  2006. [Online]. Available:
+  \url{https://www.cs.toronto.edu/~hinton/absps/science.pdf}
+\BIBentrySTDinterwordspacing
+
 \bibitem{foundationsCVbook}
 \BIBentryALTinterwordspacing
 A.~Torralba, P.~Isola, and W.~Freeman, \emph{Foundations of Computer Vision},
   ser. Adaptive Computation and Machine Learning series.\hskip 1em plus 0.5em
   minus 0.4em\relax MIT Press, 2024. [Online]. Available:
   \url{https://mitpress.mit.edu/9780262048972/foundations-of-computer-vision/}
-\BIBentrySTDinterwordspacing
-
-\bibitem{pmlr-v139-radford21a}
-\BIBentryALTinterwordspacing
-A.~Radford, J.~W. Kim, C.~Hallacy, A.~Ramesh, G.~Goh, S.~Agarwal, G.~Sastry,
-  A.~Askell, P.~Mishkin, J.~Clark, G.~Krueger, and I.~Sutskever, ``Learning
-  transferable visual models from natural language supervision,'' in
-  \emph{Proceedings of the 38th International Conference on Machine Learning},
-  ser. Proceedings of Machine Learning Research, M.~Meila and T.~Zhang, Eds.,
-  vol. 139.\hskip 1em plus 0.5em minus 0.4em\relax PMLR, 18--24 Jul 2021, pp.
-  8748--8763. [Online]. Available:
-  \url{https://proceedings.mlr.press/v139/radford21a.html}
 \BIBentrySTDinterwordspacing
 
 \bibitem{NEURIPS2022_b2c4b7d3}
@@ -138,6 +149,12 @@ K.~He, X.~Zhang, S.~Ren, and J.~Sun, ``Deep residual learning for image
   recognition,'' \emph{2016 IEEE Conference on Computer Vision and Pattern
   Recognition (CVPR)}, pp. 770--778, 2015. [Online]. Available:
   \url{https://api.semanticscholar.org/CorpusID:206594692}
+\BIBentrySTDinterwordspacing
+
+\bibitem{wang2020datasetdistillation}
+\BIBentryALTinterwordspacing
+T.~Wang, J.-Y. Zhu, A.~Torralba, and A.~A. Efros, ``Dataset distillation,''
+  2020. [Online]. Available: \url{https://arxiv.org/abs/1811.10959}
 \BIBentrySTDinterwordspacing
 
 \end{thebibliography}

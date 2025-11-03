@@ -22,7 +22,8 @@
 \bibstyle{IEEEtran}
 \babel@aux{english}{}
 \pgfsyspdfmark {pgfid1}{4661699}{49769019}
-\@writefile{toc}{\contentsline {chapter}{Abstract}{i}{chapter*.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{Declaration}{i}{chapter*.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{Abstract}{ii}{chapter*.2}\protected@file@percent }
 \citation{Dean2017BlackBox}
 \citation{huggingface2024review}
 \citation{schurholt2022hyperrepresentationsgenerativemodelssampling,pmlr-v235-schurholt24a}
@@ -32,11 +33,12 @@
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \newlabel{chap:introduction}{{1}{1}{Introduction}{chapter.1}{}}
-\citation{radford2021learningtransferablevisualmodels}
-\citation{agren2022ntxentlossupperbound}
-\@writefile{lof}{\contentsline {figure}{\numberline {1.1}{\ignorespaces A Conditonal Model Sampling system, embedding a dataset, model weights and results into a shared embedding space.}}{2}{figure.caption.3}\protected@file@percent }
+\citation{pmlr-v139-radford21a}
+\citation{pmlr-v119-chen20j}
+\@writefile{lof}{\contentsline {figure}{\numberline {1.1}{\ignorespaces A Conditonal Model Sampling system, embedding a dataset, model weights and results into a shared embedding space.}}{2}{figure.caption.4}\protected@file@percent }
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
-\newlabel{fig:pipeline}{{1.1}{2}{A Conditonal Model Sampling system, embedding a dataset, model weights and results into a shared embedding space}{figure.caption.3}{}}
+\newlabel{fig:pipeline}{{1.1}{2}{A Conditonal Model Sampling system, embedding a dataset, model weights and results into a shared embedding space}{figure.caption.4}{}}
+\citation{pmlr-v38-choromanska15}
 \citation{schurholt2022hyperrepresentationsgenerativemodelssampling}
 \citation{pmlr-v235-schurholt24a}
 \citation{bedionita2025instructionguidedautoregressiveneuralnetwork}
@@ -50,21 +52,22 @@
 \@writefile{toc}{\contentsline {section}{\numberline {2.1}Weight Space Learning}{4}{section.2.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {2.2}Principal Component Analysis (PCA)}{5}{section.2.2}\protected@file@percent }
 \newlabel{sec:pca}{{2.2}{5}{Principal Component Analysis (PCA)}{section.2.2}{}}
+\citation{Hinton2006Reducing}
 \newlabel{eq:pca}{{2.1}{6}{Principal Component Analysis (PCA)}{equation.2.2.1}{}}
 \newlabel{eq:pca_reconstruction}{{2.2}{6}{Principal Component Analysis (PCA)}{equation.2.2.2}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {2.3}Autoencoders}{7}{section.2.3}\protected@file@percent }
 \newlabel{sec:autoencoders}{{2.3}{7}{Autoencoders}{section.2.3}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.1}{\ignorespaces Autoencoder encoding input data into a latent representation and decoding it to reconstructed data\relax }}{7}{figure.caption.4}\protected@file@percent }
-\newlabel{fig:autoencoder}{{2.1}{7}{Autoencoder encoding input data into a latent representation and decoding it to reconstructed data\relax }{figure.caption.4}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.1}{\ignorespaces Autoencoder encoding input data into a latent representation and decoding it to reconstructed data\relax }}{7}{figure.caption.5}\protected@file@percent }
+\newlabel{fig:autoencoder}{{2.1}{7}{Autoencoder encoding input data into a latent representation and decoding it to reconstructed data\relax }{figure.caption.5}{}}
 \newlabel{eq:encoder}{{2.3}{7}{Autoencoders}{equation.2.3.3}{}}
 \newlabel{eq:decoder}{{2.4}{7}{Autoencoders}{equation.2.3.4}{}}
 \newlabel{eq:composite}{{2.5}{7}{Autoencoders}{equation.2.3.5}{}}
 \citation{foundationsCVbook}
 \citation{foundationsCVbook}
 \citation{foundationsCVbook}
-\citation{agren2022ntxentlossupperbound}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.2}{\ignorespaces Contrastive encoder pulling similiar data pairs $(x,x^+)$ together in latent space and pushing dissimilar pairs $(x,x^-)$ apart \cite  {foundationsCVbook}.\relax }}{8}{figure.caption.5}\protected@file@percent }
-\newlabel{fig:contrastive}{{2.2}{8}{Contrastive encoder pulling similiar data pairs $(x,x^+)$ together in latent space and pushing dissimilar pairs $(x,x^-)$ apart \cite {foundationsCVbook}.\relax }{figure.caption.5}{}}
+\citation{pmlr-v119-chen20j}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.2}{\ignorespaces Contrastive encoder pulling similar data pairs $(x,x^+)$ together in embedding space and pushing dissimilar pairs $(x,x^-)$ apart \cite  {foundationsCVbook}.\relax }}{8}{figure.caption.6}\protected@file@percent }
+\newlabel{fig:contrastive}{{2.2}{8}{Contrastive encoder pulling similar data pairs $(x,x^+)$ together in embedding space and pushing dissimilar pairs $(x,x^-)$ apart \cite {foundationsCVbook}.\relax }{figure.caption.6}{}}
 \newlabel{eq:ae_mse_loss}{{2.6}{8}{Autoencoders}{equation.2.3.6}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {2.4}Contrastive Learning}{8}{section.2.4}\protected@file@percent }
 \newlabel{sec:contrastive}{{2.4}{8}{Contrastive Learning}{section.2.4}{}}
@@ -81,8 +84,8 @@
 \citation{pmlr-v235-schurholt24a}
 \citation{pmlr-v235-schurholt24a}
 \citation{pmlr-v235-schurholt24a}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.3}{\ignorespaces Sequential Autoencoder for Neural Embeddings (SANE) generating a cloud of embeddings for a model weight ~\cite  {pmlr-v235-schurholt24a}}}{11}{figure.caption.6}\protected@file@percent }
-\newlabel{fig:sane}{{2.3}{11}{Sequential Autoencoder for Neural Embeddings (SANE) generating a cloud of embeddings for a model weight ~\cite {pmlr-v235-schurholt24a}}{figure.caption.6}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.3}{\ignorespaces Sequential Autoencoder for Neural Embeddings (SANE) generating a cloud of embeddings for a model weight ~\cite  {pmlr-v235-schurholt24a}}}{11}{figure.caption.7}\protected@file@percent }
+\newlabel{fig:sane}{{2.3}{11}{Sequential Autoencoder for Neural Embeddings (SANE) generating a cloud of embeddings for a model weight ~\cite {pmlr-v235-schurholt24a}}{figure.caption.7}{}}
 \@writefile{toc}{\contentsline {chapter}{\numberline {3}Methodology}{12}{chapter.3}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
@@ -93,49 +96,50 @@
 \citation{schurholt2022hyperrepresentationsgenerativemodelssampling}
 \@writefile{toc}{\contentsline {section}{\numberline {3.1}Model Zoo Generation}{13}{section.3.1}\protected@file@percent }
 \newlabel{sec:data_gen}{{3.1}{13}{Model Zoo Generation}{section.3.1}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {3.1}{\ignorespaces Model Zoo Hyperparameter Sampling Distributions and Fixed Parameters\relax }}{14}{table.caption.7}\protected@file@percent }
-\newlabel{tbl:model_zoo_params}{{3.1}{14}{Model Zoo Hyperparameter Sampling Distributions and Fixed Parameters\relax }{table.caption.7}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {3.2}Model}{14}{section.3.2}\protected@file@percent }
-\newlabel{sec:model}{{3.2}{14}{Model}{section.3.2}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.1}Weight Encoder}{14}{subsection.3.2.1}\protected@file@percent }
-\newlabel{subsec:weight_enc}{{3.2.1}{14}{Weight Encoder}{subsection.3.2.1}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3.1}{\ignorespaces Model Zoo Hyperparameter Sampling Distributions and Fixed Parameters\relax }}{13}{table.caption.8}\protected@file@percent }
+\newlabel{tbl:model_zoo_params}{{3.1}{13}{Model Zoo Hyperparameter Sampling Distributions and Fixed Parameters\relax }{table.caption.8}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.2}Triplet Encoders}{14}{section.3.2}\protected@file@percent }
+\newlabel{sec:model}{{3.2}{14}{Triplet Encoders}{section.3.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.1}Weight Autoencoder}{14}{subsection.3.2.1}\protected@file@percent }
+\newlabel{subsec:weight_enc}{{3.2.1}{14}{Weight Autoencoder}{subsection.3.2.1}{}}
 \@writefile{loa}{\contentsline {algorithm}{\numberline {3.1}{\ignorespaces Mode Selection During PCA Fitting\relax }}{15}{algorithm.3.1}\protected@file@percent }
 \newlabel{alg:pca-mode-selection}{{3.1}{15}{Mode Selection During PCA Fitting\relax }{algorithm.3.1}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.1}{\ignorespaces Two-stage compression of model weights: PCA reduces each parameter tensor, followed by an autoencoder producing a compact latent representation.\relax }}{16}{figure.caption.8}\protected@file@percent }
-\newlabel{fig:pca_ae}{{3.1}{16}{Two-stage compression of model weights: PCA reduces each parameter tensor, followed by an autoencoder producing a compact latent representation.\relax }{figure.caption.8}{}}
-\newlabel{eq:pca_ae_loss_simplified}{{3.1}{16}{Weight Encoder}{equation.3.2.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.1}{\ignorespaces Two-stage compression of model weights: PCA reduces each parameter tensor, followed by an autoencoder producing a compact latent representation.\relax }}{16}{figure.caption.9}\protected@file@percent }
+\newlabel{fig:pca_ae}{{3.1}{16}{Two-stage compression of model weights: PCA reduces each parameter tensor, followed by an autoencoder producing a compact latent representation.\relax }{figure.caption.9}{}}
+\newlabel{eq:pca_ae_loss_simplified}{{3.1}{16}{Weight Autoencoder}{equation.3.2.1}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.2.2}Dataset Encoder}{17}{subsection.3.2.2}\protected@file@percent }
 \newlabel{subsec:data_enc}{{3.2.2}{17}{Dataset Encoder}{subsection.3.2.2}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.2.3}Results Encoder}{18}{subsection.3.2.3}\protected@file@percent }
 \newlabel{subsec:results_enc}{{3.2.3}{18}{Results Encoder}{subsection.3.2.3}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {3.3}Shared Encoding}{18}{section.3.3}\protected@file@percent }
 \newlabel{sec:shared_enc}{{3.3}{18}{Shared Encoding}{section.3.3}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.2}{\ignorespaces Conditional model sampling pipeline shown, from dataset and results embedding, to a shared embedding space, to a reconstructed model\relax }}{19}{figure.caption.9}\protected@file@percent }
-\newlabel{fig:conditional}{{3.2}{19}{Conditional model sampling pipeline shown, from dataset and results embedding, to a shared embedding space, to a reconstructed model\relax }{figure.caption.9}{}}
-\newlabel{fig:weight_encoder_performance}{{4.1a}{20}{Training and Validation Loss\caption@thelabel \relax }{figure.caption.10}{}}
-\newlabel{sub@fig:weight_encoder_performance}{{a}{20}{Training and Validation Loss\caption@thelabel \relax }{figure.caption.10}{}}
-\newlabel{fig:output_comparison}{{4.1b}{20}{Test Model Output Comparison\caption@thelabel \relax }{figure.caption.10}{}}
-\newlabel{sub@fig:output_comparison}{{b}{20}{Test Model Output Comparison\caption@thelabel \relax }{figure.caption.10}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.1}{\ignorespaces Performance curves of the Weight Autoencoder, showing loss progression and comparative output metrics.\relax }}{20}{figure.caption.10}\protected@file@percent }
-\newlabel{fig:combined_plots}{{4.1}{20}{Performance curves of the Weight Autoencoder, showing loss progression and comparative output metrics.\relax }{figure.caption.10}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.2}{\ignorespaces Conditional model sampling pipeline shown, from dataset and results embedding, to a shared embedding space, to a reconstructed model\relax }}{19}{figure.caption.10}\protected@file@percent }
+\newlabel{fig:conditional}{{3.2}{19}{Conditional model sampling pipeline shown, from dataset and results embedding, to a shared embedding space, to a reconstructed model\relax }{figure.caption.10}{}}
 \@writefile{toc}{\contentsline {chapter}{\numberline {4}Results}{20}{chapter.4}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \newlabel{chap:results}{{4}{20}{Results}{chapter.4}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {4.1}Weight Autoencoder}{20}{section.4.1}\protected@file@percent }
 \newlabel{sec:weights}{{4.1}{20}{Weight Autoencoder}{section.4.1}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {4.1}{\ignorespaces Model Reconstruction Performance on Training Data\relax }}{21}{table.caption.11}\protected@file@percent }
-\newlabel{tab:weight_real_data}{{4.1}{21}{Model Reconstruction Performance on Training Data\relax }{table.caption.11}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.2}{\ignorespaces Shared Encoder training and validation losses.}}{22}{figure.caption.12}\protected@file@percent }
-\newlabel{fig:shared_loss}{{4.2}{22}{Shared Encoder training and validation losses}{figure.caption.12}{}}
+\newlabel{fig:weight_encoder_performance}{{4.1a}{21}{Training and Validation Loss\caption@thelabel \relax }{figure.caption.11}{}}
+\newlabel{sub@fig:weight_encoder_performance}{{a}{21}{Training and Validation Loss\caption@thelabel \relax }{figure.caption.11}{}}
+\newlabel{fig:output_comparison}{{4.1b}{21}{Test Model Output Comparison\caption@thelabel \relax }{figure.caption.11}{}}
+\newlabel{sub@fig:output_comparison}{{b}{21}{Test Model Output Comparison\caption@thelabel \relax }{figure.caption.11}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.1}{\ignorespaces Performance curves of the weight autoencoder, showing loss progression and comparative output metrics.\relax }}{21}{figure.caption.11}\protected@file@percent }
+\newlabel{fig:combined_plots}{{4.1}{21}{Performance curves of the weight autoencoder, showing loss progression and comparative output metrics.\relax }{figure.caption.11}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4.1}{\ignorespaces Model Reconstruction Performance on Training Data\relax }}{21}{table.caption.12}\protected@file@percent }
+\newlabel{tab:weight_real_data}{{4.1}{21}{Model Reconstruction Performance on Training Data\relax }{table.caption.12}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.2}{\ignorespaces Shared encoder training and validation losses.}}{22}{figure.caption.13}\protected@file@percent }
+\newlabel{fig:shared_loss}{{4.2}{22}{Shared encoder training and validation losses}{figure.caption.13}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {4.2}Shared Encoder}{22}{section.4.2}\protected@file@percent }
 \newlabel{sec:shared}{{4.2}{22}{Shared Encoder}{section.4.2}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.3}{\ignorespaces Cosine similarity heat map for weight and projected embeddings.}}{23}{figure.caption.13}\protected@file@percent }
-\newlabel{fig:heat_map}{{4.3}{23}{Cosine similarity heat map for weight and projected embeddings}{figure.caption.13}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.3}{\ignorespaces Cosine similarity heat map for weight and projected embeddings.}}{23}{figure.caption.14}\protected@file@percent }
+\newlabel{fig:heat_map}{{4.3}{23}{Cosine similarity heat map for weight and projected embeddings}{figure.caption.14}{}}
 \@writefile{toc}{\contentsline {chapter}{\numberline {5}Conclusion}{24}{chapter.5}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \newlabel{chap:conclusion}{{5}{24}{Conclusion}{chapter.5}{}}
+\citation{wang2020datasetdistillation}
 \bibdata{mybib}
 \@writefile{toc}{\contentsline {section}{\numberline {5.1}Future Work}{25}{section.5.1}\protected@file@percent }
 \newlabel{sec:future_work}{{5.1}{25}{Future Work}{section.5.1}{}}
@@ -145,14 +149,16 @@
 \bibcite{pmlr-v235-schurholt24a}{4}
 \bibcite{bedionita2025instructionguidedautoregressiveneuralnetwork}{5}
 \bibcite{meynent2025structureenoughleveragingbehavior}{6}
-\bibcite{radford2021learningtransferablevisualmodels}{7}
-\bibcite{agren2022ntxentlossupperbound}{8}
-\bibcite{schurholt2022modelzoosdatasetdiverse}{9}
-\@writefile{toc}{\contentsline {chapter}{Bibliography}{26}{chapter*.14}\protected@file@percent }
-\bibcite{unterthiner2021predictingneuralnetworkaccuracy}{10}
-\bibcite{foundationsCVbook}{11}
-\bibcite{pmlr-v139-radford21a}{12}
-\bibcite{NEURIPS2022_b2c4b7d3}{13}
-\bibcite{ImageNet_VSS09}{14}
-\bibcite{He2015DeepRL}{15}
-\gdef \@abspage@last{30}
+\bibcite{pmlr-v139-radford21a}{7}
+\bibcite{pmlr-v119-chen20j}{8}
+\bibcite{pmlr-v38-choromanska15}{9}
+\@writefile{toc}{\contentsline {chapter}{Bibliography}{26}{chapter*.15}\protected@file@percent }
+\bibcite{schurholt2022modelzoosdatasetdiverse}{10}
+\bibcite{unterthiner2021predictingneuralnetworkaccuracy}{11}
+\bibcite{Hinton2006Reducing}{12}
+\bibcite{foundationsCVbook}{13}
+\bibcite{NEURIPS2022_b2c4b7d3}{14}
+\bibcite{ImageNet_VSS09}{15}
+\bibcite{He2015DeepRL}{16}
+\bibcite{wang2020datasetdistillation}{17}
+\gdef \@abspage@last{31}
