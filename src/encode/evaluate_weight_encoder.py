@@ -192,24 +192,25 @@ if __name__ == '__main__':
                     'jWgjXd32hejMv5c3c7A9EY_50.pth', '6w4ztEb7JLALjgsaRHRcFg_11.pth', 'F2WkFsEZ6GoPiLDQazAuq9_11.pth', 'oEBE7furiAreUCPiLn3kJX_12.pth', 
                     ]
     
-    overall_rec_mse = overall_agreement = overall_original_accuracy = overall_reconstructed_accuracy = overall_cos_sim = overall_avg_correlation = 0
-    overall_best_agreement = overall_best_rec_accuracy = 0
     all_results = []
     for weight in tqdm(WEIGHT_FILES):
     # for weight in WEIGHT_FILES:
         result = encode_reconstruct_compare(weight)
-        rec_mse, agreement, original_accuracy, reconstructed_accuracy, cos_sim, avg_correlation, best_agreement, best_rec_accuracy = result
-        stats = [original_accuracy, reconstructed_accuracy, best_rec_accuracy]
-        all_results.append(stats)
+        all_results.append(result)
         print(result)
     print(f'{all_results}')
 
     import csv
     CSV_FILE_PATH = 'encoding_comparison_stats.csv'
     CSV_HEADINGS = [
-        'Original_Accuracy', 
-        'Reconstructed_Accuracy_Final', 
-        'Best_Reconstructed_Accuracy_from_Scan'
+        'rec_mse', 
+        'agreement', 
+        'original_accuracy', 
+        'reconstructed_accuracy', 
+        'cos_sim', 
+        'avg_correlation', 
+        'best_agreement', 
+        'best_rec_accuracy'
     ]
 
     with open(CSV_FILE_PATH, 'w', newline='') as csvfile:
