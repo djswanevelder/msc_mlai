@@ -14,12 +14,6 @@ def standardize_class_name(name: str) -> str:
     Standardizes a class name (e.g., 'soft-coated Wheaten Terrier') into the 
     lowercased format used for matching against keys in the class vectors dictionary 
     (e.g., 'soft-coated_wheaten_terrier').
-    
-    Args:
-        name (str): The class name string.
-
-    Returns:
-        str: The standardized name.
     """
     name = name.strip().lower()
     name = name.replace(' ', '_').replace('"', '').replace("'", "")
@@ -29,13 +23,6 @@ def load_clip_class_vectors(class_vectors_csv_path: str) -> Dict[str, np.ndarray
     """
     Loads the pre-computed 512D CLIP class embedding vectors from the CSV file 
     into a dictionary, keyed by standardized class name, for fast lookup.
-    
-    Args:
-        class_vectors_csv_path (str): Path to the CSV file containing class embeddings.
-
-    Returns:
-        Dict[str, np.ndarray]: Dictionary mapping standardized class names to their 
-                               512-dimensional NumPy array vectors.
     """
     print(f"Loading CLIP class vectors from: {class_vectors_csv_path}")
     class_vectors_lookup = {}
@@ -70,12 +57,6 @@ def load_artifact_metadata(metadata_csv_path: str) -> List[Dict]:
     """
     Loads the run-level metadata (containing class names, artifact_id, and val_loss) 
     from the input CSV file.
-    
-    Args:
-        metadata_csv_path (str): Path to the CSV file containing artifact and run details.
-
-    Returns:
-        List[Dict]: A list of dictionaries, where each dictionary represents a row/run.
     """
     print(f"Loading artifact metadata from: {metadata_csv_path}")
     try:
@@ -113,6 +94,8 @@ def assemble_meta_dataset(
     N = len(weights) 
     dataset_vectors = []
     loss_values = []
+    # NEW: List to hold the unique identifier for each run, aligned with the weights
+    file_path_identifiers = [] 
     
     for i in range(N):
         run = run_metadata[i]
@@ -141,16 +124,21 @@ def assemble_meta_dataset(
             print(f"Warning: Invalid 'val_loss' for run {run.get('run_id')}. Setting to 0.0.")
             
         loss_values.append(loss)
+        
+        # --- 5. CRITICAL FIX: Store the unique identifier ---
+        # We use the 'artifact_name' which contains the file path (e.g., UUID_X.pth)
+        file_path_identifiers.append(run.get('artifact_name', f"missing_id_{i}"))
 
     # Convert lists to final NumPy formats
     final_dataset_vectors = np.stack(dataset_vectors, axis=0) # Shape: (N, 1536)
     final_loss_values = np.array(loss_values, dtype=np.float32) # Shape: (N,)
     
-    # --- 5. Construct final dataset dictionary ---
+    # --- 6. Construct final dataset dictionary with the new key ---
     final_dataset = {
-        'weights': weights,                     # PyTorch Tensor (N, D_weights)
-        'dataset_vector': final_dataset_vectors,  # NumPy Array (N, 1536)
-        'final_loss': final_loss_values         # NumPy Array (N,)
+        'weights': weights,                             # PyTorch Tensor (N, D_weights)
+        'dataset_vector': final_dataset_vectors,          # NumPy Array (N, 1536)
+        'final_loss': final_loss_values,                # NumPy Array (N,)
+        'file_paths': file_path_identifiers             # <--- THE NEW CRITICAL KEY (N, list[str])
     }
     
     return final_dataset
@@ -160,12 +148,6 @@ def run_meta_dataset_pipeline(class_vectors_csv: str, metadata_csv: str, weights
     """
     Orchestrates the loading, matching, and aggregation pipeline to create the 
     final meta-dataset file.
-    
-    Args:
-        class_vectors_csv (str): Path to the CLIP class vectors CSV.
-        metadata_csv (str): Path to the artifact/run metadata CSV (e.g., weights.csv).
-        weights_file (str): Path to the PyTorch file containing the encoded weights.
-        output_pt_path (str): Path to save the final PyTorch meta-dataset file.
     """
     
     # --- 1. Load pre-computed class embeddings ---
@@ -176,11 +158,11 @@ def run_meta_dataset_pipeline(class_vectors_csv: str, metadata_csv: str, weights
     
     # --- 3. Load weight latent vectors ---
     try:
-        data = torch.load(weights_file, map_location='cpu')
-        # Assuming the dictionary of interest is keyed by 'encoded_models'
+        # NOTE: Using map_location='cpu' is fine, but if the file requires weights_only=False, 
+        # that should be added here too if the weights_file is complex. We stick to map_location for now.
+        data = torch.load(weights_file, map_location='cpu') 
         weights_lookup_dict = data.get('encoded_models', {})
         if not weights_lookup_dict:
-            # Fallback in case the entire file IS the dictionary
             weights_lookup_dict = data if isinstance(data, dict) else {}
         
         if not weights_lookup_dict:
@@ -199,22 +181,18 @@ def run_meta_dataset_pipeline(class_vectors_csv: str, metadata_csv: str, weights
     print(f"Attempting to match {len(weights_lookup_dict)} weight latents to {N_metadata_requested} metadata entries...")
 
     for i, run in enumerate(run_metadata_raw):
-        # The key in the weights dictionary is assumed to be in the 'artifact_name' column
         weight_key = run.get('artifact_name')
         
         if not weight_key:
             continue
 
-        # Check for the key exactly as it appears in the CSV (e.g., UUID.pth or UUID)
         weight_tensor = weights_lookup_dict.get(weight_key)
         
-        # Check for the key without the .pth suffix if the first check fails
         if weight_tensor is None and weight_key.endswith('.pth'):
              key_no_suffix = weight_key[:-4]
              weight_tensor = weights_lookup_dict.get(key_no_suffix)
 
         if weight_tensor is None:
-            # print(f"Warning: Weight tensor not found for key '{weight_key}'. Skipping metadata row {i}.")
             continue
 
         if not isinstance(weight_tensor, torch.Tensor):
@@ -230,7 +208,7 @@ def run_meta_dataset_pipeline(class_vectors_csv: str, metadata_csv: str, weights
         sys.exit(1)
         
     weights = torch.stack(ordered_weights_list, dim=0)
-    run_metadata = runs_to_include
+    run_metadata = runs_to_include # This list is now perfectly aligned with the 'weights' tensor
     N_final = len(weights)
     
     if N_final < N_metadata_requested:
@@ -245,6 +223,7 @@ def run_meta_dataset_pipeline(class_vectors_csv: str, metadata_csv: str, weights
     print(f"Weights Tensor Shape: {final_dataset['weights'].shape}")
     print(f"Dataset Vector Shape: {final_dataset['dataset_vector'].shape}")
     print(f"Final Loss Shape: {final_dataset['final_loss'].shape}")
+    print(f"File Paths saved: {len(final_dataset['file_paths'])} entries.")
 
 
 if __name__ == "__main__":
@@ -265,6 +244,7 @@ if __name__ == "__main__":
     
     # 2. Example of loading and inspecting the final saved file (kept from user's snippet)
     print("\n--- Inspecting the saved file ---")
+    # CRITICAL: Use weights_only=False to load complex numpy/torch files
     data = torch.load(OUTPUT_PYTORCH_FILE, weights_only=False)
     
     if len(data['final_loss']) > 0:
@@ -276,5 +256,8 @@ if __name__ == "__main__":
         print(f"First entry loss: {loss:.4f}")
         print(f"First entry dataset vector shape: {dataset_vector.shape}")
         print(f"First entry weights vector shape: {weights_vector.shape}")
+        
+        # NEW: Check the saved file path identifier
+        print(f"First entry file path: {data['file_paths'][i]}")
     else:
         print("Dataset is empty.")

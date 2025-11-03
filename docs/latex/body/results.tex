@@ -48,32 +48,42 @@ The same model output comparison procedure is then executed, but using the data 
     \end{tabularx}
 \end{table}
 
+It is clear from these metrics that the Weight Autoencoder fails to reconstruct models with enough fidelity to preserve the original decision boundaries. The large drop in output correlation between the reconstructed and real models suggests that, while a coarse representation of the ResNet18 weights is captured, critical fine-grained information required for functional accuracy is lost.  
 
+This degradation is likely caused by the initial PCA compression stage. Although PCA theoretically retains the principal directions of variance and thus the most informative components, it remains a linear approximation of a highly non-linear parameter space. Consequently, important non-linear relationships within the weights may have been discarded during projection. Given that the Autoencoder itself achieves low reconstruction loss and generalises well, as shown in Figure~\ref{fig:weight_encoder_performance}, the poor reconstruction performance can reasonably be attributed to information loss introduced by PCA.
 
-It is clear from these metrics that the Weight Autoencoder is unable to reconstruct models with sufficient quality to preserve the decision boundary of the original model. The significant discrepancy in output correlation between the synthetic and real data indicates that while a representation of the ResNet18 model is being learned, it lacks the necessary fine-grained resolution required for accurate reconstruction of functional models.
+\(\textbf{NOTE:}\)
+When I tried to use a more expressive model the validaiotn loss of the autoencoder kept increasing for decreasing training loss, only the smallest possible model seemed to do well, no hidden layers. This indicates to me severe overfitting, despite the model being relatively small. This may be yet another indicaiton of the fact that the PCA compression did not retain sufficient information, as a more expressive encoder would have led to better results. Should I include a plot of this with my logic and conclusions outlined as above ?
+
+\(\textbf{NOTE:}\)
+Also when I used a per param pca componets value of 64 and a more expresive model, reconstrcution and output performance metrics improved, though marginally.
+the NXT-loss went up, but this is expected and the reconstruction is what matters. This may indicate that shifting to more compression in the encoder and less in the PCA may lead to better performance. should I include these plots and discussion as well?
+
 
 \section{Shared Encoder}
 \label{sec:shared}
-% Overall Loss
-%     Val
-%     Train 
 
-% Distance matrix
-%     heatmap/ example embedings showing well seperatedness
-The NT-Xent loss is minized on a traing set of model weights, dataset and results, with a 
+The Shared Encoder was trained following the procedure described in Section~\ref{sec:shared_enc}, with both training and validation losses monitored throughout. Figure~\ref{fig:shared_loss} shows that the training loss decreases rapidly at first and then decreases at a steady rate, while the validation loss decreases slightly before stabilising at a relatively high value of \(\sim\)3.1.
+
+This behaviour suggests that the Shared Encoder is successfully fitting the training data but fails to generalise to unseen data. The persistently high validation loss indicates that the model cannot extract a meaningful or consistent signal from the validation set, likely due to information loss introduced earlier in the weight encoding process. As the weight representations lack sufficient structure or variance relevant to the corresponding $(\mathcal{D}, R)$ pairs, the Shared Encoder effectively trains on noise. 
+
+Interestingly, the validation loss does not worsen over time, which would typically occur during overfitting. This further supports the hypothesis that there is little to no informative signal to learn—changes to the Shared Encoder's weights have minimal effect on generalisation performance, implying that the training dynamics are dominated by random correlations rather than meaningful alignment.
 
 \begin{figure}[!t]
     \centering
     \includegraphics[width=0.75\linewidth]{shared/nt_xent_loss_plot.png}
-    \caption[]{}
+    \caption[Shared Encoder training and validation losses.]{Training and validation losses for the Shared Encoder. The validation loss remains high, indicating a lack of generalisable signal due to information loss in the weight embeddings.}
     \label{fig:shared_loss}
 \end{figure}
 
+Figure~\ref{fig:heat_map} provides further insight into this behaviour by visualising the cosine similarity between five weight embeddings and their corresponding projected embeddings ${z}_{\text{proj}}$ within the training set. The x-axis represents $(\mathcal{D}, R)$ pairs at both early and late training epochs, while the y-axis shows the corresponding weight latent vectors from the Weight Encoder.
 
+High cosine similarity values (red regions) are observed along the diagonal, showing that matching pairs of weights and $(\mathcal{D}, R)$ embeddings are aligned in the shared space. Negative pairs, shown as white or blue, exhibit low similarity as expected. Notably, the same $(\mathcal{D}, R)$ pairs across different epochs also display higher similarity, despite not being explicitly defined as positives. This suggests that the Shared Encoder partially retains the relational structure among triplets $(\mathcal{D}, R, W)$ across training stages, even in the absence of a strong global signal.
 
+\begin{figure}[!t]
+    \centering
+    \makebox[\textwidth][c]{\hspace{-1cm}\includegraphics[width=1.2\linewidth]{heat_map.png}}
+    \caption[Cosine similarity heat map for weight and projected embeddings.]{Cosine similarity heat map between five weight embeddings and their corresponding projected embeddings $z_{\text{proj}}$.}
+    \label{fig:heat_map}
+\end{figure}
 
-\subsection{Conditional Model Sampling}
-\label{subsec:conditional_model_sample}
-
-% money Shot 
-%  input accuracy vs output accuracy

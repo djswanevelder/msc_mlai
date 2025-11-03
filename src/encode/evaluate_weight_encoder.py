@@ -9,8 +9,11 @@ import ast
 import torch.nn.functional as F
 from typing import Tuple
 import itertools
+from src.shared_emb_space import predict_latent_vector
+from tqdm import tqdm
 
 def pearson_correlation(tensor1, tensor2, dim=0):
+    
     mean1 = torch.mean(tensor1, dim=dim, keepdim=True)
     mean2 = torch.mean(tensor2, dim=dim, keepdim=True)
     centered1 = tensor1 - mean1
@@ -121,16 +124,23 @@ def encode_reconstruct_compare(model_file):
     reconstructed_model = decode_latent_to_resnet_model(weight_ae, mapper, latent)
 
 
-    # _,val_loader = load_dataset('data/meta_data.csv', model_file)
+    _,val_loader = load_dataset('data/meta_data.csv', model_file)
     
-    # return compare_models_with_permutation_test(model, reconstructed_model, val_loader)
-    return compare_model_outputs(model, reconstructed_model)
+    return compare_models_with_permutation_test(model, reconstructed_model, val_loader)
+    # return compare_model_outputs(model, reconstructed_model)
 
 def generate_model(classes,result):
 
-    # generate latent 
-    latent = []
-    generated_model = decode_latent_to_resnet_model('data/dataset/pca_encoder.pth','data/dataset/', latent)
+    dataset_vector = f(classes)
+
+    latent_vector = predict_latent_vector(
+        model_path='data/trained_encoder_weights_best_val.pth',
+        dataset_embedding=dataset_vector,
+        validation_loss=result)
+
+    weight_ae, mapper = load_autoencoder('data/dataset/pca_encoder.pth','data/dataset/')
+    generated_model = decode_latent_to_resnet_model(weight_ae, mapper,latent_vector) 
+
 
     return generated_model
 
@@ -161,27 +171,49 @@ def load_dataset(input_file, model_file):
 
 
 if __name__ == '__main__':
-    WEIGHT_FILES = [
-        '2qrZZxz7s2pw8jZpc3uQ6w_13.pth', 'bFFucNm8wrHoUpYRyVdcvV_47.pth', 'kQNN9BKxw27icC5FQgDoYL_49.pth', 'NtcyLyyLdAqGm5XLreFTRB_11.pth', 'TvcLonYMW8vsVurAeZqQJF_44.pth',
-        '2qrZZxz7s2pw8jZpc3uQ6w_60.pth', 'ckcvGPRvJPE5vJA3Gh4poB_14.pth', 'Gn2eo8JNUQ8nW9yhWpyqXx_9.pth', 'M8DQQZgH2bYxrwSNDUub9h_13.pth', 'NtcyLyyLdAqGm5XLreFTRB_51.pth', 'VfyDtshcsAw3uvrtJunLyy_15.pth',
-        '4aDxBFkc4qtLwkjnYsADzW_17.pth', 'ckcvGPRvJPE5vJA3Gh4poB_78.pth', 'gzQj8aw7SsdLTAcr8NKHcD_11.pth', 'M8DQQZgH2bYxrwSNDUub9h_30.pth', 'P2LArrtfTHkt5zwvjHBUbJ_15.pth', 'VfyDtshcsAw3uvrtJunLyy_23.pth',
-        '4aD  xBFkc4qtLwkjnYsADzW_35.pth', 'dXnK663qp9qfCHsjsZcV35_13.pth', 'gzQj8aw7SsdLTAcr8NKHcD_70.pth', 'mBhkRxKsHnBYRPSr7Hbxsp_17.pth', 'P2LArrtfTHkt5zwvjHBUbJ_49.pth', 'VosYUcDPcYy986N7bBMQkQ_17.pth',
-        '5pb9UcfxwrLcC6kmvYyt5o_12.pth', 'dXnK663qp9qfCHsjsZcV35_34.pth', 'h7CTx9uA6t7eE3Znm5TcWD_18.pth', 'mBhkRxKsHnBYRPSr7Hbxsp_57.pth', 'PkQcWcwebYqfpxQ9AQ3nKX_11.pth', 'VosYUcDPcYy986N7bBMQkQ_46.pth',
-        '5pb9UcfxwrLcC6kmvYyt5o_24.pth', 'eqtz4uyzM2W5fVkywXGds7_17.pth', 'h7CTx9uA6t7eE3Znm5TcWD_45.pth', 'mLCMxTPh7bxSrbF7exvVkN_15.pth', 'PkQcWcwebYqfpxQ9AQ3nKX_25.pth', 'WuJCb47eH7eXnQiNB2hQoJ_13.pth',
-        '6GuNTk3ZGN76raPSvhmyAc_73.pth', 'eqtz4uyzM2W5fVkywXGds7_60.pth', 'hDJ2hTFHJe8Q3F4c56jkw9_17.pth', 'mLCMxTPh7bxSrbF7exvVkN_59.pth', 'SPDgGD3J4iMdEX49TaiYkg_11.pth', 'WuJCb47eH7eXnQiNB2hQoJ_46.pth',
-        '6GuNTk3ZGN76raPSvhmyAc_9.pth', 'F9JWeacPyYrXJFc5AWikxK_15.pth', 'hDJ2hTFHJe8Q3F4c56jkw9_50.pth', 'mpTyNaBs7GkBhBAbusY8rr_18.pth', 'SPDgGD3J4iMdEX49TaiYkg_72.pth', 'Yu9Gmhri3pmiR3aMqGKQrQ_15.pth',
-        '7bpJhWzwbdAFP8Wbz8vAi4_13.pth', 'F9JWeacPyYrXJFc5AWikxK_33.pth', 'hHLjAHiYrvrBrpmpAcfdj6_12.pth', 'mpTyNaBs7GkBhBAbusY8rr_20.pth', 'SQjYoJGfHjrBKuZEqcncqb_15.pth', 'Yu9Gmhri3pmiR3aMqGKQrQ_80.pth',
-        '7bpJhWzwbdAFP8Wbz8vAi4_43.pth', 'fFUxenKM4yd6fopwn3qD5t_15.pth', 'hHLjAHiYrvrBrpmpAcfdj6_51.pth', 'MqBcBfKNR4vxu2Sras4JW7_11.pth', 'SQjYoJGfHjrBKuZEqcncqb_75.pth', 'YXjpantVgur78w6gQ8Ya2B_12.pth',
-        'AhxyZLpDPXN2LgVVfGqM6s_57.pth', 'fFUxenKM4yd6fopwn3qD5t_27.pth', 'ihji9nNheYJNWTijuSRZRQ_16.pth', 'MqBcBfKNR4vxu2Sras4JW7_48.pth', 'ThEu6qa5mh5rtdRkBAAAMP_11.pth', 'YXjpantVgur78w6gQ8Ya2B_38.pth',
-        'AhxyZLpDPXN2LgVVfGqM6s_9.pth', 'fhPDDsUyfJ6AYwtDwEWcSD_12.pth', 'ihji9nNheYJNWTijuSRZRQ_72.pth', 'mWA9NSt3oNbQAuYTkiTXVU_54.pth', 'ThEu6qa5mh5rtdRkBAAAMP_77.pth', 
-        'B6AkqyA5UxUr7inszj3VQD_15.pth', 'fhPDDsUyfJ6AYwtDwEWcSD_42.pth', 'jtHSyAnUaKLpEZFbSyQWJi_17.pth', 'mWA9NSt3oNbQAuYTkiTXVU_9.pth', 'TjReEM9t34rLtgT8od2fPj_17.pth', 
-        'B6AkqyA5UxUr7inszj3VQD_66.pth', 'gDiwxdfc2TdGvRJAUzWmku_12.pth', 'jtHSyAnUaKLpEZFbSyQWJi_51.pth', 'NTC953tsivv7rvRbPveqVv_18.pth', 'TjReEM9t34rLtgT8od2fPj_62.pth', 
-        'bFFucNm8wrHoUpYRyVdcvV_18.pth', 'gDiwxdfc2TdGvRJAUzWmku_30.pth', 'kQNN9BKxw27icC5FQgDoYL_13.pth', 'NTC953tsivv7rvRbPveqVv_46.pth', 'TvcLonYMW8vsVurAeZqQJF_13.pth'
-    ]
+    WEIGHT_FILES = ['ePZZH36doz3RPjmETdaTxo_67.pth', 'JSJkQKizxhwrFVpPtz3b3h_38.pth', 'F2WkFsEZ6GoPiLDQazAuq9_57.pth', 'Z9Wgk5q6PUhsN5bCCZbWzq_73.pth', 
+                    'mBhkRxKsHnBYRPSr7Hbxsp_57.pth', 'WRQGZK2z2WgdChdDU5cBkd_44.pth', 'jaPLyma9tVfBQeCjsGr9MW_56.pth', '7bpJhWzwbdAFP8Wbz8vAi4_43.pth', 
+                    'nKqPBdY6iMn9scYKxqZJct_13.pth', 'bgyUKNiPrvUTpJZAg4LXjq_18.pth', 'DprYVqsWJNKfyWfYpsrtrA_12.pth', '9RPMtNrv5wqTHcBpuqQxmJ_16.pth', 
+                    '4qazTkXRYQa8xGbnDbcXeE_69.pth', 'U85ELXxJxEAry8EJCPu8wi_52.pth', 'eM2MkTS6x9uWUUWkBT4KbF_14.pth', 'hzcMnDq8QE47Ni96miQKUQ_10.pth', 
+                    'gGSdGFYGZLNt4qh26LHgsw_12.pth', 'XX6QPKbXk8iv5v49B6hmjy_49.pth', 'Zhdme3mCqqZnYqms3VxLTi_44.pth', 'RGSKqWM4ZsRtxqptPjPhBu_18.pth', 
+                    '5zUtmyD6sr64SCQDynuZpa_10.pth', 'ZZTCRjadANeZmhbAYA5D3e_15.pth', 'CjwsVETZ3MCLjcGUhganHA_41.pth', 'RLWSfuoAhxSACt2NEG6xCy_18.pth', 
+                    'RrsFa56fpXy2RQE7ygioSe_42.pth', 'gRcwRQEdGqTWTeTJWiDmqd_21.pth', 'fhPDDsUyfJ6AYwtDwEWcSD_42.pth', 'kxNrByY452ceRV3sUiiffa_61.pth', 
+                    'P3VegRLvhm5mCpzdTtRLxH_9.pth', 'TB47TAFZD8ZoWWfpRdvRwU_76.pth', 'MqBcBfKNR4vxu2Sras4JW7_48.pth', 'EeZ98m75VRPZrRHDxvejvd_43.pth', 
+                    'WhhcYiZGkjb5Y5AN4Zo7RX_72.pth', 'Tp3W3AEKbt7oaqqzCKDp8Y_14.pth', 'fFUxenKM4yd6fopwn3qD5t_15.pth', 'ekDCZxna9Z5sVEHYpqiCeh_13.pth', 
+                    'eMkQEiKCVCYf8XmNqVhPfb_29.pth', 'iB6XocRi3fUqdUmc7c3LdB_45.pth', 'dDyv43SjZ8d4WEoMTKiekr_14.pth', '4c6WfwmT4VNgdYvR5vzKD7_69.pth', 
+                    '4Hwnhj4psanPs4Wdwxph9V_15.pth', 'gGSdGFYGZLNt4qh26LHgsw_48.pth', '532EHnro46vjXzHGgomhzD_12.pth', 'jy7iX9wbzT4m3oEbTDuJBq_9.pth', 
+                    'eHnkzvkfjZuswc2t4v3s8w_16.pth', 'MppkioXhEa5xUt3BJKQymZ_16.pth', 'EPVKzUkxaqi4jaFAAoXrJt_16.pth', 'cpxK4Qcie8MRmBjFxdJ7um_18.pth', 
+                    '5ZFPxQH8SunFTjNeNxAJJY_9.pth', 'TvcLonYMW8vsVurAeZqQJF_44.pth', '2jGPzZJrJNxU6ujivotyAi_27.pth', 'ePZZH36doz3RPjmETdaTxo_17.pth', 
+                    'ekDCZxna9Z5sVEHYpqiCeh_80.pth', '5VPKMcijz5dd3cT5ojCG44_10.pth', 'JUoiGgEHtKqEJ48kXSW5EU_62.pth', '4qazTkXRYQa8xGbnDbcXeE_15.pth', 
+                    '5vLswfJjve3JbjNebQCVex_9.pth', 'XMBs3TnEeo3Q9kzUjWaBcU_10.pth', 'eqgQz5SrLNgMiqPk2Db2ym_14.pth', 'Ba6gsyMXFaFEyBiAgLsaoo_15.pth', 
+                    'mQarSuYK7vkRpJkJhscGVZ_9.pth', 'aPYWHvRkuUXh4qY8N4XEuE_75.pth', 'mWEy4mSg7FpQzUq92ZaPnj_18.pth', '9tMor4NNifAQ8xs2vvW666_60.pth', 'mpTyNaBs7GkBhBAbusY8rr_18.pth', 'JJ4jjJFkBNUBBNDWMGtggD_15.pth', 'oCxgYtPwQyUKojFq9GWqdA_18.pth', 'TB47TAFZD8ZoWWfpRdvRwU_18.pth', 
+                    'Hfk6ebqjua8ve73r5UK7bX_59.pth', 'EEPneJg2zuDrrxGPwA5QoH_20.pth', 'WefoF4hVsuLP6vsKqHqtCn_49.pth', 'jJtsUMzrsAfu5NupBMutzw_13.pth', 
+                    'fsprpwvqme6kgnxwkg6rtQ_59.pth', '4dWwLeJQRAj2DkBf39jANw_55.pth', 'VnaJ62XoxphbS9DfCsskTv_17.pth', 'bHCDjR8AP5EzNeGBaKqLRu_16.pth', 
+                    'jWgjXd32hejMv5c3c7A9EY_50.pth', '6w4ztEb7JLALjgsaRHRcFg_11.pth', 'F2WkFsEZ6GoPiLDQazAuq9_11.pth', 'oEBE7furiAreUCPiLn3kJX_12.pth', 
+                    ]
     
     overall_rec_mse = overall_agreement = overall_original_accuracy = overall_reconstructed_accuracy = overall_cos_sim = overall_avg_correlation = 0
     overall_best_agreement = overall_best_rec_accuracy = 0
-
-    for weight in WEIGHT_FILES:
+    all_results = []
+    for weight in tqdm(WEIGHT_FILES):
+    # for weight in WEIGHT_FILES:
         result = encode_reconstruct_compare(weight)
+        rec_mse, agreement, original_accuracy, reconstructed_accuracy, cos_sim, avg_correlation, best_agreement, best_rec_accuracy = result
+        stats = [original_accuracy, reconstructed_accuracy, best_rec_accuracy]
+        all_results.append(stats)
         print(result)
+    print(f'{all_results}')
+
+    import csv
+    CSV_FILE_PATH = 'encoding_comparison_stats.csv'
+    CSV_HEADINGS = [
+        'Original_Accuracy', 
+        'Reconstructed_Accuracy_Final', 
+        'Best_Reconstructed_Accuracy_from_Scan'
+    ]
+
+    with open(CSV_FILE_PATH, 'w', newline='') as csvfile:
+        writer = csv.writer(csvfile)
+        writer.writerow(CSV_HEADINGS)
+        writer.writerows(all_results)
+

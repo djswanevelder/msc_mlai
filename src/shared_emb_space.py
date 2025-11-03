@@ -4,11 +4,12 @@ import torch.nn.functional as F
 from torch.utils.data import TensorDataset, DataLoader
 import numpy as np
 import sys
-from typing import Tuple, Dict, Any, Union
+from typing import Tuple, Dict, Any, Union, List
 import optuna
 import matplotlib.pyplot as plt
 import wandb
-import os # ⬅️ ADD OS IMPORT FOR PATH HANDLING
+import os 
+from pathlib import Path # Added for robust file path handling
 
 # Dimensions (Default values, dynamically set during data loading)
 WEIGHT_SIZE = 512       
@@ -119,6 +120,13 @@ def prepare_data_and_loaders(file_path: str, n_val: int, n_test: int, batch_size
         weights_tensor = data['weights'].float() 
         dataset_vector_tensor = torch.from_numpy(data['dataset_vector']).float()
         final_loss_tensor = torch.from_numpy(data['final_loss']).float()
+        # NOTE: file_paths are needed for custom sample selection in the heatmap plotting
+        if 'file_paths' not in data:
+             # Create dummy paths if not present, but warn user
+             print("Warning: 'file_paths' not found in dataset. Heatmap customization will fail.")
+             file_paths = [f"sample_{i}.pth" for i in range(weights_tensor.shape[0])]
+        else:
+             file_paths = data['file_paths']
     except Exception as e:
         print(f"Error loading data: {e}"); sys.exit(1)
 
@@ -172,7 +180,8 @@ def prepare_data_and_loaders(file_path: str, n_val: int, n_test: int, batch_size
     test_dataset = TensorDataset(test_data, test_loss_indices, test_weights)
     test_dataloader = DataLoader(test_dataset, batch_size=n_test, shuffle=False)
     
-    return train_dataloader, val_dataloader, test_dataloader, weight_size, data_dim, min_loss.item(), max_loss.item(), final_loss_tensor, loss_indices
+    # Returning the file_paths array as well
+    return train_dataloader, val_dataloader, test_dataloader, weight_size, data_dim, min_loss.item(), max_loss.item(), final_loss_tensor, loss_indices, file_paths
 
 def run_validation_epoch(encoder: WeightLatentEncoder, val_loader: DataLoader, temp: float) -> float:
     """Calculates the average NT-Xent loss on the validation set."""
@@ -199,7 +208,6 @@ def predict_latent_vector(
     dataset_embedding: torch.Tensor, 
     validation_loss: float
 ) -> torch.Tensor:
-    # ... (unchanged)
     # 1. Load model state and configuration
     try:
         loaded_data = torch.load(model_path)
@@ -252,7 +260,7 @@ def run_training_pipeline(config: Dict[str, Union[str, int, float]]):
     file_path = config['DATASET_FILE_PATH']
     model_path = config['OUTPUT_MODEL_PATH']
     n_test = config['N_TEST']
-    n_val = config['N_VAL'] # NEW
+    n_val = config['N_VAL'] 
     batch_size = config['BATCH_SIZE']
     num_epochs = config['NUM_EPOCHS']
     temp = config['TEMPERATURE']
@@ -260,8 +268,8 @@ def run_training_pipeline(config: Dict[str, Union[str, int, float]]):
     num_loss_bins = config['NUM_LOSS_BINS']
     
     # --- 1. Load and Prepare Data ---
-    # UPDATED call signature to include n_val
-    train_loader, val_loader, test_loader, weight_size, data_dim, min_loss, max_loss, _, _ = prepare_data_and_loaders(
+    # Note: We discard file_paths from the return here as they are not used for training
+    train_loader, val_loader, test_loader, weight_size, data_dim, min_loss, max_loss, _, _, _ = prepare_data_and_loaders(
         file_path, n_val, n_test, batch_size, num_loss_bins
     )
     
@@ -281,7 +289,8 @@ def run_training_pipeline(config: Dict[str, Union[str, int, float]]):
     print("-" * 50)
 
     best_val_loss = float('inf')
-    best_model_save_path = config['OUTPUT_MODEL_PATH'].replace(".pth", "_best_val.pth")
+    # Use the os.path.join for robust path construction
+    best_model_save_path = model_path.replace(".pth", "_best_val.pth")
 
     for epoch in range(1, num_epochs + 1):
         # --- Training Epoch ---
@@ -398,14 +407,266 @@ def run_training_pipeline(config: Dict[str, Union[str, int, float]]):
                 print(f"Test Batch Loss (NT-Xent): {test_loss_ntxent_item:.4f}")
                 print(f"Test Batch Loss (MSE Distance): {test_loss_mse_item:.6f}")
                 
-            break # Only one batch in test_loader
+            break 
 
     print("\nProcess complete.")
     
-    # 5. 🛑 Finalize WandB run
     wandb.finish()
     
     return test_loss_mse_item if 'test_loss_mse_item' in locals() else None
+
+def evaluate_model_on_dataset(
+    model_path: str, 
+    data_file_path: str
+) -> Tuple[float, float, int]:
+    """
+    Loads a trained encoder model and a meta-dataset file, computes the predicted 
+    weight latents, and calculates the average Cosine Similarity and MSE distance 
+    between predictions and ground truths.
+
+    Args:
+        model_path (str): Path to the saved .pth model file.
+        data_file_path (str): Path to the meta-dataset .pt file to evaluate on.
+
+    Returns:
+        Tuple[float, float, int]: (avg_cosine_similarity, avg_mse_distance, num_samples)
+    """
+    print("-" * 50)
+    print(f"Starting Evaluation on {data_file_path} using model: {model_path}")
+    
+    # 1. Load model configuration and state
+    try:
+        loaded_model_data = torch.load(model_path, map_location='cpu')
+    except FileNotFoundError:
+        print(f"Error: Model file not found at {model_path}"); return float('nan'), float('nan'), 0
+    
+    min_loss = loaded_model_data['min_loss']
+    max_loss = loaded_model_data['max_loss']
+    num_loss_bins = loaded_model_data['num_loss_bins']
+    weight_size = loaded_model_data['weight_size']
+    data_dim = loaded_model_data['data_dim']
+    loss_embedding_k = loaded_model_data['loss_embedding_k']
+
+    # 2. Initialize and load the model
+    encoder = WeightLatentEncoder(data_dim, num_loss_bins, loss_embedding_k, weight_size)
+    encoder.load_state_dict(loaded_model_data['state_dict'])
+    encoder.eval()
+    
+    # 3. Load the evaluation data
+    try:
+        data = torch.load(data_file_path, weights_only=False) 
+        weights_tensor = data['weights'].float() 
+        dataset_vector_tensor = torch.from_numpy(data['dataset_vector']).float()
+        final_loss_tensor = torch.from_numpy(data['final_loss']).float()
+    except Exception as e:
+        print(f"Error loading data from {data_file_path}: {e}"); return float('nan'), float('nan'), 0
+    
+    # 4. Replicate Loss Binning (Crucial for correct input)
+    min_loss_t = torch.tensor(min_loss)
+    max_loss_t = torch.tensor(max_loss)
+    bins = torch.linspace(min_loss_t, max_loss_t, num_loss_bins + 1)[1:-1]
+    loss_indices = torch.clamp(torch.bucketize(final_loss_tensor, bins), 0, num_loss_bins - 1).long()
+    
+    # 5. Inference and Metric Calculation
+    num_samples = weights_tensor.shape[0]
+    
+    with torch.no_grad():
+        # Predict the latent vectors
+        predicted_weights = encoder(dataset_vector_tensor, loss_indices)
+        
+        # Calculate Cosine Similarity
+        # Normalize the vectors
+        pred_norm = F.normalize(predicted_weights, dim=1)
+        gt_norm = F.normalize(weights_tensor, dim=1)
+        # Cosine Similarity is the dot product of normalized vectors
+        # Note: This computes the mean similarity across the entire dataset.
+        cos_sim_values = (pred_norm * gt_norm).sum(dim=1)
+        avg_cosine_similarity = cos_sim_values.mean().item()
+        
+        # Calculate Mean Squared Error (MSE)
+        avg_mse_distance = F.mse_loss(predicted_weights, weights_tensor).item()
+
+    print(f"Evaluation Complete (N={num_samples})")
+    print(f"   -> Average Cosine Similarity: {avg_cosine_similarity:.4f} (Closer to 1.0 is better)")
+    print(f"   -> Average MSE Distance: {avg_mse_distance:.6f} (Closer to 0.0 is better)")
+    print("-" * 50)
+    
+    return avg_cosine_similarity, avg_mse_distance, num_samples
+
+
+def plot_similarity_heatmap(model_path: str, data_file_path: str, target_identifiers: List[str]):
+    """
+    Generates and plots a Cosine Similarity distance matrix heatmap for a **specific subset**
+    of the data, comparing ground truth weight embeddings (Rows) against predicted 
+    embeddings (Columns).
+    
+    Rows = Ground Truth Weight Latents (W_i)
+    Columns = Predicted Weight Latents (P_j)
+    Values = Cosine Similarity(W_i, P_j)
+    
+    Args:
+        model_path (str): Path to the trained encoder model.
+        data_file_path (str): Path to the meta-dataset file.
+        target_identifiers (List[str]): List of run file names (e.g., 'run_id_epoch.pth') to select.
+    """
+    print("-" * 50)
+    print(f"Generating {len(target_identifiers)}x{len(target_identifiers)} Custom Similarity Heatmap.")
+    
+    # 1. Load model configuration and state
+    try:
+        loaded_model_data = torch.load(model_path, map_location='cpu')
+    except FileNotFoundError:
+        print(f"Error: Model file not found at {model_path}. Cannot generate heatmap."); return
+    
+    min_loss = loaded_model_data['min_loss']
+    max_loss = loaded_model_data['max_loss']
+    num_loss_bins = loaded_model_data['num_loss_bins']
+    weight_size = loaded_model_data['weight_size']
+    data_dim = loaded_model_data['data_dim']
+    loss_embedding_k = loaded_model_data['loss_embedding_k']
+
+    # 2. Initialize and load the model
+    encoder = WeightLatentEncoder(data_dim, num_loss_bins, loss_embedding_k, weight_size)
+    encoder.load_state_dict(loaded_model_data['state_dict'])
+    encoder.eval()
+    
+    # 3. Load the evaluation data and file paths
+    try:
+        data = torch.load(data_file_path, weights_only=False) 
+        weights_tensor = data['weights'].float() 
+        dataset_vector_tensor = torch.from_numpy(data['dataset_vector']).float()
+        final_loss_tensor = torch.from_numpy(data['final_loss']).float()
+        
+        if 'file_paths' not in data:
+            raise KeyError("Dataset file must contain 'file_paths' key for custom selection.")
+            
+        dataset_file_paths = data['file_paths']
+        # Sanitize file paths: extract just the filename if full paths are stored
+        dataset_file_names = [Path(p).name for p in dataset_file_paths]
+
+    except Exception as e:
+        print(f"Error loading data from {data_file_path}: {e}"); return
+    
+    # 4. Find the indices matching the target identifiers
+    target_indices = []
+    found_identifiers = []
+    
+    # Create a set for quick lookup
+    target_set = set(target_identifiers)
+    
+    for i, file_name in enumerate(dataset_file_names):
+        if file_name in target_set:
+            target_indices.append(i)
+            found_identifiers.append(file_name)
+    
+    if len(target_indices) != len(target_identifiers):
+        missing = target_set - set(found_identifiers)
+        print(f"Warning: Found {len(target_indices)}/{len(target_identifiers)} target samples. Missing: {missing}")
+        if not target_indices:
+             print("Aborting heatmap generation due to no matching samples.")
+             return
+    
+    # Ensure the order of selected data matches the order of requested identifiers
+    # This involves re-indexing the slices according to the order of found_identifiers
+    sorted_indices = []
+    # Map found identifiers back to their indices in the dataset, ensuring the order matches the input list
+    name_to_index = {name: index for index, name in zip(target_indices, found_identifiers)}
+    
+    for identifier in target_identifiers:
+        if identifier in name_to_index:
+            sorted_indices.append(name_to_index[identifier])
+    
+    # The actual samples used and their labels (must be in the same order)
+    subset_indices = torch.tensor(sorted_indices, dtype=torch.long)
+    final_labels = [target_identifiers[i] for i in range(len(target_identifiers)) if target_identifiers[i] in found_identifiers]
+
+    # 5. Extract Subset Data
+    subset_weights = weights_tensor[subset_indices]        # Ground Truth (Rows)
+    subset_data = dataset_vector_tensor[subset_indices]    # Dataset Vector for Prediction
+    
+    # Replicate Loss Binning (Crucial for correct input)
+    min_loss_t = torch.tensor(min_loss)
+    max_loss_t = torch.tensor(max_loss)
+    bins = torch.linspace(min_loss_t, max_loss_t, num_loss_bins + 1)[1:-1]
+    loss_indices = torch.clamp(torch.bucketize(final_loss_tensor, bins), 0, num_loss_bins - 1).long()
+    subset_loss_indices = loss_indices[subset_indices] # Loss Index for Prediction
+    
+    # 6. Prediction
+    with torch.no_grad():
+        predicted_weights = encoder(subset_data, subset_loss_indices) # Predicted (Columns)
+
+    # 7. Calculate Cosine Similarity Matrix (NxN)
+    # Normalize vectors
+    predicted_norm = F.normalize(predicted_weights, dim=1)
+    gt_norm = F.normalize(subset_weights, dim=1)
+    
+    # Calculate the similarity matrix: (Rows: GT, Columns: Predicted)
+    similarity_matrix = torch.matmul(gt_norm, predicted_norm.T).cpu().numpy()
+    
+    N_plot = len(final_labels)
+# 8. Plot Heatmap
+    N_plot = len(final_labels)
+    
+    # 1. Enable LaTeX for plotting - IMPORTANT
+    # This should be at the start of your script or before the first plot call
+    plt.rcParams['text.usetex'] = True 
+    plt.rcParams['text.latex.preamble'] = r'\usepackage{amsmath}'
+    # --- Custom Label Generation ---
+    # Assume we use the provided structure for the labels
+    example_target_labels = [
+        "Dataset-Result 1 (10)", "Dataset-Result 1 (65)",
+        "Dataset-Result 2 (14)", "Dataset-Result 2 (41)", 
+        "Dataset-Result 3 (18)", "Dataset-Result 3 (42)"
+    ]
+
+    x_labels = []
+    y_labels = []
+
+    for label_str in example_target_labels[:N_plot]:
+        dataset_num = label_str.split(' ')[1] 
+        aux_val = label_str.split('(')[1].strip(')') 
+        
+        latex_label = rf'$\substack{{\left(\mathcal{{D}},\mathcal{{R}}\right)_{{{dataset_num}}} \\ ({aux_val})}}$'
+        x_labels.append(latex_label)
+        y_label = rf'$\substack{{\mathbf{{W}}_{{{dataset_num}}} \\ ({aux_val})}}$'
+        y_labels.append(y_label)
+
+    # -----------------------------
+
+    plt.figure(figsize=(12, 11))
+    # plt.imshow(similarity_matrix, cmap='viridis', aspect='equal', vmin=-0.7, vmax=0.7)
+    img = plt.imshow(similarity_matrix, cmap='coolwarm', aspect='equal', vmin=-0.5, vmax=0.5)
+    plt.colorbar(
+        img, 
+        label=r'Cosine Similarity $(\mathbf{W}_i, \mathbf{P}_j)$',
+        shrink=0.7,   
+        aspect=20,
+    )
+    # plt.colorbar(label=r'Cosine Similarity $(\mathbf{W}_i, \mathbf{P}_j)$')
+    
+    # plt.title(r'Similarity Matrix: Ground Truth ($\mathbf{W}$) vs. Predicted ($\mathbf{P}$)', fontsize=14)
+    plt.xlabel(r'Predicted Weight Vector', fontsize=18) # Title can be generic now
+    plt.ylabel(r'Ground Truth Weight Vector', fontsize=18) # Title can be generic now
+    
+    # Apply the custom LaTeX labels
+    plt.xticks(np.arange(N_plot), x_labels, rotation=0, fontsize=18) 
+    plt.yticks(np.arange(N_plot), y_labels, fontsize=18) 
+    
+    # Add values to the cells
+    # ... (rest of the plotting code remains the same)
+    # Add values to the cells
+    for i in range(N_plot):
+        for j in range(N_plot):
+            # Highlight diagonal (matching) entries
+            color = 'gold' if i == j else 'black'
+            plt.text(j, i, f'{similarity_matrix[i, j]:.2f}', 
+                     ha='center', va='center', color=color, fontsize=14, 
+                     fontweight='bold' if i == j else 'normal')
+            
+    plt.tight_layout()
+    plt.show()
+    print("-" * 50)
+
 
 def plot_distribution_and_binned_distribution(losses: torch.Tensor, binned_losses: torch.Tensor, num_loss_bins: int):
     """
@@ -448,13 +709,35 @@ if __name__ == "__main__":
     'OUTPUT_MODEL_PATH': 'data/trained_encoder_weights.pth',
     # Dimensions and Binning
     'LOSS_EMBEDDING_K': 128*2,
-    'NUM_LOSS_BINS': 100*2,
+    'NUM_LOSS_BINS': 200,
     # Training Hyperparameters
     'TEMPERATURE': 0.19,
     'BATCH_SIZE': 16,
     'NUM_EPOCHS': 400,
     'N_VAL': 50,
-    'N_TEST': 10
+    'N_TEST': 12 
     }
     
-    test_loss_mse = run_training_pipeline(CONFIG)
+
+    TARGET_FILES = [
+        '2eGS2DhfjNLMCg3u7xSBst_10.pth', '2eGS2DhfjNLMCg3u7xSBst_65.pth',
+        '2H3mxCEkHjcFbNJLgG3Jvo_14.pth', '2H3mxCEkHjcFbNJLgG3Jvo_41.pth',
+        '2HDhNdy6GEJvYy4ZjgVyiH_18.pth', '2HDhNdy6GEJvYy4ZjgVyiH_42.pth',
+        # '2hUHiu8bKnc88GpH6tnLXj_18.pth', '2hUHiu8bKnc88GpH6tnLXj_56.pth',
+        # '2jGPzZJrJNxU6ujivotyAi_10.pth', '2jGPzZJrJNxU6ujivotyAi_27.pth',
+    ]
+    
+    # test_loss_mse = run_training_pipeline(CONFIG)
+
+    best_model_path = CONFIG['OUTPUT_MODEL_PATH'].replace(".pth", "_best_val.pth")
+
+    # evaluate_model_on_dataset(
+    #     model_path=best_model_path, 
+    #     data_file_path=CONFIG['DATASET_FILE_PATH']
+    # )
+    
+    plot_similarity_heatmap(
+        model_path=best_model_path, 
+        data_file_path=CONFIG['DATASET_FILE_PATH'],
+        target_identifiers=TARGET_FILES
+    )

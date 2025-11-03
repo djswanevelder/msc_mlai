@@ -1,22 +1,34 @@
 \chapter{Background}
 \label{chap:background}
 
+% Weight space learning encompasses two broad classes of tasks: generative and discriminative. In generative applications, researchers aim to model the underlying distribution of neural network weights, conditioned on additional information or reference models, \(P(W \mid \dots)\). Sampling from this distribution enables the generation of entirely new model weights.  
 
+% For example, \cite{schurholt2022hyperrepresentationsgenerativemodelssampling} used an autoencoder to generate hyper-representations of multiple model zoos and conditioned on these representations to produce new model weights. Building on this, \cite{pmlr-v235-schurholt24a} introduced the Sequential Autoencoder for Neural Embeddings (SANE), which improves scalability by tokenising model weights and embedding them sequentially, enabling generative modelling for much larger architectures.  
+
+% Other methods focus on conditioning the weight distribution on dataset or performance information. \cite{bedionita2025instructionguidedautoregressiveneuralnetwork} employed a Vector Quantised Variational Autoencoder (VQ-VAE) to model \(P(W \mid \mathcal{D})\), learning latent representations that allow generation of new weights for specific tasks. Similarly, \cite{meynent2025structureenoughleveragingbehavior} modelled \(P(W \mid R)\) using a contrastive objective that minimises differences in both model outputs and weights between original and reconstructed networks, effectively embedding behavioural information into the latent space.  
+
+% In discriminative applications, pre-trained network weights—often collected into a model zoo \cite{schurholt2022modelzoosdatasetdiverse}—serve as input to predict meta-information about the original models \cite{unterthiner2021predictingneuralnetworkaccuracy}. Weight space representations are typically evaluated via a simple multi-layer perceptron (MLP) tasked with predicting such meta-information from the embeddings. Common metrics include final model performance and generalisation gap. These discriminative tasks demonstrate that weight embeddings capture meaningful training characteristics, providing both a measure of representation quality and practical predictive insights.
 
 \section{Weight Space Learning}
 
-Weight space learning is a field within machine learning that focuses on understanding and leveraging the structure of the neural network weight space. The central aim is to model how network parameters are shaped by data, architecture, and training dynamics, and to capture these relationships within a learnable representation. 
+Weight space learning is a field within machine learning that focuses on understanding and leveraging the structure of the neural network weight space. Its central aim is to model how network parameters are shaped by data, architecture, and training dynamics, and to capture these relationships within a learnable representation. 
 
-The weight space ($\mathcal{W}$) of a neural network is formally defined as the high-dimensional Euclidean space $\mathbb{R}^N$ spanned by the $N$ total learnable parameters---the weights and biases---of the specified architecture. A specific point $\mathbf{w} \in \mathcal{W}$ represents a complete instantiation of the model, mapping input data $\mathbf{x}$ to output predictions $f(\mathbf{x}, \mathbf{w})$. Consequently, weight space learning concentrates on characterizing the intrinsic structure and topology of this landscape, aiming to identify low-dimensional subspaces or manifolds containing high-performing parameters, thus allowing the development of compact, learnable representations of network ensembles, parameter transfer methods, and novel subspace optimization techniques.
+The weight space \(W\) of a neural network is formally defined as the high-dimensional Euclidean space \(\mathbb{R}^N\) spanned by the \(N\) learnable parameters—the weights and biases—of the specified architecture. A specific point \(\mathbf{w} \in W\) represents a complete instantiation of the model, mapping input data \(\mathbf{x}\) to output predictions \(f(\mathbf{x}, \mathbf{w})\).  
 
+Weight space learning can be broadly divided into generative and discriminative tasks. Generative approaches aim to characterise the distribution of neural network weights, potentially conditioned on auxiliary information or reference models, \(P(W \mid \dots)\), enabling the synthesis of novel weight configurations.  
 
-Due to the enormous scale and dimensionality of modern neural networks~\cite{}, it is typically infeasible to operate directly on raw model weights. This challenge motivates one of the central subproblems of weight space learning: the discovery of low-dimensional representations of weight space.
+For instance, \cite{schurholt2022hyperrepresentationsgenerativemodelssampling} employed an autoencoder to create compact representations of model zoos, with the decoder being used to generate new weights. Building on this concept, \cite{pmlr-v235-schurholt24a} proposed the Sequential Autoencoder for Neural Embeddings (SANE), which introduces weight tokenisation and sequential embedding to improve scalability for larger networks.  
 
+Other methods focus on conditioning the weight distribution on dataset or performance information. \cite{bedionita2025instructionguidedautoregressiveneuralnetwork} employed a Vector Quantised Variational Autoencoder (VQ-VAE) to model \(P(W \mid \mathcal{D})\), learning latent representations that allow generation of new weights for specific tasks. Similarly, \cite{meynent2025structureenoughleveragingbehavior} modelled \(P(W \mid R)\) using a contrastive objective that minimises differences in both model outputs and weights between original and reconstructed networks, effectively embedding behavioural information into the latent space.  
 
-Ideally from latent representations we should see smaller networks are performing the same, but not vice versa
-A \textit{latent representation} of weight space provides a compact and structured encoding of a model's parameters. The transformations—linear or non-linear—that map weights into this latent space are learned to preserve the essential information required to reconstruct or analyse the original weights. Among the many dimensionality reduction techniques available, we distinguish between \textit{reversible} and \textit{non-reversible} methods.
+Discriminative weight space learning, in contrast, uses pre-trained network weights—often aggregated in model zoos \cite{schurholt2022modelzoosdatasetdiverse}—to infer meta-information about the original models \cite{unterthiner2021predictingneuralnetworkaccuracy}. Representations are typically assessed by training a simple predictor, such as an MLP, to map embeddings to model metrics, including final performance or generalisation gap. These tasks demonstrate that weight embeddings encode meaningful training information, providing both a benchmark for representation quality and practical predictive utility.
 
-Reversibility is of particular importance in weight space learning. While encoding weights into a latent representation (real $\rightarrow$ latent) is informative, the ability to reconstruct the original weights (real $\rightarrow$ latent $\rightarrow$ real) is far more valuable. This reversibility enables the synthesis of entirely new weight configurations, supporting generative applications such as zero-shot model creation and performance-guided model generation. Consequently, reversible latent representation methods are the most prevalent within weight space learning, especially for encoding and decoding neural network weights.
+Discriminative and generative tasks alike operate on high-dimensional weight spaces, which can consist of millions of parameters in modern networks. To manage this complexity, latent representations are used to encode the essential information of the weights into a more compact form. Such representations encode a model's parameters into a compact latent space through learned transformations—either linear or non-linear—that preserve essential information about the original weights. A key distinction among dimensionality reduction methods is whether they are reversible or non-reversible.
+
+Reversibility is particularly important in weight space learning. While encoding weights into a latent representation (real \(\rightarrow\) latent) is informative, the ability to reconstruct the original weights (real \(\rightarrow\) latent \(\rightarrow\) real) is far more valuable. This reversibility enables the synthesis of entirely new weight configurations, supporting generative applications such as zero-shot model creation and performance-guided model generation. Consequently, reversible latent representation methods are the most prevalent within weight space learning, especially for encoding and decoding neural network weights.
+
+We next examine two fundamental approaches to creating such reversible representations: Principal Component Analysis (PCA), which provides linear but interpretable transformations, and autoencoders, which enable more expressive non-linear mappings. We begin with PCA as it establishes the baseline for reversible dimensionality reduction.
+
 
 \section{Principal Component Analysis (PCA)}
 \label{sec:pca}
@@ -67,12 +79,12 @@ PCA provides a linear method for generating lossy reversibility latent represent
 
 \section{Autoencoders}
 \label{sec:autoencoders}
-Autoencoders are neural network architectures designed for unsupervised representation learning. Their primary goal is to learn a compressed, informative latent representation of input data by training the entire system to reconstruct the original input after it has passed through a lower-dimensional bottleneck layer. The full architecture is characterized by an encoder and a decoder. Crucially, the layers within these components typically utilize non-linear activation functions, which enables the model to perform complex, non-linear projections from the high-dimensional input space to the latent space. This capability is essential for capturing intricate, hierarchical structures within the data that linear dimensionality reduction techniques cannot access.
+Autoencoders are neural network architectures designed for unsupervised representation learning, as illustrated in Figure~\ref{fig:autoencoder}. Their primary goal is to learn a compressed, informative latent representation of input data by training the system to reconstruct the original input after it passes through a lower-dimensional bottleneck layer. The full architecture consists of an encoder and a decoder. Crucially, the layers within these components typically employ non-linear activation functions, enabling the model to perform complex, non-linear mappings from the high-dimensional input space to the latent space. This capability is essential for capturing intricate, hierarchical structures within the data that linear dimensionality reduction techniques cannot access.
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.5\linewidth]{encoder.png}
-    \caption[Autoencoder encoding input data into a latent representation and decoding to reconstructed data]{Autoencoder encoding input data into a latent representation and decoding to reconstructed data.}
+    \caption{Autoencoder encoding input data into a latent representation and decoding it to reconstructed data}
     \label{fig:autoencoder}
 \end{figure}
 
@@ -104,18 +116,18 @@ By minimising this objective, the autoencoder learns weight configurations that 
 The latent space $z$ provides a nonlinear embedding that captures underlying structure within the data. Once trained, the encoder can be used independently for dimensionality reduction or feature extraction, while the decoder can serve as a generative mapping from the latent space back to the input domain. 
 \section{Contrastive Learning}
 \label{sec:contrastive}
-The overall goal of contrastive learning is to learn meaningful representations by comparing data points against one another, rather than relying on explicit labels \cite{}. The foundational assumption is that if a model is provided with sufficient examples of similar and dissimilar pairs, it can learn to represent data such that semantically similar samples lie close together in the embedding space, while dissimilar samples are placed farther apart. This framework enables unsupervised or self-supervised learning of latent representations that capture semantic structure purely through relative similarity.
+The overall goal of contrastive learning is to learn meaningful representations by comparing data points against one another, rather than relying on explicit labels \cite{foundationsCVbook}. The foundational assumption is that if a model is provided with sufficient examples of similar and dissimilar pairs, it can learn to represent data such that semantically similar samples lie close together in the embedding space, while dissimilar samples are placed farther apart. This framework enables unsupervised or self-supervised learning of latent representations that capture semantic structure purely through relative similarity.
 
 \begin{figure}[!t]
     \centering
     \includegraphics[width=0.65\linewidth]{contrastive.png}
-    \caption[Contrastive encoder pulling similiar data pairs $(x,x^+)$ together in latent space, and pushing dissimilar pairs $(x,x^-)$ apart]{Contrastive encoder pulling similiar data pairs $(x,x^+)$ together in latent space and pushing dissimilar pairs $(x,x^-)$ apart.}
+    \caption{Contrastive encoder pulling similiar data pairs $(x,x^+)$ together in latent space and pushing dissimilar pairs $(x,x^-)$ apart \cite{foundationsCVbook}.}
     \label{fig:contrastive}
 \end{figure}
 
 \subsection{NT-Xent Loss}
 \label{sec:ntxne_loss}
-A widely used objective for contrastive learning is the Normalised Temperature-Scaled Cross Entropy (NT-Xent) loss introduced in \cite{}. This loss formulates the contrastive task as a classification problem over positive and negative pairs within a batch.  
+A widely used objective for contrastive learning is the Normalised Temperature-Scaled Cross Entropy (NT-Xent) loss introduced in \cite{agren2022ntxentlossupperbound}. This loss formulates the contrastive task as a classification problem over positive and negative pairs within a batch.  
 Given a batch of $N$ samples, each with an augmented pair $(x_i, x_i')$, the loss for a positive pair $(i, j)$ is defined as:
 \begin{equation}
   \mathcal{L}_{i,j} = -\log \frac{\exp(\text{sim}(z_i, z_j) / \tau)}{\sum_{k=1}^{2N} \mathbb{1}_{[k \neq i]} \exp(\text{sim}(z_i, z_k) / \tau)}
@@ -128,7 +140,7 @@ This formulation encourages positive pairs (augmentations of the same sample) to
 
 A key advancement enabled by contrastive learning is the creation of multimodal embedding spaces, which align representations from distinct data types, such as images, text, and neural network weights, into a single, shared latent space. The importance of this lies in its ability to facilitate cross-modal understanding and retrieval. By representing different data types with vectors in the same space, models can compute the semantic similarity between, for example, an image and a piece of text directly. 
 
-An important application of contrastive learning using the NT-Xent objective is CLIP (Contrastive Language--Image Pretraining) \cite{}. CLIP jointly trains an image encoder and a text encoder to align visual and textual representations in a shared embedding space.  
+An important application of contrastive learning using the NT-Xent objective is CLIP (Contrastive Language--Image Pretraining) \cite{pmlr-v139-radford21a}. CLIP jointly trains an image encoder and a text encoder to align visual and textual representations in a shared embedding space.  
 During training, each image is paired with a corresponding caption, forming a positive pair, while all other image--text combinations in the batch act as negatives. The model optimises a symmetric contrastive objective, where each image predicts its matching caption and vice versa:
 \[
 \mathcal{L}_{\text{CLIP}} = \frac{1}{2}(\mathcal{L}_{\text{image-to-text}} + \mathcal{L}_{\text{text-to-image}}).
@@ -159,14 +171,14 @@ The reconstruction term encourages the decoder to accurately reproduce the origi
 \mathcal{L}_{\text{MSE}} = \frac{1}{MN} \sum_{i=1}^{M} \sum_{l=1}^{L} \| \hat{w}_i^{(l)} - w_i^{(l)} \|_2^2,
 \label{eq:weight_recon_loss}
 \end{equation}
-where $w_i^{(l)}$ and $\hat{w}_i^{(l)}$ are the original and reconstructed weights for the $l$-th layer of the $i$-th model in the collection (often called a \textit{model zoo}).  
+where $w_i^{(l)}$ and $\hat{w}_i^{(l)}$ are the original and reconstructed weights for the $l$-th layer of the $i$-th model in the collection.  
 
-The contrastive component $\mathcal{L}_{\text{c}}$ introduces additional structure in the latent space by applying data augmentations during training—such as weight permutation (which leverages inherent symmetries in neural networks) and random erasing—to ensure that semantically similar models are mapped closer together while dissimilar ones are pushed apart. In this work, the contrastive term follows the \textit{NT-Xent} loss formulation (see Section~\ref{sec:nxtne_loss}), which provides a more stable and expressive contrastive objective for modelling relationships in weight space.
+The contrastive component $\mathcal{L}_{\text{c}}$ introduces additional structure in the latent space by applying data augmentations during training—such as weight permutation (which leverages inherent symmetries in neural networks) and random erasing—to ensure that semantically similar models are mapped closer together while dissimilar ones are pushed apart. In this work, the contrastive term follows the \textit{NT-Xent} loss formulation (see Section~\ref{sec:contrastive}), which provides a more stable and expressive contrastive objective for modelling relationships in weight space.
 
 
 This combination of reconstruction and contrastive learning encourages the encoder to capture not only numerical similarity in the weights but also functional and architectural relationships between models. The result is a structured latent space in which proximity correlates with similarity in performance or behaviour.
 
-The learned latent space enables both discriminative and generative applications. The encoder can be used to extract informative embeddings that summarise a model’s functional behaviour, useful for clustering, transfer learning, or model retrieval. Meanwhile, the decoder can generate entirely new sets of weights from latent vectors—supporting generative applications such as zero-shot model synthesis or interpolation between models. This dual capability makes the autoencoder framework particularly appealing for weight space learning, as it provides both interpretability and controllability.
+The learned latent space enables both discriminative and generative applications. The encoder can be used to extract informative embeddings that summarise a model's functional behaviour, useful for clustering, transfer learning, or model retrieval. Meanwhile, the decoder can generate entirely new sets of weights from latent vectors—supporting generative applications such as zero-shot model synthesis or interpolation between models. This dual capability makes the autoencoder framework particularly appealing for weight space learning, as it provides both interpretability and controllability.
 
 \begin{figure}[!t]
     \centering

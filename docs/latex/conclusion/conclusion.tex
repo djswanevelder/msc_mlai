@@ -1,4 +1,26 @@
 \graphicspath{{conclusion/fig/}}
 
-\chapter{Summary}
+\chapter{Conclusion}
 \label{chap:conclusion}
+This work set out to explore whether it is possible to learn a unified embedding space that jointly represents datasets, neural network weights, and performance outcomes. The study aimed to approximate the conditional distribution \( P(W \mid \mathcal{D}, R) \) through contrastive alignment, enabling both interpretability and conditional model generation within the weight space.
+
+To achieve this, a modular system was developed consisting of three components: a weight autoencoder for compressing model parameters, a dataset encoder based on pretrained CLIP features, and a shared encoder trained with the NT-Xent contrastive objective to align these representations. This framework was designed to test whether the learned embedding space could both capture meaningful structural relationships between datasets, results, and weights, and facilitate the conditional sampling of new model weights.
+
+The results revealed that while the weight autoencoder successfully reconstructed latent representations of model parameters with low reconstruction loss, these reconstructions lacked sufficient detail to preserve the decision boundaries of the original networks. The likely cause was the linear compression applied via PCA, which removed essential non-linear structure from the weight space. Consequently, the shared encoder lacked a strong, learnable signal linking the dataset--results pairs \((\mathcal{D}, R)\) to their corresponding weight embeddings, leading to weak generalisation and high validation loss. Despite this limitation, visual analyses of the shared embedding space suggested that some relational structure between modalities was maintained, indicating potential for further refinement.
+
+The findings suggest that while the overall methodology is viable, effective joint modelling of \( P(W \mid \mathcal{D}, R) \) requires more expressive weight encoders and non-linear compression methods capable of preserving fine-grained dependencies. Nonetheless, the results show that contrastive alignment across heterogeneous modalities is highly constrained, and the current approach is insufficient to capture the joint relationships needed for effective conditional weight modelling.
+
+Future research directions are discussed in Section~\ref{sec:future_work}. In summary, potential improvements include exploring non-linear encoding methods to retain more structural information in weight embeddings, expanding the model zoo with a greater variety of architectures, and enhancing dataset encoding strategies.
+
+In conclusion, this study contributes an initial framework for contrastive, dataset-conditioned weight modelling. While preliminary, it highlights the promise of learning shared latent representations that unify models, data, and outcomes—an essential step toward interpretable and generative understanding of neural network weight spaces.
+
+\section{Future Work}
+\label{sec:future_work}
+
+Future research could focus on improving the weight encoder by exploring alternative architectures and compression strategies. One potential avenue is to reverse the PCA and autoencoder stages: first capture non-linear relationships in the weights, then apply linear compression, with a tunable hyperparameter controlling the relative contribution of each stage. This approach could mitigate information loss from linear compression while retaining effective dimensionality reduction.
+
+Another direction is to implement the Sequential Autoencoder for Neural Embeddings (SANE), which may produce more representative weight embeddings. Expanding the model zoo with more models, or experimenting with smaller architectures, could help assess the feasibility and robustness of the approach before scaling to larger networks.
+
+Enhancements to dataset encoding could also improve performance. Techniques from dataset distillation, such as generating a single representative image per class via gradient matching, may provide a more efficient and semantically meaningful summary of each dataset. This would reduce computational requirements while preserving the most relevant information for alignment with weight embeddings.
+
+Finally, increasing the size, diversity, and capacity of the model zoo could lead to improved results. It is possible that capturing the joint relationship between datasets, weights, and performance requires weight vectors sampled at multiple points during training, along with several thousand models and an effective weight encoder, before meaningful conditional model generation can be achieved.
