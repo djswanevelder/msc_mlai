@@ -1,35 +1,28 @@
 \chapter{Results}
 \label{chap:results}
-% Report the measurement -> what does this mean? 
-% Direct in how it is stated.
-
-% Very passive voice in section 4, I think you need to relook at the writing and fix it, but overall a lot of passive voice is happening. Once you have added in the notes for section 4 (which I think is good), spend the time then cleaning this and making it just pop much better.
-
 \section{Weight Autoencoder}
 \label{sec:weights}
 To evaluate the weight autoencoder, we examine the MSE during training. Figure~\ref{fig:weight_encoder_performance} plots the MSE on both the training and validation sets following PCA projection of the model weights. The training error decreases steadily over epochs and reaches a plateau, while the validation error follows a similar trajectory. This behaviour confirms that the model does not overfit the training data and generalises to unseen weight representations.
 
 The MSE demonstrates that the weight autoencoder learns a meaningful mapping from weights to latent space and back. However, since the magnitude of the error depends on the scale of the input model weights, the absolute MSE value is not directly interpretable in terms of downstream model performance. Consequently, additional comparative evaluations are necessary to assess how well the learned representations preserve functionally relevant properties.
 
-Figure \ref{fig:output_comparison} presents the results from a comparative experiment: unseen models are encoded and reconstructed, and the reconstructed models are then utilized to classify a specific test dataset. The output of the original model is compared against the output of the reconstructed model. Throughout the training, the model agreement on synthetic images was $100\%$. model agreement is defined as the percentage of test samples for which the classified label is identical between the original and reconstructed models. Correlation and cosine similarity were calculated on the pre-softmax outputs. It is evident that the weight autoencoder is capable of learning model representations with sufficient fidelity to reconstruct models exhibiting highly correlated outputs---specifically, $0.95+\%$ correlation---compared to the original model's outputs.
+Figure \ref{fig:output_comparison} presents the results from a comparative experiment: unseen models are encoded and reconstructed, and the reconstructed models are then utilised to classify a specific test dataset. The output of the original model is compared against the output of the reconstructed model. Throughout the training, the model agreement on synthetic images was $100\%$. Model agreement is defined as the percentage of test samples for which the classified label is identical between the original and reconstructed models. Correlation and cosine similarity were calculated on the pre-softmax outputs. It is evident that the weight autoencoder is capable of learning model representations with sufficient fidelity to reconstruct models exhibiting highly correlated outputs---specifically, $0.95+\%$ correlation---compared to the original model's outputs.
 
-The same model output comparison procedure is then executed, but using the data upon which the original model was initially trained. Table \ref{tab:weight_real_data} summarizes these cross-dataset performance metrics.
+The same model output comparison procedure is then executed, but using the data upon which the original model was initially trained. Table \ref{tab:weight_real_data} summarises these cross-dataset performance metrics.
 
 \begin{figure*}[!t]
     \centering
     \subfloat[Training and Validation Loss]{
-    \includegraphics[width=0.48\textwidth]{weight_encoder/combined_loss_plot.png}
+    \includegraphics[width=0.51\textwidth]{weight_encoder/combined_loss_plot.png}
         \label{fig:weight_encoder_performance}
     }
     \subfloat[Test Model Output Comparison]{
-    \includegraphics[width=0.48\textwidth]{weight_encoder/output_comparison.png}
+    \includegraphics[width=0.51\textwidth]{weight_encoder/output_comparison.png}
         \label{fig:output_comparison}
     }
     \caption{Performance curves of the weight autoencoder, showing loss progression and comparative output metrics.}
     \label{fig:combined_plots}
 \end{figure*}
-
-
 
 \begin{table}[!h]
     \centering
@@ -46,7 +39,7 @@ The same model output comparison procedure is then executed, but using the data 
     \end{tabularx}
 \end{table}
 
-These results indicate that the weight autoencoder is unable to reconstruct models with sufficient fidelity to preserve their original decision boundaries. The sharp decline in output correlation between the reconstructed and real models shosws that, although the autoencoder captures a coarse structural representation of the ResNet18 weights, critical fine-grained information necessary for accurate functional behaviour is lost.
+These results indicate that the weight autoencoder is unable to reconstruct models with sufficient fidelity to preserve their original decision boundaries. The sharp decline in output correlation between the reconstructed and real models shows that, although the autoencoder captures a coarse structural representation of the ResNet18 weights, critical fine-grained information necessary for accurate functional behaviour is lost.
 
 This degradation originates from the initial PCA compression stage. While PCA retains the principal directions of variance and thereby the most dominant components of the data, it remains a linear approximation of a fundamentally non-linear parameter space. As a result, essential non-linear dependencies within the weight configurations may have been discarded during projection. Given that the autoencoder itself achieves a low reconstruction loss and demonstrates good generalisation, as shown in Figure~\ref{fig:weight_encoder_performance}, the poor reconstruction performance can therefore be reasonably attributed to information loss introduced by PCA.
 
@@ -57,7 +50,7 @@ This degradation originates from the initial PCA compression stage. While PCA re
   \label{fig:hidden_dim_loss}
 \end{figure}
 
-Further evidence of this information loss is shown in Figure~\ref{fig:hidden_dim_loss}, which presents the validation loss across four weight autoencoders with varying architectures. The simplest configuration ('[]') exhibits the most stable and gradually decreasing validation loss, indicating stronger generalisation. In contrast, as model capacity increases—from '[512]' to '[2048,1024,512]'—the validation loss rises and signs of overfitting become apparent. This behaviour suggests that the autoencoder receives an insufficiently informative learning signal, likely due to the high complexity and non-linearity of the underlying weight distribution. Consequently, the overfitting observed in larger models further supports the hypothesis that the PCA compression stage removed too much essential information for accurate reconstruction.
+Further evidence of this information loss is shown in Figure~\ref{fig:hidden_dim_loss}, which presents the validation loss across four weight autoencoders with varying architectures. Each list shown in the legend represents a layer configuration, with numbers indicating layer sizes. The simplest configuration (`[]') exhibits the most stable and gradually decreasing validation loss, indicating stronger generalisation. In contrast, as model capacity increases—from `[512]' to `[2048,1024,512]'—the validation loss rises and signs of overfitting become apparent. This behaviour suggests that the autoencoder receives an insufficiently informative learning signal, likely due to the high complexity and non-linearity of the underlying weight distribution. Consequently, the overfitting observed in larger models further supports the hypothesis that the PCA compression stage removed too much essential information for accurate reconstruction.
 
 \section{Shared Encoder}
 \label{sec:shared}
@@ -75,12 +68,12 @@ Interestingly, the validation loss does not worsen over time, which would typica
 
 \begin{figure}[!t]
     \centering
-    \makebox[\textwidth][c]{\hspace{-1cm}\includegraphics[width=1.1\linewidth]{heat_map.png}}
+    \makebox[\textwidth][c]{\hspace{-0.2cm}\includegraphics[width=0.9\linewidth]{heat_map.png}}
     \caption[Cosine similarity heat map for weight and projected embeddings.]{Cosine similarity heat map between five weight embeddings and their corresponding projected embeddings $z_{\text{proj}}$.}
     \label{fig:heat_map}
 \end{figure}
 
-Figure~\ref{fig:heat_map} provides further insight into this behaviour by visualising the cosine similarity between five weight embeddings and their corresponding projected embeddings ${z}_{\text{proj}}$ within the training set. The x-axis represents $(\mathcal{D}, R)$ pairs sampled from both early and late training epochs, while the y-axis shows the corresponding latent weight vectors produced by the autoencoder. The numbers in parentheses (for example, “(41)”) indicate the training epoch at which a specific dataset--result pair or weight embedding was generated. Darker regions in the heatmap correspond to higher cosine similarity, meaning that the reconstructed embedding more closely matches the original latent representation, while lighter regions indicate lower alignment. This allows the figure to highlight how reconstruction fidelity changes across training progress and between different dataset--result pairs.
+Figure~\ref{fig:heat_map} provides further insight into this behaviour by visualising the cosine similarity between five weight embeddings and their corresponding projected embeddings ${z}_{\text{proj}}$ within the training set. The x-axis represents $(\mathcal{D}, R)$ pairs sampled from both early and late training epochs, while the y-axis shows the corresponding latent weight vectors produced by the autoencoder. The numbers in parentheses (for example, ``(41)'') indicate the training epoch at which a specific dataset--result pair or weight embedding was generated. Darker regions in the heatmap correspond to higher cosine similarity, meaning that the reconstructed embedding more closely matches the original latent representation, while lighter regions indicate lower alignment. This allows the figure to highlight how reconstruction fidelity changes across training progress and between different dataset--result pairs.
 
 High cosine similarity values (red regions) are observed along the diagonal, showing that matching pairs of weights and $(\mathcal{D}, R)$ embeddings are aligned in the shared space. Negative pairs, shown as white or blue, exhibit low similarity as expected. Notably, the same $(\mathcal{D}, R)$ pairs across different epochs also display higher similarity, despite not being explicitly defined as positives. This shows that the shared encoder partially retains the relational structure among triplets $(\mathcal{D}, R, W)$ across training stages, even in the absence of a strong global signal.
 

@@ -65,7 +65,7 @@ The original data can be approximately reconstructed from the embedding space us
 \end{equation}
 where $\hat{X} \in R^{n \times d}$ is the low-rank approximation of the centered data $X$.
 
-PCA provides a linear method for generating lossy reversibility latent representations, however, it's linear nature limits its ability to capture non-linear relationships, thereby restricting its overall expressiveness.
+PCA provides a linear method for generating lossy reversibility latent representations, however, its linear nature limits its ability to capture non-linear relationships, thereby restricting its overall expressiveness.
 
 
 \section{Autoencoders}
@@ -148,7 +148,7 @@ Through this process, CLIP learns general-purpose visual and linguistic represen
 
 
 \section{Autoencoder for Neural Embeddings}
-Applying the concept of an autoencoder to neural network weights has recently gained attention as a means to learn structured, low-dimensional representations of model parameters. Instead of encoding raw input data, the autoencoder learns to encode and reconstruct the weights of pre-trained neural networks, effectively embedding each model into a embedding space that captures structural and functional similarities between models. This approach was explored in \cite{NEURIPS2022_b2c4b7d3}, where the goal was to build a continuous and interpretable representation space of neural weights.
+Applying the concept of an autoencoder to neural network weights has recently gained attention as a means to learn structured, low-dimensional representations of model parameters. Instead of encoding raw input data, the autoencoder learns to encode and reconstruct the weights of pre-trained neural networks, effectively embedding each model into an embedding space that captures structural and functional similarities between models. This approach was explored in \cite{NEURIPS2022_b2c4b7d3}, where the goal was to build a continuous and interpretable representation space of neural weights.
 
 
 Unlike conventional autoencoders that optimise a single reconstruction loss, the neural weight autoencoder is trained with a multi-objective loss function that combines reconstruction and contrastive terms:
