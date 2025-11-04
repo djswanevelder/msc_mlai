@@ -20,6 +20,6 @@
 \contentsline {chapter}{\numberline {4}Results}{20}{chapter.4}%
 \contentsline {section}{\numberline {4.1}Weight Autoencoder}{20}{section.4.1}%
 \contentsline {section}{\numberline {4.2}Shared Encoder}{22}{section.4.2}%
-\contentsline {chapter}{\numberline {5}Conclusion}{24}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Future Work}{25}{section.5.1}%
-\contentsline {chapter}{Bibliography}{26}{chapter*.16}%
+\contentsline {chapter}{\numberline {5}Conclusion}{25}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Future Work}{26}{section.5.1}%
+\contentsline {chapter}{Bibliography}{27}{chapter*.16}%

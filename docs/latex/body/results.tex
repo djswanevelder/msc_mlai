@@ -7,7 +7,7 @@
 
 \section{Weight Autoencoder}
 \label{sec:weights}
-To evaluate the efficacy of the weight autoencoder, we examine the evolution of the mean squared error (MSE) during training. Figure \ref{fig:weight_encoder_performance} plots the MSE observed on both the training and validation sets following PCA projection of the model weights. The training error consistently decreases over epochs, eventually reaching a plateau, while the validation error follows a similar trajectory. This parallel behaviour suggests that the model is not overfitting to the training data and is capable of generalizing to unseen weight representations.
+To evaluate the efficacy of the weight autoencoder, we examine the evolution of the mean squared error (MSE) during training. Figure \ref{fig:weight_encoder_performance} plots the MSE observed on both the training and validation sets following PCA projection of the model weights. The training error consistently decreases over epochs, eventually reaching a plateau, while the validation error follows a similar trajectory. This parallel behaviour demonstrates that the model is not overfitting to the training data and is capable of generalizing to unseen weight representations.
 
 The use of MSE as the reconstruction metric confirms that the weight autoencoder is learning a meaningful mapping from weights to latent space and back. However, since the magnitude of the error depends on the scale of the input model weights, the absolute MSE value is not directly interpretable in terms of downstream model performance. Consequently, additional comparative evaluations are necessary to assess how well the learned representations preserve functionally relevant properties.
 
@@ -35,26 +35,28 @@ The same model output comparison procedure is then executed, but using the data 
     \centering
     \caption{Model Reconstruction Performance on Training Data}
     \label{tab:weight_real_data}
-    \begin{tabularx}{0.8\linewidth}{@{}lX@{}} 
+    \begin{tabularx}{0.8\linewidth}{@{}lcc@{}} 
         \toprule
-        Average Metric & Value \\
+        \textbf{Metric} & \textbf{Mean Value} & \textbf{Range} \\
         \midrule
-        Cosine Similarity (Pre-Softmax Output) & $-0.0323$ \\
-        Correlation (Pre-Softmax Output) & $-0.08570$ \\
-        Predition Agreement & $35.6905 \% $ \\
+        Cosine Similarity (Pre-Softmax Output) & $-0.082$ & $[-0.547,\, 0.526]$ \\
+        Correlation (Pre-Softmax Output) & $0.016$ & $[-0.329,\, 0.344]$ \\
+        Prediction Agreement & $31.21\%$ & $[2.06\%,\, 64.88\%]$ \\
         \bottomrule
     \end{tabularx}
 \end{table}
 
+
 % Adding min and max values here can help. We could potentially show some models work, some don't? Or a distribution score of the prediction agreement?
 
-These results indicate that the weight autoencoder is unable to reconstruct models with sufficient fidelity to preserve their original decision boundaries. The sharp decline in output correlation between the reconstructed and real models suggests that, although the autoencoder captures a coarse structural representation of the ResNet18 weights, critical fine-grained information necessary for accurate functional behaviour is lost.
 
-This degradation likely originates from the initial PCA compression stage. While PCA retains the principal directions of variance and thereby the most dominant components of the data, it remains a linear approximation of a fundamentally non-linear parameter space. As a result, essential non-linear dependencies within the weight configurations may have been discarded during projection. Given that the autoencoder itself achieves a low reconstruction loss and demonstrates good generalisation, as shown in Figure~\ref{fig:weight_encoder_performance}, the poor reconstruction performance can therefore be reasonably attributed to information loss introduced by PCA.
+These results indicate that the weight autoencoder is unable to reconstruct models with sufficient fidelity to preserve their original decision boundaries. The sharp decline in output correlation between the reconstructed and real models shosws that, although the autoencoder captures a coarse structural representation of the ResNet18 weights, critical fine-grained information necessary for accurate functional behaviour is lost.
+
+This degradation originates from the initial PCA compression stage. While PCA retains the principal directions of variance and thereby the most dominant components of the data, it remains a linear approximation of a fundamentally non-linear parameter space. As a result, essential non-linear dependencies within the weight configurations may have been discarded during projection. Given that the autoencoder itself achieves a low reconstruction loss and demonstrates good generalisation, as shown in Figure~\ref{fig:weight_encoder_performance}, the poor reconstruction performance can therefore be reasonably attributed to information loss introduced by PCA.
 
 \begin{figure}[!t]
   \centering
-  \includegraphics[width=0.5\linewidth]{weight_encoder/hidden_dim_loss.png}
+  \includegraphics[width=0.6\linewidth]{weight_encoder/hidden_dim_loss.png}
   \caption{Validation NT-Xent loss of the weight autoencoder for a range of hidden dimensions. Each list represents a layer configuration, with numbers indicating layer sizes.}
   \label{fig:hidden_dim_loss}
 \end{figure}
@@ -63,25 +65,18 @@ Further evidence of this information loss is shown in Figure~\ref{fig:hidden_dim
 
 \section{Shared Encoder}
 \label{sec:shared}
-
+\begin{figure}[!t]
+    \centering
+    \includegraphics[width=0.65\linewidth]{shared/nt_xent_loss_plot.png}
+    \caption[Shared encoder training and validation losses.]{Training and validation losses for the shared encoder. The validation loss remains high, indicating a lack of generalisable signal due to information loss in the weight embeddings.}
+    \label{fig:shared_loss}
+\end{figure}
 The shared encoder was trained following the procedure described in Section~\ref{sec:shared_enc}, with both training and validation losses monitored throughout. Figure~\ref{fig:shared_loss} shows that the training loss decreases rapidly at first and then decreases at a steady rate, while the validation loss decreases slightly before stabilising at a relatively high value of \(\sim\)3.1.
 
 This behaviour suggests that the shared encoder is successfully fitting the training data but fails to generalise to unseen data. The persistently high validation loss indicates that the model cannot extract a meaningful or consistent signal from the validation set, likely due to information loss introduced earlier in the weight encoding process. As the weight representations lack sufficient structure or variance relevant to the corresponding $(\mathcal{D}, R)$ pairs, the shared encoder effectively trains on noise. 
 
 Interestingly, the validation loss does not worsen over time, which would typically occur during overfitting. This further supports the hypothesis that there is little to no informative signal to learn—changes to the shared encoder's weights have minimal effect on generalisation performance, implying that the training dynamics are dominated by random correlations rather than meaningful alignment.
 
-\begin{figure}[!t]
-    \centering
-    \includegraphics[width=0.75\linewidth]{shared/nt_xent_loss_plot.png}
-    \caption[Shared encoder training and validation losses.]{Training and validation losses for the shared encoder. The validation loss remains high, indicating a lack of generalisable signal due to information loss in the weight embeddings.}
-    \label{fig:shared_loss}
-\end{figure}
-
-Figure~\ref{fig:heat_map} provides further insight into this behaviour by visualising the cosine similarity between five weight embeddings and their corresponding projected embeddings ${z}_{\text{proj}}$ within the training set. The x-axis represents $(\mathcal{D}, R)$ pairs at both early and late training epochs, while the y-axis shows the corresponding weight latent vectors from the weight autoencoder.
-
-% I am struggling to read the plot a bit, what does (41) mean for example? I think just explain a bit more how to interpet the graph
-
-High cosine similarity values (red regions) are observed along the diagonal, showing that matching pairs of weights and $(\mathcal{D}, R)$ embeddings are aligned in the shared space. Negative pairs, shown as white or blue, exhibit low similarity as expected. Notably, the same $(\mathcal{D}, R)$ pairs across different epochs also display higher similarity, despite not being explicitly defined as positives. This suggests that the shared encoder partially retains the relational structure among triplets $(\mathcal{D}, R, W)$ across training stages, even in the absence of a strong global signal.
 
 \begin{figure}[!t]
     \centering
@@ -89,4 +84,10 @@ High cosine similarity values (red regions) are observed along the diagonal, sho
     \caption[Cosine similarity heat map for weight and projected embeddings.]{Cosine similarity heat map between five weight embeddings and their corresponding projected embeddings $z_{\text{proj}}$.}
     \label{fig:heat_map}
 \end{figure}
+
+
+
+Figure~\ref{fig:heat_map} provides further insight into this behaviour by visualising the cosine similarity between five weight embeddings and their corresponding projected embeddings ${z}_{\text{proj}}$ within the training set. The x-axis represents $(\mathcal{D}, R)$ pairs sampled from both early and late training epochs, while the y-axis shows the corresponding latent weight vectors produced by the autoencoder. The numbers in parentheses (for example, “(41)”) indicate the training epoch at which a specific dataset--result pair or weight embedding was generated. Darker regions in the heatmap correspond to higher cosine similarity, meaning that the reconstructed embedding more closely matches the original latent representation, while lighter regions indicate lower alignment. This allows the figure to highlight how reconstruction fidelity changes across training progress and between different dataset--result pairs.
+
+High cosine similarity values (red regions) are observed along the diagonal, showing that matching pairs of weights and $(\mathcal{D}, R)$ embeddings are aligned in the shared space. Negative pairs, shown as white or blue, exhibit low similarity as expected. Notably, the same $(\mathcal{D}, R)$ pairs across different epochs also display higher similarity, despite not being explicitly defined as positives. This suggests that the shared encoder partially retains the relational structure among triplets $(\mathcal{D}, R, W)$ across training stages, even in the absence of a strong global signal.
 
