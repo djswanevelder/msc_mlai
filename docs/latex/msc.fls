@@ -1516,8 +1516,11 @@ INPUT ./fig//weight_encoder/output_comparison.png
 INPUT fig//weight_encoder/output_comparison.png
 INPUT ./fig//weight_encoder/output_comparison.png
 INPUT ./fig//weight_encoder/output_comparison.png
-INPUT /usr/share/texlive/texmf-dist/fonts/tfm/huerta/caladea/Caladea-Bold-tlf-ot1.tfm
-INPUT /usr/share/texlive/texmf-dist/fonts/tfm/huerta/caladea/Caladea-Bold-tlf-ot1.tfm
+INPUT ./fig//weight_encoder/hidden_dim_loss.png
+INPUT ./fig//weight_encoder/hidden_dim_loss.png
+INPUT fig//weight_encoder/hidden_dim_loss.png
+INPUT ./fig//weight_encoder/hidden_dim_loss.png
+INPUT ./fig//weight_encoder/hidden_dim_loss.png
 INPUT ./fig//shared/nt_xent_loss_plot.png
 INPUT ./fig//shared/nt_xent_loss_plot.png
 INPUT fig//shared/nt_xent_loss_plot.png

@@ -46,17 +46,20 @@ The same model output comparison procedure is then executed, but using the data 
     \end{tabularx}
 \end{table}
 
-These metrics show that the Weight Autoencoder fails to reconstruct models with enough fidelity to preserve the original decision boundaries. The large drop in output correlation between the reconstructed and real models suggests that, while a coarse representation of the ResNet18 weights is captured, critical fine-grained information required for functional accuracy is lost.  
+% Adding min and max values here can help. We could potentially show some models work, some don't? Or a distribution score of the prediction agreement?
 
-This degradation is likely caused by the initial PCA compression stage. Although PCA theoretically retains the principal directions of variance and thus the most informative components, it remains a linear approximation of a highly non-linear parameter space. Consequently, important non-linear relationships within the weights may have been discarded during projection. Given that the Autoencoder itself achieves low reconstruction loss and generalises well, as shown in Figure~\ref{fig:weight_encoder_performance}, the poor reconstruction performance can reasonably be attributed to information loss introduced by PCA.
+These results indicate that the weight autoencoder is unable to reconstruct models with sufficient fidelity to preserve their original decision boundaries. The sharp decline in output correlation between the reconstructed and real models suggests that, although the autoencoder captures a coarse structural representation of the ResNet18 weights, critical fine-grained information necessary for accurate functional behaviour is lost.
 
-\(\textbf{NOTE:}\)
-When I tried to use a more expressive model the validaiotn loss of the autoencoder kept increasing for decreasing training loss, only the smallest possible model seemed to do well, no hidden layers. This indicates to me severe overfitting, despite the model being relatively small. This may be yet another indicaiton of the fact that the PCA compression did not retain sufficient information, as a more expressive encoder would have led to better results. Should I include a plot of this with my logic and conclusions outlined as above ?
+This degradation likely originates from the initial PCA compression stage. While PCA retains the principal directions of variance and thereby the most dominant components of the data, it remains a linear approximation of a fundamentally non-linear parameter space. As a result, essential non-linear dependencies within the weight configurations may have been discarded during projection. Given that the autoencoder itself achieves a low reconstruction loss and demonstrates good generalisation, as shown in Figure~\ref{fig:weight_encoder_performance}, the poor reconstruction performance can therefore be reasonably attributed to information loss introduced by PCA.
 
-\(\textbf{NOTE:}\)
-Also when I used a per param pca componets value of 64 and a more expresive model, reconstrcution and output performance metrics improved, though marginally.
-the NXT-loss went up, but this is expected and the reconstruction is what matters. This may indicate that shifting to more compression in the encoder and less in the PCA may lead to better performance. should I include these plots and discussion as well?
+\begin{figure}[!t]
+  \centering
+  \includegraphics[width=0.5\linewidth]{weight_encoder/hidden_dim_loss.png}
+  \caption{Validation NT-Xent loss of the weight autoencoder for a range of hidden dimensions. Each list represents a layer configuration, with numbers indicating layer sizes.}
+  \label{fig:hidden_dim_loss}
+\end{figure}
 
+Further evidence of this information loss is shown in Figure~\ref{fig:hidden_dim_loss}, which presents the validation loss across four weight autoencoders with varying architectures. The simplest configuration ('[]') exhibits the most stable and gradually decreasing validation loss, indicating stronger generalisation. In contrast, as model capacity increases—from '[512]' to '[2048,1024,512]'—the validation loss rises and signs of overfitting become apparent. This behaviour suggests that the autoencoder receives an insufficiently informative learning signal, likely due to the high complexity and non-linearity of the underlying weight distribution. Consequently, the overfitting observed in larger models further supports the hypothesis that the PCA compression stage removed too much essential information for accurate reconstruction.
 
 \section{Shared Encoder}
 \label{sec:shared}
@@ -75,6 +78,8 @@ Interestingly, the validation loss does not worsen over time, which would typica
 \end{figure}
 
 Figure~\ref{fig:heat_map} provides further insight into this behaviour by visualising the cosine similarity between five weight embeddings and their corresponding projected embeddings ${z}_{\text{proj}}$ within the training set. The x-axis represents $(\mathcal{D}, R)$ pairs at both early and late training epochs, while the y-axis shows the corresponding weight latent vectors from the weight autoencoder.
+
+% I am struggling to read the plot a bit, what does (41) mean for example? I think just explain a bit more how to interpet the graph
 
 High cosine similarity values (red regions) are observed along the diagonal, showing that matching pairs of weights and $(\mathcal{D}, R)$ embeddings are aligned in the shared space. Negative pairs, shown as white or blue, exhibit low similarity as expected. Notably, the same $(\mathcal{D}, R)$ pairs across different epochs also display higher similarity, despite not being explicitly defined as positives. This suggests that the shared encoder partially retains the relational structure among triplets $(\mathcal{D}, R, W)$ across training stages, even in the absence of a strong global signal.
 
