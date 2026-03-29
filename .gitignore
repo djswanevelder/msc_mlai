@@ -10,4 +10,11 @@ pca/
 pca_encoder.pth
 final_meta_dataset.pth
 trained_encoder_weights.pth
-trained_encoder_weights_val.pth
+trained_encoder_weights_val.pthdata/
+.venv/
+.smart-solve/
+*.pt
+*.pth
+analysis_data.csv
+__pycache__/
+.claude/commands/

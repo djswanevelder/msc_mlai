@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>System Architecture — Weight Generation via Hypernetworks</title>
+<style>
+  :root {
+    --bg: #0d1117; --card: #161b22; --border: #30363d;
+    --text: #e6edf3; --muted: #8b949e; --accent: #58a6ff; --green: #3fb950;
+    --orange: #d29922; --red: #f85149; --purple: #bc8cff; --pink: #f778ba;
+    --teal: #39d2c0;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); padding: 2rem; }
+  .container { max-width: 1000px; margin: 0 auto; }
+  h1 { font-size: 1.6rem; text-align: center; margin-bottom: 0.5rem; }
+  h2 { font-size: 1.2rem; margin-top: 2rem; margin-bottom: 1rem; color: var(--accent); border-bottom: 1px solid var(--border); padding-bottom: 0.4rem; }
+  h3 { font-size: 1rem; color: var(--purple); margin-top: 1.5rem; margin-bottom: 0.75rem; }
+  .subtitle { text-align: center; color: var(--muted); margin-bottom: 2rem; font-size: 0.9rem; }
+  p { line-height: 1.7; margin-bottom: 1rem; font-size: 0.92rem; color: var(--text); }
+  .figure { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 1.5rem; margin: 1.5rem 0; }
+  .caption { font-size: 0.82rem; color: var(--muted); margin-top: 1rem; line-height: 1.5; }
+  .caption strong { color: var(--text); }
+
+  /* Diagram components */
+  .diagram { padding: 1.5rem 0; }
+  .row { display: flex; align-items: center; justify-content: center; gap: 0; flex-wrap: wrap; margin: 0.75rem 0; }
+  .box {
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    padding: 0.6rem 1rem; border-radius: 6px; text-align: center; min-width: 80px; min-height: 50px;
+  }
+  .box .dim { font-weight: 700; font-size: 0.9rem; }
+  .box .label { font-size: 0.68rem; color: var(--muted); margin-top: 2px; line-height: 1.3; }
+  .box.blue   { background: #1a3a5c; border: 2px solid var(--accent); }
+  .box.purple { background: #2d1f4e; border: 2px solid var(--purple); }
+  .box.green  { background: #1f3d1f; border: 2px solid var(--green); }
+  .box.orange { background: #3d2b1f; border: 2px solid var(--orange); }
+  .box.red    { background: #3d1f1f; border: 2px solid var(--red); }
+  .box.pink   { background: #3d1f2f; border: 2px solid var(--pink); }
+  .box.teal   { background: #1f3d3d; border: 2px solid var(--teal); }
+  .box.dashed { border-style: dashed; opacity: 0.7; }
+  .arr { font-size: 1.3rem; color: var(--muted); padding: 0 0.3rem; flex-shrink: 0; }
+  .arr.down { display: block; text-align: center; font-size: 1.5rem; margin: 0.3rem 0; }
+
+  /* Phase labels */
+  .phase-label {
+    display: inline-block; padding: 3px 10px; border-radius: 12px;
+    font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.05em; margin-bottom: 0.75rem;
+  }
+  .phase-label.train { background: rgba(63,185,80,0.15); color: var(--green); }
+  .phase-label.infer { background: rgba(88,166,255,0.15); color: var(--accent); }
+  .phase-label.both  { background: rgba(188,140,255,0.15); color: var(--purple); }
+
+  /* Brace for grouping */
+  .brace-group {
+    border: 1px dashed var(--border); border-radius: 8px; padding: 1rem;
+    margin: 0.5rem 0; position: relative;
+  }
+  .brace-group .group-label {
+    position: absolute; top: -10px; left: 12px; background: var(--bg);
+    padding: 0 8px; font-size: 0.7rem; color: var(--muted); font-weight: 600;
+  }
+
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  .insight {
+    background: rgba(88,166,255,0.06); border-left: 3px solid var(--accent);
+    padding: 0.75rem 1rem; border-radius: 0 6px 6px 0; margin: 1rem 0; font-size: 0.9rem;
+  }
+  table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+  th, td { padding: 0.4rem 0.75rem; border-bottom: 1px solid var(--border); text-align: left; }
+  th { color: var(--muted); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; }
+  tr:last-child td { border-bottom: none; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>System Architecture</h1>
+<p class="subtitle">Two approaches to weight generation: direct (V4) and autoencoder-based (V4-AE)</p>
+
+<!-- ============================================================ -->
+<h2>1. Overview: The Two-Level Problem</h2>
+<!-- ============================================================ -->
+
+<p>
+  The system operates at two levels. At the <strong>inner level</strong>, a small target classifier
+  solves a 3-way classification task (e.g., distinguishing three character classes). At the <strong>outer level</strong>,
+  a meta-model (hypernetwork) learns to <em>produce</em> the target classifier's weights from a description of the task.
+</p>
+
+<div class="figure">
+  <div class="diagram">
+    <div class="brace-group" style="display: inline-block; width: 100%;">
+      <div class="group-label">OUTER LEVEL — Meta-Learning</div>
+      <div class="row" style="margin-top: 0.5rem;">
+        <div class="box pink" style="min-width: 120px;">
+          <div class="dim">3 &times; 20 images</div>
+          <div class="label">Task Description<br>(prototype examples)</div>
+        </div>
+        <div class="arr">&xrarr;</div>
+        <div class="box purple" style="min-width: 120px;">
+          <div class="dim">HyperNetwork</div>
+          <div class="label">Meta-model M<br>(learned)</div>
+        </div>
+        <div class="arr">&xrarr;</div>
+        <div class="box orange" style="min-width: 120px;">
+          <div class="dim">W &isin; R<sup>d</sup></div>
+          <div class="label">Generated weight<br>vector</div>
+        </div>
+      </div>
+    </div>
+    <div class="arr down">&darr; load weights</div>
+    <div class="brace-group" style="display: inline-block; width: 100%;">
+      <div class="group-label">INNER LEVEL — Task Solving</div>
+      <div class="row" style="margin-top: 0.5rem;">
+        <div class="box red" style="min-width: 100px;">
+          <div class="dim">28 &times; 28</div>
+          <div class="label">Input image</div>
+        </div>
+        <div class="arr">&xrarr;</div>
+        <div class="box green" style="min-width: 100px;">
+          <div class="dim">Target MLP</div>
+          <div class="label">Parameterised by W</div>
+        </div>
+        <div class="arr">&xrarr;</div>
+        <div class="box blue" style="min-width: 100px;">
+          <div class="dim">3 classes</div>
+          <div class="label">Prediction</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="caption">
+    <strong>Figure 1.</strong> Two-level structure. The hypernetwork (outer) generates weights for the target classifier (inner).
+    At inference, no gradient-based training is needed — a single forward pass through the hypernetwork produces
+    a functional classifier.
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<h2>2. Approach A: Direct Generation (V4, 50K params)</h2>
+<!-- ============================================================ -->
+
+<p>
+  In the direct approach, the hypernetwork outputs the complete weight vector of the target MLP.
+  This works for target networks up to ~50K parameters.
+</p>
+
+<div class="figure">
+  <div class="phase-label train">Training</div>
+  <div class="diagram">
+    <div class="row">
+      <div class="box pink">
+        <div class="dim">K images</div>
+        <div class="label">Per class</div>
+      </div>
+      <div class="arr">&xrarr;</div>
+      <div class="box purple">
+        <div class="dim">Shared Enc</div>
+        <div class="label">784 &rarr; 256 &rarr; 128</div>
+      </div>
+      <div class="arr">&xrarr;</div>
+      <div class="box purple">
+        <div class="dim">Mean Pool</div>
+        <div class="label">&rarr; 128D per class</div>
+      </div>
+    </div>
+    <div class="arr down">&darr; &times;3 classes, concat</div>
+    <div class="row">
+      <div class="box blue">
+        <div class="dim">384</div>
+        <div class="label">Task embedding<br>(3 &times; 128)</div>
+      </div>
+      <div class="arr">&xrarr;</div>
+      <div class="box green">
+        <div class="dim">512</div>
+        <div class="label">Hidden 1 + ReLU</div>
+      </div>
+      <div class="arr">&xrarr;</div>
+      <div class="box green">
+        <div class="dim">512</div>
+        <div class="label">Hidden 2 + ReLU</div>
+      </div>
+      <div class="arr">&xrarr;</div>
+      <div class="box orange">
+        <div class="dim">50,435</div>
+        <div class="label">Full weight vector</div>
+      </div>
+    </div>
+    <div class="arr down">&darr; load as MLP weights, forward pass on task data</div>
+    <div class="row">
+      <div class="box red">
+        <div class="dim">CE Loss</div>
+        <div class="label">Functional loss<br>Backprop through ALL</div>
+      </div>
+    </div>
+  </div>
+  <div class="caption">
+    <strong>Figure 2.</strong> Direct generation (V4). The prototype encoder is shared across all classes.
+    The full pipeline is differentiable: gradients flow from classification loss through the generated weights
+    back to the hypernetwork and prototype encoder.
+    <br><strong>Limitation:</strong> output dimension = target parameter count.
+    Fails for targets >50K params (loss landscape plateau).
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<h2>3. Approach B: Autoencoder-Mediated Generation (V4-AE, 109K+ params)</h2>
+<!-- ============================================================ -->
+
+<p>
+  To scale beyond 50K parameters, we introduce a <strong>weight autoencoder</strong> that compresses the
+  target weight space to a small latent code. The hypernetwork generates in this latent space, and the
+  decoder expands back to full weights. This decouples the hypernetwork's output dimension from the target size.
+</p>
+
+<h3>3.1 Stage 1: Weight Autoencoder Training</h3>
+
+<div class="figure">
+  <div class="phase-label train">Pre-training</div>
+  <div class="diagram">
+    <div class="row">
+      <div class="box orange">
+        <div class="dim">W &isin; R<sup>109K</sup></div>
+        <div class="label">Zoo weight vector<br>(normalised)</div>
+      </div>
+      <div class="arr">&xrarr;</div>
+      <div class="box teal">
+        <div class="dim">Encoder</div>
+        <div class="label">109K &rarr; 2048 &rarr; 1024 &rarr; 512</div>
+      </div>
+      <div class="arr">&xrarr;</div>
+      <div class="box purple">
+        <div class="dim">z &isin; R<sup>512</sup></div>
+        <div class="label">Latent code<br>(213&times; compression)</div>
+      </div>
+      <div class="arr">&xrarr;</div>
+      <div class="box teal">
+        <div class="dim">Decoder</div>
+        <div class="label">512 &rarr; 1024 &rarr; 2048 &rarr; 109K</div>
+      </div>
+      <div class="arr">&xrarr;</div>
+      <div class="box orange" style="border-style: dashed;">
+        <div class="dim">W&#770;</div>
+        <div class="label">Reconstructed</div>
+      </div>
+    </div>
+    <div class="arr down">&darr;</div>
+    <div class="row">
+      <div class="box red">
+        <div class="dim">L = MSE + Functional</div>
+        <div class="label">Reconstruction loss +<br>cross-entropy of decoded weights on data</div>
+      </div>
+    </div>
+  </div>
+  <div class="caption">
+    <strong>Figure 3.</strong> Weight autoencoder. Trained on the model zoo to compress 109K weight vectors
+    into 512D latent codes. The functional loss component ensures the latent space preserves the
+    <em>function</em> of the weights, not just their values.
+  </div>
+</div>
+
+<h3>3.2 Stage 2: Latent Hypernetwork Training</h3>
+
+<div class="figure">
+  <div class="phase-label train">Training (decoder frozen)</div>
+  <div class="diagram">
+    <div class="row">
+      <div class="box pink">
+        <div class="dim">Prototypes</div>
+        <div class="label">3 &times; 20 images</div>
+      </div>
+      <div class="arr">&xrarr;</div>
+      <div class="box purple">
+        <div class="dim">Prototype Enc</div>
+        <div class="label">Shared encoder</div>
+      </div>
+      <div class="arr">&xrarr;</div>
+      <div class="box blue">
+        <div class="dim">384</div>
+        <div class="label">Task embedding</div>
+      </div>
+      <div class="arr">&xrarr;</div>
+      <div class="box green">
+        <div class="dim">512 &rarr; 512</div>
+        <div class="label">Latent generator</div>
+      </div>
+      <div class="arr">&xrarr;</div>
+      <div class="box purple">
+        <div class="dim">z &isin; R<sup>512</sup></div>
+        <div class="label">Predicted latent</div>
+      </div>
+    </div>
+    <div class="arr down">&darr; frozen decoder</div>
+    <div class="row">
+      <div class="box teal" style="border-style: dashed;">
+        <div class="dim">Decoder</div>
+        <div class="label">512 &rarr; 109K (frozen)</div>
+      </div>
+      <div class="arr">&xrarr;</div>
+      <div class="box orange">
+        <div class="dim">W &isin; R<sup>109K</sup></div>
+        <div class="label">Full weights</div>
+      </div>
+      <div class="arr">&xrarr;</div>
+      <div class="box green" style="border-style: dashed;">
+        <div class="dim">Target MLP</div>
+        <div class="label">Run on task data</div>
+      </div>
+      <div class="arr">&xrarr;</div>
+      <div class="box red">
+        <div class="dim">Functional Loss</div>
+        <div class="label">CE + latent MSE</div>
+      </div>
+    </div>
+  </div>
+  <div class="caption">
+    <strong>Figure 4.</strong> Latent hypernetwork. The hypernetwork only outputs a 512D code.
+    The frozen decoder expands this to full 109K weights. The hypernetwork's output dimension
+    is now <strong>independent of the target network size</strong>.
+    Gradients flow: functional loss &rarr; target MLP ops &rarr; generated weights &rarr; decoder &rarr; latent code &rarr; hypernetwork.
+  </div>
+</div>
+
+<h3>3.3 Inference Pipeline</h3>
+
+<div class="figure">
+  <div class="phase-label infer">Inference (single forward pass)</div>
+  <div class="diagram">
+    <div class="row">
+      <div class="box pink">
+        <div class="dim">Examples</div>
+        <div class="label">Few images<br>per class</div>
+      </div>
+      <div class="arr">&xrarr;</div>
+      <div class="box purple">
+        <div class="dim">Proto Enc</div>
+        <div class="label">&rarr; 384D</div>
+      </div>
+      <div class="arr">&xrarr;</div>
+      <div class="box green">
+        <div class="dim">HyperNet</div>
+        <div class="label">&rarr; 512D latent</div>
+      </div>
+      <div class="arr">&xrarr;</div>
+      <div class="box teal">
+        <div class="dim">Decoder</div>
+        <div class="label">&rarr; 109K weights</div>
+      </div>
+      <div class="arr">&xrarr;</div>
+      <div class="box orange">
+        <div class="dim">Target MLP</div>
+        <div class="label">Ready to classify</div>
+      </div>
+    </div>
+  </div>
+  <div class="caption">
+    <strong>Figure 5.</strong> Complete inference pipeline. From example images to a functional classifier
+    in a single forward pass. No gradient computation needed.
+    Optional: fine-tune the generated weights with a few SGD steps for additional accuracy.
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<h2>4. The Functional Loss — Key Innovation</h2>
+<!-- ============================================================ -->
+
+<p>
+  Both approaches are trained with <strong>functional loss</strong>: instead of matching weight values (MSE),
+  we measure whether the generated weights produce correct classifications. This is what makes the method work.
+</p>
+
+<div class="figure">
+  <div class="diagram">
+    <div class="row">
+      <div class="box purple" style="min-width: 90px;">
+        <div class="dim">HyperNet</div>
+        <div class="label">Generates W</div>
+      </div>
+      <div class="arr">&xrarr;</div>
+      <div class="box orange" style="min-width: 90px;">
+        <div class="dim">Target MLP</div>
+        <div class="label">W loaded as<br>raw tensors</div>
+      </div>
+      <div class="arr">&xrarr;</div>
+      <div class="box blue" style="min-width: 100px;">
+        <div class="dim">f(x; W)</div>
+        <div class="label">Forward pass<br>on task data</div>
+      </div>
+      <div class="arr">&xrarr;</div>
+      <div class="box red" style="min-width: 100px;">
+        <div class="dim">CE(f(x;W), y)</div>
+        <div class="label">Classification loss<br>backprop through ALL</div>
+      </div>
+    </div>
+    <div style="text-align: center; margin-top: 1rem;">
+      <div style="display: inline-block; padding: 0.5rem 1rem; border: 1px dashed var(--green); border-radius: 6px; font-size: 0.8rem; color: var(--green);">
+        &larr; &larr; &larr; Gradients flow: Loss &rarr; Target MLP ops &rarr; Weight values &rarr; Generator &rarr; Prototype Encoder
+      </div>
+    </div>
+  </div>
+  <div class="caption">
+    <strong>Figure 6.</strong> Functional loss. The forward pass through the target MLP is reimplemented as
+    differentiable tensor operations (matrix multiplications using slices of the weight vector).
+    This allows end-to-end gradient flow, directly optimising for classification accuracy rather than weight similarity.
+  </div>
+</div>
+
+<div class="insight">
+  <strong>Why MSE alone fails:</strong> Weight-space MSE treats all parameters equally. But a tiny perturbation to
+  an output bias has vastly different functional effect than the same perturbation deep in the first layer.
+  MSE can achieve low reconstruction error while completely destroying the network's function.
+  Functional loss optimises what matters: <em>does the generated network classify correctly?</em>
+</div>
+
+<!-- ============================================================ -->
+<h2>5. Component Summary</h2>
+<!-- ============================================================ -->
+
+<div class="figure">
+  <table>
+    <thead>
+      <tr><th>Component</th><th>Input</th><th>Output</th><th>Purpose</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Prototype Encoder</strong></td>
+        <td>K images (784D each)</td>
+        <td>128D class prototype</td>
+        <td>Compress visual examples into per-class summary</td>
+      </tr>
+      <tr>
+        <td><strong>Task Encoder</strong></td>
+        <td>3 class prototypes</td>
+        <td>384D task embedding</td>
+        <td>Concatenation — represents the full task</td>
+      </tr>
+      <tr>
+        <td><strong>Weight Generator</strong></td>
+        <td>384D task embedding</td>
+        <td>512D latent code (AE) or full weights (direct)</td>
+        <td>Map task description to weight space</td>
+      </tr>
+      <tr>
+        <td><strong>Weight Decoder</strong></td>
+        <td>512D latent code</td>
+        <td>109K full weight vector</td>
+        <td>Expand latent to full weights (AE only)</td>
+      </tr>
+      <tr>
+        <td><strong>Target MLP</strong></td>
+        <td>784D image + generated weights</td>
+        <td>3-class logits</td>
+        <td>The actual classifier produced by the system</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<p style="color: var(--muted); text-align: center; margin-top: 2rem; font-size: 0.8rem;">
+  March 2026 — MSc Thesis Architecture Documentation
+</p>
+
+</div>
+</body>
+</html>
