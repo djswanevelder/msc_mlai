@@ -21,15 +21,15 @@ class ZooConfig:
     dataset: str = "emnist"
     emnist_split: str = "byclass"
     num_classes_per_task: int = 3
-    seen_classes: List[int] = field(default_factory=lambda: list(range(50)))
-    unseen_classes: List[int] = field(default_factory=lambda: list(range(50, 62)))
+    seen_classes: List[int] = field(default_factory=lambda: list(range(10, 62)))  # letters only (A-Z, a-z)
+    unseen_classes: List[int] = field(default_factory=lambda: list(range(10)))  # digits 0-9 (visually distinct from letters)
     num_train_subsets: int = 200
     num_seen_holdout_subsets: int = 50
     num_unseen_subsets: int = 50
     train_epochs: int = 30
     lr: float = 1e-3
     batch_size: int = 128
-    zoo_dir: str = "data/v4/zoo"
+    zoo_dir: str = "data/digits_unseen/zoo"
     device: str = "cpu"
 
 

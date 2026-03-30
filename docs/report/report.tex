@@ -355,11 +355,60 @@ At 236K, the effect weakens for fully unseen tasks, likely because the latent sp
     \item \textbf{Continual learning.} Investigating whether the better-minimum effect compounds across sequential tasks --- i.e., whether generated initialisations not only start better but also resist catastrophic forgetting better than standard initialisations.
 \end{enumerate}
 
+\subsection{MAML Baseline Comparison}
+
+To address the question of whether the hypernetwork provides a genuine advantage over established meta-learning, we implement first-order MAML (FOMAML) \cite{finn2017model} on the same tasks with the same fine-tuning budget. MAML learns a single shared initialisation $\theta^*$ optimised for fast adaptation via $k$ inner-loop gradient steps. Our hypernetwork generates a \emph{task-specific} initialisation from prototype images.
+
+We evaluate on the hardest setting: \textbf{digits as unseen classes} (0--9), with the system trained exclusively on letter classes (A--Z, a--z). This eliminates any visual similarity between seen and unseen classes --- digits look nothing like letters.
+
+\begin{table}[H]
+\centering
+\caption{MAML vs HyperNet vs Kaiming on digit classification tasks (all 3 classes unseen). Both MAML and HyperNet were trained on letter tasks only. $n = 50$ tasks, paired Wilcoxon signed-rank test.}
+\label{tab:maml}
+\begin{tabular}{rcccc}
+\toprule
+\textbf{FT Steps} & \textbf{HyperNet} & \textbf{MAML} & \textbf{Kaiming} & \textbf{HN$-$MAML ($p$)} \\
+\midrule
+0 & \textbf{71.6\%} & 36.1\% & 33.7\% & $+35.5$pp ($< 10^{-6}$) \\
+10 & \textbf{91.8\%} & 85.6\% & 83.7\% & $+6.2$pp ($< 10^{-6}$) \\
+100 & \textbf{97.6\%} & 96.4\% & 96.2\% & $+1.2$pp ($< 10^{-6}$) \\
+3000 & \textbf{99.3\%} & 99.0\% & 99.0\% & $+0.33$pp ($p = 7 \times 10^{-6}$) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The hypernetwork outperforms MAML at every fine-tuning budget, with all comparisons statistically significant ($p < 10^{-5}$). The advantage is largest at zero steps ($+35.5$pp): MAML's single shared initialisation, optimised for letter tasks, provides no useful structure for digit classification. The hypernetwork's prototype-conditioned generation, by contrast, extracts task-relevant visual features from the digit images and produces an initialisation that is already 71.6\% accurate.
+
+At convergence (3000 steps), the hypernetwork still maintains a small but highly significant advantage ($+0.33$pp, $p = 7 \times 10^{-6}$). This demonstrates that the better-minimum effect holds not only against standard initialisations but also against the MAML meta-learned initialisation.
+
+\subsection{Functional vs MSE Ablation at 50K (Digits-Unseen)}
+
+We repeat the functional vs MSE ablation from the SANE experiments (Table~\ref{tab:ae_ablation}), now at 50K scale on the digits-unseen split. Both hypernetworks have identical architecture and training data; only the loss function differs.
+
+\begin{table}[H]
+\centering
+\caption{Loss function ablation at 50K, digits-unseen (3/3), $n = 50$ tasks. The MSE-only hypernetwork converges to \emph{worse} minima than Kaiming, while the functional hypernetwork converges to better minima. Functional loss flips the sign of the better-minimum effect.}
+\label{tab:mse_ablation_50k}
+\begin{tabular}{lcccl}
+\toprule
+\textbf{Method} & \textbf{Zero-shot} & \textbf{+3000 FT} & \textbf{vs Kaiming} & $\boldsymbol{p}$ \\
+\midrule
+Functional HyperNet & \textbf{71.6\%} & \textbf{99.3\%} & $+0.31$pp (33/50) & 0.0001 \\
+MSE-only HyperNet & 33.4\% & 98.5\% & $-0.49$pp (9/50) & 0.00003 \\
+Kaiming & 33.7\% & 99.0\% & \multicolumn{2}{c}{\textit{baseline}} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+This result is unambiguous: functional loss is not merely helpful but \emph{necessary}. The MSE-only hypernetwork learns to predict weight values that are close in Euclidean distance to the zoo references, but these predicted weights produce networks that classify at chance (33.4\%). Worse, after full fine-tuning the MSE-initialised networks converge to \emph{inferior} minima compared to standard Kaiming initialisation ($-0.49$pp, $p = 0.00003$). The MSE loss teaches the prototype encoder to capture statistical correlations in weight space that are functionally irrelevant, producing an initialisation that actively misleads gradient descent.
+
+\paragraph{Why MAML struggles on unseen classes.} MAML optimises a single $\theta^*$ that works well \emph{on average} across training tasks. When test tasks involve a fundamentally different visual domain (digits vs letters), this average initialisation provides no advantage over random --- it lands in a region of weight space tuned for letter features that are irrelevant for digit classification. The hypernetwork avoids this limitation by conditioning on the actual test-time data through its prototype encoder, producing a fresh, task-specific initialisation for every new task.
+
 % ============================================================
 \section{Conclusion}
 \label{sec:conclusion}
 
-We demonstrated that prototype-conditioned hypernetworks, trained with functional loss, generate neural network initialisations that converge to statistically superior local minima compared to all standard initialisation methods. The effect is verified with both SGD and Adam optimisers, across 220+ evaluation tasks, against Random, Xavier, and Kaiming baselines, at two target network scales (50K and 109K parameters), and on tasks involving character classes never seen during training.
+We demonstrated that prototype-conditioned hypernetworks, trained with functional loss, generate neural network initialisations that converge to statistically superior local minima compared to all standard initialisation methods \emph{and} MAML. The effect is verified with both SGD and Adam optimisers, across 220+ evaluation tasks, against Random, Xavier, Kaiming, and MAML baselines, at two target network scales (50K and 109K parameters), and on tasks involving visually distinct classes never seen during training (digits, when trained exclusively on letters).
 
 The key insight is architectural: functional loss --- optimising for what the generated weights \emph{do} rather than what they \emph{look like} --- is necessary and sufficient for the better-minimum effect. Without it, autoencoder reconstruction and hypernetwork generation both fail to produce functionally useful weights. With it, even a simple MLP generator achieves 90.3\% zero-shot accuracy on completely novel classification tasks, and a SANE-based generator scales to 109K+ parameters while preserving the effect.
 
