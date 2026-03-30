@@ -73,15 +73,22 @@ We use EMNIST ByClass \cite{cohen2017emnist}, which contains 62 character classe
 
 To test genuine generalisation, we partition classes (not tasks) into two groups:
 \begin{itemize}[noitemsep]
-    \item \textbf{Seen classes} (0--49): Used during hypernetwork training. Tasks are sampled from $\binom{50}{3} = 19{,}600$ possible combinations.
-    \item \textbf{Unseen classes} (50--61): Never appear during training in any form. At evaluation, we construct tasks containing 0, 1, 2, or 3 unseen classes to measure generalisation at increasing levels of novelty.
+    \item \textbf{Seen classes} (0--49): Digits 0--9, uppercase A--Z, and lowercase a--n. Used during hypernetwork training. Tasks are sampled from $\binom{50}{3} = 19{,}600$ possible combinations.
+    \item \textbf{Unseen classes} (50--61): Lowercase \textbf{o, p, q, r, s, t, u, v, w, x, y, z}. These 12 characters never appear during training in any form. At evaluation, we construct tasks containing 0, 1, 2, or 3 unseen classes to measure generalisation at increasing levels of novelty.
 \end{itemize}
 
-This design ensures that the most challenging evaluation (3/3 unseen) tests the system on character classes it has \emph{literally never encountered} --- not merely novel combinations of familiar classes.
+This design ensures that the most challenging evaluation (3/3 unseen) tests the system on character classes it has \emph{literally never encountered} --- not merely novel combinations of familiar classes. Note that some unseen lowercase letters have uppercase counterparts in the seen set (e.g., lowercase `o' is unseen while uppercase `O' is seen), though the visual forms differ substantially in handwriting.
 
 \subsection{Model Zoo}
 
 We first train a collection of conventionally-trained target classifiers (the ``model zoo''). For each training task, a target MLP is trained with Adam (lr $= 10^{-3}$, 30 epochs) to convergence, typically achieving $>$98\% test accuracy. The zoo provides $(task, weights)$ supervision pairs for training the hypernetwork. We experiment with zoo sizes of 200 and 500 tasks to investigate the effect of task diversity.
+
+\paragraph{Problem Space Coverage.} The training zoo samples a very small fraction of the total problem space. With 50 seen classes, there are $\binom{50}{3} = 19{,}600$ possible 3-class tasks. Our training sets cover:
+\begin{itemize}[noitemsep]
+    \item \textbf{200 tasks}: 1.02\% of the seen-class problem space (0.53\% of the full 37,820-task space)
+    \item \textbf{500 tasks}: 2.55\% of the seen-class problem space (1.32\% of the full space)
+\end{itemize}
+The fact that the hypernetwork achieves 90.3\% zero-shot accuracy on unseen classes from just 2.55\% coverage of the seen-class task space suggests that it has learned highly generalisable structure about the relationship between visual prototypes and classifier weights, rather than memorising individual task solutions.
 
 \subsection{Evaluation Protocol}
 
@@ -337,6 +344,16 @@ At 236K, the effect weakens for fully unseen tasks, likely because the latent sp
     \item The target architectures are MLPs. Extending to CNNs and Transformers via SANE's natural per-channel tokenisation is straightforward in principle but untested.
     \item The 150-model zoo is small relative to the 109K--236K weight space dimensionality. Larger zoos would likely improve both zero-shot accuracy and the persistence of the better-minimum effect at scale.
 \end{itemize}
+
+\subsection{Future Work}
+
+\begin{enumerate}[noitemsep]
+    \item \textbf{Problem space coverage scaling law.} With 500 training tasks covering only 2.55\% of the seen-class problem space and already achieving 90.3\% zero-shot, a natural question is how zero-shot accuracy scales with coverage. Systematically varying the training set from 1\% to 50\% coverage and measuring the resulting zero-shot accuracy would characterise the sample efficiency of the approach and determine whether there are diminishing returns or phase transitions.
+    \item \textbf{Apply cross-attention and task diversity to SANE pipeline.} The ablation study (Table~\ref{tab:ablations}) showed these improvements are additive at 50K but they have not yet been applied to the 109K SANE pipeline. Given that the 109K result already shows the better-minimum effect, combining it with the improved encoder and larger zoo could strengthen the effect and improve zero-shot accuracy.
+    \item \textbf{CNN and Transformer target architectures.} SANE's per-neuron tokenisation naturally extends to per-channel tokenisation for convolutional layers. Testing on CNN targets (e.g., small ResNets) would demonstrate whether the approach generalises beyond fully-connected architectures.
+    \item \textbf{Cross-domain generalisation.} All current experiments use EMNIST (grayscale characters). Testing whether a hypernetwork trained on character classification tasks can generate useful initialisations for natural image tasks (e.g., CIFAR-100 subsets) would test the limits of the learned structural priors.
+    \item \textbf{Continual learning.} Investigating whether the better-minimum effect compounds across sequential tasks --- i.e., whether generated initialisations not only start better but also resist catastrophic forgetting better than standard initialisations.
+\end{enumerate}
 
 % ============================================================
 \section{Conclusion}
