@@ -9,9 +9,9 @@ from torchvision import datasets, transforms
 from torch.utils.data import DataLoader
 from pathlib import Path
 
-from src.v3.config import Config
-from src.v3.models import HyperNetwork, differentiable_forward
-from src.v3.zoo import TargetMLP, make_class_subset
+from src.direct.config import Config
+from src.direct.models import HyperNetwork, differentiable_forward
+from src.direct.zoo import TargetMLP, make_class_subset
 
 
 def verify():

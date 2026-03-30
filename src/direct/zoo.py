@@ -19,7 +19,7 @@ from torch.utils.data import DataLoader, Subset
 from torchvision import datasets, transforms
 from tqdm import tqdm
 
-from src.v3.config import Config, TargetMLPConfig
+from src.direct.config import Config, TargetMLPConfig
 
 
 class TargetMLP(nn.Module):

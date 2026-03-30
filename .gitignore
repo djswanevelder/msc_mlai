@@ -1,20 +1,22 @@
+# Data & model artifacts
+data/
+*.pt
+*.pth
+analysis_data.csv
+
+# Python
+__pycache__/
+.venv/
+
+# Training logs
 lightning_logs/
 outputs/
 checkpoints/
 wandb/
 weights/
-downloaded_artifacts/
-__pycache__/
-imagenet_data/
-pca/
-pca_encoder.pth
-final_meta_dataset.pth
-trained_encoder_weights.pth
-trained_encoder_weights_val.pthdata/
-.venv/
+
+# Project-specific
 .smart-solve/
-*.pt
-*.pth
-analysis_data.csv
-__pycache__/
 .claude/commands/
+downloaded_artifacts/
+imagenet_data/

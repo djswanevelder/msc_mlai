@@ -22,10 +22,10 @@ import numpy as np
 from scipy import stats
 from torchvision import datasets, transforms
 
-from src.v4.config import Config, TargetMLPConfig
-from src.v4.models import PrototypeEncoder, differentiable_forward
-from src.v4.train import build_class_image_index, sample_prototypes, sample_task_data
-from src.v4.sane import (
+from src.prototype.config import Config, TargetMLPConfig
+from src.prototype.models import PrototypeEncoder, differentiable_forward
+from src.prototype.train import build_class_image_index, sample_prototypes, sample_task_data
+from src.prototype.sane import (
     SANEAutoencoder, LatentHyperNetwork,
     tokenize_mlp_weights, detokenize_to_flat,
 )

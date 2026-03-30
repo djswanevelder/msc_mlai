@@ -11,7 +11,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-from src.v4.config import TargetMLPConfig
+from src.prototype.config import TargetMLPConfig
 
 
 class PrototypeEncoder(nn.Module):

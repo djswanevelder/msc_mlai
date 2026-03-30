@@ -15,8 +15,8 @@ from torch.utils.data import DataLoader, Subset
 from torchvision import datasets, transforms
 from tqdm import tqdm
 
-from src.v3.config import Config
-from src.v3.models import HyperNetwork, batched_differentiable_forward
+from src.direct.config import Config
+from src.direct.models import HyperNetwork, batched_differentiable_forward
 
 
 def load_zoo(zoo_path: str, device: str = "cpu") -> Dict:
@@ -190,7 +190,7 @@ def train_hypernetwork(cfg: Config, zoo_path: Optional[str] = None) -> HyperNetw
                 labels = labels.to(device)
 
                 # Forward pass with generated weights (differentiable)
-                from src.v3.models import differentiable_forward
+                from src.direct.models import differentiable_forward
                 logits = differentiable_forward(generated_w[i], images, cfg.target)
                 func_loss = func_loss + F.cross_entropy(logits, labels)
 
@@ -244,7 +244,7 @@ def train_hypernetwork(cfg: Config, zoo_path: Optional[str] = None) -> HyperNetw
                 gen_w_norm = hypernet(class_indices[i:i+1])
                 gen_w = gen_w_norm * w_std + w_mean
 
-                from src.v3.models import differentiable_forward
+                from src.direct.models import differentiable_forward
                 logits = differentiable_forward(gen_w[0], images, cfg.target)
                 val_correct += (logits.argmax(1) == labels).sum().item()
                 val_total += labels.size(0)

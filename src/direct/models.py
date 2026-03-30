@@ -11,7 +11,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-from src.v3.config import Config, TargetMLPConfig
+from src.direct.config import Config, TargetMLPConfig
 
 
 class HyperNetwork(nn.Module):

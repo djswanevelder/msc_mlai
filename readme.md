@@ -1,19 +1,82 @@
-## Dataset & Result conditioned Weight Generation 
-This project contains all the relevant code for my MSc project
+# Functional Hypernetworks
 
----
+Single-pass neural network weight generation from prototype images, with provably better initialisations.
 
-The fundamental goal is to have system which is capable of embedding a dataset $\mathcal{D}$, the trained neural weights $W$, and the corresponding results $R$ (training and test) into a shared embedding latent space. The goal is to use the shared space, to sample from the space  conditioned on a new unseen dataset and a specified results, and decode into real weights.  The architecture is kept constant for simplicity. 
-$$ p (W \mid R, \mathcal{D},\text{Arch})
-$$
-The way in which this will be implemented requires a few building blocks.
-- [Synthetic dataset generator](docs/data_gen.md)
-- [Training pipeline and weight storage](docs/train_pipe.md)
-- Weight Embedding
-- Dataset Embedding
-- Shared embedding projection
+**DJ Swanevelder** — MSc Applied Mathematics, Stellenbosch University (2026)
 
-The goal of the project is to get the simplest implementation of the following up and running as fast as possible, and the evaluate the performance, then iteratively update the part of the pipeline to achieve better results. The goal is a graph, with input results (desired results) on the x-axis, measured results on the y. If the graph is somewhat linear, project is a success. 
+## Key Results
 
+| Scale | Zero-shot (unseen classes) | Better minimum gap | p-value |
+|-------|---------------------------|-------------------|---------|
+| 50K (direct) | 90.3% | +0.68pp vs Kaiming | < 10⁻⁶ |
+| 109K (SANE) | 81.4% | +0.41pp vs Kaiming | 0.00006 |
+| 236K (SANE) | 62.0% | +0.33pp (seen combos) | 0.006 |
 
+## What This Does
 
+Given a few example images per class, the system generates all weights of a neural network classifier in a single forward pass — no training required at inference. The generated weights converge to statistically better local minima than Random, Xavier, or Kaiming initialisation when fine-tuned.
+
+## Repository Structure
+
+```
+msc_mlai/
+├── src/
+│   ├── direct/           # Direct hypernetwork (50K params)
+│   │   ├── config.py     # Target MLP + hypernetwork config
+│   │   ├── zoo.py        # Model zoo generator (MNIST/EMNIST)
+│   │   ├── models.py     # HyperNetwork + differentiable forward pass
+│   │   └── train.py      # Training with functional loss
+│   │
+│   └── prototype/        # Prototype-conditioned hypernetwork (50K-236K)
+│       ├── config.py     # EMNIST config (62 classes, seen/unseen split)
+│       ├── zoo.py        # EMNIST model zoo generator
+│       ├── models.py     # PrototypeEncoder + HyperNetwork
+│       ├── train.py      # Training with prototype conditioning
+│       ├── sane.py       # SANE tokenisation + Transformer AE
+│       ├── sane_func.py  # SANE with functional AE (best 109K pipeline)
+│       ├── sane_e2e.py   # End-to-end fine-tuning of SANE + hypernetwork
+│       ├── ablations.py  # Cross-attention + task diversity ablations
+│       └── scale_v5.py   # 236K scaling experiment
+│
+├── eval_zoo.py           # Evaluate zoo baseline accuracy
+├── eval_meta.py          # Evaluate hypernetwork (zero-shot + fine-tuning)
+├── verify_no_leakage.py  # Data leakage verification
+├── docs/report/          # LaTeX report + PDF
+└── pyproject.toml        # Dependencies (uv)
+```
+
+## Quick Start
+
+```bash
+# Install dependencies
+uv sync
+
+# Generate model zoo (EMNIST, 200 tasks)
+uv run python -m src.prototype.zoo
+
+# Train prototype-conditioned hypernetwork
+uv run python -m src.prototype.train
+
+# Evaluate on unseen classes
+uv run python eval_meta.py --split unseen --finetune 10 --compare-random
+
+# Run ablation study (cross-attention + task diversity)
+uv run python -m src.prototype.ablations
+
+# Run SANE pipeline for 109K params
+uv run python -m src.prototype.sane_func
+```
+
+## Method
+
+1. **Model Zoo**: Train many small MLPs on random 3-class subsets of EMNIST
+2. **Prototype Encoding**: Encode example images per class via shared MLP + optional cross-attention
+3. **Hypernetwork**: Map prototype embeddings → target network weights (direct or via SANE latent space)
+4. **Functional Loss**: Train by executing generated weights on task data and backpropagating CE loss
+
+## Requirements
+
+- Python 3.12+
+- PyTorch 2.8+
+- Apple Silicon (MPS) or CUDA GPU
+- `uv` for dependency management

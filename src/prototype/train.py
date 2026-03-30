@@ -13,8 +13,8 @@ import torch.nn.functional as F
 from torchvision import datasets, transforms
 from tqdm import tqdm
 
-from src.v4.config import Config
-from src.v4.models import HyperNetwork, differentiable_forward
+from src.prototype.config import Config
+from src.prototype.models import HyperNetwork, differentiable_forward
 
 
 def load_zoo(zoo_path: str, device: str = "cpu") -> Dict:
