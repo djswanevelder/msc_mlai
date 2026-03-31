@@ -115,6 +115,13 @@ The task embedding is the concatenation: $z_{\text{task}} = [p_1;\; p_2;\; p_3] 
 
 The sharing is critical: it forces the encoder to learn universal visual features (strokes, curves, junctions, symmetry) rather than class-specific templates. When digit images are encountered at test time, the encoder extracts whatever visual structure it can recognise from its letter training, and the generator produces weights accordingly.
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{fig_architecture.pdf}
+    \caption{System architecture. \textbf{Top left:} Prototype encoding --- example images from each class are processed by a shared encoder and mean-pooled into 128D prototypes. \textbf{Top right:} Weight generator maps concatenated prototypes to the full target weight vector (green dotted box = inference path, single forward pass). \textbf{Bottom:} During training, generated weights are loaded into the target network and evaluated on task data; the classification loss backpropagates through the entire pipeline (blue dashed box = training only).}
+    \label{fig:architecture}
+\end{figure}
+
 \subsection{Weight Generation}
 
 \paragraph{Direct generation (50K parameters).}
@@ -200,6 +207,13 @@ The hypernetwork outperforms MAML at every fine-tuning budget (all $p < 10^{-5}$
 
 This fundamental difference --- \emph{task-specific} vs \emph{task-agnostic} initialisation --- explains why the hypernetwork generalises across visual domains while MAML does not.
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{fig_comparison.pdf}
+    \caption{\textbf{Left:} Accuracy comparison at four fine-tuning budgets. The hypernetwork dominates at all budgets, with the largest advantage at 0 steps. \textbf{Right:} Convergence curves for generated vs random initialisation. The shaded area shows the accuracy advantage; the annotation highlights the $+32.5$pp gap at 10 steps. The gap persists at convergence ($+1.1$pp at 3000 steps).}
+    \label{fig:comparison}
+\end{figure}
+
 \subsection{Convergence Trajectory}
 
 \begin{table}[H]
@@ -246,6 +260,13 @@ This is the cleanest ablation in the paper. Two identical hypernetworks, same ar
 
 MSE trains the prototype encoder to capture statistical correlations in weight space that are functionally irrelevant. The resulting initialisations not only fail at zero-shot generation but actively mislead gradient descent, producing inferior converged solutions. Functional loss is not merely helpful --- it is \emph{necessary} for the better-minimum effect.
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.55\textwidth]{fig_ablation.pdf}
+    \caption{Functional vs MSE loss ablation. Same architecture, same data, same encoder --- only the training loss differs. Functional loss enables 71.6\% zero-shot and converges to a \emph{better} minimum ($+0.31$pp). MSE-only achieves chance-level zero-shot and converges to a \emph{worse} minimum ($-0.49$pp). Functional loss flips the sign of the effect.}
+    \label{fig:ablation}
+\end{figure}
+
 \subsection{Scaling via SANE (109K Parameters)}
 
 \begin{table}[H]
@@ -274,7 +295,14 @@ The SANE functional autoencoder achieves 97\% reconstruction accuracy (vs 33\% f
 
 \subsection{What the Better-Minimum Effect Means}
 
-The persistent accuracy advantage at convergence ($+0.3$--$0.8$pp after 3000 SGD steps, all $p < 0.001$) indicates that generated weights land in \emph{different, better basins of attraction}. This is confirmed by lower converged cross-entropy loss, not just higher accuracy. The hypernetwork has learned something about the geometry of the loss landscape: which regions contain the best solutions, and how to reach them given visual task descriptions.
+The persistent accuracy advantage at convergence ($+0.3$--$0.8$pp after 3000 SGD steps, all $p < 0.001$) indicates that generated weights land in \emph{different, better basins of attraction}. This is confirmed by lower converged cross-entropy loss, not just higher accuracy. The hypernetwork has learned something about the geometry of the loss landscape: which regions contain the best solutions, and how to reach them given visual task descriptions. Figure~\ref{fig:scatter} shows this per-task: the generated initialisation wins on the majority of individual tasks, not just on average.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{fig_scatter.pdf}
+    \caption{Per-task accuracy at convergence (3000 steps). Each dot is one digit-classification task. Points above the diagonal indicate the generated initialisation converged to higher accuracy. The generated init wins on 36/50 tasks ($p = 10^{-6}$, paired Wilcoxon).}
+    \label{fig:scatter}
+\end{figure}
 
 \subsection{Why Prototype Conditioning Outperforms MAML}
 
